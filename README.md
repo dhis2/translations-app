@@ -6,11 +6,6 @@ This app serves as an internationalization utility for [DHIS2](https://dhis2.org
 
 This effort is part of the larger i18n and i10n process of DHIS2. @see https://docs.google.com/document/d/1u0YhRZD2Q3F8p6VCsz7dXdZxJL45R0qsEfsNc0OCJYs/edit
 
-# TODO
-
-* Add loading/Progress Circle during translations load
-* Better filtering
-* TextField editing
 
 # Building
 
