@@ -86,6 +86,11 @@
     "developer": {
       "url": "",
       "name": "Gregory Wilson <gwilson@baosystems.com>"
+    },
+    "activities": {
+      "dhis": {
+        "href": ".."
+      }
     }
   }
 }
