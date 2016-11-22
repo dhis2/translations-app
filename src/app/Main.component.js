@@ -232,7 +232,6 @@ export default React.createClass({
       const d2 = this.context.d2;
       const api = d2.Api.getApi();
 
-      //figure out which translation object this is for via objectTranslationMap
       let route = this.state.currentObject+'/'+object.id+'/translations';
       let translations = [];
 
