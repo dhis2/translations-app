@@ -31,34 +31,6 @@ const help = {
   ),
 }
 
-const objectTranslationMap = {
-  'categoryOptions':'DataElementCategoryOption',
-  'categories':'DataElementCategory',
-  'categoryCombos':'DataElementCategoryCombo',
-  'dataElements':'DataElement',
-  'dataElementGroups':'DataElementGroup',
-  'dataElementGroupSets':'DataElementGroupSet',
-  'indicators':'Indicator',
-  'indicatorTypes':'IndicatorType',
-  'indicatorGroups':'IndicatorGroup',
-  'indicatorGroupSets':'IndicatorGroupSet',
-  'organisationUnits':'OrganisationUnit',
-  'organisationUnitGroups':'OrganisationUnitGroup',
-  'organisationUnitGroupSets':'OrganisationUnitGroupSet',
-  'dataSets':'DataSet',
-  'sections':'Section',
-  'validationRules':'ValidationRule',
-  'validationRuleGroups':'ValidationRuleGroup',
-  'programs':'Program',
-  'programStages':'ProgramStage',
-  'trackedEntities':'TrackedEntity',
-  'trackedEntityAttributes':'TrackedEntityAttribute',
-  'trackedEntityAttributeGroups':'TrackedEntityAttributeGroup',
-  'relationshipTypes':'RelationshipType',
-  'optionSets':'OptionSet',
-  'attributes':'Attribute',
-}
-
 const defaultTranslationObject = 'organisationUnits';
 
 const availableProperties = {name:'NAME',shortName:'SHORT_NAME',description:'DESCRIPTION',formName:'FORM_NAME'};
