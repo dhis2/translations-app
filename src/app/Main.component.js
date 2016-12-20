@@ -268,14 +268,11 @@ export default React.createClass({
         return (
             <div className="wrapper">
               <Toolbar noGutter={false}  style={{height:'70px'}}>
-                <ToolbarGroup lastChild={true}>
-                  <SelectField value={this.state.lang_dest} onChange={this.handleDestChange} floatingLabelText={d2.i18n.getTranslation('target_locale')} style={{ width:'336px', marginRight: '1rem' }}>
+                <ToolbarGroup firstChild={true}>
+                  <SelectField value={this.state.lang_dest} onChange={this.handleDestChange} floatingLabelText={d2.i18n.getTranslation('target_locale')} style={{ width:'336px', marginRight: '1rem', marginLeft: '1rem' }}>
                     <MenuItem key='-' value={'-'} primaryText={d2.i18n.getTranslation('select_language')} />
                     {locales}
                   </SelectField>
-                </ToolbarGroup>
-                <ToolbarGroup>
-                  <ToolbarSeparator />
                 </ToolbarGroup>
                 <ToolbarGroup>
                   <SelectField value={this.state.lang_filter} onChange={this.handleFilterChange} floatingLabelText={d2.i18n.getTranslation('filter_by')} style={{width:'200px', marginLeft: '1rem'}}>
@@ -284,21 +281,18 @@ export default React.createClass({
                     <MenuItem value={'missing'} primaryText={d2.i18n.getTranslation('filter_by_untranslated')} />
                   </SelectField>
                 </ToolbarGroup>
+                <ToolbarGroup float="right">
+                  <Pager pager={this.state.pager} page={this.state.page} action={this.switchPage}/>
+                </ToolbarGroup>
               </Toolbar>
 
               <div className="content-wrap">
                 <div className='menu'>
-                  <h3>{d2.i18n.getTranslation('header_menu')}</h3>
                   <ObjectMenu items={this.state.menu} active={this.state.currentObject} action={this.getObjects} />
                 </div>
 
-                <div className='translations' style={{float:'left',minHeight:'500px',minWidth:'500px',margin:'0',padding:'0 2rem'}}>
+                <div className='translations' style={{float:'left',minHeight:'500px',minWidth:'500px',margin:'0px',padding:'2rem 2rem'}}>
                   { (this.state.processing_translations) ? <CircularProgress size={1} style={{float:'right'}}/> : null }
-
-                  <div style={{float:'right'}}>
-                    <Pager pager={this.state.pager} page={this.state.page} action={this.switchPage}/>
-                  </div>
-                  <h3>{d2.i18n.getTranslation('header_translations')}</h3>
                   { (this.state.processing_objects) ? <CircularProgress size={3} style={{float:'right'}}/> : null }
                   <Translations d2={d2}
                                 type={this.state.currentObject}
