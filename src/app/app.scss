@@ -51,8 +51,22 @@ $main-color: $primary1Color;
   float:left;
 }
 
-.menu, .translations {
-  padding-left:.5em;
+.content-wrap {
+  display: flex;
+  width: 100%;
+}
+
+.menu {
+  min-height: 500px;
+  margin: 0;
+  padding: 0em 1em;
+  width:315px;
+  flex: 0 0 292px;
+}
+
+.translations {
+  padding-left: 2rem;
+  flex: 1 1 70%;
 }
 
 .debugBox{

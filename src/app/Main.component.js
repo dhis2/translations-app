@@ -9,7 +9,6 @@ import Paper from 'material-ui/lib/paper';
 import CircularProgress from 'material-ui/lib/circular-progress';
 
 import AppTheme from '../colortheme';
-import HelpDialog from './HelpDialog.component';
 import ObjectMenu from './ObjectMenu.component';
 import Translations from './Translations.component';
 import Pager from './Pager.component';
@@ -291,28 +290,27 @@ export default React.createClass({
                 </ToolbarGroup>
               </Toolbar>
 
-              <h3 className="subdued title_description">{d2.i18n.getTranslation('subtitle')}</h3>
-              <HelpDialog style={{float:"right"}} title={d2.i18n.getTranslation('help')} content={help.nuqjatlh} />
-
-              <div className='menu' style={{float:'left',minHeight:'500px',margin:'0',padding:'0em 1em',width:'315px'}}>
-                <h3>{d2.i18n.getTranslation('header_menu')}</h3>
-                <ObjectMenu items={this.state.menu} active={this.state.currentObject} action={this.getObjects} />
-              </div>
-
-              <div className='translations' style={{float:'left',minHeight:'500px',minWidth:'500px',margin:'0',padding:'0em 1em'}}>
-                { (this.state.processing_translations) ? <CircularProgress size={1} style={{float:'right'}}/> : null }
-
-                <div style={{float:'right'}}>
-                  <Pager pager={this.state.pager} page={this.state.page} action={this.switchPage}/>
+              <div className="content-wrap">
+                <div className='menu'>
+                  <h3>{d2.i18n.getTranslation('header_menu')}</h3>
+                  <ObjectMenu items={this.state.menu} active={this.state.currentObject} action={this.getObjects} />
                 </div>
-                <h3>{d2.i18n.getTranslation('header_translations')}</h3>
-                { (this.state.processing_objects) ? <CircularProgress size={3} style={{float:'right'}}/> : null }
-                <Translations d2={d2}
-                              type={this.state.currentObject}
-                              objects={this.state.objects}
-                              translations={this.state.translations}
-                              action={this.saveTranslation}
-                              filter={this.state.lang_filter} />
+
+                <div className='translations' style={{float:'left',minHeight:'500px',minWidth:'500px',margin:'0',padding:'0 2rem'}}>
+                  { (this.state.processing_translations) ? <CircularProgress size={1} style={{float:'right'}}/> : null }
+
+                  <div style={{float:'right'}}>
+                    <Pager pager={this.state.pager} page={this.state.page} action={this.switchPage}/>
+                  </div>
+                  <h3>{d2.i18n.getTranslation('header_translations')}</h3>
+                  { (this.state.processing_objects) ? <CircularProgress size={3} style={{float:'right'}}/> : null }
+                  <Translations d2={d2}
+                                type={this.state.currentObject}
+                                objects={this.state.objects}
+                                translations={this.state.translations}
+                                action={this.saveTranslation}
+                                filter={this.state.lang_filter} />
+                </div>
               </div>
           </div>
         );

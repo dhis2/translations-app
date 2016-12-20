@@ -178,7 +178,7 @@ export default React.createClass({
         }
 
         return (
-          <Paper zDepth={1} style={{padding:".5em",marginBottom:"5px"}} key={i}>
+          <Paper zDepth={1} style={{padding:"1rem",marginBottom:"2rem"}} key={i}>
             <Term source={d} translation={trans} action={hc} type={type} />
           </Paper>
         );

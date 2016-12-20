@@ -19,10 +19,6 @@ msgstr ""
 msgid "Translations App"
 msgstr "Översättning App"
 
-#: subtitle
-msgid "Translation and Internationalization"
-msgstr "Översättning och Internationalisering"
-
 #: help
 msgid "Help"
 msgstr "Hjälp"
