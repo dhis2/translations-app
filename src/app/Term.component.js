@@ -162,7 +162,7 @@ export default React.createClass({
             {this.renderFormName(this.props.type,d.formName,this.state.formName,this.handleFormName)}
           <RaisedButton
             label="Save"
-            primary={true}
+            secondary={true}
             onClick={this.save} />
         </div>
       );

@@ -14,7 +14,7 @@ function getStyle(active, item) {
 export default function ObjectMenu({ items, action, active }, { d2 }) {
     const menuItems = items
       .map(schemaName => d2.models[schemaName])
-      .filter(schema => schema && schema.getTranslatableProperties().length > 0)
+      .filter(schema => schema && schema.getTranslatableProperties().length > 0 && d2.currentUser.canUpdate(schema))
       .map(item => (
           <MenuItem
               key={item.plural}

@@ -122,7 +122,11 @@ export default React.createClass({
         page = 1;
       }
 
-      d2.models[objectName].list({ page:page, fields: ['id', 'displayName'].concat(d2.models[objectName].getTranslatableProperties()).join(',')})
+      d2.models[objectName].list({  
+        fields: ['id', 'displayName'].concat(d2.models[objectName].getTranslatableProperties()).join(','),
+        page: page,
+        pageSize: 5,
+      })
       .then(collection => {
         this.setState({
           objects:collection.toArray(),
