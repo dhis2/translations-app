@@ -14,6 +14,7 @@ import ObjectMenu from './ObjectMenu.component';
 import Translations from './Translations.component';
 import Pager from './Pager.component';
 import actions from '../actions';
+import translatableObjects from '../config/translatable-objects';
 
 const help = {
   nuqjatlh:(
@@ -57,7 +58,7 @@ export default React.createClass({
           lang_dest: '-',
           lang_filter: 'all',
           locales: [],
-          menu: [],
+          menu: translatableObjects,
           objects: [],
           currentObject: '',
           translations:{},
@@ -67,7 +68,7 @@ export default React.createClass({
     },
 
     componentDidMount() {
-      this.getTranslatableClasses();
+      // this.getTranslatableClasses();
       this.getLocales();
     },
 
@@ -111,8 +112,10 @@ export default React.createClass({
       }).then(promise=>{
         if (promise.hasOwnProperty('schemas')){
           this.setState({
-            menu:promise.schemas.filter(function(o){ return o.nameableObject}),
-            processing_menu:false});
+            menu: promise.schemas
+              .filter(function(o){ return o.nameableObject}),
+              processing_menu: false
+            });
         }
       });
     },
@@ -140,7 +143,7 @@ export default React.createClass({
         page = 1;
       }
 
-      d2.models[objectName].list({page:page})
+      d2.models[objectName].list({ page:page, fields: ['id', 'displayName'].concat(d2.models[objectName].getTranslatableProperties()).join(',')})
       .then(collection => {
         this.setState({
           objects:collection.toArray(),
@@ -310,8 +313,7 @@ export default React.createClass({
 
               <div className='menu' style={{float:'left',minHeight:'500px',margin:'0',padding:'0em 1em',width:'315px'}}>
                 <h3>{d2.i18n.getTranslation('header_menu')}</h3>
-                { (this.state.processing_menu) ? <CircularProgress size={1} style={{float:'right'}}/> : null }
-                <ObjectMenu items={this.state.menu} default='' action={this.getObjects} />
+                <ObjectMenu items={this.state.menu} active={this.state.currentObject} action={this.getObjects} />
               </div>
 
               <div className='translations' style={{float:'left',minHeight:'500px',minWidth:'500px',margin:'0',padding:'0em 1em'}}>

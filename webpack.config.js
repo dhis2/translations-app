@@ -55,6 +55,10 @@ const webpackConfig = {
                 test: /\.scss$/,
                 loader: 'style!css!sass',
             },
+            {
+                test: /\.json$/,
+                loader: 'json-loader',
+            },
         ],
     },
     resolve: {
@@ -73,6 +77,7 @@ const webpackConfig = {
         proxy: [
             { path: '/api/*', target: dhisConfig.baseUrl, bypass: log },
             { path: '/dhis-web-commons/*', target: dhisConfig.baseUrl, bypass: log },
+            { path: '/dhis-web-core-resource/**', target: dhisConfig.baseUrl, bypass: log },
             { path: '/icons/*', target: dhisConfig.baseUrl, bypass: log },
             { path: '/css/*', target: 'http://localhost:8081/build', bypass: log },
             { path: '/jquery.min.js', target: 'http://localhost:8081/node_modules/jquery/dist', bypass: log },

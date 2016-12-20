@@ -1,48 +1,36 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 import Menu from 'material-ui/lib/menus/menu';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 
-import AppTheme from '../colortheme';
+function getStyle(active, item) {
+    if (active === item) {
+        return { color:"blue", background:'#ddd'};
+    }
 
-export default React.createClass({
-    propTypes: {
-        items: React.PropTypes.array.isRequired,
-        default: React.PropTypes.string.isRequired,
-        action:  React.PropTypes.func.isRequired,
-    },
+    return {};
+}
 
-    componentWillMount() {
-      this.setState({
-        selectedIndex: this.props.default,
-        items: this.props.objects,
-      });
-    },
+export default function ObjectMenu({ items, action, active }, { d2 }) {
+    const menuItems = items
+      .map(schemaName => d2.models[schemaName])
+      .filter(schema => schema && schema.getTranslatableProperties().length > 0)
+      .map(item => (
+          <MenuItem
+              key={item.plural}
+              value={item.plural}
+              primaryText={item.displayName}
+              style={getStyle(active, item.plural)}
+              onTouchTap={() => action(item.plural)}
+          />
+      ));
 
-    getSelectedStyle() {
-        return {color:"blue",background:'#ddd'};
-    },
-
-    handleChangeRequest(event,menuitem,index) {
-      this.setState({
-        selectedIndex: menuitem.key,
-      });
-      this.props.action(menuitem.key);
-    },
-
-    render() {
-      //name,nameableObject,displayName,plural
-      let menuItems = [];
-      for (let item of this.props.items){
-        menuItems.push(<MenuItem value={item.plural} key={item.plural} primaryText={item.displayName}
-          style={(item.plural===this.state.selectedIndex)?(this.getSelectedStyle()):{width:"260px"}}
-          />);
-      }
-      return (
-        <Menu onItemTouchTap={this.handleChangeRequest}>
-          {menuItems}
+    return (
+        <Menu>
+            {menuItems}
         </Menu>
-      );
-
-    },
-});
+    );
+}
+ObjectMenu.contextTypes = {
+    d2: PropTypes.object,
+};
