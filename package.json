@@ -23,7 +23,7 @@
     "BAO Systems"
   ],
   "author": "Gregory Wilson <gwilson@baosystems.com>",
-  "license": "BAO Systems, Inc.",
+  "license": "BSD-3-Clause",
   "dependencies": {
     "jquery": "^2.2.3"
   },
@@ -61,7 +61,7 @@
     "sinon": "^1.17.3",
     "sinon-chai": "^2.8.0",
     "style-loader": "^0.13.0",
-    "webpack": "^1.12.14",
+    "webpack": "^1.14.0",
     "webpack-dev-server": "^1.14.1"
   },
   "pre-commit": [
