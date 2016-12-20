@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 import Paper from 'material-ui/lib/paper';
 import Divider from 'material-ui/lib/divider';
@@ -10,12 +10,16 @@ import Term from './Term.component';
 
 export default React.createClass({
     propTypes: {
-        d2: React.PropTypes.object,
-        objects: React.PropTypes.array.isRequired,
-        translations: React.PropTypes.object.isRequired,
-        action:  React.PropTypes.func.isRequired,
-        filter:  React.PropTypes.string.isRequired,
-        type:    React.PropTypes.string.isRequired,
+        d2: PropTypes.object,
+        objects: PropTypes.array.isRequired,
+        translations: PropTypes.object.isRequired,
+        action:  PropTypes.func.isRequired,
+        filter:  PropTypes.string.isRequired,
+        type:    PropTypes.string.isRequired,
+    },
+
+    contextTypes: {
+      d2: PropTypes.object,
     },
 
     componentWillMount() {

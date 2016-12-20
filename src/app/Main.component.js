@@ -268,12 +268,8 @@ export default React.createClass({
         return (
             <div className="wrapper">
               <Toolbar noGutter={false}  style={{height:'70px'}}>
-                <ToolbarGroup firstChild={true}>
-                  <ToolbarTitle text={d2.i18n.getTranslation('tool')} style={{marginLeft:'30px'}} />
-                  <ToolbarSeparator />
-                </ToolbarGroup>
                 <ToolbarGroup lastChild={true}>
-                  <SelectField value={this.state.lang_dest} onChange={this.handleDestChange} floatingLabelText={d2.i18n.getTranslation('target_locale')} style={{marginLeft:'10px',width:'220px'}}>
+                  <SelectField value={this.state.lang_dest} onChange={this.handleDestChange} floatingLabelText={d2.i18n.getTranslation('target_locale')} style={{ width:'336px', marginRight: '1rem' }}>
                     <MenuItem key='-' value={'-'} primaryText={d2.i18n.getTranslation('select_language')} />
                     {locales}
                   </SelectField>
@@ -282,7 +278,7 @@ export default React.createClass({
                   <ToolbarSeparator />
                 </ToolbarGroup>
                 <ToolbarGroup>
-                  <SelectField value={this.state.lang_filter} onChange={this.handleFilterChange} floatingLabelText={d2.i18n.getTranslation('filter_by')} style={{width:'200px'}}>
+                  <SelectField value={this.state.lang_filter} onChange={this.handleFilterChange} floatingLabelText={d2.i18n.getTranslation('filter_by')} style={{width:'200px', marginLeft: '1rem'}}>
                     <MenuItem value={'all'} primaryText={d2.i18n.getTranslation('filter_by_all')} />
                     <MenuItem value={'existing'} primaryText={d2.i18n.getTranslation('filter_by_translated')} />
                     <MenuItem value={'missing'} primaryText={d2.i18n.getTranslation('filter_by_untranslated')} />
