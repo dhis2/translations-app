@@ -68,7 +68,6 @@ export default React.createClass({
     },
 
     componentDidMount() {
-      // this.getTranslatableClasses();
       this.getLocales();
     },
 
@@ -98,26 +97,6 @@ export default React.createClass({
 
     handleFilterChange (event, index, value) {
       this.setState({lang_filter:value});
-    },
-
-    //get the main menu object items
-    getTranslatableClasses(){
-      ///api/schemas?filter=schema.nameableObject=true&fields=name
-      const d2 = this.context.d2;
-      const api = d2.Api.getApi();
-
-      api.get('schemas',{
-        paging:false,
-        fields:'name,nameableObject,displayName,plural',
-      }).then(promise=>{
-        if (promise.hasOwnProperty('schemas')){
-          this.setState({
-            menu: promise.schemas
-              .filter(function(o){ return o.nameableObject}),
-              processing_menu: false
-            });
-        }
-      });
     },
 
     //helper method to look up translatable objects from DHIS2
