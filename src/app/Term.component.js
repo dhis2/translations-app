@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { getInstance } from 'd2/lib/d2';
+
 import Divider from 'material-ui/lib/divider';
 import RaisedButton from 'material-ui/lib/raised-button';
 import TextField from 'material-ui/lib/text-field';
@@ -7,13 +9,21 @@ import TextFieldLabel from 'material-ui/lib/text-field';
 
 import AppTheme from '../colortheme';
 
+import translatableObjects from '../config/translatable-objects';
+
 export default React.createClass({
     propTypes: {
         source: React.PropTypes.object.isRequired,
         translation: React.PropTypes.object.isRequired,
         action: React.PropTypes.func.isRequired,
         type:   React.PropTypes.string.isRequired,
+        d2: React.PropTypes.object,
     },
+
+    contextTypes: {
+        d2: React.PropTypes.object,
+    },
+
 
     getInitialState() {
       return ({
@@ -65,6 +75,9 @@ export default React.createClass({
     },
 
     renderShortName(o,key,trans,action){
+      
+      const d2 = this.context.d2;
+
       const hasKey = [
         'dataElements',
         'organisationUnits',
@@ -87,7 +100,7 @@ export default React.createClass({
         return (
           <TextField fullWidth style={{fontSize:"90%",height:'65px'}}
             value={trans}
-            floatingLabelText={'ShortName: '+key}
+            floatingLabelText={d2.i18n.getTranslation('short_name') + ':' + key }
             onChange={action}
               />
         );
@@ -96,6 +109,9 @@ export default React.createClass({
     },
 
     renderDescription(o,key,val,action){
+
+      const d2 = this.context.d2;
+
       const hasKey = [
         'dataElements',
         'organisationUnits',
@@ -109,7 +125,7 @@ export default React.createClass({
         return (
           <TextField fullWidth style={{fontSize:"90%",height:'65px'}}
             value={val}
-            floatingLabelText={'Description: '+key}
+            floatingLabelText= {d2.i18n.getTranslation('description') + ':' + key }
             onChange={action}
             multiLine={true}
             rows={2}
@@ -121,6 +137,9 @@ export default React.createClass({
     },
 
     renderFormName(o,key,val,action){
+      
+      const d2 = this.context.d2;
+
       const hasKey = [
         'dataElements',
       ];
@@ -128,7 +147,7 @@ export default React.createClass({
         return (
           <TextField fullWidth style={{fontSize:"90%",height:'65px'}}
             value={val}
-            floatingLabelText={'FormName: '+key}
+            floatingLabelText={ d2.i18n.getTranslation('form_name') + ':' + key}
             onChange={action}
               />
         );
@@ -147,6 +166,9 @@ export default React.createClass({
     },
 
     render() {
+
+      const d2 = this.context.d2;
+      
       let d = this.props.source;
 
       return (
@@ -154,14 +176,14 @@ export default React.createClass({
           <h3 style={{marginBottom:'0'}}>{d.name}</h3>
           <TextField fullWidth style={{fontSize:"90%",height:'65px'}}
             value={this.state.name}
-            floatingLabelText={'Name: '+d.name}
+            floatingLabelText={d2.i18n.getTranslation('name') + ':'+ d.name}
             onChange={this.handleName}
               />
             {this.renderShortName(this.props.type,d.shortName,this.state.shortName,this.handleShortName)}
             {this.renderDescription(this.props.type,d.description,this.state.description,this.handleDescription)}
             {this.renderFormName(this.props.type,d.formName,this.state.formName,this.handleFormName)}
           <RaisedButton
-            label="Save"
+            label= { d2.i18n.getTranslation('save') }
             secondary={true}
             onClick={this.save} />
         </div>
