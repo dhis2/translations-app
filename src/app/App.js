@@ -6,12 +6,11 @@ import headerBarStore$ from 'd2-ui/lib/app-header/headerBar.store';
 import withStateFrom from 'd2-ui/lib/component-helpers/withStateFrom';
 
 import Sidebar from 'd2-ui/lib/sidebar/Sidebar.component';
-import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/lib/toolbar';
+import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
 
-import Snackbar from 'material-ui/lib/snackbar';
-import FontIcon from 'material-ui/lib/font-icon';
+import Snackbar from 'material-ui/Snackbar';
+import FontIcon from 'material-ui/FontIcon';
 
-import AppTheme from '../colortheme';
 import actions from '../actions';
 import '../translationRegistration';
 
@@ -31,13 +30,11 @@ export default React.createClass({
 
     childContextTypes: {
         d2: React.PropTypes.object,
-        muiTheme: React.PropTypes.object
     },
 
     getChildContext() {
         return {
             d2: this.props.d2,
-            muiTheme: AppTheme
         };
     },
     getInitialState: function () {

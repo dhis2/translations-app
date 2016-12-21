@@ -1,9 +1,8 @@
 import React, { PropTypes } from 'react';
 
-import Paper from 'material-ui/lib/paper';
-import Divider from 'material-ui/lib/divider';
-import TextField from 'material-ui/lib/text-field';
-import TextFieldLabel from 'material-ui/lib/text-field';
+import Paper from 'material-ui/Paper';
+import Divider from 'material-ui/Divider';
+import TextField from 'material-ui/TextField';
 
 import AppTheme from '../colortheme';
 import Term from './Term.component';

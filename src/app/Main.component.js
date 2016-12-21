@@ -2,11 +2,11 @@ import React from 'react';
 
 import { getInstance } from 'd2/lib/d2';
 
-import SelectField from 'material-ui/lib/select-field';
-import MenuItem from 'material-ui/lib/menus/menu-item';
-import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/lib/toolbar';
-import Paper from 'material-ui/lib/paper';
-import CircularProgress from 'material-ui/lib/circular-progress';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
+import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
+import Paper from 'material-ui/Paper/Paper';
+import CircularProgress from 'material-ui/CircularProgress/CircularProgress';
 
 import AppTheme from '../colortheme';
 import ObjectMenu from './ObjectMenu.component';
@@ -14,22 +14,6 @@ import Translations from './Translations.component';
 import Pager from './Pager.component';
 import actions from '../actions';
 import translatableObjects from '../config/translatable-objects';
-
-const help = {
-  nuqjatlh:(
-    <div>
-      <p>
-        This app provides a convenient interface to explore and modify existing internationalization (i18n) fields within your DHIS2 application.
-      </p>
-      <p>
-        Features:
-      </p>
-      <ul style={{listStyle: 'none'}}>
-        <li>Demo</li>
-      </ul>
-    </div>
-  ),
-}
 
 const defaultTranslationObject = 'organisationUnits';
 
@@ -103,9 +87,6 @@ export default React.createClass({
     //helper method to look up translatable objects from DHIS2
     getObjects(objectName,page){
       const d2 = this.context.d2;
-      if (this.state.lang_dest==='-'){
-        actions.showSnackbarMessage(d2.i18n.getTranslation('select_language'));
-      }
 
       this.setState({
         currentObject:objectName,
@@ -271,7 +252,7 @@ export default React.createClass({
             <div className="wrapper">
               <Toolbar noGutter={false}  style={{height:'70px', }}>
                 <ToolbarGroup firstChild={true}>
-                  <SelectField value={this.state.lang_dest} onChange={this.handleDestChange} floatingLabelText={d2.i18n.getTranslation('target_locale')} style={{ width:'336px', marginRight: '1rem', marginLeft: '1rem' }}>
+                  <SelectField value={this.state.lang_dest} onChange={this.handleDestChange} floatingLabelText={d2.i18n.getTranslation('target_locale')} style={{ marginRight: '1rem', marginLeft: '1rem' }}>
                     {locales}
                   </SelectField>
                 </ToolbarGroup>
@@ -285,7 +266,7 @@ export default React.createClass({
                     <MenuItem value={'missing'} primaryText={d2.i18n.getTranslation('filter_by_untranslated')} />
                   </SelectField>
                 </ToolbarGroup>
-                <ToolbarGroup float="right">
+                <ToolbarGroup>
                   <Pager pager={this.state.pager} page={this.state.page} action={this.switchPage}/>
                 </ToolbarGroup>
               </Toolbar>

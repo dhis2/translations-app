@@ -2,10 +2,10 @@ import React from 'react';
 
 import { getInstance } from 'd2/lib/d2';
 
-import Divider from 'material-ui/lib/divider';
-import RaisedButton from 'material-ui/lib/raised-button';
-import TextField from 'material-ui/lib/text-field';
-import TextFieldLabel from 'material-ui/lib/text-field';
+import Divider from 'material-ui/Divider';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
+import TextFieldLabel from 'material-ui/TextField';
 
 import AppTheme from '../colortheme';
 

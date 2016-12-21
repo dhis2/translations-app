@@ -1,12 +1,10 @@
-import { blue500, blue700, blue100, orange500, grey100, darkBlack, white, grey500, grey400, cyan800 } from 'material-ui/lib/styles/colors';
-import ColorManipulator from 'material-ui/lib/utils/color-manipulator';
-import Spacing from 'material-ui/lib/styles/spacing';
-import zIndex from 'material-ui/lib/styles/zIndex';
-import ThemeManager from 'material-ui/lib/styles/theme-manager';
+import { blue500, blue700, blue100, orange500, grey100, darkBlack, white, grey500, grey400, cyan800 } from 'material-ui/styles/colors';
+import { fade } from 'material-ui/utils/colorManipulator';
+import Spacing from 'material-ui/styles/spacing';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 const theme = {
     spacing: Spacing,
-    zIndex: zIndex,
     fontFamily: 'Roboto, sans-serif',
     palette: {
         primary1Color: blue500,
@@ -19,11 +17,10 @@ const theme = {
         alternateTextColor: white,
         canvasColor: white,
         borderColor: grey400,
-        disabledColor: ColorManipulator.fade(darkBlack, 0.3),
+        disabledColor: fade(darkBlack, 0.3),
         pickerHeaderColor: cyan800,
     },
 };
-
 
 function createAppTheme(style) {
     return {
@@ -32,17 +29,20 @@ function createAppTheme(style) {
             backgroundColorItem: 'transparent',
             backgroundColorItemActive: style.palette.accent2Color,
             textColor: style.palette.textColor,
-            textColorActive: style.palette.primary1Color,
+            textColorActive: '#276696',
             borderStyle: '1px solid #e1e1e1',
         },
         forms: {
             minWidth: 350,
             maxWidth: 900,
         },
+        formFields: {
+            secondaryColor: style.palette.accent4Color,
+        },
     };
 }
 
-const muiTheme = ThemeManager.getMuiTheme(theme);
-const appTheme = createAppTheme(theme);
+const muiTheme = getMuiTheme(theme);
+const appTheme = createAppTheme(muiTheme);
 
 export default Object.assign({}, muiTheme, appTheme);
