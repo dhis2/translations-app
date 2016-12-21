@@ -49,12 +49,14 @@ export default React.createClass({
     },
 
     getInitialState() {
+        const currentUser = this.props.d2.currentUser;
+
         return {
           processing_menu:true,
           processing_objects:false,
           processing_translations:false,
           lang_source: '-',
-          lang_dest: '-',
+          lang_dest: currentUser && currentUser.userSettings && currentUser.userSettings.keyUiLocale || 'en',
           lang_filter: 'all',
           locales: [],
           menu: translatableObjects,
@@ -163,7 +165,10 @@ export default React.createClass({
 
     //find all the translations for this grouping of objects
     getTranslations(locale){
-      if (locale===this.state.lang_source || locale==='-'){
+      const d2 = this.context.d2;
+      const api = d2.Api.getApi();
+
+      if (locale===this.state.lang_source){
         //source and dest are the same, skip
         return;
       }
@@ -174,9 +179,6 @@ export default React.createClass({
       }
 
       this.setState({translations:{}});
-
-      const d2 = this.context.d2;
-      const api = d2.Api.getApi();
 
       //loop over all the objects and find translations for them
       for (let obj of this.state.objects){
@@ -270,9 +272,11 @@ export default React.createClass({
               <Toolbar noGutter={false}  style={{height:'70px'}}>
                 <ToolbarGroup firstChild={true}>
                   <SelectField value={this.state.lang_dest} onChange={this.handleDestChange} floatingLabelText={d2.i18n.getTranslation('target_locale')} style={{ width:'336px', marginRight: '1rem', marginLeft: '1rem' }}>
-                    <MenuItem key='-' value={'-'} primaryText={d2.i18n.getTranslation('select_language')} />
                     {locales}
                   </SelectField>
+                </ToolbarGroup>
+                <ToolbarGroup>
+                  <ObjectMenu items={this.state.menu} active={this.state.currentObject} action={this.getObjects} />
                 </ToolbarGroup>
                 <ToolbarGroup>
                   <SelectField value={this.state.lang_filter} onChange={this.handleFilterChange} floatingLabelText={d2.i18n.getTranslation('filter_by')} style={{width:'200px', marginLeft: '1rem'}}>
@@ -287,10 +291,6 @@ export default React.createClass({
               </Toolbar>
 
               <div className="content-wrap">
-                <div className='menu'>
-                  <ObjectMenu items={this.state.menu} active={this.state.currentObject} action={this.getObjects} />
-                </div>
-
                 <div className='translations' style={{float:'left',minHeight:'500px',minWidth:'500px',margin:'0px',padding:'2rem 2rem'}}>
                   { (this.state.processing_translations) ? <CircularProgress size={1} style={{float:'right'}}/> : null }
                   { (this.state.processing_objects) ? <CircularProgress size={3} style={{float:'right'}}/> : null }

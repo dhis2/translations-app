@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-import Menu from 'material-ui/lib/menus/menu';
+import SelectField from 'material-ui/lib/select-field';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 
 function getStyle(active, item) {
@@ -21,14 +21,18 @@ export default function ObjectMenu({ items, action, active }, { d2 }) {
               value={item.plural}
               primaryText={item.displayName}
               style={getStyle(active, item.plural)}
-              onTouchTap={() => action(item.plural)}
           />
       ));
 
     return (
-        <Menu>
+        <SelectField 
+            value={active}
+            onChange={(event, index, value) => action(value)}
+            floatingLabelText={d2.i18n.getTranslation('object')}
+            hintText={d2.i18n.getTranslation('select_object_type')}
+        >
             {menuItems}
-        </Menu>
+        </SelectField>
     );
 }
 ObjectMenu.contextTypes = {
