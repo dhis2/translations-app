@@ -5,18 +5,16 @@ import FontIcon from 'material-ui/lib/font-icon';
 
 import AppTheme from '../colortheme';
 
-export default React.createClass({
+const Pager = React.createClass({
     propTypes: {
         pager: React.PropTypes.object.isRequired,
         page: React.PropTypes.number.isRequired,
         action:  React.PropTypes.func.isRequired,
     },
 
-    // componentWillMount() {
-    //   this.setState({
-    //     page: this.props.page,
-    //   });
-    // },
+    contextTypes: {
+        d2: React.PropTypes.object,
+    },
 
 
     firstPage(event) {
@@ -36,9 +34,11 @@ export default React.createClass({
     },
 
     render() {
+      const d2 = this.context.d2;
+
       return (
-        <div>
-          <IconButton tooltip="First Page" tooltipPosition="top-left"
+        <div style={{ paddingTop: '.75rem'}}>
+          <IconButton tooltip={d2.i18n.getTranslation('first_page')} tooltipPosition="top-left"
               disabled={this.props.page<=1}
               onClick={this.firstPage}>
             <FontIcon className="material-icons">fast_rewind</FontIcon>
@@ -66,3 +66,5 @@ export default React.createClass({
 
     },
 });
+
+export default Pager;

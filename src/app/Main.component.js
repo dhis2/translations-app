@@ -269,7 +269,7 @@ export default React.createClass({
 
         return (
             <div className="wrapper">
-              <Toolbar noGutter={false}  style={{height:'70px'}}>
+              <Toolbar noGutter={false}  style={{height:'70px', }}>
                 <ToolbarGroup firstChild={true}>
                   <SelectField value={this.state.lang_dest} onChange={this.handleDestChange} floatingLabelText={d2.i18n.getTranslation('target_locale')} style={{ width:'336px', marginRight: '1rem', marginLeft: '1rem' }}>
                     {locales}
