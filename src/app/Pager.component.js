@@ -43,7 +43,7 @@ const Pager = React.createClass({
               onClick={this.firstPage}>
             <FontIcon className="material-icons">fast_rewind</FontIcon>
           </IconButton>
-          <IconButton tooltip="Previous Page" tooltipPosition="top-left"
+          <IconButton tooltip={d2.i18n.getTranslation('previous_page')} tooltipPosition="top-left"
               disabled={this.props.page<=1}
               onClick={this.previousPage}>
             <FontIcon className="material-icons">navigate_before</FontIcon>
@@ -51,12 +51,12 @@ const Pager = React.createClass({
           &nbsp;
           {this.props.pager.page} / {this.props.pager.pageCount}
            &nbsp;
-          <IconButton tooltip="Next Page" tooltipPosition="top-right"
+          <IconButton tooltip={d2.i18n.getTranslation('next_page')} tooltipPosition="top-right"
               disabled={this.props.page == this.props.pager.pageCount}
               onClick={this.nextPage}>
             <FontIcon className="material-icons">navigate_next</FontIcon>
           </IconButton>
-          <IconButton tooltip="Last Page" tooltipPosition="top-right"
+          <IconButton tooltip={d2.i18n.getTranslation('final_page')} tooltipPosition="top-right"
               disabled={this.props.page == this.props.pager.pageCount}
               onClick={this.lastPage}>
             <FontIcon className="material-icons">fast_forward</FontIcon>
