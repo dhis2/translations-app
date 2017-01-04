@@ -1,17 +1,15 @@
 language: node_js
-node_js: 
-  - "6"
-before_install: 
-  - "git clone -b travis `git config --get remote.origin.url` target/travis"
-branches: 
-  except: 
-    - travis
+node_js:
+- '6'
+before_install:
+- git clone -b travis `git config --get remote.origin.url` target/travis
+branches:
+  except:
+  - travis
 cache:
   yarn: true
-env: 
-  global: 
-    - 
-      secure: "3lRx0dIYuH9xs1uuzskqi463j68M5/SGllwB0DLF/iHMchYzLRpzn4iagJ/zjzbfmeCQ y+M5TGm/v32XlXzE5zXqvDTcs0egWm1tAfqZnOnItgdRoSOtATrlPVY7uHNlEmpUwzBlNmVOUtfewouQ DGHh0X0QNntH2UwKab9idWuMvEk23bKM2eL0T6sHbwpLcdzjVAzSgCygBqUKmw6npGs4NV4L9+4M8fYS k//hBiHI3mA21t8kH2HUZ9CH2WmWsLjsW1uFXMGanfJK+hrZvYXaexLhHP2nOpa+pY5Ch05OH67d68/F f9iHNw3tNIcoLe7YmOEsGDDvJXi7kGF6OBv4RxJA2yBsMWyHOztUxEKW4HERRLA4RzuYyFoW/zCR5Jrk Mx1PmA+bVCfcJHppizDtX5gv7cOv/L1KewlyuFd/9erCEw3EaUDCrGvxj8qiC9ksqSroVXXQsonK0rAY TYbGzehxB55OkFfTgPfLsmp7gP3nxd/m0+vXtXWDBgXCTSiqZa5UONHQelygYYLloVRkHqwDn/Zze1zQ UX01mmLiO5Py2z4HZhAdNhDzz1MqC7+E1SKkeUZMDrZMUaSox9WEuek9sU04LBfP3eQE+Fx0BbK2rK08 JzOCSoBW058fNT+xaVKpKLph+6nnggehXIZOBOol0xzV6PzaR50LVuo="
-    - 
-      secure: "tJFUb7sVjoygiLo9qoFWbGZFdGXPSR4WqEmd1DUbpgHRQx1dBBeoNWdcX5yw1XW0Emlr cf9eyAs7RYaW21rXLa8qh/gRwKf4QUNzeBu2zLccmIGE5F5pKFB9EDyk28mdyNRtFSOYULm2nx26HFvJ ay3jPgPuPZDhqxBizIfRlEhnzyIuvA+YZO64dDlMwHGryRfytGTsxuO4jxao0ExMXlJlwutB2fd/9nDG OoyYJjXSJQX3DhtcVGWbeonwlzrNWQkldyZNmpCG4tX5o/TrtHIQhDkIo03WPenuIgK68a9kps+3YQEF cVkjdZ5bZv+NwtZFYYP8fLG1u3lV2fc8W2QG31RABi6yR10XRUAf3h1kJcgxt+ugTwTXZ9G1G4u4+Ra+ JND+sM8WNiMCQGAilqprqUAOQHyX9/Ke8ZgRZI40Yz+2KX1GJk0YrmuzR+TQLyJUg1xQ5SVm6S7xcleS NawTxzvFRBg26DVJcNtvignkh7mMAflqmGv25VAl6/o2Wxo3tnzGPeRhtdu0x+fLcnzli2LvvDfPjKqC 1rtHWe23doGtOuU/KCeduvxlcl2CSvJN4VQUTlzlEMshUXWUlej2hiT6bgUWyhYZe2fB83X8+pWFYMId dxZQKKbI6ysJiWfnlSJ1DGQO83m1qzhlx7y7nx+ZOt4o3ditKTg0YuM="
-script: "mvn deploy --settings target/travis/settings.xml"
+script: mvn deploy --settings target/travis/settings.xml
+env:
+  global:
+  - secure: 2jTgjWgET+AErTk0YzskhyS+BQlXXmJI0SmElEYRDU03Z5llRBtUU08jegfbbZFSqosyjRYdO6QDQT8bUwqeDaPT7mKXTy7S4Xyxy0HJb6EmG/oukm7iDDoI4heW9wafrf+eOe+UiuO1j3cVuMo8p/7oc7vZCMKQljSiKe/u6r6blid6g18bOawCgnOs0GMiza4gHQpcwzcu7oVfkgxTCET+yXFJE0wKkVjL0c3VbxHX3GdBr8swVPZsg6GExiy+r0Hvbf6PoTPkCeUtvDDQDbgCdpwt3zgnyf1cA5SI2DBWOQZRtHUvyADjmmj/FO19iFwinnY7D15FK4FMo2zttCUBgHpmor5ePyfqs9GXDJJmnhIjHdZ4euMEFHOAWAE8i5cKjFZVV4U6k2jX31onRNlpOPlei3dGvXVZIdeTqLphv6ZT+6vIaDN3GTE/SVu14W5Ha+NkIpK1riKwnLKEWNbd93bcXMq3E371Qg2UhNWcq63GU89JU5UC2oggkOvpAoDfKh/vza5mGRrso0pgBgHnNq9KFMDj6AOR6J5qUBLYQvPi5XdiGzr+trniLVtVHAIcoBMLL7TFBEEXNadw0EV/zocuufjhfeEX5QeQumqWDU7UDUrmAPGrEJ9YH/xv/NLg+NYYKCOCiFKBxKIthqrqOVECtBw46ysvkaHo720=
+  - secure: tMkaspkJPgDhb8STLdkd0Pdc8u0F+HMMp+cW3SVQgI+pvpzvUgRmgiTh1ZbfZitmeGPNq863U1GeuS5hHm+QKs1YV6xE+57oAqnNoPGaeHFy/SaMjAo7D0LxcgPYuxrHaBoH9gRKhgYoWuMz/9bfGGDNKck14MYdzpesVf5PCkKEr8TNvr5G//a1SkFB4D9Y0fdc5Hc6DBBctcXN3PbULA/s9sQO1z2utSx1ypYn203ubCVDJ1BmqyP3dnebAmqT5UuyEijx+3msGR+T03mBnUr2SnPrD2nXb4aPWTuCgL8jt8Qs5Rj85WDhkj4rIqaWL810aMyZgJYhg+x90mjC1x6RwbJ+vx5n0I6gwEeXdzW3/0oUXFDGlmTLuuEw+bYo0AALhbygb2nz+rhYI/vfZBQwVBhwLe0ZTlUU8Ioc/hToUmISIN+o3dO7GYxEqEF0OlQy1V13rTx42UlkRv9+CTcXV4+GgIn4LFFrfRPbKRCFuUkPvRxoSAqt/cXCX6P/KyV9RP6RcE8QmOqbVVAKG6j7uFFh53eXEEdbX7/8MovEont3QPst6IGbPqzV11zpSs4o/dWfsGVMg8egjrmqef1WwPR/AYNek6uRjgFMnb7xk2lXTTKVN0G7O9H8UJRch95NaVPVogntvzQHb6r95OFK8PaEAcVnHe90q4CRy7k=
