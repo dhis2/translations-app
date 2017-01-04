@@ -1,6 +1,6 @@
 {
   "name": "translations-app",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "DHIS2 Translation/Internationalization App",
   "main": "src/index.html",
   "scripts": {
