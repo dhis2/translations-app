@@ -1,3 +1,32 @@
+language: node_js
+node_js:
+  - "6"
+cache: yarn
 branches:
   except:
     - travis
+before_install: 
+  - "git clone -b travis `git config --get remote.origin.url` target/travis"
+script:
+  - npm run build
+script: "mvn deploy --settings target/travis/settings.xml"
+env:
+  global:
+  - secure: 3lRx0dIYuH9xs1uuzskqi463j68M5/SGllwB0DLF/iHMchYzLRpzn4iagJ/zjzbfmeCQ
+y+M5TGm/v32XlXzE5zXqvDTcs0egWm1tAfqZnOnItgdRoSOtATrlPVY7uHNlEmpUwzBlNmVOUtfewouQ
+DGHh0X0QNntH2UwKab9idWuMvEk23bKM2eL0T6sHbwpLcdzjVAzSgCygBqUKmw6npGs4NV4L9+4M8fYS
+k//hBiHI3mA21t8kH2HUZ9CH2WmWsLjsW1uFXMGanfJK+hrZvYXaexLhHP2nOpa+pY5Ch05OH67d68/F
+f9iHNw3tNIcoLe7YmOEsGDDvJXi7kGF6OBv4RxJA2yBsMWyHOztUxEKW4HERRLA4RzuYyFoW/zCR5Jrk
+Mx1PmA+bVCfcJHppizDtX5gv7cOv/L1KewlyuFd/9erCEw3EaUDCrGvxj8qiC9ksqSroVXXQsonK0rAY
+TYbGzehxB55OkFfTgPfLsmp7gP3nxd/m0+vXtXWDBgXCTSiqZa5UONHQelygYYLloVRkHqwDn/Zze1zQ
+UX01mmLiO5Py2z4HZhAdNhDzz1MqC7+E1SKkeUZMDrZMUaSox9WEuek9sU04LBfP3eQE+Fx0BbK2rK08
+JzOCSoBW058fNT+xaVKpKLph+6nnggehXIZOBOol0xzV6PzaR50LVuo=
+  - secure: tJFUb7sVjoygiLo9qoFWbGZFdGXPSR4WqEmd1DUbpgHRQx1dBBeoNWdcX5yw1XW0Emlr
+cf9eyAs7RYaW21rXLa8qh/gRwKf4QUNzeBu2zLccmIGE5F5pKFB9EDyk28mdyNRtFSOYULm2nx26HFvJ
+ay3jPgPuPZDhqxBizIfRlEhnzyIuvA+YZO64dDlMwHGryRfytGTsxuO4jxao0ExMXlJlwutB2fd/9nDG
+OoyYJjXSJQX3DhtcVGWbeonwlzrNWQkldyZNmpCG4tX5o/TrtHIQhDkIo03WPenuIgK68a9kps+3YQEF
+cVkjdZ5bZv+NwtZFYYP8fLG1u3lV2fc8W2QG31RABi6yR10XRUAf3h1kJcgxt+ugTwTXZ9G1G4u4+Ra+
+JND+sM8WNiMCQGAilqprqUAOQHyX9/Ke8ZgRZI40Yz+2KX1GJk0YrmuzR+TQLyJUg1xQ5SVm6S7xcleS
+NawTxzvFRBg26DVJcNtvignkh7mMAflqmGv25VAl6/o2Wxo3tnzGPeRhtdu0x+fLcnzli2LvvDfPjKqC
+1rtHWe23doGtOuU/KCeduvxlcl2CSvJN4VQUTlzlEMshUXWUlej2hiT6bgUWyhYZe2fB83X8+pWFYMId
+dxZQKKbI6ysJiWfnlSJ1DGQO83m1qzhlx7y7nx+ZOt4o3ditKTg0YuM=
