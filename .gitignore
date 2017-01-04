@@ -1,0 +1,21 @@
+# Jetbrains files
+.idea
+*.iml
+
+# Project folders/dependencies
+node_modules
+build
+coverage
+manifest.webapp
+.babelrc
+.eslintignore
+.eslintrc
+.scss-lint.yml
+
+# Misc files
+npm-debug.log
+
+.DS_Store
+
+# Don't include our local configuration info
+config.json
