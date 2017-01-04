@@ -8,7 +8,8 @@ branches:
   - travis
 cache:
   yarn: true
-script: mvn deploy --settings target/travis/settings.xml
+script: npm run build 
+after_success:  mvn deploy --settings target/travis/settings.xml
 env:
   global:
   - secure: 2jTgjWgET+AErTk0YzskhyS+BQlXXmJI0SmElEYRDU03Z5llRBtUU08jegfbbZFSqosyjRYdO6QDQT8bUwqeDaPT7mKXTy7S4Xyxy0HJb6EmG/oukm7iDDoI4heW9wafrf+eOe+UiuO1j3cVuMo8p/7oc7vZCMKQljSiKe/u6r6blid6g18bOawCgnOs0GMiza4gHQpcwzcu7oVfkgxTCET+yXFJE0wKkVjL0c3VbxHX3GdBr8swVPZsg6GExiy+r0Hvbf6PoTPkCeUtvDDQDbgCdpwt3zgnyf1cA5SI2DBWOQZRtHUvyADjmmj/FO19iFwinnY7D15FK4FMo2zttCUBgHpmor5ePyfqs9GXDJJmnhIjHdZ4euMEFHOAWAE8i5cKjFZVV4U6k2jX31onRNlpOPlei3dGvXVZIdeTqLphv6ZT+6vIaDN3GTE/SVu14W5Ha+NkIpK1riKwnLKEWNbd93bcXMq3E371Qg2UhNWcq63GU89JU5UC2oggkOvpAoDfKh/vza5mGRrso0pgBgHnNq9KFMDj6AOR6J5qUBLYQvPi5XdiGzr+trniLVtVHAIcoBMLL7TFBEEXNadw0EV/zocuufjhfeEX5QeQumqWDU7UDUrmAPGrEJ9YH/xv/NLg+NYYKCOCiFKBxKIthqrqOVECtBw46ysvkaHo720=
