@@ -8,8 +8,8 @@ cache:
 script:
 - npm run build
 deploy:
-    proider:script
-    script: "[[ -z $TRAVIS_TAG ]] || mvn clean deploy --settings settings.xml"
+    provider:script
+    script: scripts/deploy.sh 
     on:
       branch: master
 env:
