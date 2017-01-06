@@ -1,4 +1,4 @@
-DHIS2 Translations App
+HIS2 Translations App
 ==============
 
 # About
