@@ -1,3 +1,3 @@
 #!/bin/bash
 
-[[ -z $TRAVIS_TAG ]] || mvn clean deploy --settings settings.xml
+[[ -z $TRAVIS_TAG ]] || mvn clean deploy --settings settings/settings.xml
