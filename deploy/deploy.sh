@@ -7,7 +7,7 @@ if [ "$TRAVIS_REPO_SLUG" == "$THIS_REPO" ]  && [ "$TRAVIS_PULL_REQUEST" == "fals
     
     set -e # exit with nonzero exit code if anything fails
 
-    mvn clean deploy --settings scripts/settings.xml
+    mvn clean deploy --settings deploy/settings.xml
 
     exit $?
 
