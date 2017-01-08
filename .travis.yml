@@ -9,6 +9,7 @@ script:
 - npm run build
 deploy:
   provider: script
+  skip_cleanup: true
   script: scripts/deploy.sh
 env:
   global:
