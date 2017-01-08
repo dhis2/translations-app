@@ -1,5 +1,5 @@
 #!/bin/bash
-THIS_REPO = "dhis2/translations-app"
+THIS_REPO="dhis2/translations-app"
 BRANCH_REGEX="2.2[0-9]|master"
 
 if [ "$TRAVIS_REPO_SLUG" == "$THIS_REPO" ]  && [ "$TRAVIS_PULL_REQUEST" == "false" ] \
