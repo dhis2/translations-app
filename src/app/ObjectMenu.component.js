@@ -25,11 +25,12 @@ export default function ObjectMenu({ items, action, active }, { d2 }) {
       ));
 
     return (
-        <SelectField 
+        <SelectField
             value={active}
             onChange={(event, index, value) => action(value)}
             floatingLabelText={d2.i18n.getTranslation('object')}
             hintText={d2.i18n.getTranslation('select_object_type')}
+            autoWidth={true}
         >
             {menuItems}
         </SelectField>

@@ -123,7 +123,9 @@ export default React.createClass({
       ];
       if (hasKey.indexOf(o)>=0){
         return (
-          <TextField fullWidth style={{fontSize:"90%",height:'65px'}}
+          <TextField
+            fullWidth
+            style={{fontSize:"90%",marginBottom:'5px'}}
             value={val}
             floatingLabelText= {d2.i18n.getTranslation('description') + ':' + key }
             onChange={action}
