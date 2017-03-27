@@ -63,8 +63,7 @@ const webpackConfig = {
     resolve: {
         alias: {
             react: path.resolve('./node_modules/react'),
-            'material-ui': path.resolve('./node_modules/material-ui'),
-            'jquery-csv': path.resolve('./node_modules/jquery-csv')
+            'material-ui': path.resolve('./node_modules/material-ui')
         },
     },
     devServer: {
@@ -77,7 +76,6 @@ const webpackConfig = {
             { path: '/dhis-web-core-resource/**', target: dhisConfig.baseUrl, bypass: log },
             { path: '/icons/*', target: dhisConfig.baseUrl, bypass: log },
             { path: '/css/*', target: 'http://localhost:8081/build', bypass: log },
-            { path: '/jquery.min.js', target: 'http://localhost:8081/node_modules/jquery/dist', bypass: log },
             { path: '/polyfill.min.js', target: 'http://localhost:8081/node_modules/babel-polyfill/dist', bypass: log },
         ],
     },
