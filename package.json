@@ -25,7 +25,6 @@
   "author": "Gregory Wilson <gwilson@baosystems.com>",
   "license": "BSD-3-Clause",
   "dependencies": {
-    "jquery": "^2.2.3",
     "rx": "^4.1.0"
   },
   "devDependencies": {

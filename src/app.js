@@ -1,7 +1,4 @@
 const dhisDevConfig = DHIS_CONFIG; // eslint-disable-line
-if (process.env.NODE_ENV !== 'production') {
-    jQuery.ajaxSetup({ headers: { Authorization: dhisDevConfig.authorization } }); // eslint-disable-line
-}
 
 import React from 'react';
 import { render } from 'react-dom';
@@ -16,15 +13,11 @@ import dhis2 from 'd2-ui/lib/header-bar/dhis2';
 import AppTheme from './colortheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-/*
 if (process.env.NODE_ENV !== 'production') {
-    jQuery.ajaxSetup({ // eslint-disable-line no-undef
-        headers: {
-            Authorization: `Basic ${btoa('admin:district')}`,
-        },
-    });
+    log.setLevel(log.levels.DEBUG);
+} else {
+    log.setLevel(log.levels.INFO);
 }
-*/
 
 // Render the a LoadingMask to show the user the app is in loading
 // The consecutive render after we did our setup will replace this loading mask
@@ -68,10 +61,9 @@ getManifest('./manifest.webapp')
     .then(manifest => {
         const baseUrl = process.env.NODE_ENV === 'production' ? manifest.getBaseUrl() : dhisDevConfig.baseUrl;
         config.baseUrl = `${baseUrl}/api`;
-        // Set the baseUrl to localhost if we are in dev mode
-        if (process.env.NODE_ENV !== 'production') {
-            dhis2.settings.baseUrl = baseUrl;
-        }    })
+        log.info(`Loading: ${manifest.name} v${manifest.version}`);
+        log.info(`Built ${manifest.manifest_generated_at}`);
+    })
     .then(getUserSettings)
     .then(configI18n)
     .then(init)
