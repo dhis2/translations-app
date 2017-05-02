@@ -1,17 +1,15 @@
-const dhisDevConfig = DHIS_CONFIG; // eslint-disable-line
-
 import React from 'react';
 import { render } from 'react-dom';
-import { init, config, getManifest, getUserSettings, D2Library } from 'd2/lib/d2';
+import { init, config, getManifest, getUserSettings } from 'd2/lib/d2';
 import log from 'loglevel';
 import LoadingMask from 'd2-ui/lib/loading-mask/LoadingMask.component';
 import 'react-tap-event-plugin';
 import App from './app/App';
 import './app/app.scss';
-import d2 from 'd2/lib/d2';
-import dhis2 from 'd2-ui/lib/header-bar/dhis2';
 import AppTheme from './colortheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
+const dhisDevConfig = DHIS_CONFIG; // eslint-disable-line
 
 if (process.env.NODE_ENV !== 'production') {
     log.setLevel(log.levels.DEBUG);
@@ -25,8 +23,9 @@ if (process.env.NODE_ENV !== 'production') {
 render(
     <MuiThemeProvider muiTheme={AppTheme}>
         <LoadingMask />
-    </MuiThemeProvider>
-, document.getElementById('app'));
+    </MuiThemeProvider>,
+    document.getElementById('app')
+);
 
 function configI18n(userSettings) {
     const uiLocale = userSettings.keyUiLocale;

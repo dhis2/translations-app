@@ -1,13 +1,8 @@
 import React, { PropTypes } from 'react';
-
 import Paper from 'material-ui/Paper';
-import Divider from 'material-ui/Divider';
-import TextField from 'material-ui/TextField';
-
-import AppTheme from '../colortheme';
 import Term from './Term.component';
 
-export default React.createClass({
+const Translations = React.createClass({
     propTypes: {
         d2: PropTypes.object,
         objects: PropTypes.array.isRequired,
@@ -196,3 +191,5 @@ export default React.createClass({
 
     },
 });
+
+export default Translations;

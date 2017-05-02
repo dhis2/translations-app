@@ -29,7 +29,7 @@ function log(req, res, opt) {
 
 const webpackConfig = {
     context: __dirname,
-    entry: './src/app.js',
+    entry: './src/app.jsx',
     devtool: 'source-map',
     output: {
         path: __dirname + '/build',
@@ -42,9 +42,6 @@ const webpackConfig = {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader',
-                query: {
-                    presets: ['es2015', 'stage-0', 'react'],
-                },
             },
             {
                 test: /\.css$/,

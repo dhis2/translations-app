@@ -1,26 +1,19 @@
 import React from 'react';
-import log from 'loglevel';
-
 import HeaderBarComponent from 'd2-ui/lib/app-header/HeaderBar';
 import headerBarStore$ from 'd2-ui/lib/app-header/headerBar.store';
 import withStateFrom from 'd2-ui/lib/component-helpers/withStateFrom';
-
-import Sidebar from 'd2-ui/lib/sidebar/Sidebar.component';
-import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
-
 import Snackbar from 'material-ui/Snackbar';
-import FontIcon from 'material-ui/FontIcon';
-
 import actions from '../actions';
 import '../translationRegistration';
+import { createStore } from './translationsStore';
+import MainComponent from './Main.component.js';
 
 const HeaderBar = withStateFrom(headerBarStore$, HeaderBarComponent);
 
 let injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin();
 
-import Nuqjatlh from './Main.component.js';
-
+const store = createStore();
 
 export default React.createClass({
     propTypes: {
@@ -30,11 +23,13 @@ export default React.createClass({
 
     childContextTypes: {
         d2: React.PropTypes.object,
+        store: React.PropTypes.object,
     },
 
     getChildContext() {
         return {
             d2: this.props.d2,
+            store: store.state$,
         };
     },
     getInitialState: function () {
@@ -78,7 +73,7 @@ export default React.createClass({
 
     renderSection(key, apps, showUpload) {
       const d2 = this.props.d2;
-      return (<Nuqjatlh d2={d2} />);
+      return (<MainComponent d2={d2} />);
     },
 
 

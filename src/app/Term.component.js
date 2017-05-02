@@ -1,15 +1,6 @@
 import React from 'react';
-
-import { getInstance } from 'd2/lib/d2';
-
-import Divider from 'material-ui/Divider';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-import TextFieldLabel from 'material-ui/TextField';
-
-import AppTheme from '../colortheme';
-
-import translatableObjects from '../config/translatable-objects';
 
 export default React.createClass({
     propTypes: {
@@ -71,11 +62,10 @@ export default React.createClass({
 
     handleFormName(e){
       this.setState({ formName: e.target.value });
-      this.props.action({name: e.target.value});
     },
 
     renderShortName(o,key,trans,action){
-      
+
       const d2 = this.context.d2;
 
       const hasKey = [
@@ -139,7 +129,7 @@ export default React.createClass({
     },
 
     renderFormName(o,key,val,action){
-      
+
       const d2 = this.context.d2;
 
       const hasKey = [
@@ -170,7 +160,7 @@ export default React.createClass({
     render() {
 
       const d2 = this.context.d2;
-      
+
       let d = this.props.source;
 
       return (
