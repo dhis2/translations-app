@@ -566,6 +566,13 @@ babel-plugin-check-es2015-constants@^6.22.0:
   dependencies:
     babel-runtime "^6.22.0"
 
+babel-plugin-lodash@^3.2.11:
+  version "3.2.11"
+  resolved "https://registry.yarnpkg.com/babel-plugin-lodash/-/babel-plugin-lodash-3.2.11.tgz#21c8fdec9fe1835efaa737873e3902bdd66d5701"
+  dependencies:
+    glob "^7.1.1"
+    lodash "^4.17.2"
+
 babel-plugin-minify-builtins@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/babel-plugin-minify-builtins/-/babel-plugin-minify-builtins-0.1.2.tgz#36de34a8d27436b6c3207e0ae239e6cff390914a"
@@ -1899,7 +1906,7 @@ d2-utilizr@^0.2.13:
     lodash.isset "^4.3.0"
     lodash.isstring "^4.0.1"
 
-d2@27:
+d2@27.0.0-8:
   version "27.0.0-8"
   resolved "https://registry.yarnpkg.com/d2/-/d2-27.0.0-8.tgz#9cbad9d0f37d149c03412ace358e30f18e561eb0"
   dependencies:
@@ -2751,7 +2758,7 @@ glob-parent@^2.0.0:
   dependencies:
     is-glob "^2.0.0"
 
-glob@7.1.1, glob@^7.0.0, glob@^7.0.3, glob@^7.0.5, glob@~7.1.1:
+glob@7.1.1, glob@^7.0.0, glob@^7.0.3, glob@^7.0.5, glob@^7.1.1, glob@~7.1.1:
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.1.tgz#805211df04faaf1c63a3600306cdf5ade50b2ec8"
   dependencies:
@@ -3504,6 +3511,12 @@ loader-utils@^1.0.1, loader-utils@^1.0.2, loader-utils@^1.1.0:
 lodash-es@^4.2.0, lodash-es@^4.2.1:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.4.tgz#dcc1d7552e150a0640073ba9cb31d70f032950e7"
+
+lodash-webpack-plugin@^0.11.4:
+  version "0.11.4"
+  resolved "https://registry.yarnpkg.com/lodash-webpack-plugin/-/lodash-webpack-plugin-0.11.4.tgz#6c3ecba3d4b8d24b53940b63542715c5ed3c4ac5"
+  dependencies:
+    lodash "^4.17.4"
 
 lodash._baseassign@^3.0.0:
   version "3.2.0"

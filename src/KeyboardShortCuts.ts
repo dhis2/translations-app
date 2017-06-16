@@ -1,7 +1,9 @@
 import React, {ReactElement} from 'react';
 import { connect } from 'react-redux';
 import { saveTranslationsShortcut } from './actions';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/fromEvent';
+import 'rxjs/add/operator/do';
 import {Subscription} from "rxjs/Subscription";
 import {bindActionCreators, Dispatch} from "redux";
 import {AppAction} from "./types";

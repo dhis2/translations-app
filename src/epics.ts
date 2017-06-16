@@ -6,10 +6,11 @@ import toolBarEpics from './ToolBar/epics';
 import { initToolBarRequest } from './ToolBar/actions';
 import { TOOLBAR_UPDATED, TOOLBAR_SAVE } from './ToolBar/actions';
 import { toolbarStateSelector } from './ToolBar/selectors';
-import { hasUnsavedObjects } from './TranslationForm/selectors';
-import {AppAction, StoreState, ToolBarState} from "./types";
+import {AppAction, StoreState} from "./types";
 import {MiddlewareAPI} from "redux";
 import {Observable} from "rxjs/Observable";
+import "rxjs/add/operator/distinctUntilKeyChanged";
+import "rxjs/add/observable/merge";
 
 const appStartEpic = (action$: ActionsObservable<AppAction>) => action$
     .ofType(APP_START)

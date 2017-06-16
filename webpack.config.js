@@ -4,6 +4,7 @@ var webpack = require('webpack');
 var path = require('path');
 var colors = require('colors');
 var BabiliPlugin = require("babili-webpack-plugin");
+var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 const isDevBuild = process.argv[1].indexOf('webpack-dev-server') !== -1;
 const dhisConfigPath = process.env.DHIS2_HOME && `${process.env.DHIS2_HOME}/config`;
@@ -87,6 +88,7 @@ if (!isDevBuild) {
             'process.env.NODE_ENV': '"production"',
             DHIS_CONFIG: JSON.stringify({}),
         }),
+        new LodashModuleReplacementPlugin,
         new BabiliPlugin({
             // mangle: false,
             evaluate: false,

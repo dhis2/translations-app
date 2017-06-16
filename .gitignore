@@ -19,3 +19,4 @@ npm-debug.log
 
 # Don't include our local configuration info
 config.json
+stats.json

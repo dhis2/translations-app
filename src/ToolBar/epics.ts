@@ -1,6 +1,10 @@
 import { uniqBy, get, uniq, sort } from 'lodash/fp';
 import { combineEpics, ActionsObservable } from 'redux-observable';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/combineLatest';
 import {
     initToolBar, TOOLBAR_INIT, TOOLBAR_INIT__REQUEST, TOOLBAR_LOCALE_CHANGE, TOOLBAR_OBJECT_TYPE_CHANGE,
     TOOLBAR_UPDATED

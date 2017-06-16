@@ -1,5 +1,8 @@
 import { getInstance } from 'd2/lib/d2';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/fromPromise';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/mergeMap';
 
 export const d2$ = Observable.fromPromise(getInstance());
 

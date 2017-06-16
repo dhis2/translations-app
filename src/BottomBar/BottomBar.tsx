@@ -7,6 +7,7 @@ import {connect} from "react-redux";
 import {AppAction, StoreState} from "../types";
 import {Interpolate, translate} from "react-i18next";
 import {bindActionCreators, Dispatch} from "redux";
+import {white, orange500} from 'material-ui/styles/colors';
 import {loadPreviousPage} from "../TranslationForm/actions";
 import {loadNextPage} from "../TranslationForm/actions";
 
@@ -28,12 +29,12 @@ function BottomBar(props: BottomBarProps) {
     return (
         <div className="bottom-bar">
             <IconButton disabled={!props.hasPreviousPage} onClick={props.loadPreviousPage}>
-                <ChevronLeft />
+                <ChevronLeft color={white} hoverColor={orange500} />
             </IconButton>
             <Interpolate i18nKey="Page {{current}} of {{total}}" current={`${props.currentPage}`} total={`${props.totalPages}`} />
             <SaveButton />
             <IconButton disabled={!props.hasNextPage}  onClick={props.loadNextPage}>
-                <ChevronRight />
+                <ChevronRight color={white} hoverColor={orange500} />
             </IconButton>
         </div>
     );
