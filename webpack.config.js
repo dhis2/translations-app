@@ -5,6 +5,7 @@ var path = require('path');
 var colors = require('colors');
 var BabiliPlugin = require("babili-webpack-plugin");
 var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const isDevBuild = process.argv[1].indexOf('webpack-dev-server') !== -1;
 const dhisConfigPath = process.env.DHIS2_HOME && `${process.env.DHIS2_HOME}/config`;
@@ -39,23 +40,22 @@ const webpackConfig = {
         publicPath: 'http://localhost:8081/',
     },
     module: {
-        loaders: [
+        rules: [
+            {
+                test: /\.scss$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader', 'sass-loader']
+                })
+            },
             {
                 test: /\.tsx?$/,
                 exclude: /node_modules/,
-                loader: 'awesome-typescript-loader',
-            },
-            {
-                test: /\.css$/,
-                loader: 'style-loader!css-loader',
-            },
-            {
-                test: /\.scss$/,
-                loader: 'style-loader!css-loader!sass-loader',
+                use: 'awesome-typescript-loader',
             },
             {
                 test: /\.json$/,
-                loader: 'json-loader',
+                use: 'json-loader',
             },
         ],
     },
@@ -92,13 +92,15 @@ if (!isDevBuild) {
         new BabiliPlugin({
             // mangle: false,
             evaluate: false,
-        })
+        }),
+        new ExtractTextPlugin("styles.css"),
     ];
 } else {
     webpackConfig.plugins = [
         new webpack.DefinePlugin({
             DHIS_CONFIG: JSON.stringify(dhisConfig)
         }),
+        new ExtractTextPlugin("styles.css"),
     ];
 }
 
