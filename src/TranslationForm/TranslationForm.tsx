@@ -2,13 +2,16 @@ import React from 'react';
 import TextField from 'material-ui/TextField';
 import { translate } from 'react-i18next';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import {ActionCreator, bindActionCreators, Dispatch} from 'redux';
 import { compose, nthArg, curry } from 'lodash/fp';
 import { updateTranslation } from './actions';
 import { Map } from 'immutable';
 import './TranslationForm.scss';
+import {AppAction, TranslatableProperty} from "../types";
+import {TranslationFunction} from "i18next";
 
-function BaseText({ children }) {
+// TODO: Find the correct type for children
+function BaseText({ children }: { children: any}) {
     return (
         <span className="translations-form__base-text">
             {children}
@@ -16,13 +19,20 @@ function BaseText({ children }) {
     );
 }
 
-function camelCaseToHumanCase(word) {
-    return `${word.charAt().toUpperCase()}${word.slice(1).replace(/([A-Z])/, (_, letter) => (` ${letter.toLowerCase()}`))}`;
+function camelCaseToHumanCase(word: string) {
+    return `${word.charAt(0).toUpperCase()}${word.slice(1).replace(/([A-Z])/, (_, letter) => (` ${letter.toLowerCase()}`))}`;
 }
 
-const createTranslationHandler = curry((objectId, locale, translationKey, value) => ({ objectId, locale, translationKey, value }));
+const createTranslationHandler = curry((objectId: string, locale: string, translationKey: string, value: string) => ({ objectId, locale, translationKey, value }));
 
-function TranslationForm({ model, translatableProperties, locale, onTranslationChanged, t }) {
+type TranslationFormProps = {
+    model: Map<string, any>;
+    translatableProperties: TranslatableProperty[];
+    locale: string;
+    onTranslationChanged: ActionCreator<AppAction>,
+    t: TranslationFunction;
+};
+function TranslationForm({ model, translatableProperties, locale, onTranslationChanged, t }: TranslationFormProps) {
     const translations = model.getIn(['translations', locale], Map());
 
     if (!translatableProperties) {
@@ -59,7 +69,7 @@ function TranslationForm({ model, translatableProperties, locale, onTranslationC
     );
 }
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({
+const mapDispatchToProps = (dispatch: Dispatch<AppAction>) => bindActionCreators({
     onTranslationChanged: updateTranslation,
 }, dispatch);
 

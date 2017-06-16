@@ -45,11 +45,6 @@ const webpackConfig = {
                 loader: 'awesome-typescript-loader',
             },
             {
-                test: /\.jsx?$/,
-                exclude: /node_modules/,
-                loader: 'babel-loader',
-            },
-            {
                 test: /\.css$/,
                 loader: 'style-loader!css-loader',
             },
@@ -92,7 +87,10 @@ if (!isDevBuild) {
             'process.env.NODE_ENV': '"production"',
             DHIS_CONFIG: JSON.stringify({}),
         }),
-        new BabiliPlugin({})
+        new BabiliPlugin({
+            // mangle: false,
+            evaluate: false,
+        })
     ];
 } else {
     webpackConfig.plugins = [

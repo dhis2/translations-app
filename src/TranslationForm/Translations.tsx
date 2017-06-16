@@ -7,9 +7,16 @@ import { selectedLocaleSelector } from '../ToolBar/selectors';
 import { Map } from 'immutable';
 
 import './Translations.scss';
+import {StoreState, TranslatableProperty} from "../types";
 
-function Translations({ items = Map([]), locale, translatableProperties }) {
-    const translationItems = items.toArray().map(item => (
+type TranslationsProps = {
+    items: Map<string, any>;
+    locale: string;
+    translatableProperties: TranslatableProperty[];
+};
+
+function Translations({ items = Map([]), locale, translatableProperties }: TranslationsProps) {
+    const translationItems = items.toArray().map((item: Map<string, any>) => (
         <TranslationForm
             key={item.get('id')}
             model={item}
@@ -25,7 +32,7 @@ function Translations({ items = Map([]), locale, translatableProperties }) {
     );
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: StoreState) => ({
     items: itemsSelector(state),
     locale: selectedLocaleSelector(state),
     translatableProperties: translatablePropertiesSelector(state),

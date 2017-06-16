@@ -12,6 +12,7 @@ type ModelDefinition = {
     getTranslatableProperties: () => Array<string>;
     plural: string;
     displayName: string;
+    list(params: any): Promise<ModelCollection>;
 };
 
 type Model = {
@@ -61,10 +62,10 @@ type Config = {
     baseUrl: string;
 }
 
-type ListResponse = {
+class ListResponse extends ModelCollection {
     pager: Pager;
     toArray(): Model[];
-};
+}
 
 declare const d2: {
     getInstance: () => Promise<D2>;

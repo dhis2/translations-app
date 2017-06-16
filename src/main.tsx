@@ -1,4 +1,3 @@
-/// <reference path="../typings/d2-ui/lib/loading-mask/LoadingMask.component.d.ts"/>
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
@@ -66,7 +65,7 @@ function startApp(d2: D2) {
 getManifest('./manifest.webapp')
     .then(manifest => {
         const baseUrl = process.env.NODE_ENV === 'production' ? manifest.getBaseUrl() : dhisDevConfig.baseUrl;
-        config.baseUrl = `${baseUrl}/api`;
+        config.baseUrl = `${baseUrl}/api/27`;
         log.info(`Loading: ${manifest.name} v${manifest.version}`);
         log.info(`Built ${manifest.manifest_generated_at}`);
     })

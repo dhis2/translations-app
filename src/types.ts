@@ -37,7 +37,6 @@ export type TranslationFormState = {
 
 export type ObjectTranslationKeys = Map<string, string>;
 export type TranslationObject = Map<string, any>;
-export type TranslationObjects = Map<string, TranslationObject>;
 
 export type SelectFieldChangeHandler = (e: TouchTapEvent, index: number, menuItemValue: any) => void;
 
@@ -45,6 +44,8 @@ export type StoreState = {
     toolBar: ToolBarState;
     translationForm: TranslationFormState;
 }
+
+export type TranslatableProperty = { name: string, translationKey: string };
 
 // D2 Types
 export type Locale = { locale: string; name: string };

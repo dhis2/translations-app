@@ -1,4 +1,4 @@
-import { combineEpics } from 'redux-observable';
+import {ActionsObservable, combineEpics} from 'redux-observable';
 import { Observable } from 'rxjs';
 import { getInstance } from 'd2/lib/d2';
 import log from 'loglevel';
@@ -7,8 +7,11 @@ import { selectedObjectTypeSelector } from '../ToolBar/selectors';
 import { setMessageForSnackBar } from '../SnackBar/actions';
 import { selectUnsavedObjects, hasUnsavedObjects } from './selectors';
 import { models$ } from '../d2-helpers';
+import {AppAction, StoreState} from "../types";
+import {MiddlewareAPI} from "redux";
+import {Collection} from "immutable";
 
-export const loadNextPage = (action$, store) => action$
+export const loadNextPage = (action$: ActionsObservable<AppAction>, store: MiddlewareAPI<StoreState>) => action$
     .ofType(TRANSLATION_FORM_LOAD_NEXT_PAGE)
     .mergeMap(() => {
         return Observable.fromPromise(store.getState().translationForm.pager.getNextPage())
@@ -16,7 +19,7 @@ export const loadNextPage = (action$, store) => action$
             .catch(error => Observable.of({ type: 'ERROR', payload: error }));
     });
 
-export const loadPreviousPage = (action$, store) => action$
+export const loadPreviousPage = (action$: ActionsObservable<AppAction>, store: MiddlewareAPI<StoreState>) => action$
     .ofType(TRANSLATION_FORM_LOAD_PREVIOUS_PAGE)
     .mergeMap(() => {
         return Observable.fromPromise(store.getState().translationForm.pager.getPreviousPage())
@@ -24,7 +27,7 @@ export const loadPreviousPage = (action$, store) => action$
             .catch(error => Observable.of({ type: 'ERROR', payload: error }));
     });
 
-export const loadObjectsToTranslate = (action$, store) => action$
+export const loadObjectsToTranslate = (action$: ActionsObservable<AppAction>, store: MiddlewareAPI<StoreState>) => action$
     .ofType(TRANSLATION_FORM_LOAD_OBJECTS)
     .mergeMap(() => {
         const state = store.getState();
@@ -39,22 +42,22 @@ export const loadObjectsToTranslate = (action$, store) => action$
             .catch(error => Observable.of({ type: 'ERROR', payload: error }));
     });
 
-const createSaveTranslationsActionObservable = (action$, store) => action$
+const createSaveTranslationsActionObservable = (action$: ActionsObservable<AppAction>, store: MiddlewareAPI<StoreState>) => action$
     .ofType(TRANSLATIONS_SAVE)
     .map(action => ({
         objectType: selectedObjectTypeSelector(store.getState()),
         objects: selectUnsavedObjects(store.getState()),
     }));
 
-export const noTranslationsToSave = (action$, store) => createSaveTranslationsActionObservable(action$, store)
+export const noTranslationsToSave = (action$: ActionsObservable<AppAction>, store: MiddlewareAPI<StoreState>) => createSaveTranslationsActionObservable(action$, store)
     .filter(() => !hasUnsavedObjects(store.getState()))
     .mapTo(setMessageForSnackBar('No translations to save'));
 
-export const saveTranslations = (action$, store) => createSaveTranslationsActionObservable(action$, store)
+export const saveTranslations = (action$: ActionsObservable<AppAction>, store: MiddlewareAPI<StoreState>) => createSaveTranslationsActionObservable(action$, store)
     .filter(() => hasUnsavedObjects(store.getState()))
     .map(({ objectType, objects }) => {
         return objects
-            .map(object => object.toJSON())
+            .map((object: Collection<string, any>) => object.toJS())
             .map(({id, translations}) => ([
                 id,
                 objectType,
@@ -82,12 +85,12 @@ export const saveTranslations = (action$, store) => createSaveTranslationsAction
         return Observable.of(saveTranslationsError(error));
     });
 
-export const saveTranslationsSuccessToMessage = (action$) => action$
+export const saveTranslationsSuccessToMessage = (action$: ActionsObservable<AppAction>) => action$
     .ofType(TRANSLATIONS_SAVE_SUCCESS)
     .mapTo(setMessageForSnackBar('Translations saved'));
 
-export const saveTranslationsErrorToMessage = (action$) => action$
+export const saveTranslationsErrorToMessage = (action$: ActionsObservable<AppAction>) => action$
     .ofType(TRANSLATIONS_SAVE_ERROR)
-    .map(({ message }) => setMessageForSnackBar(`Could not save translations (${message})`));
+    .map(({ payload }) => setMessageForSnackBar(`Could not save translations (${payload.message})`));
 
 export default combineEpics(loadObjectsToTranslate, saveTranslations, saveTranslationsSuccessToMessage, saveTranslationsErrorToMessage, noTranslationsToSave, loadNextPage, loadPreviousPage);
