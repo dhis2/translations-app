@@ -3,6 +3,9 @@
 var webpack = require('webpack');
 var path = require('path');
 var colors = require('colors');
+var BabiliPlugin = require("babili-webpack-plugin");
+var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const isDevBuild = process.argv[1].indexOf('webpack-dev-server') !== -1;
 const dhisConfigPath = process.env.DHIS2_HOME && `${process.env.DHIS2_HOME}/config`;
@@ -29,7 +32,7 @@ function log(req, res, opt) {
 
 const webpackConfig = {
     context: __dirname,
-    entry: './src/app.js',
+    entry: './src/main.tsx',
     devtool: 'source-map',
     output: {
         path: __dirname + '/build',
@@ -37,30 +40,27 @@ const webpackConfig = {
         publicPath: 'http://localhost:8081/',
     },
     module: {
-        loaders: [
-            {
-                test: /\.jsx?$/,
-                exclude: /node_modules/,
-                loader: 'babel-loader',
-                query: {
-                    presets: ['es2015', 'stage-0', 'react'],
-                },
-            },
-            {
-                test: /\.css$/,
-                loader: 'style-loader!css-loader',
-            },
+        rules: [
             {
                 test: /\.scss$/,
-                loader: 'style-loader!css-loader!sass-loader',
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader', 'sass-loader']
+                })
+            },
+            {
+                test: /\.tsx?$/,
+                exclude: /node_modules/,
+                use: 'awesome-typescript-loader',
             },
             {
                 test: /\.json$/,
-                loader: 'json-loader',
+                use: 'json-loader',
             },
         ],
     },
     resolve: {
+        extensions: ['.ts', '.tsx', '.js', '.jsx', '.scss', '.css'],
         alias: {
             react: path.resolve('./node_modules/react'),
             'material-ui': path.resolve('./node_modules/material-ui')
@@ -88,20 +88,19 @@ if (!isDevBuild) {
             'process.env.NODE_ENV': '"production"',
             DHIS_CONFIG: JSON.stringify({}),
         }),
-        new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.UglifyJsPlugin({
-            //     compress: {
-            //         warnings: false,
-            //     },
-            comments: false,
-            beautify: true,
+        new LodashModuleReplacementPlugin,
+        new BabiliPlugin({
+            // mangle: false,
+            evaluate: false,
         }),
+        new ExtractTextPlugin("styles.css"),
     ];
 } else {
     webpackConfig.plugins = [
         new webpack.DefinePlugin({
             DHIS_CONFIG: JSON.stringify(dhisConfig)
         }),
+        new ExtractTextPlugin("styles.css"),
     ];
 }
 
