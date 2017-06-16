@@ -1,0 +1,42 @@
+@import '../variables';
+
+.tool-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 16px 16px;
+  align-items: center;
+
+  @media (min-width: $handheld-cutoff-width) {
+    & {
+      flex-direction: row;
+    }
+  }
+}
+
+.tool-bar--select-field {
+  width: 100% !important;
+
+  @media (min-width: 650px) {
+    & {
+      width: inherit;
+      margin-right: 16px;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  & .tool-bar--select-field--item__selected {
+    color: white;
+  }
+}
+
+.tool-bar--item--button {
+  flex: 1 0 200px;
+
+  & > .tool-bar--item--button--raised-button {
+    width: 100%;
+  }
+}

@@ -29,7 +29,7 @@ function log(req, res, opt) {
 
 const webpackConfig = {
     context: __dirname,
-    entry: './src/app.jsx',
+    entry: './src/main.tsx',
     devtool: 'source-map',
     output: {
         path: __dirname + '/build',
@@ -38,6 +38,11 @@ const webpackConfig = {
     },
     module: {
         loaders: [
+            {
+                test: /\.tsx?$/,
+                exclude: /node_modules/,
+                loader: 'awesome-typescript-loader',
+            },
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
@@ -58,6 +63,7 @@ const webpackConfig = {
         ],
     },
     resolve: {
+        extensions: ['.ts', '.tsx', '.js', '.jsx', '.scss', '.css'],
         alias: {
             react: path.resolve('./node_modules/react'),
             'material-ui': path.resolve('./node_modules/material-ui')
