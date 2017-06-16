@@ -27,8 +27,7 @@ export const toolBarInit = (action$: ActionsObservable<ToolBarAction>) => action
     .map(initToolBar);
 
 function allFiltersSet(toolBarState: ToolBarState): boolean {
-    console.log(toolBarState);
-    return Boolean( toolBarState.selectedObjectType && toolBarState.selectedLocale);
+    return Boolean(toolBarState.selectedObjectType && toolBarState.selectedLocale);
 }
 
 export const afterInit = (action$: ActionsObservable<ToolBarAction>, store: MiddlewareAPI<StoreState>) => action$

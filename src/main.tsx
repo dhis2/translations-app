@@ -43,7 +43,7 @@ render(
  * Renders the application into the page.
  */
 function startApp(d2: D2) {
-    const i18n = createI18n(get<string>('currentUser.userSettings.uiLocale', d2) || 'nl');
+    const i18n = createI18n(get<string>('currentUser.userSettings.uiLocale', d2));
 
     render(
         <Provider store={store}>

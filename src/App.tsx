@@ -4,7 +4,7 @@ import { withContext } from 'recompose';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import HeaderBar from './HeaderBar/HeaderBar';
 import ToolBar from './ToolBar/ToolBar';
-import TranslationForm from './TranslationForm/Translations.jsx';
+import TranslationForm from './TranslationForm/Translations';
 import KeyboardShortCuts from './KeyboardShortCuts';
 import TranslationSnackBar from './SnackBar/TranslationSnackBar';
 import BottomBar from "./BottomBar/BottomBar";

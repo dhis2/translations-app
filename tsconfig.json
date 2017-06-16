@@ -9,7 +9,7 @@
       "es2016"
     ],
     "jsx": "react",
-    "target": "es5",
+    "target": "es2015",
     "module": "es2015",
     "moduleResolution": "node",
     "noImplicitAny": true,

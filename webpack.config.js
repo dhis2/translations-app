@@ -3,6 +3,7 @@
 var webpack = require('webpack');
 var path = require('path');
 var colors = require('colors');
+var BabiliPlugin = require("babili-webpack-plugin");
 
 const isDevBuild = process.argv[1].indexOf('webpack-dev-server') !== -1;
 const dhisConfigPath = process.env.DHIS2_HOME && `${process.env.DHIS2_HOME}/config`;
@@ -41,7 +42,7 @@ const webpackConfig = {
             {
                 test: /\.tsx?$/,
                 exclude: /node_modules/,
-                loader: 'babel-loader!awesome-typescript-loader',
+                loader: 'awesome-typescript-loader',
             },
             {
                 test: /\.jsx?$/,
@@ -91,13 +92,7 @@ if (!isDevBuild) {
             'process.env.NODE_ENV': '"production"',
             DHIS_CONFIG: JSON.stringify({}),
         }),
-        new webpack.optimize.UglifyJsPlugin({
-            //     compress: {
-            //         warnings: false,
-            //     },
-            comments: false,
-            beautify: true,
-        }),
+        new BabiliPlugin({})
     ];
 } else {
     webpackConfig.plugins = [
