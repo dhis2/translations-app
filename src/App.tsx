@@ -16,6 +16,7 @@ injectTapEventPlugin();
 function App() {
     return (
         <div id="app-wrapper" className="app-wrapper">
+            <HeaderBar/>
             <ToolBar />
             <TranslationForm />
             <BottomBar />
