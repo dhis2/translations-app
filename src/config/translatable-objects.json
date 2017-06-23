@@ -36,6 +36,7 @@
     "programIndicator",
     "programIndicatorGroup",
     "programRule",
+    "programRuleAction",
     "programStage",
     "programStageSection",
     "programTrackedEntityAttributeGroup",
