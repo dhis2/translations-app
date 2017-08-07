@@ -1,54 +1,59 @@
-const dhisDevConfig = DHIS_CONFIG; // eslint-disable-line
-
 import React from 'react';
 import { render } from 'react-dom';
-import { init, config, getManifest, getUserSettings, D2Library } from 'd2/lib/d2';
+import { Provider } from 'react-redux';
+import { init, config, getManifest } from 'd2/lib/d2';
 import log from 'loglevel';
-import LoadingMask from 'd2-ui/lib/loading-mask/LoadingMask.component';
 import 'react-tap-event-plugin';
-import App from './app/App';
-import './app/app.scss';
-import d2 from 'd2/lib/d2';
-import dhis2 from 'd2-ui/lib/header-bar/dhis2';
-import AppTheme from './colortheme';
+import App from './App';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import store from './store';
+import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import { get } from 'lodash/fp';
+import { I18nextProvider } from 'react-i18next';
+import { createI18n } from './i18n';
+import Process = NodeJS.Process;
+
+const LoadingMask: any = require('d2-ui/lib/loading-mask/LoadingMask.component').default;
+
+declare const document: Document;
+declare const process: Process;
+declare const DHIS_CONFIG: any;
+
+const dhisDevConfig = DHIS_CONFIG; // eslint-disable-line
 
 if (process.env.NODE_ENV !== 'production') {
-    log.setLevel(log.levels.DEBUG);
+    log.setLevel(LogLevel.DEBUG);
 } else {
-    log.setLevel(log.levels.INFO);
+    log.setLevel(LogLevel.INFO);
 }
 
 // Render the a LoadingMask to show the user the app is in loading
 // The consecutive render after we did our setup will replace this loading mask
 // with the rendered version of the application.
 render(
-    <MuiThemeProvider muiTheme={AppTheme}>
+    <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
         <LoadingMask />
-    </MuiThemeProvider>
-, document.getElementById('app'));
-
-function configI18n(userSettings) {
-    const uiLocale = userSettings.keyUiLocale;
-    if (uiLocale && uiLocale !== 'en') {
-        // Add the language sources for the preferred locale
-        config.i18n.sources.add(`./i18n/i18n_module_${uiLocale}.properties`);
-    }
-    // Add english as locale for all cases (either as primary or fallback)
-    config.i18n.sources.add('./i18n/i18n_module_en.properties');
-}
+    </MuiThemeProvider>,
+    document.getElementById('app')
+);
 
 /**
  * Renders the application into the page.
- *
- * @param d2 Instance of the d2 library that is returned by the `init` function.
  */
-function startApp(d2) {
+function startApp(d2: D2) {
+    const i18n = createI18n(get<string>('currentUser.userSettings.uiLocale', d2));
+
     render(
-        <MuiThemeProvider muiTheme={AppTheme}>
-            <App d2={d2} />
-        </MuiThemeProvider>,
-        document.querySelector('#app'));
+        <Provider store={store}>
+            <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
+                <I18nextProvider i18n={i18n}>
+                    <App d2={d2} />
+                </I18nextProvider>
+            </MuiThemeProvider>
+        </Provider>,
+        document.querySelector('#app')
+    );
 }
 
 
@@ -64,8 +69,6 @@ getManifest('./manifest.webapp')
         log.info(`Loading: ${manifest.name} v${manifest.version}`);
         log.info(`Built ${manifest.manifest_generated_at}`);
     })
-    .then(getUserSettings)
-    .then(configI18n)
     .then(init)
     .then(startApp)
     .catch(log.error.bind(log));

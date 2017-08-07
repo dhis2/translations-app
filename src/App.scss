@@ -1,0 +1,17 @@
+@import './variables';
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: $primary-color;
+}
+
+body {
+  margin: 0;
+}
+
+.app-wrapper {
+  margin-top: 4rem;
+}
