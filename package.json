@@ -38,9 +38,9 @@
     "babel-preset-stage-0": "^6.5.0",
     "chai": "^3.5.0",
     "css-loader": "^0.23.1",
-    "d2": "26.0",
+    "d2": "~26.0.0",
     "d2-manifest": "^1.0.0",
-    "d2-ui": "latest",
+    "d2-ui": "~26.0.0",
     "d2-utilizr": "^0.2.9",
     "enzyme": "^2.1.0",
     "eslint": "^2.4.0",
@@ -62,8 +62,8 @@
     "sinon": "^1.17.3",
     "sinon-chai": "^2.8.0",
     "style-loader": "^0.13.0",
-    "webpack": "beta",
-    "webpack-dev-server": "beta"
+    "webpack": "~3.5.5",
+    "webpack-dev-server": "~2.7.1"
   },
   "pre-commit": [
     "test",
