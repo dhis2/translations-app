@@ -104,7 +104,7 @@ export default React.createClass({
         page = 1;
       }
 
-      d2.models[objectName].list({  
+      d2.models[objectName].list({
         fields: ['id', 'displayName'].concat(d2.models[objectName].getTranslatableProperties()).join(','),
         page: page,
         pageSize: 5,
@@ -159,13 +159,12 @@ export default React.createClass({
         return;
       }
 
-      this.setState({translations:{}});
+      let tr = {};
+      this.setState({translations:tr});
 
       //loop over all the objects and find translations for them
       for (let obj of this.state.objects){
         let route = this.state.currentObject+'/'+obj.id+'/translations';
-
-        let tr = this.state.translations;
 
         api.get(route,{})
           .then(promise=>{
@@ -179,18 +178,18 @@ export default React.createClass({
                         tr[obj.id]={name:'',shortName:'',description:'',formName:''};
                       }
                       tr[obj.id][prop]=trans.value;
-                      this.setState({translations:tr});
                     }
                   }
                   somethingToShow= true;
                 }
               }
+
               if (somethingToShow === true){
                 this.setState({translations:tr});
               }
             }
         })
-        .then(x => {
+        .then(() => {
           this.setState({processing_translations:false});
         });
       }
@@ -214,18 +213,11 @@ export default React.createClass({
       api.get(route)
         .then(promise => {
           //keep the other locale translations around
-          if (promise.hasOwnProperty('translations')){
-            if (promise.length>0){
-              //translations exist, make sure to check for this locale and overwrite
-              for (let existing of promise){
-                let trans = {};
-                if (existing.locale===this.state.lang_dest){ //same locale so see if something changed
-                  //skip
-                }
-                else{  //different locale so keep it around
-                  trans = existing;
-                }
-                translations.push(trans);
+          if (promise.hasOwnProperty('translations') && promise.translations.length>0){
+            //translations exist, make sure to check for this locale and overwrite
+            for (let existing of promise.translations){
+              if (existing.locale!==this.state.lang_dest){
+                translations.push(existing);
               }
             }
           }
@@ -236,7 +228,6 @@ export default React.createClass({
               //refresh (we should just update the single record instead of doing a full refresh...)
               this.getTranslations(this.state.lang_dest);
             });
-
       });
     },
 
