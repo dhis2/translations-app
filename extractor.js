@@ -4,7 +4,7 @@ const { readFileSync, writeFileSync } = require('fs');
 const { i18nextToPot } = require('i18next-conv');
 
 const argv = require('minimist')(process.argv.slice(2));
-const filename = argv['o'] || 'translation-app.pot';
+const filename = argv['o'] || 'en.pot';
 
 // i18next-scanner options
 const options = {
