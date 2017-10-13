@@ -1,9 +1,10 @@
+#. extracted from i18n_module_en.properties
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-13T08:46:08.254Z\n"
-"PO-Revision-Date: 2017-10-13 09:02+0000\n"
+"POT-Creation-Date: 2016-12-01 02:56-0400\n"
+"PO-Revision-Date: 2017-10-13 11:00+0000\n"
 "Last-Translator: Jason Pickering <jason.p.pickering@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -12,7 +13,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.8\n"
-"X-POOTLE-MTIME: 1507885344.000000\n"
+"X-POOTLE-MTIME: 1507892452.000000\n"
 
 msgid "Could not locate that type of Object"
 msgstr "Kunde inte hitta den typ av objekt"
@@ -27,7 +28,7 @@ msgid "Target Locale"
 msgstr "Mål lokal"
 
 msgid "Filter By"
-msgstr "Filtrera med"
+msgstr "Filter efter"
 
 msgid "All"
 msgstr "Alla"
@@ -54,26 +55,25 @@ msgid "Final page"
 msgstr "Sista sidan"
 
 msgid "Short name"
-msgstr ""
+msgstr "Kort namm"
 
 msgid "Description"
-msgstr ""
+msgstr "Beskrivning"
 
 msgid "Form name"
 msgstr "Formulär namn"
 
 msgid "Name"
-msgstr ""
+msgstr "Namn"
 
-#, fuzzy
 msgid "Save"
-msgstr "Sparade"
+msgstr "Spara"
 
 msgid "No records available to translate."
 msgstr "Inga objekt finns att översätta."
 
-msgid "Translations App"
-msgstr "Översättnings App"
+#~ msgid "Translations App"
+#~ msgstr "Översättnings App"
 
 #~ msgid "Help"
 #~ msgstr "Hjälp"
