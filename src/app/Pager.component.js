@@ -5,6 +5,8 @@ import FontIcon from 'material-ui/FontIcon';
 
 import AppTheme from '../colortheme';
 
+import i18next from 'i18next';
+
 const Pager = React.createClass({
     propTypes: {
         pager: React.PropTypes.object.isRequired,
@@ -38,12 +40,12 @@ const Pager = React.createClass({
 
       return (
         <div style={{ paddingTop: '.75rem'}}>
-          <IconButton tooltip={d2.i18n.getTranslation('first_page')} tooltipPosition="top-left"
+          <IconButton tooltip={i18next.t('First page')} tooltipPosition="top-left"
               disabled={this.props.page<=1}
               onClick={this.firstPage}>
             <FontIcon className="material-icons">fast_rewind</FontIcon>
           </IconButton>
-          <IconButton tooltip={d2.i18n.getTranslation('previous_page')} tooltipPosition="top-left"
+          <IconButton tooltip={i18next.t('Previous page')} tooltipPosition="top-left"
               disabled={this.props.page<=1}
               onClick={this.previousPage}>
             <FontIcon className="material-icons">navigate_before</FontIcon>
@@ -51,12 +53,12 @@ const Pager = React.createClass({
           &nbsp;
           {this.props.pager.page} / {this.props.pager.pageCount}
            &nbsp;
-          <IconButton tooltip={d2.i18n.getTranslation('next_page')} tooltipPosition="top-right"
+          <IconButton tooltip={i18next.t('Next page')} tooltipPosition="top-right"
               disabled={this.props.page == this.props.pager.pageCount}
               onClick={this.nextPage}>
             <FontIcon className="material-icons">navigate_next</FontIcon>
           </IconButton>
-          <IconButton tooltip={d2.i18n.getTranslation('final_page')} tooltipPosition="top-right"
+          <IconButton tooltip={i18next.t('Final page')} tooltipPosition="top-right"
               disabled={this.props.page == this.props.pager.pageCount}
               onClick={this.lastPage}>
             <FontIcon className="material-icons">fast_forward</FontIcon>

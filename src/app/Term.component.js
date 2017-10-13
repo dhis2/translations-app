@@ -11,6 +11,8 @@ import AppTheme from '../colortheme';
 
 import translatableObjects from '../config/translatable-objects';
 
+import i18next from 'i18next';
+
 export default React.createClass({
     propTypes: {
         source: React.PropTypes.object.isRequired,
@@ -75,7 +77,7 @@ export default React.createClass({
     },
 
     renderShortName(o,key,trans,action){
-      
+
       const d2 = this.context.d2;
 
       const hasKey = [
@@ -100,7 +102,7 @@ export default React.createClass({
         return (
           <TextField fullWidth style={{fontSize:"90%",height:'65px'}}
             value={trans}
-            floatingLabelText={d2.i18n.getTranslation('short_name') + ':' + key }
+            floatingLabelText={i18next.t('Short name') + ':' + key }
             onChange={action}
               />
         );
@@ -125,7 +127,7 @@ export default React.createClass({
         return (
           <TextField fullWidth style={{fontSize:"90%",height:'65px'}}
             value={val}
-            floatingLabelText= {d2.i18n.getTranslation('description') + ':' + key }
+            floatingLabelText= {i18next.t('Description') + ':' + key }
             onChange={action}
             multiLine={true}
             rows={2}
@@ -137,7 +139,7 @@ export default React.createClass({
     },
 
     renderFormName(o,key,val,action){
-      
+
       const d2 = this.context.d2;
 
       const hasKey = [
@@ -147,7 +149,7 @@ export default React.createClass({
         return (
           <TextField fullWidth style={{fontSize:"90%",height:'65px'}}
             value={val}
-            floatingLabelText={ d2.i18n.getTranslation('form_name') + ':' + key}
+            floatingLabelText={ i18next.t('Form name') + ':' + key}
             onChange={action}
               />
         );
@@ -168,7 +170,7 @@ export default React.createClass({
     render() {
 
       const d2 = this.context.d2;
-      
+
       let d = this.props.source;
 
       return (
@@ -176,14 +178,14 @@ export default React.createClass({
           <h3 style={{marginBottom:'0'}}>{d.name}</h3>
           <TextField fullWidth style={{fontSize:"90%",height:'65px'}}
             value={this.state.name}
-            floatingLabelText={d2.i18n.getTranslation('name') + ':'+ d.name}
+            floatingLabelText={i18next.t('Name') + ':'+ d.name}
             onChange={this.handleName}
               />
             {this.renderShortName(this.props.type,d.shortName,this.state.shortName,this.handleShortName)}
             {this.renderDescription(this.props.type,d.description,this.state.description,this.handleDescription)}
             {this.renderFormName(this.props.type,d.formName,this.state.formName,this.handleFormName)}
           <RaisedButton
-            label= { d2.i18n.getTranslation('save') }
+            label= { i18next.t('Save') }
             secondary={true}
             onClick={this.save} />
         </div>

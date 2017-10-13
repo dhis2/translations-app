@@ -15,6 +15,8 @@ import Pager from './Pager.component';
 import actions from '../actions';
 import translatableObjects from '../config/translatable-objects';
 
+import i18next from 'i18next';
+
 const defaultTranslationObject = 'organisationUnits';
 
 const availableProperties = {name:'NAME',shortName:'SHORT_NAME',description:'DESCRIPTION',formName:'FORM_NAME'};
@@ -95,7 +97,7 @@ export default React.createClass({
       );
 
       if (typeof d2.models[objectName] === 'undefined'){
-        actions.showSnackbarMessage(d2.i18n.getTranslation('error_could_not_find_object'));
+        actions.showSnackbarMessage(i18next.t('Could not locate that type of Object'));
         console.warn("No such dhis2 model");
         return;
       }
@@ -155,16 +157,17 @@ export default React.createClass({
       }
 
       if (this.state.currentObject===''){
-        actions.showSnackbarMessage(d2.i18n.getTranslation('select_object_type'));
+        actions.showSnackbarMessage(i18next.t('Select an Object Type'));
         return;
       }
 
-      let tr = {};
-      this.setState({translations:tr});
+      this.setState({translations:{}});
 
       //loop over all the objects and find translations for them
       for (let obj of this.state.objects){
         let route = this.state.currentObject+'/'+obj.id+'/translations';
+
+        let tr = this.state.translations;
 
         api.get(route,{})
           .then(promise=>{
@@ -178,18 +181,18 @@ export default React.createClass({
                         tr[obj.id]={name:'',shortName:'',description:'',formName:''};
                       }
                       tr[obj.id][prop]=trans.value;
+                      this.setState({translations:tr});
                     }
                   }
                   somethingToShow= true;
                 }
               }
-
               if (somethingToShow === true){
                 this.setState({translations:tr});
               }
             }
         })
-        .then(() => {
+        .then(x => {
           this.setState({processing_translations:false});
         });
       }
@@ -213,21 +216,29 @@ export default React.createClass({
       api.get(route)
         .then(promise => {
           //keep the other locale translations around
-          if (promise.hasOwnProperty('translations') && promise.translations.length>0){
-            //translations exist, make sure to check for this locale and overwrite
-            for (let existing of promise.translations){
-              if (existing.locale!==this.state.lang_dest){
-                translations.push(existing);
+          if (promise.hasOwnProperty('translations')){
+            if (promise.length>0){
+              //translations exist, make sure to check for this locale and overwrite
+              for (let existing of promise){
+                let trans = {};
+                if (existing.locale===this.state.lang_dest){ //same locale so see if something changed
+                  //skip
+                }
+                else{  //different locale so keep it around
+                  trans = existing;
+                }
+                translations.push(trans);
               }
             }
           }
           //add in our new ones for this locale
           api.update(route,{translations:translations})
             .then(saving=>{
-              actions.showSnackbarMessage(d2.i18n.getTranslation('saved'));
+              actions.showSnackbarMessage(i18next.t('Saved'));
               //refresh (we should just update the single record instead of doing a full refresh...)
               this.getTranslations(this.state.lang_dest);
             });
+
       });
     },
 
@@ -243,7 +254,7 @@ export default React.createClass({
             <div className="wrapper">
               <Toolbar noGutter={false}  style={{height:'70px', }}>
                 <ToolbarGroup firstChild={true}>
-                  <SelectField value={this.state.lang_dest} onChange={this.handleDestChange} floatingLabelText={d2.i18n.getTranslation('target_locale')} style={{ marginRight: '1rem', marginLeft: '1rem' }}>
+                  <SelectField value={this.state.lang_dest} onChange={this.handleDestChange} floatingLabelText={i18next.t('Target Locale')} style={{ marginRight: '1rem', marginLeft: '1rem' }}>
                     {locales}
                   </SelectField>
                 </ToolbarGroup>
@@ -251,10 +262,10 @@ export default React.createClass({
                   <ObjectMenu items={this.state.menu} active={this.state.currentObject} action={this.getObjects} />
                 </ToolbarGroup>
                 <ToolbarGroup>
-                  <SelectField value={this.state.lang_filter} onChange={this.handleFilterChange} floatingLabelText={d2.i18n.getTranslation('filter_by')} style={{width:'200px', marginLeft: '1rem'}}>
-                    <MenuItem value={'all'} primaryText={d2.i18n.getTranslation('filter_by_all')} />
-                    <MenuItem value={'existing'} primaryText={d2.i18n.getTranslation('filter_by_translated')} />
-                    <MenuItem value={'missing'} primaryText={d2.i18n.getTranslation('filter_by_untranslated')} />
+                  <SelectField value={this.state.lang_filter} onChange={this.handleFilterChange} floatingLabelText={i18next.t('Filter By')} style={{width:'200px', marginLeft: '1rem'}}>
+                    <MenuItem value={'all'} primaryText={i18next.t('All')} />
+                    <MenuItem value={'existing'} primaryText={i18next.t('Translated')} />
+                    <MenuItem value={'missing'} primaryText={i18next.t('Untranslated')} />
                   </SelectField>
                 </ToolbarGroup>
                 <ToolbarGroup>
