@@ -2,12 +2,14 @@ const Parser = require('i18next-scanner').Parser;
 const recursive = require("recursive-readdir");
 const { readFileSync, writeFileSync } = require('fs');
 const { i18nextToPot } = require('i18next-conv');
-const lngs = ['en'];
+
+const argv = require('minimist')(process.argv.slice(2));
+const filename = argv['o'] || 'translation-app.pot';
 
 // i18next-scanner options
 const options = {
   keySeparator: '|',
-  lngs: lngs
+  lngs: ['en']
 };
 
 let content = '';
@@ -31,9 +33,8 @@ recursive("src", function (err, files) {
       parser.parseFuncFromString(content);
     }
   }
+
   const translations = parser.get();
-  for (let lng of lngs) {
-    const currentTranslationsInJsonString = JSON.stringify(translations[lng].translation);
-    i18nextToPot(lng, currentTranslationsInJsonString).then(save('i18n/' + lng + '.pot'));
-  }
+  i18nextToPot('en', JSON.stringify(translations['en'].translation)).then(save('i18n/' + filename));
+
 });
