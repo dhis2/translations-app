@@ -3,55 +3,55 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-10-13T08:46:08.254Z\n"
-"PO-Revision-Date: 2017-10-13 09:02+0000\n"
-"Last-Translator: Jason Pickering <jason.p.pickering@gmail.com>\n"
+"PO-Revision-Date: 2017-01-12 19:46+0000\n"
+"Last-Translator: Joaquin Urbano Serra <kimbalear@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: sv\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.8\n"
-"X-POOTLE-MTIME: 1507885344.000000\n"
+"X-POOTLE-MTIME: 1484250381.000000\n"
 
 msgid "Could not locate that type of Object"
-msgstr "Kunde inte hitta den typ av objekt"
+msgstr ""
 
 msgid "Select an Object Type"
-msgstr "Välj en objekttyp"
+msgstr ""
 
 msgid "Saved"
-msgstr "Sparat"
+msgstr ""
 
 msgid "Target Locale"
-msgstr "Mål lokal"
+msgstr "Localización seleccionada"
 
 msgid "Filter By"
-msgstr "Filtrera med"
+msgstr "Filtrar por"
 
 msgid "All"
-msgstr "Alla"
+msgstr "Todo"
 
 msgid "Translated"
-msgstr "Översatt"
+msgstr "Traducido"
 
 msgid "Untranslated"
-msgstr "Oöversatta"
+msgstr "Sin traducir"
 
 msgid "Object"
-msgstr "Objekt"
+msgstr ""
 
 msgid "First page"
-msgstr "Första sidan"
+msgstr ""
 
 msgid "Previous page"
-msgstr "Föregående sida"
+msgstr ""
 
 msgid "Next page"
-msgstr "Nästa sida"
+msgstr ""
 
 msgid "Final page"
-msgstr "Sista sidan"
+msgstr ""
 
 msgid "Short name"
 msgstr ""
@@ -60,26 +60,13 @@ msgid "Description"
 msgstr ""
 
 msgid "Form name"
-msgstr "Formulär namn"
+msgstr ""
 
 msgid "Name"
 msgstr ""
 
-#, fuzzy
 msgid "Save"
-msgstr "Sparade"
+msgstr ""
 
 msgid "No records available to translate."
-msgstr "Inga objekt finns att översätta."
-
-msgid "Translations App"
-msgstr "Översättnings App"
-
-#~ msgid "Help"
-#~ msgstr "Hjälp"
-
-#~ msgid "Select a locale"
-#~ msgstr "Välj ett lokal"
-
-#~ msgid "Translations"
-#~ msgstr "Översättningar"
+msgstr ""

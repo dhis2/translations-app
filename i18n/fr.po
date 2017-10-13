@@ -1,0 +1,87 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-10-13T08:46:08.254Z\n"
+"PO-Revision-Date: 2017-03-01 15:45+0000\n"
+"Last-Translator: bpiot <bram.piot@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Pootle 2.8\n"
+"X-POOTLE-MTIME: 1488383115.000000\n"
+
+msgid "Could not locate that type of Object"
+msgstr "Type d'objet non trouvé"
+
+msgid "Select an Object Type"
+msgstr "Sélectionnez un type d'objet"
+
+msgid "Saved"
+msgstr "Enregistré"
+
+msgid "Target Locale"
+msgstr "Locale cible"
+
+msgid "Filter By"
+msgstr "Filtrer par"
+
+msgid "All"
+msgstr "Tous"
+
+msgid "Translated"
+msgstr "Traduit"
+
+msgid "Untranslated"
+msgstr "Non traduit"
+
+msgid "Object"
+msgstr "Objet"
+
+msgid "First page"
+msgstr "Première page"
+
+msgid "Previous page"
+msgstr "Page précédente"
+
+msgid "Next page"
+msgstr "Page suivante"
+
+msgid "Final page"
+msgstr "Dernière page"
+
+msgid "Short name"
+msgstr "Nom court"
+
+msgid "Description"
+msgstr "Description"
+
+msgid "Form name"
+msgstr "Nom dans formulaire"
+
+msgid "Name"
+msgstr "Nom"
+
+msgid "Save"
+msgstr "Enregistrer"
+
+msgid "No records available to translate."
+msgstr "Pas de données disponibles à traduire."
+
+#~ msgid "Translations App"
+#~ msgstr "Module Traductions"
+
+#~ msgid "Help"
+#~ msgstr "Aide"
+
+#~ msgid "Select a locale"
+#~ msgstr "Sélectionner une langue"
+
+#~ msgid "Translation and Internationalization"
+#~ msgstr "Traduction et internationalisation"
+
+#~ msgid "Translations"
+#~ msgstr "Traductions"
