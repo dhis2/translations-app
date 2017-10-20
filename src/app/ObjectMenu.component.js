@@ -3,6 +3,8 @@ import React, { PropTypes } from 'react';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
+import i18next from 'i18next';
+
 function getStyle(active, item) {
     if (active === item) {
         return { color:"blue", background:'#ddd'};
@@ -25,11 +27,11 @@ export default function ObjectMenu({ items, action, active }, { d2 }) {
       ));
 
     return (
-        <SelectField 
+        <SelectField
             value={active}
             onChange={(event, index, value) => action(value)}
-            floatingLabelText={d2.i18n.getTranslation('object')}
-            hintText={d2.i18n.getTranslation('select_object_type')}
+            floatingLabelText={i18next.t('Object')}
+            hintText={i18next.t('Select an Object Type')}
         >
             {menuItems}
         </SelectField>

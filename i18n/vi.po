@@ -1,0 +1,78 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-10-13T08:46:08.254Z\n"
+"PO-Revision-Date: 2017-03-14 05:18+0000\n"
+"Last-Translator: Thuy N <thuy.hispvietnam@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.8\n"
+"X-POOTLE-MTIME: 1489468712.000000\n"
+
+msgid "Could not locate that type of Object"
+msgstr "Không thể xác định loại Đối tượng"
+
+msgid "Select an Object Type"
+msgstr "Chọn đối tượng"
+
+msgid "Saved"
+msgstr "Đã lưu"
+
+msgid "Target Locale"
+msgstr "Ngôn ngữ chính"
+
+msgid "Filter By"
+msgstr "Lọc Bởi"
+
+msgid "All"
+msgstr "Tất cả"
+
+msgid "Translated"
+msgstr "Đã dịch"
+
+msgid "Untranslated"
+msgstr "Chưa dịch"
+
+msgid "Object"
+msgstr "Đối tượng"
+
+msgid "First page"
+msgstr "Trang đầu"
+
+msgid "Previous page"
+msgstr "Trang trước"
+
+msgid "Next page"
+msgstr "Trang tiếp theo"
+
+msgid "Final page"
+msgstr "Trang cuối"
+
+msgid "Short name"
+msgstr "Tên ngắn"
+
+msgid "Description"
+msgstr "Mô tả"
+
+msgid "Form name"
+msgstr "Tên biểu mẫu"
+
+msgid "Name"
+msgstr "Tên"
+
+msgid "Save"
+msgstr "Lưu"
+
+msgid "No records available to translate."
+msgstr "Không có bản ghi để dịch"
+
+#~ msgid "Translations App"
+#~ msgstr "Ứng dụng dịch"
+
+#~ msgid "Select a locale"
+#~ msgstr "Chọn ngôn ngữ"

@@ -7,6 +7,8 @@ import TextField from 'material-ui/TextField';
 import AppTheme from '../colortheme';
 import Term from './Term.component';
 
+import i18next from 'i18next';
+
 export default React.createClass({
     propTypes: {
         d2: PropTypes.object,
@@ -152,7 +154,7 @@ export default React.createClass({
       //skip empty menu objects
       if (objs.length===0){
         return (<Paper zDepth={1} style={{padding:".5em"}}>
-            {d2.i18n.getTranslation('no_results')}</Paper>);
+            {i18next.t('No records available to translate.')}</Paper>);
       }
 
       let words = this.props.objects.map(function(d,i){

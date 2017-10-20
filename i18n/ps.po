@@ -1,0 +1,81 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-10-13T08:46:08.254Z\n"
+"PO-Revision-Date: 2017-07-20 18:03+0000\n"
+"Last-Translator: gulwali <gulwalikhan@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: ps\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.8\n"
+"X-POOTLE-MTIME: 1500573819.000000\n"
+
+msgid "Could not locate that type of Object"
+msgstr "دا ډول شی نشي ځای پر ځای کېدای"
+
+msgid "Select an Object Type"
+msgstr "د یوه شي یا مفعول نمونه غوره کړئ"
+
+msgid "Saved"
+msgstr "ثبت شوي دي"
+
+msgid "Target Locale"
+msgstr "ټاکلی ځای"
+
+msgid "Filter By"
+msgstr "لخوا چاڼ یا فیلټر شوي"
+
+msgid "All"
+msgstr "ټول"
+
+msgid "Translated"
+msgstr "ژباړل شوي دي"
+
+msgid "Untranslated"
+msgstr "نه دي ژباړل شوي"
+
+msgid "Object"
+msgstr "مفعول یا شی"
+
+msgid "First page"
+msgstr "لومړۍ پاڼه"
+
+msgid "Previous page"
+msgstr "مخکینۍ پاڼه"
+
+msgid "Next page"
+msgstr "راتلونکې پاڼه"
+
+msgid "Final page"
+msgstr "وروستۍ پاڼه"
+
+msgid "Short name"
+msgstr "لنډ نوم"
+
+msgid "Description"
+msgstr "تشریح"
+
+msgid "Form name"
+msgstr "د فورمې نوم"
+
+msgid "Name"
+msgstr "نوم"
+
+msgid "Save"
+msgstr "ساتل یا ثبتول"
+
+msgid "No records available to translate."
+msgstr "د ژباړې لپاره هېڅ ډول ریکارډ شتون نه لري"
+
+#~ msgid "Translations App"
+#~ msgstr "د ژباړې پروګرامونه"
+
+#~ msgid "Help"
+#~ msgstr "مرسته"
+
+#~ msgid "Select a locale"
+#~ msgstr "یو ځای غوره کړئ"

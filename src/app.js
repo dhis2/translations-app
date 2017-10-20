@@ -16,6 +16,10 @@ import dhis2 from 'd2-ui/lib/header-bar/dhis2';
 import AppTheme from './colortheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
+import i18next from 'i18next';
+import XHR from 'i18next-xhr-backend';
+import LngDetector from 'i18next-browser-languagedetector';
+
 /*
 if (process.env.NODE_ENV !== 'production') {
     jQuery.ajaxSetup({ // eslint-disable-line no-undef
@@ -36,13 +40,16 @@ render(
 , document.getElementById('app'));
 
 function configI18n(userSettings) {
-    const uiLocale = userSettings.keyUiLocale;
-    if (uiLocale && uiLocale !== 'en') {
-        // Add the language sources for the preferred locale
-        config.i18n.sources.add(`./i18n/i18n_module_${uiLocale}.properties`);
-    }
-    // Add english as locale for all cases (either as primary or fallback)
-    config.i18n.sources.add('./i18n/i18n_module_en.properties');
+    i18next
+      .use(LngDetector)
+      .use(XHR)
+      .init({
+        fallbackLng: 'en',
+        keySeparator: '|',
+        backend: {
+          loadPath: '/i18n/{{lng}}.json'
+        }
+    });
 }
 
 /**

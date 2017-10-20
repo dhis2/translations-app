@@ -15,7 +15,8 @@
     "prestart": "d2-manifest package.json manifest.webapp",
     "manifest": "d2-manifest package.json build/manifest.webapp",
     "start": "webpack-dev-server",
-    "dist": "npm run build && npm run postbuild && cd build && zip -r translations-app.zip * && cd .."
+    "dist": "npm run build && npm run postbuild && cd build && zip -r translations-app.zip * && cd ..",
+    "extractor": "node extractor.js"
   },
   "keywords": [
     "DHIS2",
@@ -25,6 +26,9 @@
   "author": "Gregory Wilson <gwilson@baosystems.com>",
   "license": "BSD-3-Clause",
   "dependencies": {
+    "i18next": "^10.0.1",
+    "i18next-browser-languagedetector": "^2.0.0",
+    "i18next-xhr-backend": "^1.4.3",
     "jquery": "^2.2.3",
     "rx": "^4.1.0"
   },
@@ -47,17 +51,21 @@
     "eslint-config-dhis2": "^2.0.2",
     "eslint-plugin-react": "^4.1.0",
     "http-proxy": "git+https://github.com/nicolayr/node-http-proxy.git",
+    "i18next-conv": "^4.1.0",
+    "i18next-scanner": "^2.0.0",
     "isparta": "^4.0.0",
     "jsdom": "^9.0.0",
     "json-loader": "^0.5.4",
     "loglevel": "^1.4.0",
     "material-ui": "0.15",
+    "minimist": "^1.2.0",
     "mocha": "^2.4.5",
     "node-sass": "^3.4.2",
-    "react": "latest",
+    "react": "^15.4.0-0",
     "react-addons-test-utils": "^0.14.7",
-    "react-dom": "latest",
+    "react-dom": "^15.4.0-0",
     "react-tap-event-plugin": "2",
+    "recursive-readdir": "^2.2.1",
     "sass-loader": "^3.2.0",
     "sinon": "^1.17.3",
     "sinon-chai": "^2.8.0",
