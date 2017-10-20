@@ -42,7 +42,8 @@ function configI18n(userSettings) {
     i18next
       .use(XHR)
       .init({
-        fallbackLng: 'en',
+        returnEmptyString: false,
+        fallbackLng: false,
         keySeparator: '|',
         backend: {
           loadPath: '/i18n/{{lng}}.json'
