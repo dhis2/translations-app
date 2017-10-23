@@ -16,7 +16,7 @@
     "manifest": "d2-manifest package.json build/manifest.webapp",
     "start": "webpack-dev-server",
     "dist": "npm run build && npm run postbuild && cd build && zip -r translations-app.zip * && cd ..",
-    "extractor": "node extractor.js -o translations-app.pot"
+    "extractor": "node extractor.js"
   },
   "keywords": [
     "DHIS2",
