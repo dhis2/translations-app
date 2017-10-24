@@ -44,7 +44,8 @@ function configI18n(userSettings) {
       .use(LngDetector)
       .use(XHR)
       .init({
-        fallbackLng: 'en',
+        returnEmptyString: false,
+        fallbackLng: false,
         keySeparator: '|',
         backend: {
           loadPath: '/i18n/{{lng}}.json'
