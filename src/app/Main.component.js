@@ -63,7 +63,7 @@ export default React.createClass({
         const d2 = this.context.d2;
         const api = d2.Api.getApi();
 
-        api.get('locales/ui',{
+        api.get('locales/db',{
           paging:false
         }).then(promise=>{
           if (typeof promise === 'object'){
