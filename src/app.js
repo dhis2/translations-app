@@ -18,7 +18,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import i18next from 'i18next';
 import XHR from 'i18next-xhr-backend';
-import LngDetector from 'i18next-browser-languagedetector';
 
 /*
 if (process.env.NODE_ENV !== 'production') {
@@ -41,7 +40,6 @@ render(
 
 function configI18n(userSettings) {
     i18next
-      .use(LngDetector)
       .use(XHR)
       .init({
         returnEmptyString: false,
@@ -50,6 +48,11 @@ function configI18n(userSettings) {
         backend: {
           loadPath: '/i18n/{{lng}}.json'
         }
+    }, function(err, t) {
+      const uiLocale = userSettings.keyUiLocale;
+      if (uiLocale && uiLocale !== 'en') {
+        i18next.changeLanguage(uiLocale);
+      }      
     });
 }
 
