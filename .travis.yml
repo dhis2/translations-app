@@ -5,19 +5,7 @@ cache:
   yarn: true
   directories:
   - node_modules
-before_install:
-- git config --global user.email "travis@travis-ci.org"
-- git config --global user.name "Travis CI"
-- git config --global push.default simple
-- git remote set-url origin https://${GH_TOKEN}@github.com/dhis2/translations-app.git
-- EXTRACTOR_OUTPUT="translations-app.pot"
 script:
-# Refresh translation file
-- npm run extractor --  -o ${EXTRACTOR_OUTPUT}
-- git add i18n/${EXTRACTOR_OUTPUT}
-- git commit --message "Travis generation of POT translation file"
-- git push origin ${TRAVIS_BRANCH}
-# Run build
 - npm run build
 after_success:
 - if ( [ "$TRAVIS_BRANCH" == "master" ] || [ ! -z "$TRAVIS_TAG" ] ) && [ "$TRAVIS_REPO_SLUG" == "dhis2/translations-app" ]  &&  [ "$TRAVIS_PULL_REQUEST" == "false" ] ; then

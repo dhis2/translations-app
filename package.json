@@ -1,6 +1,6 @@
 {
   "name": "translations-app",
-  "version": "26.0.8",
+  "version": "26.0.11",
   "description": "DHIS2 Translation/Internationalization App",
   "main": "src/index.html",
   "scripts": {
@@ -16,7 +16,8 @@
     "manifest": "d2-manifest package.json build/manifest.webapp",
     "start": "webpack-dev-server",
     "dist": "npm run build && npm run postbuild && cd build && zip -r translations-app.zip * && cd ..",
-    "extractor": "node extractor.js"
+    "extractor": "node extractor.js",
+    "extract-default-pot": "node extractor.js -o translations-app.pot"
   },
   "keywords": [
     "DHIS2",
@@ -73,9 +74,10 @@
     "webpack-dev-server": "~2.7.1"
   },
   "pre-commit": [
-    "test",
+    "extract-default-pot",
     "lint",
-    "validate"
+    "validate",
+    "test"
   ],
   "directories": {
     "test": "test"
