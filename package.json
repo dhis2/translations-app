@@ -17,7 +17,7 @@
     "start": "webpack-dev-server",
     "dist": "npm run build && npm run postbuild && cd build && zip -r translations-app.zip * && cd ..",
     "extractor": "node extractor.js",
-    "extract-default-pot": "node extractor.js -o translations-app.pot"
+    "extract-default-pot": "node extractor.js -o translations-app.pot && git add ./i18n/translations-app.pot"
   },
   "keywords": [
     "DHIS2",
@@ -74,10 +74,7 @@
     "webpack-dev-server": "~2.7.1"
   },
   "pre-commit": [
-    "extract-default-pot",
-    "lint",
-    "validate",
-    "test"
+    "extract-default-pot"
   ],
   "directories": {
     "test": "test"
