@@ -201,6 +201,10 @@ export default React.createClass({
       const api = d2.Api.getApi();
 
       let translationsState = this.state.translations;
+      if (!(object.id in translationsState)) {
+          translationsState[object.id] = {};
+      }
+
       let route = this.state.currentObject+'/'+object.id+'/translations';
       let translations = [];
 
