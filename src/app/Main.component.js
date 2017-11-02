@@ -200,6 +200,7 @@ export default React.createClass({
       const d2 = this.context.d2;
       const api = d2.Api.getApi();
 
+      let translationsState = this.state.translations;
       let route = this.state.currentObject+'/'+object.id+'/translations';
       let translations = [];
 
@@ -207,6 +208,7 @@ export default React.createClass({
       for (let key of Object.keys(availableProperties)){
         if (object[key]!==''){
           translations.push({property: availableProperties[key], locale: this.state.lang_dest, value: object[key]});
+          translationsState[object.id][key] = object[key];
         }
       }
 
@@ -225,9 +227,8 @@ export default React.createClass({
           //add in our new ones for this locale
           api.update(route,{translations:translations})
             .then(saving=>{
+              this.state.translations = translationsState;
               actions.showSnackbarMessage(i18next.t('Saved'));
-              //refresh (we should just update the single record instead of doing a full refresh...)
-              this.getTranslations(this.state.lang_dest);
             });
 
       });
