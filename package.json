@@ -6,7 +6,7 @@
   "scripts": {
     "coverage": "babel-node node_modules/.bin/isparta cover --root ./src --report text --report html --report lcov node_modules/mocha/bin/_mocha -- --reporter dot --require config/setup.js --recursive test",
     "prebuild": "rm -rf build && mkdir build && d2-manifest package.json manifest.webapp",
-    "build": "rm -rf build && webpack && npm run manifest",
+    "build": "rm -rf build && node poTranslator.js && webpack && npm run manifest",
     "postbuild": "cp -rv index.html icon*.png i18n node_modules/jquery/dist/jquery.min.js node_modules/babel-polyfill/dist/polyfill.min.js manifest.webapp build/",
     "test": "mocha --reporter spec --compilers js:babel-core/register --require config/setup.js --recursive test",
     "test-watch": "mocha --reporter spec --compilers js:babel-core/register --require config/setup.js --recursive test --watch",
@@ -14,7 +14,7 @@
     "validate": "npm ls",
     "prestart": "d2-manifest package.json manifest.webapp",
     "manifest": "d2-manifest package.json build/manifest.webapp",
-    "start": "webpack-dev-server",
+    "start": "node poTranslator.js && webpack-dev-server",
     "dist": "npm run build && npm run postbuild && cd build && zip -r translations-app.zip * && cd ..",
     "extractor": "node extractor.js",
     "extract-default-pot": "node extractor.js -o translations-app.pot && git add ./i18n/translations-app.pot"
@@ -28,7 +28,6 @@
   "license": "BSD-3-Clause",
   "dependencies": {
     "i18next": "^10.0.1",
-    "i18next-xhr-backend": "^1.4.3",
     "jquery": "^2.2.3",
     "rx": "^4.1.0"
   },
