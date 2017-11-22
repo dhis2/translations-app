@@ -17,7 +17,7 @@ import AppTheme from './colortheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import i18next from 'i18next';
-import i18nextResources from './i18nextResources';
+import i18nextResources from '../i18n/resources';
 
 /*
 if (process.env.NODE_ENV !== 'production') {
