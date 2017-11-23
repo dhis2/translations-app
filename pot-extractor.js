@@ -35,6 +35,5 @@ recursive("src", function (err, files) {
   }
 
   const translations = parser.get();
-  i18nextToPot('en', JSON.stringify(translations['en'].translation)).then(save('i18n/' + filename));
-
+  i18nextToPot('en', JSON.stringify(translations['en'].translation)).then(save('./i18n/' + filename));
 });

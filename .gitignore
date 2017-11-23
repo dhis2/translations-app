@@ -19,3 +19,6 @@ npm-debug.log
 
 # Don't include our local configuration info
 config.json
+
+# Do not include JS translation resources regenrated by po-converter.js
+i18n/resources.js
