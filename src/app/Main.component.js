@@ -248,16 +248,7 @@ export default React.createClass({
                   <SelectField value={this.state.lang_dest} onChange={this.handleDestChange} floatingLabelText={i18next.t('Target Locale')} style={{ marginRight: '1rem', marginLeft: '1rem' }}>
                     {locales}
                   </SelectField>
-                </ToolbarGroup>
-                <ToolbarGroup>
                   <ObjectMenu items={this.state.menu} active={this.state.currentObject} action={this.getObjects} />
-                </ToolbarGroup>
-                <ToolbarGroup>
-                  <SelectField value={this.state.lang_filter} onChange={this.handleFilterChange} floatingLabelText={i18next.t('Filter By')} style={{width:'200px', marginLeft: '1rem'}}>
-                    <MenuItem value={'all'} primaryText={i18next.t('All')} />
-                    <MenuItem value={'existing'} primaryText={i18next.t('Translated')} />
-                    <MenuItem value={'missing'} primaryText={i18next.t('Untranslated')} />
-                  </SelectField>
                 </ToolbarGroup>
                 <ToolbarGroup>
                   <Pager pager={this.state.pager} page={this.state.page} action={this.switchPage}/>
