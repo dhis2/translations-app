@@ -43,7 +43,6 @@ export default React.createClass({
           processing_translations:false,
           lang_source: '-',
           lang_dest: currentUser && currentUser.userSettings && currentUser.userSettings.keyUiLocale || 'en',
-          lang_filter: 'all',
           locales: [],
           menu: translatableObjects,
           objects: [],
@@ -80,10 +79,6 @@ export default React.createClass({
       if (value!=='-'){
         this.getTranslations(value);
       }
-    },
-
-    handleFilterChange (event, index, value) {
-      this.setState({lang_filter:value});
     },
 
     //helper method to look up translatable objects from DHIS2
@@ -263,8 +258,7 @@ export default React.createClass({
                                 type={this.state.currentObject}
                                 objects={this.state.objects}
                                 translations={this.state.translations}
-                                action={this.saveTranslation}
-                                filter={this.state.lang_filter} />
+                                action={this.saveTranslation} />
                 </div>
               </div>
           </div>
