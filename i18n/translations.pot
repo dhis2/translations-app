@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2017-11-20T15:59:56.467Z\n"
-"PO-Revision-Date: 2017-11-20T15:59:56.467Z\n"
+"POT-Creation-Date: 2017-11-30T14:22:04.191Z\n"
+"PO-Revision-Date: 2017-11-30T14:22:04.191Z\n"
 
 msgid "Could not locate that type of Object"
 msgstr ""
@@ -18,18 +18,6 @@ msgid "Saved"
 msgstr ""
 
 msgid "Target Locale"
-msgstr ""
-
-msgid "Filter By"
-msgstr ""
-
-msgid "All"
-msgstr ""
-
-msgid "Translated"
-msgstr ""
-
-msgid "Untranslated"
 msgstr ""
 
 msgid "Object"
