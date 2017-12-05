@@ -40,12 +40,13 @@ defineSupportCode(({ Given, When, Then }) => {
     homePage.selectObjectType(object);
   });
 
-  When(/^I translate the first property of first object instance to (.+)$/, (translation) => {
-    homePage.setInputValueForFirstPropertyOfFirstProject(translation);
+  When(/^I translate the (.+) of (.+) to (.+)$/, (property, object, translation) => {
+    this.object = object;
+    homePage.setInputValueFor(property, object, translation);
   });
 
   When(/^I save my translation$/, () => {
-    homePage.clickSaveForFirstObject();
+    homePage.clickSaveFor(this.object);
   });
 
   Then(/^I should see the success alert.$/, () => {

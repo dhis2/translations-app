@@ -29,9 +29,9 @@ I want to be able to translate the objects in the system
     Scenario Outline: Translate an object property
         When I select the target locale <locale>
         And I select the object type <object_type>
-        And I translate the first property of first object instance to <translation>
+        And I translate the <property> of <object_instance> to <translation>
         And I save my translation
         Then I should see the success alert.
         Examples:
-        | locale | object_type | translation |
-        | French | Category | catégorie |
+        | locale | object_type | property | object_instance | translation |
+        | French | Category | Name | default | catégorie |

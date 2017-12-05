@@ -70,14 +70,27 @@ class HomePage extends Page {
     return browser.waitForVisible('span=Saved', 1000);
   }
 
-  setInputValueForFirstPropertyOfFirstProject(value) {
-    browser.waitForExist('.translations input:first-of-type', 5000);
-    browser.clearElement('.translations input:first-of-type')
-    browser.element('.translations input:first-of-type').setValue(value);
+  setInputValueFor(property, objectInstance, value) {
+    let translationsDiv = browser.elements('.translations > div > div');
+    for (let div of translationsDiv.value) {
+      let h3 = div.element('h3');
+      if (h3.getText() === objectInstance) {
+        div.clearElement('input[id*=\'' + property + '\']:first-of-type');
+        div.element('input[id*=\'' + property + '\']:first-of-type').setValue(value);
+        break;
+      }
+    }
   }
 
-  clickSaveForFirstObject() {
-    browser.element('.translations button:first-of-type').click();
+  clickSaveFor(objectInstance) {
+    let translationsDiv = browser.elements('.translations > div > div');
+    for (let div of translationsDiv.value) {
+      let h3 = div.element('h3');
+      if (h3.getText() === objectInstance) {
+        div.element('button:first-of-type').click();
+        break;
+      }
+    }
   }
 }
 
