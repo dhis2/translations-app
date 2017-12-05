@@ -82,6 +82,18 @@ class HomePage extends Page {
     }
   }
 
+  getInputValueFor(property, objectInstance, value) {
+    let translationsDiv = browser.elements('.translations > div > div');
+    for (let div of translationsDiv.value) {
+      let h3 = div.element('h3');
+      if (h3.getText() === objectInstance) {
+        return div.element('input[id*=\'' + property + '\']:first-of-type').getValue();
+      }
+    }
+
+    return null;
+  }
+
   clickSaveFor(objectInstance) {
     let translationsDiv = browser.elements('.translations > div > div');
     for (let div of translationsDiv.value) {

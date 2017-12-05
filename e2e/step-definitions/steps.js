@@ -52,4 +52,16 @@ defineSupportCode(({ Given, When, Then }) => {
   Then(/^I should see the success alert.$/, () => {
     homePage.isSuccessAlertVisible();
   });
+
+  When(/^I see a translation for (.+) with an existing translation to (.+) for (.+)$/, (object, translation, property) => {
+    this.object = object;
+    let currentValue = homePage.getInputValueFor(property, object, translation);
+    expect(currentValue).to.equal(translation);
+  });
+
+  Then(/^I should see a translation for (.+) with an existing translation to (.+) for (.+)$/, (object, translation, property) => {
+    this.object = object;
+    let currentValue = homePage.getInputValueFor(property, object, translation);
+    expect(currentValue).to.equal(translation);
+  });
 });

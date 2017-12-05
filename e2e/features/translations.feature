@@ -35,3 +35,18 @@ I want to be able to translate the objects in the system
         Examples:
         | locale | object_type | property | object_instance | translation |
         | French | Category | Name | default | catégorie |
+
+    Scenario Outline: Translate an object property with an existing translation for another locale
+        When I select the target locale <locale>
+        And I select the object type <object_type>
+        And I see a translation for <object_instance> with an existing translation to <translated_name> for <property>
+        And I select the target locale <new_locale>
+        And I translate the <property> of <object_instance> to <new_translated_name>
+        And I save my translation
+        Then I select the target locale <locale>
+        And I should see a translation for <object_instance> with an existing translation to <translated_name> for <property>
+        And I select the target locale <new_locale>
+        And I should see a translation for <object_instance> with an existing translation to <new_translated_name> for <property>
+        Examples:
+        | locale | new_locale | object_type | property | object_instance | translated_name | new_translated_name |
+        | French | Portuguese | Category | Name | default | catégorie | categoria |
