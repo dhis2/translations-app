@@ -2,8 +2,8 @@ DHIS2 Translations App
 ==============
 
 # About
-This app serves as an internationalization utility for [DHIS2](https://dhis2.org). It will allow you to easily translate the metadata in the database, such 
-as data elements, indicators into any language of your choice. 
+This app serves as an internationalization utility for [DHIS2](https://dhis2.org). It will allow you to easily translate the metadata in the database, such
+as data elements, indicators into any language of your choice.
 This effort is part of the larger i18n and i10n process of DHIS2. @see https://docs.google.com/document/d/1u0YhRZD2Q3F8p6VCsz7dXdZxJL45R0qsEfsNc0OCJYs/edit
 
 
@@ -70,6 +70,11 @@ npm run test-watch
 To generate a coverage report for the tests
 ```sh
 npm run coverage
+```
+
+To run end to end tests
+```sh
+npm run test-e2e
 ```
 
 To check the code style for both the JS and SCSS files run

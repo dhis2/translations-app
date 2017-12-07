@@ -6,11 +6,11 @@ const homePage = require('../pages/home.page');
 defineSupportCode(({ Given, When, Then }) => {
   Given(/^that I am logged in to the Sierra Leone DHIS2$/, () => {
     homePage.open();
-    // TODO How to test login. Login is done at DHIS2 and not Translations App
+    expect(homePage.titleElement.getHTML()).to.equal('<title>Translations</title>');
   });
 
   Given(/^that I have the necessary permissions to access the Translations App$/, () => {
-    // TODO How to test that. Permissions are defined at DHIS2 REST API Level
+    expect(homePage.titleElement.getHTML()).to.equal('<title>Translations</title>');
   });
 
   When(/^I open the target locales list from the app$/, () => {
