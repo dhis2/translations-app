@@ -19,9 +19,9 @@ class HomePage extends Page {
     return browser.element(this.objectTypeDropdownSelector);
   }
 
-  get titleElement() {
+  get title() {
     browser.waitForExist('title', 5000);
-    return browser.element('title');
+    return browser.getTitle();
   }
 
   /**
