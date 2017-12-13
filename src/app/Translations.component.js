@@ -15,7 +15,6 @@ export default React.createClass({
         objects: PropTypes.array.isRequired,
         translations: PropTypes.object.isRequired,
         action:  PropTypes.func.isRequired,
-        filter:  PropTypes.string.isRequired,
         type:    PropTypes.string.isRequired,
     },
 
@@ -46,109 +45,13 @@ export default React.createClass({
       this.props.action(obj);
     },
 
-    //based upon the translatable fields, should this translation be hidden by the filter
-    shouldHideObject(trans){
-      let o = this.props.type;
-      let filter = this.props.filter;
-
-      if (filter==='existing'){
-        if (trans.name===''){
-          if (o==='optionSets' ||
-              o==='options' ||
-              o==='organisationUnitLevels' ||
-              o==='validationRules' ||
-              o==='programStages' ||
-              o==='indicatorTypes' ||
-              o==='indicatorGroups' ||
-              o==='trackedEntityAttributeGroups'){
-            return true;
-          }
-          else if (trans.shortName===''){
-            if (o==='organisationUnits' ||
-                o==='dataSets' ||
-                o==='organisationUnitGroups' ||
-                o==='categoryOptions' ||
-                o==='categories' ||
-                o==='categoryCombos' ||
-                o==='categoryOptionGroups' ||
-                o==='categoryOptionGroupSets' ||
-                o==='programs' ||
-                o==='trackedEntityAttributes' ||
-                o==='dataElementGroups' ||
-                o==='dataElementGroupSets' ||
-                o==='programs'){
-              return true;
-            }
-            else if (trans.description===''){
-              if (o==='organisationUnitGroupSets' ||
-                  o==='indicators' ||
-                  o==='programRules' ||
-                  o==='indicatorGroupSets' ||
-                  o==='sections'){
-                return true;
-              }
-              else if (trans.formName==='' && o==='dataElaments'){
-                return true;
-              }
-            }
-          }
-        }
-      }
-      else if (filter==='missing'){
-        if (trans.name!==''){
-          if (o==='optionSets' ||
-              o==='options' ||
-              o==='organisationUnitLevels' ||
-              o==='validationRules' ||
-              o==='programStages' ||
-              o==='indicatorTypes' ||
-              o==='indicatorGroups' ||
-              o==='trackedEntityAttributeGroups'){
-            return true;
-          }
-          else if (trans.shortName!==''){
-            if (o==='organisationUnits' ||
-                o==='dataSets' ||
-                o==='organisationUnitGroups' ||
-                o==='categoryOptions' ||
-                o==='categories' ||
-                o==='categoryCombos' ||
-                o==='categoryOptionGroups' ||
-                o==='categoryOptionGroupSets' ||
-                o==='programs' ||
-                o==='trackedEntityAttributes' ||
-                o==='dataElementGroups' ||
-                o==='dataElementGroupSets' ||
-                o==='programs'){
-              return true;
-            }
-            else if (trans.description!==''){
-              if (o==='organisationUnitGroupSets' ||
-                  o==='indicators' ||
-                  o==='programRules' ||
-                  o==='indicatorGroupSets' ||
-                  o==='sections'){
-                return true;
-              }
-              else if (trans.formName!=='' && o==='dataElaments'){
-                return true;
-              }
-            }
-          }
-        }
-      }
-      return false;
-    },
-
     render() {
       const d2 = this.props.d2;
 
       // let keys = Object.keys(this.props.objects);
       let objs = this.props.objects;
       let translations = this.props.translations;
-      let filter = this.props.filter;
       let hc = this.handleChange;
-      let hideObject = this.shouldHideObject;
       let type = this.props.type;
 
       //skip empty menu objects
@@ -175,11 +78,6 @@ export default React.createClass({
 
         if (typeof translations !== 'undefined' && typeof translations[d.id] !== 'undefined' ){
           trans = translations[d.id];
-        }
-
-        //see if this should be filtered out
-        if (hideObject(trans)!==false){
-          return (<span key={i}/>);
         }
 
         return (
