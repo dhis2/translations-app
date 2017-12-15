@@ -17,14 +17,12 @@ const storeTranslationsForIndex = (index) => {
       const fileContent = readFileSync(i18nDir + '/' + file, 'utf-8');
       const locale = fileSplittend[0];
       converter.gettextToI18next(locale, fileContent, options).then(function (data) {
-        translations[locale] = { translation: JSON.parse(data) };
+        writeFileSync('./i18n/' + locale + '.json', data);
         storeTranslationsForIndex(index + 1);
       });
     } else {
       storeTranslationsForIndex(index + 1);
     }
-  } else {
-    writeFileSync('./i18n/resources.js', "const i18nextResources = " + JSON.stringify(translations, null, 2) + "; export default i18nextResources;");
   }
 };
 
