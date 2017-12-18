@@ -17,7 +17,7 @@ import AppTheme from './colortheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import i18next from 'i18next';
-import i18nextResources from '../i18n/resources';
+import Backend from 'i18next-xhr-backend';
 
 /*
 if (process.env.NODE_ENV !== 'production') {
@@ -40,11 +40,14 @@ render(
 
 function configI18n(userSettings) {
     i18next
+      .use(Backend)
       .init({
         returnEmptyString: false,
         fallbackLng: false,
         keySeparator: '|',
-        resources: i18nextResources
+        backend: {
+          loadPath: '/i18n/{{lng}}.json'
+        }
     }, function(err, t) {
       const uiLocale = userSettings.keyUiLocale;
       if (uiLocale && uiLocale !== 'en') {
