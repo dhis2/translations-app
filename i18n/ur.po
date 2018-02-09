@@ -1,0 +1,54 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"POT-Creation-Date: 2017-12-18T15:19:15.842Z\n"
+"PO-Revision-Date: 2017-12-18T15:19:15.842Z\n"
+
+msgid "Could not locate that type of Object"
+msgstr "اس قسم کی آبجیکٹ کو نہیں مل سکا"
+
+msgid "Select an Object Type"
+msgstr "ایک آئٹم کی قسم منتخب کریں"
+
+msgid "Saved"
+msgstr "بچایا"
+
+msgid "Target Locale"
+msgstr "ہدف علاقہ"
+
+msgid "Object"
+msgstr "آبجیکٹ"
+
+msgid "First page"
+msgstr "پہلا صفحہ"
+
+msgid "Previous page"
+msgstr "سابقہ صفحہ"
+
+msgid "Next page"
+msgstr "اگلا صفحہ"
+
+msgid "Final page"
+msgstr "حتمی صفحہ"
+
+msgid "Short name"
+msgstr "مختصر نام"
+
+msgid "Description"
+msgstr "تفصیل"
+
+msgid "Form name"
+msgstr "فارم کا نام"
+
+msgid "Name"
+msgstr "نام"
+
+msgid "Save"
+msgstr "محفوظ کریں"
+
+msgid "No records available to translate."
+msgstr "ترجمہ کرنے کے لئے کوئی ریکارڈ دستیاب نہیں ہے."
