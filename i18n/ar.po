@@ -1,0 +1,61 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-12-18T15:19:15.842Z\n"
+"PO-Revision-Date: 2018-04-01 05:48+0000\n"
+"Last-Translator: Translator 2 <tr2@emata.net>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+"X-Generator: Pootle 2.8\n"
+"X-POOTLE-MTIME: 1522561724.427719\n"
+
+msgid "Could not locate that type of Object"
+msgstr "تعذر التعرف على نوع العنصر هذا"
+
+msgid "Select an Object Type"
+msgstr "حدد نوع عنصر"
+
+msgid "Saved"
+msgstr "تم الحفظ"
+
+msgid "Target Locale"
+msgstr "الإعدادات المحلية المستهدفة"
+
+msgid "Object"
+msgstr "العنصر"
+
+msgid "First page"
+msgstr "الصفحة الأولى"
+
+msgid "Previous page"
+msgstr "الصفحة السابقة"
+
+msgid "Next page"
+msgstr "الصفحة التالية"
+
+msgid "Final page"
+msgstr "الصفحة الأخيرة"
+
+msgid "Short name"
+msgstr "الاسم المختصر"
+
+msgid "Description"
+msgstr "الوصف"
+
+msgid "Form name"
+msgstr "اسم النموذج"
+
+msgid "Name"
+msgstr "الاسم"
+
+msgid "Save"
+msgstr "حفظ"
+
+msgid "No records available to translate."
+msgstr "لا توجد سجلات متوفرة للترجمة."
