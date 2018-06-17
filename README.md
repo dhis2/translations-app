@@ -1,4 +1,6 @@
 # DHIS2 Translations App
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdhis2%2Ftranslations-app.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fdhis2%2Ftranslations-app?ref=badge_shield)
+
 
 ## About
 
@@ -100,3 +102,7 @@ To make a DHIS2 app zip file, run:
 npm run-script dist
 ```
 Then load the `build/translations-app.zip` file to your DHIS2 instance.
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdhis2%2Ftranslations-app.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fdhis2%2Ftranslations-app?ref=badge_large)
