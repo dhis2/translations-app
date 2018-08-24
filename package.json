@@ -52,7 +52,8 @@
   },
   "devDependencies": {
     "@dhis2/d2-i18n-generate": "^1.0.19",
-    "husky": "^0.14.3",
+    "husky": "^1.0.0-rc.13",
+    "import-export": "^1.0.1",
     "postcss-rtl": "^1.3.2"
   },
   "scripts": {
@@ -70,7 +71,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint && yarn validate && yarn test && refresh-translations-template"
+      "pre-commit": "yarn lint && yarn validate && yarn test && yarn refresh-translations-template"
     }
   },
   "manifest.webapp": {
