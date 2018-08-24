@@ -1,86 +1,41 @@
-DHIS2 Translations App
-==============
+# DHIS2 Translations App
 
-# About
-This app serves as an internationalization utility for [DHIS2](https://dhis2.org). It will allow you to easily translate the metadata in the database, such 
-as data elements, indicators into any language of your choice. 
-This effort is part of the larger i18n and i10n process of DHIS2. @see https://docs.google.com/document/d/1u0YhRZD2Q3F8p6VCsz7dXdZxJL45R0qsEfsNc0OCJYs/edit
+[![Build Status](https://travis-ci.org/dhis2/translations-app.svg?branch=master)](https://travis-ci.org/dhis2/translations-app)
 
+### Pre-requisites
+* DHIS2 instance;
+* node v9.3.0+;
+* yarn v1.3.2+;
 
-# Building
+### Running the dev server
+* add `http://localhost:3000` url to your DHIS2 CORS whitelist. (This can be done in the settings app);
 
-## Prerequisites
-Make sure you have at least the following versions of `node` and `npm`.
+* Execute the following commands:
+    ```sh
+    yarn install
+    yarn start
+    ```
+         
+* On the browser you are using login on DHIS2 instance you are using;
+* Open your browser at `http://localhost:3000`;
 
-+ Node version v5.6.0 or higher
-+ npm version 3.8.0 or higher
-
-Use the following commands to check your current versions
+### Building the project
+To build a production version of the application run the following command:
 ```sh
-node -v
-
-npm -v
+yarn build
 ```
 
-## Getting started
-
-Clone the repository from github with the following command
+### Unit testing
+To execute unit tests run the following command:
 ```sh
-git clone git@github.com:dhis2/translations-app
+yarn test
 ```
 
-Install the node dependencies
+### E2e testing
+To execute end to end tests run the following command:
 ```sh
-npm install
+export DHIS2_BASE_URL=http://your_dhis2_instance.com/
+yarn test-e2e
 ```
 
-To set up your DHIS2 instance to work with the development service you will need to add the development servers address to the CORS whitelist. You can do this within the DHIS2 Settings app under the _access_ tab. On the access tab add `http://localhost:8081` to the CORS Whitelist.
-> The starter app will look for a DHIS 2 development instance configuration in
-> `$DHIS2_HOME/config`. So for example if your `DHIS2_HOME` environment variable is
-> set to `~/.dhis2`, the starter app will look for `~/.dhis2/config.js` and then
-> `~/.dhis2/config.json` and load the first one it can find.
->
-> The config should export an object with the properties `baseUrl` and
-> `authorization`, where authorization is the base64 encoding of your username and
-> password. You can obtain this value by opening the console in your browser and
-> typing `btoa('user:pass')`.
->
-> If no config is found, the default `baseUrl` is `http://localhost:8080/dhis` and
-> the default username and password is `admin` and `district`, respectively.
->
-> See `webpack.config.js` for details.
-
-This should enable you to run the following node commands:
-
-To run the development server
-```sh
-npm start
-```
-
-To run the tests one time
-```sh
-npm test
-```
-
-To run the tests continuously on file changes (for your BDD workflow)
-```sh
-npm run test-watch
-```
-
-To generate a coverage report for the tests
-```sh
-npm run coverage
-```
-
-To check the code style for both the JS and SCSS files run
-```sh
-npm run lint
-```
-
-## Distributing
-
-To make a DHIS2 app zip file, run:
-```sh
-npm run-script dist
-```
-Then load the `build/translations-app.zip` file to your DHIS2 instance.
+You must have the dev server running on port 3000, as explained previously.
