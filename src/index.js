@@ -1,7 +1,6 @@
 /* React */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import registerServiceWorker from './registerServiceWorker';
 
 /* d2 */
 import { init, getManifest, getUserSettings } from 'd2/lib/d2';
@@ -13,30 +12,32 @@ import App from './App';
 
 import './index.css';
 
+import registerServiceWorker from './registerServiceWorker';
+
 /* init d2 */
 let d2Instance;
 
-getManifest('manifest.webapp').then(manifest => {
-  const baseUrl =
+getManifest('manifest.webapp').then((manifest) => {
+    const baseUrl =
     process.env.NODE_ENV === 'production'
-      ? `${manifest.getBaseUrl()}/api/${manifest.dhis2.apiVersion}`
-      : `${process.env.REACT_APP_DHIS2_BASE_URL}/api/${
-          manifest.dhis2.apiVersion
+        ? `${manifest.getBaseUrl()}/api/${manifest.dhis2.apiVersion}`
+        : `${process.env.REACT_APP_DHIS2_BASE_URL}/api/${
+            manifest.dhis2.apiVersion
         }`;
 
-  // init d2 with configs
-  init({
-    baseUrl,
-    schemas: []
-  })
-    .then(d2 => {
-      d2Instance = d2;
+    // init d2 with configs
+    init({
+        baseUrl,
+        schemas: [],
     })
-    .then(getUserSettings)
-    .then(configI18n)
-    .then(() => {
-      ReactDOM.render(<App d2={d2Instance} />, document.getElementById('app'));
-    });
+        .then((d2) => {
+            d2Instance = d2;
+        })
+        .then(getUserSettings)
+        .then(configI18n)
+        .then(() => {
+            ReactDOM.render(<App d2={d2Instance} />, document.getElementById('app'));
+        });
 });
 
 registerServiceWorker();

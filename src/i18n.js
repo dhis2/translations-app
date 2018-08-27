@@ -1,5 +1,5 @@
 export const i18nKeys = {
-  // TODO add keys
+    // TODO add keys
 };
 
 export default i18nKeys;

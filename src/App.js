@@ -11,16 +11,16 @@ import styles from './styles';
 
 class App extends PureComponent {
   static propTypes = {
-    d2: PropTypes.object.isRequired
+      d2: PropTypes.object.isRequired,
   };
 
   render() {
-    return (
-      <D2UIApp>
-        <HeaderBar d2={this.props.d2} />
-        <div style={styles.contentArea}>Translations App</div>
-      </D2UIApp>
-    );
+      return (
+          <D2UIApp>
+              <HeaderBar d2={this.props.d2} />
+              <div style={styles.contentArea}>Translations App</div>
+          </D2UIApp>
+      );
   }
 }
 
