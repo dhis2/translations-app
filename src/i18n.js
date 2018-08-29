@@ -18,8 +18,14 @@ export const i18nKeys = {
             label: 'Search',
         },
     },
+    translationForm: {
+        actionButton: {
+            label: 'Save',
+        },
+    },
     messages: {
         unexpectedError: 'Unexpected Error',
+        translationsSaved: 'Translations was saved',
     },
 };
 

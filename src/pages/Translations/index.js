@@ -88,6 +88,45 @@ class TranslationsPage extends PureComponent {
         this.applyNextSearchFilter(this.nextSearchFilterWithChange({ searchTerm }));
     };
 
+    onChangeTranslationForObjectAndLocale = (objectId, localeId, translationKey, value) => {
+        const searchResults = [...this.state.searchResults];
+        const selectedObjectInstance = searchResults.find(objectInstance => objectInstance.id === objectId);
+        if (selectedObjectInstance) {
+            const translationEntry = selectedObjectInstance.translations.find(
+                translation => translation.locale === localeId && translation.property === translationKey);
+            if (translationEntry) {
+                translationEntry.value = value;
+            } else {
+                selectedObjectInstance.translations.push({
+                    locale: localeId,
+                    property: translationKey,
+                    value,
+                });
+            }
+            this.setState({
+                searchResults,
+            });
+        }
+    };
+
+    saveTranslationForObjectId = objectId => () => {
+        const api = this.props.d2.Api.getApi();
+
+        const searchResults = [...this.state.searchResults];
+        const selectedObjectInstance = searchResults.find(objectInstance => objectInstance.id === objectId);
+
+        if (selectedObjectInstance) {
+            const translations = selectedObjectInstance.translations;
+            const translationsUrlForInstance =
+                `${this.state.searchFilter.selectedObject.relativeApiEndpoint}/${objectId}/translations/`;
+            api.update(translationsUrlForInstance, { translations }).then(() => {
+                this.showSuccessMessage(i18n.t(i18nKeys.messages.translationsSaved));
+            }).catch((error) => {
+                this.manageError(error);
+            });
+        }
+    };
+
     clearFeedbackSnackbar = () => {
         this.setState({
             showSnackbar: false,
@@ -221,6 +260,13 @@ class TranslationsPage extends PureComponent {
 
     isLoading = () => this.state.showSnackbar && this.state.snackbarConf.type === FEEDBACK_SNACKBAR_TYPES.LOADING;
 
+    hasResultsToShow = () =>
+        this.state.objectSelectItems &&
+        this.state.searchFilter.selectedLocale &&
+        this.state.searchFilter.selectedObject &&
+        this.state.searchFilter.selectedFilterBy &&
+        this.state.searchResults;
+
     render() {
         /* Feedback Snackbar */
         const feedbackElement = this.isLoading() ?
@@ -257,13 +303,16 @@ class TranslationsPage extends PureComponent {
                     searchTerm={this.state.searchFilter.searchTerm}
                     onSearchTermChange={this.onSearchTermChange}
                 />
-                {this.state.searchResults && this.state.searchFilter.selectedObject && this.state.objectSelectItems &&
+                {this.hasResultsToShow() &&
                     <TranslationsList
+                        localeId={this.state.searchFilter.selectedLocale.id}
                         objects={this.state.searchResults}
                         translatableProperties={this.state.searchFilter.selectedObject.translatableProperties}
                         pager={this.state.searchFilter.pager}
                         goToNextPage={this.goToNextPage}
                         goToPreviousPage={this.goToPreviousPage}
+                        onChangeTranslationForObjectAndLocale={this.onChangeTranslationForObjectAndLocale}
+                        saveTranslations={this.saveTranslationForObjectId}
                     />
                 }
                 <div id="feedback-snackbar">

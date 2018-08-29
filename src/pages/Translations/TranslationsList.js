@@ -32,8 +32,11 @@ const TranslationsList = props => (
             props.objects.map(object => (
                 <TranslationCard
                     key={object.id}
+                    localeId={props.localeId}
                     object={object}
                     translatableProperties={props.translatableProperties}
+                    onChangeTranslationForObjectAndLocale={props.onChangeTranslationForObjectAndLocale}
+                    saveTranslations={props.saveTranslations(object.id)}
                 />
             ),
             )
@@ -43,6 +46,7 @@ const TranslationsList = props => (
 );
 
 TranslationsList.propTypes = {
+    localeId: PropTypes.string.isRequired,
     objects: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
@@ -65,6 +69,8 @@ TranslationsList.propTypes = {
     }).isRequired,
     goToNextPage: PropTypes.func.isRequired,
     goToPreviousPage: PropTypes.func.isRequired,
+    onChangeTranslationForObjectAndLocale: PropTypes.func.isRequired,
+    saveTranslations: PropTypes.func.isRequired,
 };
 
 export default TranslationsList;
