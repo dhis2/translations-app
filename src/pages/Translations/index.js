@@ -7,6 +7,7 @@ import { FeedbackSnackbar, CircularProgress } from '@dhis2/d2-ui-core';
 
 /* components */
 import TranslationsSearch from './TranslationsSearch';
+import TranslationsList from './TranslationsList';
 
 /* i18n */
 import { i18nKeys } from '../../i18n';
@@ -39,12 +40,13 @@ class TranslationsPage extends PureComponent {
         objectSelectItems: [],
         filterBySelectItems: PAGE_CONFIGS.FILTER_BY_ITEMS,
         searchFilter: {
+            pager: PAGE_CONFIGS.INITIAL_PAGER,
             selectedLocale: null,
             selectedObject: null,
             selectedFilterBy: PAGE_CONFIGS.ALL_ITEM,
             searchTerm: '',
         },
-        searchResults: [],
+        searchResults: null,
     };
 
     componentDidMount() {
@@ -93,6 +95,20 @@ class TranslationsPage extends PureComponent {
         });
     };
 
+    goToNextPage = () => {
+        const nextPager = { ...this.state.searchFilter.pager };
+        nextPager.page += 1;
+
+        this.applyNextSearchFilter(this.nextSearchFilterWithChange({ pager: nextPager }));
+    };
+
+    goToPreviousPage = () => {
+        const nextPager = { ...this.state.searchFilter.pager };
+        nextPager.page -= 1;
+
+        this.applyNextSearchFilter(this.nextSearchFilterWithChange({ pager: nextPager }));
+    };
+
     applyNextSearchFilter = (nextSearchFilter) => {
         const api = this.props.d2.Api.getApi();
 
@@ -104,20 +120,29 @@ class TranslationsPage extends PureComponent {
 
         api.get(this.buildApiUrlForSearchFilter(nextSearchFilter)).then((response) => {
             this.setState({
-                searchResult: response[nextSearchFilter.selectedObject.apiResponseProperty],
+                searchResults: response[nextSearchFilter.selectedObject.apiResponseProperty],
+                searchFilter: {
+                    ...nextSearchFilter,
+                    pager: {
+                        page: response.pager.page,
+                        pageCount: response.pager.pageCount,
+                        total: response.pager.total,
+                        pageSize: response.pager.pageSize,
+                    },
+                },
             });
+
             this.clearFeedbackSnackbar();
         }).catch((error) => {
             this.manageError(error);
         });
     };
 
-    buildApiUrlForSearchFilter = ({ selectedObject, searchTerm, selectedFilterBy }) => {
-        const selectedSchema = this.state.objectSelectItems.find(schema => schema.id === selectedObject.id);
-
-        const urlBase = `${selectedSchema.relativeApiEndpoint}?fields=id,displayName,name,translations`;
+    buildApiUrlForSearchFilter = ({ selectedObject, searchTerm, selectedFilterBy, pager }) => {
+        const urlBase = `${selectedObject.relativeApiEndpoint}?fields=id,displayName,name,translations`;
 
         const searchFilter = searchTerm.length > 0 ? `&filter=name:ilike:${searchTerm}` : '';
+
         let filterBy = '';
         if (selectedFilterBy.id === PAGE_CONFIGS.UNTRANSLATED_ID) {
             filterBy = '&filter=translations:empty';
@@ -125,7 +150,9 @@ class TranslationsPage extends PureComponent {
             filterBy = '&filter=translations:gt:0';
         }
 
-        return urlBase + searchFilter + filterBy;
+        const pagination = `&page=${pager.page}&pageSize=${pager.pageSize}`;
+
+        return urlBase + searchFilter + filterBy + pagination;
     };
 
     nextSearchFilterWithChange = searchFilterChange => ({
@@ -230,6 +257,15 @@ class TranslationsPage extends PureComponent {
                     searchTerm={this.state.searchFilter.searchTerm}
                     onSearchTermChange={this.onSearchTermChange}
                 />
+                {this.state.searchResults && this.state.searchFilter.selectedObject && this.state.objectSelectItems &&
+                    <TranslationsList
+                        objects={this.state.searchResults}
+                        translatableProperties={this.state.searchFilter.selectedObject.translatableProperties}
+                        pager={this.state.searchFilter.pager}
+                        goToNextPage={this.goToNextPage}
+                        goToPreviousPage={this.goToPreviousPage}
+                    />
+                }
                 <div id="feedback-snackbar">
                     {feedbackElement}
                 </div>

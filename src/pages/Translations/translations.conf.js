@@ -26,3 +26,11 @@ export const UNTRANSLATED_ITEM = {
 };
 
 export const FILTER_BY_ITEMS = [ALL_ITEM, TRANSLATED_ITEM, UNTRANSLATED_ITEM];
+
+export const INITIAL_PAGER = {
+    pageSize: 5,
+    page: 1,
+    total: 0,
+    pageCount: 1,
+};
+
