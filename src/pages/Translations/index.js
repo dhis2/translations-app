@@ -37,11 +37,14 @@ class TranslationsPage extends PureComponent {
         snackbarConf: DEFAULT_SNACKBAR_CONF,
         localeSelectItems: [],
         objectSelectItems: [],
-        selectedLocaleId: null,
-        selectedObjectName: null,
         filterBySelectItems: PAGE_CONFIGS.FILTER_BY_ITEMS,
-        selectedFilterId: PAGE_CONFIGS.ALL_ID,
-        searchTerm: '',
+        searchFilter: {
+            selectedLocale: null,
+            selectedObject: null,
+            selectedFilterBy: PAGE_CONFIGS.ALL_ITEM,
+            searchTerm: '',
+        },
+        searchResults: [],
     };
 
     componentDidMount() {
@@ -54,8 +57,11 @@ class TranslationsPage extends PureComponent {
             this.setState({
                 localeSelectItems,
                 objectSelectItems,
-                selectedLocaleId: localeSelectItems.length > 0 ? localeSelectItems[0].id : null,
-                selectedObjectName: objectSelectItems.length > 0 ? objectSelectItems[0].id : null,
+                searchFilter: {
+                    ...this.state.searchFilter,
+                    selectedLocale: localeSelectItems.length > 0 ? localeSelectItems[0] : null,
+                    selectedObject: objectSelectItems.length > 0 ? objectSelectItems[0] : null,
+                },
             });
 
             this.clearFeedbackSnackbar();
@@ -65,19 +71,19 @@ class TranslationsPage extends PureComponent {
     }
 
     onLocaleChange = (locale) => {
-        this.setState({ selectedLocaleId: locale.id });
+        this.applyNextSearchFilter(this.nextSearchFilterWithChange({ selectedLocale: locale }));
     };
 
     onObjectChange = (object) => {
-        this.setState({ selectedObjectName: object.id });
+        this.applyNextSearchFilter(this.nextSearchFilterWithChange({ selectedObject: object }));
     };
 
     onFilterChange = (filterBy) => {
-        this.setState({ selectedFilterId: filterBy.id });
+        this.applyNextSearchFilter(this.nextSearchFilterWithChange({ selectedFilterBy: filterBy }));
     };
 
     onSearchTermChange = (searchTerm) => {
-        this.setState({ searchTerm });
+        this.applyNextSearchFilter(this.nextSearchFilterWithChange({ searchTerm }));
     };
 
     clearFeedbackSnackbar = () => {
@@ -86,6 +92,46 @@ class TranslationsPage extends PureComponent {
             snackbarConf: DEFAULT_SNACKBAR_CONF,
         });
     };
+
+    applyNextSearchFilter = (nextSearchFilter) => {
+        const api = this.props.d2.Api.getApi();
+
+        this.setState({
+            searchFilter: nextSearchFilter,
+        });
+
+        this.startLoading();
+
+        api.get(this.buildApiUrlForSearchFilter(nextSearchFilter)).then((response) => {
+            this.setState({
+                searchResult: response[nextSearchFilter.selectedObject.apiResponseProperty],
+            });
+            this.clearFeedbackSnackbar();
+        }).catch((error) => {
+            this.manageError(error);
+        });
+    };
+
+    buildApiUrlForSearchFilter = ({ selectedObject, searchTerm, selectedFilterBy }) => {
+        const selectedSchema = this.state.objectSelectItems.find(schema => schema.id === selectedObject.id);
+
+        const urlBase = `${selectedSchema.relativeApiEndpoint}?fields=id,displayName,name,translations`;
+
+        const searchFilter = searchTerm.length > 0 ? `&filter=name:ilike:${searchTerm}` : '';
+        let filterBy = '';
+        if (selectedFilterBy.id === PAGE_CONFIGS.UNTRANSLATED_ID) {
+            filterBy = '&filter=translations:empty';
+        } else if (selectedFilterBy.id === PAGE_CONFIGS.TRANSLATED_ID) {
+            filterBy = '&filter=translations:gt:0';
+        }
+
+        return urlBase + searchFilter + filterBy;
+    };
+
+    nextSearchFilterWithChange = searchFilterChange => ({
+        ...this.state.searchFilter,
+        ...searchFilterChange,
+    });
 
     promiseToFetchLanguages = () => this.props.d2.Api.getApi().get(PAGE_CONFIGS.LANGUAGES_API_URL);
 
@@ -104,6 +150,9 @@ class TranslationsPage extends PureComponent {
             .map(object => ({
                 id: object.name,
                 name: object.displayName,
+                relativeApiEndpoint: object.relativeApiEndpoint,
+                apiResponseProperty: object.plural,
+                translatableProperties: object.properties.filter(property => !!property.translationKey),
             })) : []);
 
     startLoading = () => {
@@ -165,18 +214,20 @@ class TranslationsPage extends PureComponent {
                 <TranslationsSearch
                     localeSelectLabel={i18n.t(i18nKeys.searchToolbar.selects.locales.label)}
                     localeSelectItems={this.state.localeSelectItems}
-                    selectedLocaleId={this.state.selectedLocaleId}
+                    selectedLocaleId={this.state.searchFilter.selectedLocale ?
+                        this.state.searchFilter.selectedLocale.id : null}
                     onLocaleChange={this.onLocaleChange}
                     objectSelectLabel={i18n.t(i18nKeys.searchToolbar.selects.objects.label)}
                     objectSelectItems={this.state.objectSelectItems}
-                    selectedObjectName={this.state.selectedObjectName}
+                    selectedObjectName={this.state.searchFilter.selectedObject ?
+                        this.state.searchFilter.selectedObject.id : null}
                     onObjectChange={this.onObjectChange}
                     filterBySelectLabel={i18n.t(i18nKeys.searchToolbar.selects.filterBy.label)}
                     filterBySelectItems={this.state.filterBySelectItems}
-                    selectedFilterId={this.state.selectedFilterId}
+                    selectedFilterId={this.state.searchFilter.selectedFilterBy.id}
                     onFilterChange={this.onFilterChange}
                     searchFieldLabel={i18n.t(i18nKeys.searchToolbar.searchTextField.label)}
-                    searchTerm={this.state.searchTerm}
+                    searchTerm={this.state.searchFilter.searchTerm}
                     onSearchTermChange={this.onSearchTermChange}
                 />
                 <div id="feedback-snackbar">
