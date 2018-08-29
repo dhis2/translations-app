@@ -116,11 +116,25 @@ class TranslationsPage extends PureComponent {
         const selectedObjectInstance = searchResults.find(objectInstance => objectInstance.id === objectId);
 
         if (selectedObjectInstance) {
-            const translations = selectedObjectInstance.translations;
+            this.startLoading();
+
+            /* translations that are being shown and able to be updated */
+            const inViewTranslations = selectedObjectInstance.translations;
             const translationsUrlForInstance =
                 `${this.state.searchFilter.selectedObject.relativeApiEndpoint}/${objectId}/translations/`;
-            api.update(translationsUrlForInstance, { translations }).then(() => {
-                this.showSuccessMessage(i18n.t(i18nKeys.messages.translationsSaved));
+
+            /* request old translations to avoid overwrite other locales updated meanwhile */
+            api.get(translationsUrlForInstance).then((response) => {
+                /* other translations which are not for the locale we are updating */
+                const notUpdateTranslations = response.translations
+                    .filter(translation => translation.locale !== this.state.searchFilter.selectedLocale.id);
+                const translations = [...notUpdateTranslations, ...inViewTranslations];
+
+                api.update(translationsUrlForInstance, { translations }).then(() => {
+                    this.showSuccessMessage(i18n.t(i18nKeys.messages.translationsSaved));
+                }).catch((error) => {
+                    this.manageError(error);
+                });
             }).catch((error) => {
                 this.manageError(error);
             });
