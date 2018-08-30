@@ -88,7 +88,17 @@ class TranslationsPage extends PureComponent {
     };
 
     onSearchTermChange = (searchTerm) => {
-        this.applyNextSearchFilter(this.nextSearchFilterWithChange({ searchTerm }));
+        this.setState({
+            searchFilter: this.nextSearchFilterWithChange({ searchTerm }),
+        });
+        // this.applyNextSearchFilter(this.nextSearchFilterWithChange({ searchTerm }));
+    };
+
+    onSearchKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            const searchTerm = event.target.value;
+            this.applyNextSearchFilter(this.nextSearchFilterWithChange({ searchTerm }));
+        }
     };
 
     onChangeTranslationForObjectAndLocale = (objectId, localeId, translationKey, value) => {
@@ -319,6 +329,7 @@ class TranslationsPage extends PureComponent {
                     searchFieldLabel={i18n.t(i18nKeys.searchToolbar.searchTextField.label)}
                     searchTerm={this.state.searchFilter.searchTerm}
                     onSearchTermChange={this.onSearchTermChange}
+                    onSearchKeyPress={this.onSearchKeyPress}
                 />
                 {this.hasResultsToShow() &&
                     <TranslationsList

@@ -52,53 +52,61 @@ SelectControl.defaultProps = {
 };
 
 /* to avoid null exceptions */
-const nonOnChangeHandler = () => null;
+const nonHandler = () => null;
 
-const TranslationsSearch = ({ ...props }) => (
-    <div style={translationsSearchStyles.container}>
-        <Grid container>
-            <Grid item xs={12} md={6} lg={3} style={styles.formControl}>
-                <SelectControl
-                    value={props.selectedLocaleId}
-                    onChange={props.onLocaleChange}
-                    items={props.localeSelectItems}
-                    label={props.localeSelectLabel}
-                />
+const TranslationsSearch = (props) => {
+    const onChangeForSearchFieldEnhanced = (event) => {
+        props.onSearchTermChange(event.target.value);
+    };
+
+    return (
+        <div style={translationsSearchStyles.container}>
+            <Grid container>
+                <Grid item xs={12} md={6} lg={3} style={styles.formControl}>
+                    <SelectControl
+                        value={props.selectedLocaleId}
+                        onChange={props.onLocaleChange}
+                        items={props.localeSelectItems}
+                        label={props.localeSelectLabel}
+                    />
+                </Grid>
+                <Grid item xs={12} md={6} lg={3} style={styles.formControl}>
+                    <SelectControl
+                        value={props.selectedObjectName}
+                        onChange={props.onObjectChange}
+                        items={props.objectSelectItems}
+                        label={props.objectSelectLabel}
+                    />
+                </Grid>
+                <Grid item xs={12} md={6} lg={3} style={styles.formControl}>
+                    <SelectControl
+                        value={props.selectedFilterId}
+                        onChange={props.onFilterChange}
+                        items={props.filterBySelectItems}
+                        label={props.filterBySelectLabel}
+                    />
+                </Grid>
+                <Grid item xs={12} md={6} lg={3} style={styles.formControl}>
+                    <TextField
+                        label={props.searchFieldLabel}
+                        type="search"
+                        value={props.searchTerm}
+                        onChange={onChangeForSearchFieldEnhanced}
+                        fullWidth
+                        InputProps={{
+                            startAdornment: (
+                                <InputAdornment position="start">
+                                    <Search />
+                                </InputAdornment>
+                            ),
+                        }}
+                        onKeyPress={props.onSearchKeyPress}
+                    />
+                </Grid>
             </Grid>
-            <Grid item xs={12} md={6} lg={3} style={styles.formControl}>
-                <SelectControl
-                    value={props.selectedObjectName}
-                    onChange={props.onObjectChange}
-                    items={props.objectSelectItems}
-                    label={props.objectSelectLabel}
-                />
-            </Grid>
-            <Grid item xs={12} md={6} lg={3} style={styles.formControl}>
-                <SelectControl
-                    value={props.selectedFilterId}
-                    onChange={props.onFilterChange}
-                    items={props.filterBySelectItems}
-                    label={props.filterBySelectLabel}
-                />
-            </Grid>
-            <Grid item xs={12} md={6} lg={3} style={styles.formControl}>
-                <TextField
-                    label={props.searchFieldLabel}
-                    type="search"
-                    onChange={props.onSearchTermChange}
-                    fullWidth
-                    InputProps={{
-                        startAdornment: (
-                            <InputAdornment position="start">
-                                <Search />
-                            </InputAdornment>
-                        ),
-                    }}
-                />
-            </Grid>
-        </Grid>
-    </div>
-);
+        </div>
+    );
+};
 
 TranslationsSearch.propTypes = {
     localeSelectLabel: PropTypes.string.isRequired,
@@ -125,17 +133,19 @@ TranslationsSearch.propTypes = {
     searchFieldLabel: PropTypes.string.isRequired,
     searchTerm: PropTypes.string,
     onSearchTermChange: PropTypes.func,
+    onSearchKeyPress: PropTypes.func,
 };
 
 TranslationsSearch.defaultProps = {
     selectedLocaleId: null,
-    onLocaleChange: nonOnChangeHandler,
+    onLocaleChange: nonHandler,
     selectedObjectName: null,
-    onObjectChange: nonOnChangeHandler,
+    onObjectChange: nonHandler,
     selectedFilterId: null,
-    onFilterChange: nonOnChangeHandler,
+    onFilterChange: nonHandler,
     searchTerm: '',
-    onSearchTermChange: nonOnChangeHandler,
+    onSearchTermChange: nonHandler,
+    onSearchKeyPress: nonHandler,
 };
 
 export default TranslationsSearch;

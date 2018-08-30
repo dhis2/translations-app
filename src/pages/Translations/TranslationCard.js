@@ -34,18 +34,18 @@ const TranslationCard = (props) => {
     );
 
     return (
-        <Paper style={translationCardStyles.cardContainer}>
+        <Paper style={styles.cardContainer}>
             <h3 style={translationCardStyles.header}>{props.object.displayName}</h3>
             <Grid container>
                 {props.translatableProperties.map(property => (
                     <Grid
+                        key={property.fieldName}
                         item
                         xs={12}
                         md={props.translatableProperties.length === 1 ? 12 : 6}
                         style={styles.formControl}
                     >
                         <TextField
-                            key={property.fieldName}
                             fullWidth
                             value={translationValueOfObjectForLocaleAndTranslationKey(
                                 props.object,

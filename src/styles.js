@@ -17,6 +17,13 @@ const styles = {
     formControl: {
         paddingRight: 10,
     },
+    cardContainer: {
+        paddingLeft: 10,
+        paddingTop: 10,
+        paddingBottom: 10,
+        paddingRight: 10,
+        marginBottom: 20,
+    },
 };
 
 export default styles;
