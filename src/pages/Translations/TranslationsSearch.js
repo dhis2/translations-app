@@ -6,6 +6,8 @@ import PropTypes from 'prop-types';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import Search from '@material-ui/icons/Search';
 
 /* styles */
 import styles from '../../styles';
@@ -85,6 +87,13 @@ const TranslationsSearch = ({ ...props }) => (
                     type="search"
                     onChange={props.onSearchTermChange}
                     fullWidth
+                    InputProps={{
+                        startAdornment: (
+                            <InputAdornment position="start">
+                                <Search />
+                            </InputAdornment>
+                        ),
+                    }}
                 />
             </Grid>
         </Grid>
