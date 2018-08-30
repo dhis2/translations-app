@@ -2,38 +2,101 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-/* d2-ui components */
-import { SelectField, InputField } from '@dhis2/d2-ui-core';
+/* material-ui */
+import { withStyles } from '@material-ui/core/styles';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
 
 /* styles */
 import styles from './TranslationsSearch.style';
 
-const TranslationsSearch = props => (
+const formStyles = theme => ({
+    formControl: {
+        margin: theme.spacing.unit,
+        minWidth: 120,
+    },
+});
+
+const SelectControl = ({ classes, id, items, label, onChange, value }) => {
+    /* passes the whole object and not only id */
+    const onChangeEnhanced = (event) => {
+        onChange(items.find(item => item.id === event.target.value));
+    };
+
+    return (
+        <FormControl className={classes.formControl}>
+            <InputLabel htmlFor={id}>{label}</InputLabel>
+            <Select
+                value={value}
+                onChange={onChangeEnhanced}
+                inputProps={{
+                    name: label,
+                    id,
+                }}
+            >
+                {items.map(item => (
+                    <MenuItem key={item.id} value={item.id}>
+                        {item.name}
+                    </MenuItem>
+                ))}
+            </Select>
+        </FormControl>
+    );
+};
+
+SelectControl.propTypes = {
+    classes: PropTypes.object.isRequired,
+    id: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    items: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+    })).isRequired,
+    value: PropTypes.string,
+    onChange: PropTypes.func,
+};
+
+SelectControl.defaultProps = {
+    value: '',
+    onChange: () => null,
+};
+
+const TranslationsSearch = ({ classes, ...props }) => (
     <div style={styles.container}>
-        <SelectField
+        <SelectControl
+            id="locale-select"
+            classes={classes}
             value={props.selectedLocaleId}
             onChange={props.onLocaleChange}
             items={props.localeSelectItems}
             label={props.localeSelectLabel}
         />
-        <SelectField
+        <SelectControl
+            id="object-select"
+            classes={classes}
             value={props.selectedObjectName}
             onChange={props.onObjectChange}
             items={props.objectSelectItems}
             label={props.objectSelectLabel}
         />
-        <SelectField
+        <SelectControl
+            id="filter-select"
+            classes={classes}
             value={props.selectedFilterId}
             onChange={props.onFilterChange}
             items={props.filterBySelectItems}
             label={props.filterBySelectLabel}
         />
-        <InputField
-            value={props.searchTerm}
-            type="text"
-            label={props.searchFieldLabel}
-            onChange={props.onSearchTermChange}
-        />
+        <FormControl className={classes.formControl}>
+            <TextField
+                label={props.searchFieldLabel}
+                type="search"
+                onChange={props.onSearchTermChange}
+            />
+        </FormControl>
     </div>
 );
 
@@ -41,6 +104,7 @@ const TranslationsSearch = props => (
 const nonOnChangeHandler = () => null;
 
 TranslationsSearch.propTypes = {
+    classes: PropTypes.object.isRequired,
     localeSelectLabel: PropTypes.string.isRequired,
     localeSelectItems: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.string.isRequired,
@@ -78,4 +142,4 @@ TranslationsSearch.defaultProps = {
     onSearchTermChange: nonOnChangeHandler,
 };
 
-export default TranslationsSearch;
+export default withStyles(formStyles)(TranslationsSearch);

@@ -36,13 +36,13 @@ class TranslationsPage extends PureComponent {
     state = {
         showSnackbar: false,
         snackbarConf: DEFAULT_SNACKBAR_CONF,
-        localeSelectItems: [],
-        objectSelectItems: [],
+        localeSelectItems: PAGE_CONFIGS.INITIAL_LOCALES,
+        objectSelectItems: PAGE_CONFIGS.INITIAL_OBJECTS,
         filterBySelectItems: PAGE_CONFIGS.FILTER_BY_ITEMS,
         searchFilter: {
             pager: PAGE_CONFIGS.INITIAL_PAGER,
-            selectedLocale: null,
-            selectedObject: null,
+            selectedLocale: PAGE_CONFIGS.INITIAL_LOCALES.length > 0 ? PAGE_CONFIGS.INITIAL_LOCALES[0] : null,
+            selectedObject: PAGE_CONFIGS.INITIAL_OBJECTS.length > 0 ? PAGE_CONFIGS.INITIAL_OBJECTS[0] : null,
             selectedFilterBy: PAGE_CONFIGS.ALL_ITEM,
             searchTerm: '',
         },
@@ -54,17 +54,20 @@ class TranslationsPage extends PureComponent {
 
         /* Fetch languages and objects for Filter component */
         Promise.all([this.promiseToFetchLanguages(), this.promiseToFetchObjects()]).then((responses) => {
-            const localeSelectItems = this.buildLanguageSelectItemsArrayFromApiResponse(responses[0]);
-            const objectSelectItems = this.buildObjectSelectItemsArrayFromApiResponse(responses[1]);
+            const localeSelectItems =
+                this.buildLanguageSelectItemsArrayFromApiResponse(responses[0]) || PAGE_CONFIGS.INITIAL_LOCALES;
+            const objectSelectItems =
+                this.buildObjectSelectItemsArrayFromApiResponse(responses[1]) || PAGE_CONFIGS.INITIAL_OBJECTS;
+
             this.setState({
                 localeSelectItems,
                 objectSelectItems,
-                searchFilter: {
-                    ...this.state.searchFilter,
-                    selectedLocale: localeSelectItems.length > 0 ? localeSelectItems[0] : null,
-                    selectedObject: objectSelectItems.length > 0 ? objectSelectItems[0] : null,
-                },
             });
+
+            this.applyNextSearchFilter(this.nextSearchFilterWithChange({
+                selectedLocale: localeSelectItems.length > 0 ? localeSelectItems[0] : null,
+                selectedObject: objectSelectItems.length > 0 ? objectSelectItems[0] : null,
+            }));
 
             this.clearFeedbackSnackbar();
         }).catch((error) => {
