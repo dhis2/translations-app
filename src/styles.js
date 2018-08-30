@@ -14,14 +14,9 @@ const styles = {
         transform: 'translate(-50%, -50%)',
         zIndex: 3000, // over dialog
     },
-};
-
-/* general styles for material-ui with theme */
-export const formStylesForTheme = theme => ({
     formControl: {
-        margin: theme.spacing.unit,
-        minWidth: 120,
+        paddingRight: 10,
     },
-});
+};
 
 export default styles;

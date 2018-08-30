@@ -3,9 +3,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 /* material-ui */
-import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
 
 /* d2-ui components */
 import { Button } from '@dhis2/d2-ui-core';
@@ -15,7 +15,7 @@ import { i18nKeys } from '../../i18n';
 import i18n from '../../locales';
 
 /* styles */
-import { formStylesForTheme } from '../../styles';
+import styles from '../../styles';
 import translationCardStyles from './TranslationCard.style';
 
 const translationValueOfObjectForLocaleAndTranslationKey = (object, localeId, translationKey) => {
@@ -25,7 +25,7 @@ const translationValueOfObjectForLocaleAndTranslationKey = (object, localeId, tr
 };
 
 const TranslationCard = (props) => {
-    const { classes, onChangeTranslationForObjectAndLocale } = props;
+    const { onChangeTranslationForObjectAndLocale } = props;
     const onChange = translationKey => value => onChangeTranslationForObjectAndLocale(
         props.object.id,
         props.localeId,
@@ -36,22 +36,29 @@ const TranslationCard = (props) => {
     return (
         <Paper style={translationCardStyles.cardContainer}>
             <h3 style={translationCardStyles.header}>{props.object.displayName}</h3>
-            <div>
+            <Grid container>
                 {props.translatableProperties.map(property => (
-                    <TextField
-                        key={property.fieldName}
-                        className={classes.formControl}
-                        value={translationValueOfObjectForLocaleAndTranslationKey(
-                            props.object,
-                            props.localeId,
-                            property.translationKey,
-                        )}
-                        type="text"
-                        label={i18n.t(i18nKeys.translationForm[property.name])}
-                        onChange={onChange(property.translationKey)}
-                    />
+                    <Grid
+                        item
+                        xs={12}
+                        md={props.translatableProperties.length === 1 ? 12 : 6}
+                        style={styles.formControl}
+                    >
+                        <TextField
+                            key={property.fieldName}
+                            fullWidth
+                            value={translationValueOfObjectForLocaleAndTranslationKey(
+                                props.object,
+                                props.localeId,
+                                property.translationKey,
+                            )}
+                            type="text"
+                            label={i18n.t(i18nKeys.translationForm[property.name])}
+                            onChange={onChange(property.translationKey)}
+                        />
+                    </Grid>
                 ))}
-            </div>
+            </Grid>
             <div style={translationCardStyles.actionsContainer}>
                 <Button
                     raised
@@ -66,7 +73,6 @@ const TranslationCard = (props) => {
 };
 
 TranslationCard.propTypes = {
-    classes: PropTypes.object.isRequired,
     localeId: PropTypes.string.isRequired,
     object: PropTypes.shape({
         id: PropTypes.string.isRequired,
@@ -86,4 +92,4 @@ TranslationCard.propTypes = {
     saveTranslations: PropTypes.func.isRequired,
 };
 
-export default withStyles(formStylesForTheme)(TranslationCard);
+export default TranslationCard;

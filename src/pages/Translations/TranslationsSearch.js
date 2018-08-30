@@ -3,15 +3,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 /* material-ui */
-import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
 
 /* styles */
-import { formStylesForTheme } from '../../styles';
+import styles from '../../styles';
 import translationsSearchStyles from './TranslationsSearch.style';
 
-const SelectControl = ({ classes, items, label, onChange, value }) => {
+const SelectControl = ({ items, label, onChange, value }) => {
     /* passes the whole object and not only id */
     const onChangeEnhanced = (event) => {
         onChange(items.find(item => item.id === event.target.value));
@@ -21,9 +21,9 @@ const SelectControl = ({ classes, items, label, onChange, value }) => {
         <TextField
             select
             label={label}
-            className={classes.formControl}
             value={value}
             onChange={onChangeEnhanced}
+            fullWidth
         >
             {items.map(item => (
                 <MenuItem key={item.id} value={item.id}>
@@ -35,7 +35,6 @@ const SelectControl = ({ classes, items, label, onChange, value }) => {
 };
 
 SelectControl.propTypes = {
-    classes: PropTypes.object.isRequired,
     label: PropTypes.string.isRequired,
     items: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.string.isRequired,
@@ -50,46 +49,49 @@ SelectControl.defaultProps = {
     onChange: () => null,
 };
 
-const TranslationsSearch = ({ classes, ...props }) => (
-    <div style={translationsSearchStyles.container}>
-        <SelectControl
-            id="locale-select"
-            classes={classes}
-            value={props.selectedLocaleId}
-            onChange={props.onLocaleChange}
-            items={props.localeSelectItems}
-            label={props.localeSelectLabel}
-        />
-        <SelectControl
-            id="object-select"
-            classes={classes}
-            value={props.selectedObjectName}
-            onChange={props.onObjectChange}
-            items={props.objectSelectItems}
-            label={props.objectSelectLabel}
-        />
-        <SelectControl
-            id="filter-select"
-            classes={classes}
-            value={props.selectedFilterId}
-            onChange={props.onFilterChange}
-            items={props.filterBySelectItems}
-            label={props.filterBySelectLabel}
-        />
-        <TextField
-            className={classes.formControl}
-            label={props.searchFieldLabel}
-            type="search"
-            onChange={props.onSearchTermChange}
-        />
-    </div>
-);
-
 /* to avoid null exceptions */
 const nonOnChangeHandler = () => null;
 
+const TranslationsSearch = ({ ...props }) => (
+    <div style={translationsSearchStyles.container}>
+        <Grid container>
+            <Grid item xs={12} md={6} lg={3} style={styles.formControl}>
+                <SelectControl
+                    value={props.selectedLocaleId}
+                    onChange={props.onLocaleChange}
+                    items={props.localeSelectItems}
+                    label={props.localeSelectLabel}
+                />
+            </Grid>
+            <Grid item xs={12} md={6} lg={3} style={styles.formControl}>
+                <SelectControl
+                    value={props.selectedObjectName}
+                    onChange={props.onObjectChange}
+                    items={props.objectSelectItems}
+                    label={props.objectSelectLabel}
+                />
+            </Grid>
+            <Grid item xs={12} md={6} lg={3} style={styles.formControl}>
+                <SelectControl
+                    value={props.selectedFilterId}
+                    onChange={props.onFilterChange}
+                    items={props.filterBySelectItems}
+                    label={props.filterBySelectLabel}
+                />
+            </Grid>
+            <Grid item xs={12} md={6} lg={3} style={styles.formControl}>
+                <TextField
+                    label={props.searchFieldLabel}
+                    type="search"
+                    onChange={props.onSearchTermChange}
+                    fullWidth
+                />
+            </Grid>
+        </Grid>
+    </div>
+);
+
 TranslationsSearch.propTypes = {
-    classes: PropTypes.object.isRequired,
     localeSelectLabel: PropTypes.string.isRequired,
     localeSelectItems: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.string.isRequired,
@@ -127,4 +129,4 @@ TranslationsSearch.defaultProps = {
     onSearchTermChange: nonOnChangeHandler,
 };
 
-export default withStyles(formStylesForTheme)(TranslationsSearch);
+export default TranslationsSearch;
