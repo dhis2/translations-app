@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-08-30T10:26:53.233Z\n"
-"PO-Revision-Date: 2018-08-30T10:26:53.233Z\n"
+"POT-Creation-Date: 2018-08-30T11:25:01.621Z\n"
+"PO-Revision-Date: 2018-08-30T11:25:01.621Z\n"
 
 msgid "Filter by"
 msgstr ""
@@ -27,6 +27,18 @@ msgid "Object"
 msgstr ""
 
 msgid "Search"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Short name"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Form name"
 msgstr ""
 
 msgid "Save"

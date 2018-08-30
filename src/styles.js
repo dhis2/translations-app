@@ -16,4 +16,12 @@ const styles = {
     },
 };
 
+/* general styles for material-ui with theme */
+export const formStylesForTheme = theme => ({
+    formControl: {
+        margin: theme.spacing.unit,
+        minWidth: 120,
+    },
+});
+
 export default styles;

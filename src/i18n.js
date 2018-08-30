@@ -19,6 +19,10 @@ export const i18nKeys = {
         },
     },
     translationForm: {
+        name: 'Name',
+        shortName: 'Short name',
+        description: 'Description',
+        formName: 'Form name',
         actionButton: {
             label: 'Save',
         },

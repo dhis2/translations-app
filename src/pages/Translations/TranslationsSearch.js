@@ -11,14 +11,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 
 /* styles */
-import styles from './TranslationsSearch.style';
-
-const formStyles = theme => ({
-    formControl: {
-        margin: theme.spacing.unit,
-        minWidth: 120,
-    },
-});
+import { formStylesForTheme } from '../../styles';
+import translationsSearchStyles from './TranslationsSearch.style';
 
 const SelectControl = ({ classes, id, items, label, onChange, value }) => {
     /* passes the whole object and not only id */
@@ -65,7 +59,7 @@ SelectControl.defaultProps = {
 };
 
 const TranslationsSearch = ({ classes, ...props }) => (
-    <div style={styles.container}>
+    <div style={translationsSearchStyles.container}>
         <SelectControl
             id="locale-select"
             classes={classes}
@@ -142,4 +136,4 @@ TranslationsSearch.defaultProps = {
     onSearchTermChange: nonOnChangeHandler,
 };
 
-export default withStyles(formStyles)(TranslationsSearch);
+export default withStyles(formStylesForTheme)(TranslationsSearch);
