@@ -91,7 +91,6 @@ class TranslationsPage extends PureComponent {
         this.setState({
             searchFilter: this.nextSearchFilterWithChange({ searchTerm }),
         });
-        // this.applyNextSearchFilter(this.nextSearchFilterWithChange({ searchTerm }));
     };
 
     onSearchKeyPress = (event) => {
