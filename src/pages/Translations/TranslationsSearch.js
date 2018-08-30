@@ -4,9 +4,6 @@ import PropTypes from 'prop-types';
 
 /* material-ui */
 import { withStyles } from '@material-ui/core/styles';
-import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 
@@ -14,36 +11,31 @@ import TextField from '@material-ui/core/TextField';
 import { formStylesForTheme } from '../../styles';
 import translationsSearchStyles from './TranslationsSearch.style';
 
-const SelectControl = ({ classes, id, items, label, onChange, value }) => {
+const SelectControl = ({ classes, items, label, onChange, value }) => {
     /* passes the whole object and not only id */
     const onChangeEnhanced = (event) => {
         onChange(items.find(item => item.id === event.target.value));
     };
 
     return (
-        <FormControl className={classes.formControl}>
-            <InputLabel htmlFor={id}>{label}</InputLabel>
-            <Select
-                value={value}
-                onChange={onChangeEnhanced}
-                inputProps={{
-                    name: label,
-                    id,
-                }}
-            >
-                {items.map(item => (
-                    <MenuItem key={item.id} value={item.id}>
-                        {item.name}
-                    </MenuItem>
-                ))}
-            </Select>
-        </FormControl>
+        <TextField
+            select
+            label={label}
+            className={classes.formControl}
+            value={value}
+            onChange={onChangeEnhanced}
+        >
+            {items.map(item => (
+                <MenuItem key={item.id} value={item.id}>
+                    {item.name}
+                </MenuItem>
+            ))}
+        </TextField>
     );
 };
 
 SelectControl.propTypes = {
     classes: PropTypes.object.isRequired,
-    id: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
     items: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.string.isRequired,
@@ -84,13 +76,12 @@ const TranslationsSearch = ({ classes, ...props }) => (
             items={props.filterBySelectItems}
             label={props.filterBySelectLabel}
         />
-        <FormControl className={classes.formControl}>
-            <TextField
-                label={props.searchFieldLabel}
-                type="search"
-                onChange={props.onSearchTermChange}
-            />
-        </FormControl>
+        <TextField
+            className={classes.formControl}
+            label={props.searchFieldLabel}
+            type="search"
+            onChange={props.onSearchTermChange}
+        />
     </div>
 );
 

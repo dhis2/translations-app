@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 /* material-ui */
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 
 /* d2-ui components */
@@ -39,18 +38,18 @@ const TranslationCard = (props) => {
             <h3 style={translationCardStyles.header}>{props.object.displayName}</h3>
             <div>
                 {props.translatableProperties.map(property => (
-                    <FormControl key={property.fieldName} className={classes.formControl}>
-                        <TextField
-                            value={translationValueOfObjectForLocaleAndTranslationKey(
-                                props.object,
-                                props.localeId,
-                                property.translationKey,
-                            )}
-                            type="text"
-                            label={i18n.t(i18nKeys.translationForm[property.name])}
-                            onChange={onChange(property.translationKey)}
-                        />
-                    </FormControl>
+                    <TextField
+                        key={property.fieldName}
+                        className={classes.formControl}
+                        value={translationValueOfObjectForLocaleAndTranslationKey(
+                            props.object,
+                            props.localeId,
+                            property.translationKey,
+                        )}
+                        type="text"
+                        label={i18n.t(i18nKeys.translationForm[property.name])}
+                        onChange={onChange(property.translationKey)}
+                    />
                 ))}
             </div>
             <div style={translationCardStyles.actionsContainer}>
