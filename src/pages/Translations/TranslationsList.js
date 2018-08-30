@@ -14,6 +14,9 @@ import TranslationCard from './TranslationCard';
 /* utils */
 import * as PAGINATION_HELPER from '../../utils/pagination';
 
+/* styles */
+import styles from './TranslationsList.style';
+
 const PaginationBuilder = (pager, goToNextPage, goToPreviousPage) => (
     <Pagination
         total={pager.total}
@@ -26,7 +29,7 @@ const PaginationBuilder = (pager, goToNextPage, goToPreviousPage) => (
 );
 
 const TranslationsList = props => (
-    <div>
+    <div style={styles.container}>
         { PaginationBuilder(props.pager, props.goToNextPage, props.goToPreviousPage) }
         {
             props.objects.map(object => (

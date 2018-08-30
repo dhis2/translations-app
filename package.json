@@ -7,6 +7,7 @@
     "@dhis2/d2-ui-app": "^1.0.8",
     "@dhis2/d2-ui-core": "^1.3.2",
     "@dhis2/d2-ui-header-bar": "^1.1.7",
+    "@material-ui/core": "^3.0.1",
     "autoprefixer": "7.1.6",
     "babel-core": "6.26.0",
     "babel-eslint": "7.2.3",
@@ -72,7 +73,7 @@
     "deploy": "yarn run build && mvn clean deploy",
     "extract-pot": "node scripts/pot-extractor.js",
     "refresh-translations-template": "yarn extract-pot -- -o en.pot && git add ./i18n/en.pot",
-    "coverage": "yarn test -- --coverage"
+    "coverage": "yarn test --coverage"
   },
   "husky": {
     "hooks": {

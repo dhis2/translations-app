@@ -26,27 +26,31 @@ const TranslationCard = (props) => {
 
     return (
         <div>
-            {props.object.displayName}
-            {props.translatableProperties.map(property => (
-                <InputField
-                    key={property.fieldName}
-                    value={translationValueOfObjectForLocaleAndTranslationKey(
-                        props.object,
-                        props.localeId,
-                        property.translationKey,
-                    )}
-                    type="text"
-                    label={property.name}
-                    onChange={onChange(property.translationKey)}
-                />
-            ))}
-            <Button
-                raised
-                color="primary"
-                onClick={props.saveTranslations}
-            >
-                {i18n.t(i18nKeys.translationForm.actionButton.label)}
-            </Button>
+            <h3>{props.object.displayName}</h3>
+            <div>
+                {props.translatableProperties.map(property => (
+                    <InputField
+                        key={property.fieldName}
+                        value={translationValueOfObjectForLocaleAndTranslationKey(
+                            props.object,
+                            props.localeId,
+                            property.translationKey,
+                        )}
+                        type="text"
+                        label={property.name}
+                        onChange={onChange(property.translationKey)}
+                    />
+                ))}
+            </div>
+            <div>
+                <Button
+                    raised
+                    color="primary"
+                    onClick={props.saveTranslations}
+                >
+                    {i18n.t(i18nKeys.translationForm.actionButton.label)}
+                </Button>
+            </div>
         </div>
     );
 };

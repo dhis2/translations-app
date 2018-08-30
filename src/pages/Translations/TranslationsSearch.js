@@ -5,8 +5,11 @@ import PropTypes from 'prop-types';
 /* d2-ui components */
 import { SelectField, InputField } from '@dhis2/d2-ui-core';
 
+/* styles */
+import styles from './TranslationsSearch.style';
+
 const TranslationsSearch = props => (
-    <div>
+    <div style={styles.container}>
         <SelectField
             value={props.selectedLocaleId}
             onChange={props.onLocaleChange}
