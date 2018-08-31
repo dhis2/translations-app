@@ -19,7 +19,4 @@ export const configI18n = (userSettings) => {
     i18n.changeLanguage(lang);
 };
 
-/* util method to avoid do another user setting api request */
-export const getUserLocaleId = () => i18n.language || window.localStorage.i18nextLng || DEFAULT_LOCALE.id;
-
 export default configI18n;

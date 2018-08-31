@@ -12,11 +12,11 @@ import TranslationsList from './TranslationsList';
 /* i18n */
 import { i18nKeys } from '../../i18n';
 import i18n from '../../locales';
-import { getUserLocaleId } from '../../configI18n';
 
 /* utils */
 import * as PAGE_CONFIGS from './translations.conf';
 import * as FEEDBACK_SNACKBAR_TYPES from '../../utils/feedbackSnackBarTypes';
+import { DEFAULT_LOCALE } from '../../configI18n';
 
 /* styles */
 import styles from '../../styles';
@@ -121,7 +121,11 @@ class TranslationsPage extends PureComponent {
     };
 
     userLocalInLocales = (locales) => {
-        const userLocaleId = getUserLocaleId();
+        const currentUser = this.props.d2.currentUser;
+
+        const userLocaleId = currentUser && currentUser.userSettings && currentUser.userSettings.keyUiLocale
+            ? currentUser.userSettings.keyUiLocale
+            : DEFAULT_LOCALE.id;
         const userLocale = locales.find(locale => locale.id === userLocaleId);
 
         return userLocale || (locales.length > 0 ? locales[0] : null);
