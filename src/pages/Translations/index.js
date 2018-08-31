@@ -245,7 +245,7 @@ class TranslationsPage extends PureComponent {
         return locales.length > 0 ? locales : PAGE_CONFIGS.INITIAL_LOCALES;
     };
 
-    buildObjectSelectItemsArrayFromApiResponse = (objectsResponse) => {
+    buildObjectSelectItemsArrayFromApiResponse = (schemasResponse) => {
         const translatablePropertiesFromProperties = (properties) => {
             const translatableProperties = properties ? properties.filter(property => !!property.translationKey) : [];
 
@@ -254,10 +254,15 @@ class TranslationsPage extends PureComponent {
                 : PAGE_CONFIGS.DEFAULT_TRANSLATABLE_PROPERTIES;
         };
 
-        const schemas = objectsResponse && objectsResponse.schemas ?
-            objectsResponse.schemas.filter(object =>
-                object.translatable &&
-                this.props.d2.currentUser.canUpdate(this.props.d2.model.ModelDefinition.createFromSchema(object)))
+        /* FIXME Looking into the code canUpdate can be used that way, but the correct way would be
+           to have a correct ModelDefinition created by d2, for example using something like
+                this.props.d2.model.ModelDefinition.createFromSchema(object)
+            However for this to work the response payload from schemas would need to pull all schemas propoerties
+            making it weight around 1.6mb instead of around 100kb fetching only the needed info, as authorities
+         */
+        const schemas = schemasResponse && schemasResponse.schemas ?
+            schemasResponse.schemas.filter(schema =>
+                schema.translatable && this.props.d2.currentUser.canUpdate({ authorities: schema.authorities }))
                 .map(object => ({
                     id: object.name,
                     name: object.displayName,

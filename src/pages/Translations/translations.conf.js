@@ -4,7 +4,8 @@ import i18n from '../../locales';
 import { DEFAULT_LOCALE } from '../../configI18n';
 
 /* API Endpoints */
-export const OBJECTS_API_URL = '/schemas';
+export const OBJECTS_API_URL = '/schemas?fields=apiEndpoint,plural,relativeApiEndpoint,displayName,name,translatable,' +
+    'authorities,properties[name,fieldName,translationKey]';
 export const LANGUAGES_API_URL = '/locales/db?paging=false';
 
 /* Constants for Filter By Select */
