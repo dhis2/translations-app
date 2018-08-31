@@ -54,14 +54,12 @@ class TranslationsPage extends PureComponent {
 
         /* Fetch languages and objects for Filter component */
         Promise.all([this.promiseToFetchLanguages(), this.promiseToFetchObjects()]).then((responses) => {
-            const localeSelectItems =
-                this.buildLanguageSelectItemsArrayFromApiResponse(responses[0]) || PAGE_CONFIGS.INITIAL_LOCALES;
-            const objectSelectItems =
-                this.buildObjectSelectItemsArrayFromApiResponse(responses[1]) || PAGE_CONFIGS.INITIAL_OBJECTS;
+            const localeSelectItems = this.buildLanguageSelectItemsArrayFromApiResponse(responses[0]);
+            const objectSelectItems = this.buildObjectSelectItemsArrayFromApiResponse(responses[1]);
 
             this.setState({
-                localeSelectItems,
                 objectSelectItems,
+                localeSelectItems,
             });
 
             this.applyNextSearchFilter(this.nextSearchFilterWithChange({
@@ -229,23 +227,39 @@ class TranslationsPage extends PureComponent {
 
     promiseToFetchObjects = () => this.props.d2.Api.getApi().get(PAGE_CONFIGS.OBJECTS_API_URL);
 
-    buildLanguageSelectItemsArrayFromApiResponse = languagesResponse => (languagesResponse ?
-        languagesResponse.map(language => ({
-            id: language.locale,
-            name: language.name,
-        })) : []);
+    buildLanguageSelectItemsArrayFromApiResponse = (languagesResponse) => {
+        const locales = languagesResponse ?
+            languagesResponse.map(language => ({
+                id: language.locale,
+                name: language.name,
+            })) : [];
 
-    buildObjectSelectItemsArrayFromApiResponse = objectsResponse => (objectsResponse && objectsResponse.schemas ?
-        objectsResponse.schemas.filter(object =>
-            object.translatable &&
-            this.props.d2.currentUser.canUpdate(this.props.d2.model.ModelDefinition.createFromSchema(object)))
-            .map(object => ({
-                id: object.name,
-                name: object.displayName,
-                relativeApiEndpoint: object.relativeApiEndpoint,
-                apiResponseProperty: object.plural,
-                translatableProperties: object.properties.filter(property => !!property.translationKey),
-            })) : []);
+        return locales.length > 0 ? locales : PAGE_CONFIGS.INITIAL_LOCALES;
+    };
+
+    buildObjectSelectItemsArrayFromApiResponse = (objectsResponse) => {
+        const translatablePropertiesFromProperties = (properties) => {
+            const translatableProperties = properties ? properties.filter(property => !!property.translationKey) : [];
+
+            return translatableProperties.length > 0
+                ? translatableProperties
+                : PAGE_CONFIGS.DEFAULT_TRANSLATABLE_PROPERTIES;
+        };
+
+        const schemas = objectsResponse && objectsResponse.schemas ?
+            objectsResponse.schemas.filter(object =>
+                object.translatable &&
+                this.props.d2.currentUser.canUpdate(this.props.d2.model.ModelDefinition.createFromSchema(object)))
+                .map(object => ({
+                    id: object.name,
+                    name: object.displayName,
+                    relativeApiEndpoint: object.relativeApiEndpoint,
+                    apiResponseProperty: object.plural,
+                    translatableProperties: translatablePropertiesFromProperties(object.properties),
+                })) : [];
+
+        return schemas.length > 0 ? schemas : PAGE_CONFIGS.INITIAL_OBJECTS;
+    } ;
 
     startLoading = () => {
         this.setState({

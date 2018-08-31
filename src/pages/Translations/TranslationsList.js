@@ -16,6 +16,7 @@ import TranslationCard from './TranslationCard';
 
 /* utils */
 import * as PAGINATION_HELPER from '../../utils/pagination';
+import { DEFAULT_TRANSLATABLE_PROPERTIES } from './translations.conf';
 
 /* styles */
 import styles from '../../styles';
@@ -30,6 +31,14 @@ const PaginationBuilder = (pager, goToNextPage, goToPreviousPage) => (
         onPreviousPageClick={goToPreviousPage}
         currentlyShown={PAGINATION_HELPER.calculatePageValue(pager)}
     />
+);
+
+const NoResults = () => (
+    <div style={translationsListStyles.noResultsContainer}>
+        <Paper style={styles.cardContainer}>
+            No Results
+        </Paper>
+    </div>
 );
 
 const TranslationsList = props => (props.objects && props.objects.length > 0 ?
@@ -52,11 +61,7 @@ const TranslationsList = props => (props.objects && props.objects.length > 0 ?
             { PaginationBuilder(props.pager, props.goToNextPage, props.goToPreviousPage) }
         </div>
     ) : (
-        <div style={translationsListStyles.noResultsContainer}>
-            <Paper style={styles.cardContainer}>
-                No Results
-            </Paper>
-        </div>
+        <NoResults />
     ));
 
 TranslationsList.propTypes = {
@@ -72,9 +77,10 @@ TranslationsList.propTypes = {
         })).isRequired,
     })).isRequired,
     translatableProperties: PropTypes.arrayOf(PropTypes.shape({
+        fieldName: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         translationKey: PropTypes.string.isRequired,
-    })).isRequired,
+    })),
     pager: PropTypes.shape({
         pageSize: PropTypes.number.isRequired,
         page: PropTypes.number.isRequired,
@@ -85,6 +91,10 @@ TranslationsList.propTypes = {
     goToPreviousPage: PropTypes.func.isRequired,
     onChangeTranslationForObjectAndLocale: PropTypes.func.isRequired,
     saveTranslations: PropTypes.func.isRequired,
+};
+
+TranslationsList.defaultProps = {
+    translatableProperties: DEFAULT_TRANSLATABLE_PROPERTIES,
 };
 
 export default TranslationsList;
