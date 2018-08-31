@@ -12,6 +12,7 @@ import TranslationsList from './TranslationsList';
 /* i18n */
 import { i18nKeys } from '../../i18n';
 import i18n from '../../locales';
+import { getUserLocaleId } from '../../configI18n';
 
 /* utils */
 import * as PAGE_CONFIGS from './translations.conf';
@@ -63,7 +64,7 @@ class TranslationsPage extends PureComponent {
             });
 
             this.applyNextSearchFilter(this.nextSearchFilterWithChange({
-                selectedLocale: localeSelectItems.length > 0 ? localeSelectItems[0] : null,
+                selectedLocale: this.userLocalInLocales(localeSelectItems),
                 selectedObject: objectSelectItems.length > 0 ? objectSelectItems[0] : null,
             }));
 
@@ -117,6 +118,13 @@ class TranslationsPage extends PureComponent {
                 searchResults,
             });
         }
+    };
+
+    userLocalInLocales = (locales) => {
+        const userLocaleId = getUserLocaleId();
+        const userLocale = locales.find(locale => locale.id === userLocaleId);
+
+        return userLocale || (locales.length > 0 ? locales[0] : null);
     };
 
     saveTranslationForObjectId = objectId => () => {

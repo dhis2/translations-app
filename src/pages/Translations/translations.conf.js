@@ -1,6 +1,7 @@
 /* i18n */
 import { i18nKeys } from '../../i18n';
 import i18n from '../../locales';
+import { DEFAULT_LOCALE } from '../../configI18n';
 
 /* API Endpoints */
 export const OBJECTS_API_URL = '/schemas';
@@ -36,7 +37,7 @@ export const DEFAULT_TRANSLATABLE_PROPERTIES = [
 ];
 
 export const INITIAL_LOCALES = [
-    { id: 'en', name: 'English' },
+    DEFAULT_LOCALE,
 ];
 
 export const INITIAL_OBJECTS = [
