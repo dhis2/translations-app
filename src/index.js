@@ -28,7 +28,6 @@ getManifest('manifest.webapp').then((manifest) => {
     // init d2 with configs
     init({
         baseUrl,
-        schemas: [],
     })
         .then((d2) => {
             d2Instance = d2;

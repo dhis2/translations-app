@@ -33,7 +33,7 @@ const PaginationBuilder = (pager, goToNextPage, goToPreviousPage) => (
     />
 );
 
-const NoResults = () => (
+export const NoResults = () => (
     <div style={translationsListStyles.noResultsContainer}>
         <Paper style={styles.cardContainer}>
             No Results
