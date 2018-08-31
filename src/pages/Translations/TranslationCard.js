@@ -26,12 +26,14 @@ const translationValueOfObjectForLocaleAndTranslationKey = (object, localeId, tr
 
 const TranslationCard = (props) => {
     const { onChangeTranslationForObjectAndLocale } = props;
-    const onChange = translationKey => value => onChangeTranslationForObjectAndLocale(
-        props.object.id,
-        props.localeId,
-        translationKey,
-        value,
-    );
+    const onChange = translationKey => (event) => {
+        onChangeTranslationForObjectAndLocale(
+            props.object.id,
+            props.localeId,
+            translationKey,
+            event.target.value,
+        );
+    };
 
     return (
         <Paper style={styles.cardContainer}>
@@ -39,7 +41,7 @@ const TranslationCard = (props) => {
             <Grid container>
                 {props.translatableProperties.map(property => (
                     <Grid
-                        key={property.fieldName}
+                        key={property.name}
                         item
                         xs={12}
                         md={props.translatableProperties.length === 1 ? 12 : 6}
@@ -85,7 +87,6 @@ TranslationCard.propTypes = {
         })).isRequired,
     }).isRequired,
     translatableProperties: PropTypes.arrayOf(PropTypes.shape({
-        fieldName: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         translationKey: PropTypes.string.isRequired,
     })).isRequired,

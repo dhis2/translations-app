@@ -77,7 +77,6 @@ TranslationsList.propTypes = {
         })).isRequired,
     })).isRequired,
     translatableProperties: PropTypes.arrayOf(PropTypes.shape({
-        fieldName: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         translationKey: PropTypes.string.isRequired,
     })),

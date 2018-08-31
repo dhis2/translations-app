@@ -29,43 +29,56 @@ const DEFAULT_SNACKBAR_CONF = {
     onActionClick: null,
 };
 
+/* auxiliar methods */
+/* FIXME move to an external file? */
+const modelToSchemaEntry = model => ({
+    id: model.name,
+    name: model.displayName,
+    translatableProperties: model.getTranslatablePropertiesWithKeys(),
+    apiEndpoint: model.apiEndpoint,
+});
+
 class TranslationsPage extends PureComponent {
     static propTypes = {
         d2: PropTypes.object.isRequired,
     };
 
-    state = {
-        showSnackbar: false,
-        snackbarConf: DEFAULT_SNACKBAR_CONF,
-        localeSelectItems: PAGE_CONFIGS.INITIAL_LOCALES,
-        objectSelectItems: PAGE_CONFIGS.INITIAL_OBJECTS,
-        filterBySelectItems: PAGE_CONFIGS.FILTER_BY_ITEMS,
-        searchFilter: {
-            pager: PAGE_CONFIGS.INITIAL_PAGER,
-            selectedLocale: PAGE_CONFIGS.INITIAL_LOCALES.length > 0 ? PAGE_CONFIGS.INITIAL_LOCALES[0] : null,
-            selectedObject: PAGE_CONFIGS.INITIAL_OBJECTS.length > 0 ? PAGE_CONFIGS.INITIAL_OBJECTS[0] : null,
-            selectedFilterBy: PAGE_CONFIGS.ALL_ITEM,
-            searchTerm: '',
-        },
-        searchResults: null,
-    };
+    constructor(props) {
+        super(props);
+
+        /* filtering for translatable models and transforming model for select */
+        const schemaEntries = this.reduceModelsToSchemaEntries();
+
+        this.state = {
+            showSnackbar: false,
+            snackbarConf: DEFAULT_SNACKBAR_CONF,
+            localeSelectItems: PAGE_CONFIGS.INITIAL_LOCALES,
+            objectSelectItems: schemaEntries,
+            filterBySelectItems: PAGE_CONFIGS.FILTER_BY_ITEMS,
+            searchFilter: {
+                pager: PAGE_CONFIGS.INITIAL_PAGER,
+                selectedLocale: PAGE_CONFIGS.INITIAL_LOCALES.length > 0 ? PAGE_CONFIGS.INITIAL_LOCALES[0] : null,
+                selectedObject: schemaEntries.length > 0 ? schemaEntries[0] : null,
+                selectedFilterBy: PAGE_CONFIGS.ALL_ITEM,
+                searchTerm: '',
+            },
+            searchResults: null,
+        };
+    }
 
     componentDidMount() {
         this.startLoading();
 
         /* Fetch languages and objects for Filter component */
-        Promise.all([this.promiseToFetchLanguages(), this.promiseToFetchObjects()]).then((responses) => {
-            const localeSelectItems = this.buildLanguageSelectItemsArrayFromApiResponse(responses[0]);
-            const objectSelectItems = this.buildObjectSelectItemsArrayFromApiResponse(responses[1]);
+        this.promiseToFetchLanguages().then((response) => {
+            const localeSelectItems = this.buildLanguageSelectItemsArrayFromApiResponse(response);
 
             this.setState({
-                objectSelectItems,
                 localeSelectItems,
             });
 
             this.applyNextSearchFilter(this.nextSearchFilterWithChange({
                 selectedLocale: this.userLocalInLocales(localeSelectItems),
-                selectedObject: objectSelectItems.length > 0 ? objectSelectItems[0] : null,
             }));
 
             this.clearFeedbackSnackbar();
@@ -120,6 +133,33 @@ class TranslationsPage extends PureComponent {
         }
     };
 
+    reduceModelsToSchemaEntries = () => {
+        const modelNames = this.arrayOfDuplicatedAndTranslatableSchemaNames();
+
+        return modelNames.map((modelName) => {
+            const model = this.props.d2.models[modelName];
+            return modelToSchemaEntry(model);
+        });
+    };
+
+    /*
+        FIXME find a better name
+        Need to do this because models are duplicated by singular and plural endpoint
+    */
+    arrayOfDuplicatedAndTranslatableSchemaNames = () => {
+        const modelKeys = Object.keys(this.props.d2.models);
+        const modelNames = new Set([]);
+        for (let i = 0; i < modelKeys.length; i++) {
+            const modelKey = modelKeys[i];
+            const model = this.props.d2.models[modelKey];
+            if (model.isTranslatable()) {
+                modelNames.add(model.name);
+            }
+        }
+
+        return [...modelNames];
+    };
+
     userLocalInLocales = (locales) => {
         const currentUser = this.props.d2.currentUser;
 
@@ -143,7 +183,7 @@ class TranslationsPage extends PureComponent {
             /* translations that are being shown and able to be updated */
             const inViewTranslations = selectedObjectInstance.translations;
             const translationsUrlForInstance =
-                `${this.state.searchFilter.selectedObject.relativeApiEndpoint}/${objectId}/translations/`;
+                `${this.state.searchFilter.selectedObject.apiEndpoint}/${objectId}/translations/`;
 
             /* request old translations to avoid overwrite other locales updated meanwhile */
             api.get(translationsUrlForInstance).then((response) => {
@@ -185,39 +225,45 @@ class TranslationsPage extends PureComponent {
     };
 
     applyNextSearchFilter = (nextSearchFilter) => {
-        const api = this.props.d2.Api.getApi();
-
         this.setState({
             searchFilter: nextSearchFilter,
         });
 
-        this.startLoading();
-
-        api.get(this.buildApiUrlForSearchFilter(nextSearchFilter)).then((response) => {
-            this.setState({
-                searchResults: response[nextSearchFilter.selectedObject.apiResponseProperty],
-                searchFilter: {
-                    ...nextSearchFilter,
-                    pager: {
-                        page: response.pager.page,
-                        pageCount: response.pager.pageCount,
-                        total: response.pager.total,
-                        pageSize: response.pager.pageSize,
+        const model = this.props.d2.models[nextSearchFilter.selectedObject.id];
+        if (model) {
+            this.startLoading();
+            model.list({
+                paging: true,
+                page: nextSearchFilter.pager.page,
+                pageSize: nextSearchFilter.pager.pageSize,
+                fields: 'id,displayName,name,translations',
+                filter: this.filtersForSearch(nextSearchFilter),
+            }).then((response) => {
+                this.setState({
+                    searchResults: response.toArray(),
+                    searchFilter: {
+                        ...nextSearchFilter,
+                        pager: {
+                            page: response.pager.page,
+                            pageCount: response.pager.pageCount,
+                            total: response.pager.total,
+                            pageSize: response.pager.pageSize || nextSearchFilter.pager.pageSize,
+                        },
                     },
-                },
-            });
+                });
 
-            this.clearFeedbackSnackbar();
-        }).catch((error) => {
-            this.manageError(error);
-        });
+                this.clearFeedbackSnackbar();
+            }).catch((error) => {
+                this.manageError(error);
+            });
+        } else {
+            this.manageError();
+        }
     };
 
-    buildApiUrlForSearchFilter = ({ selectedObject, searchTerm, selectedFilterBy, pager }) => {
-        const urlBase = `${selectedObject.relativeApiEndpoint}?fields=id,displayName,name,translations`;
-
-        const searchFilter = searchTerm.length > 0 ? `&filter=name:ilike:${searchTerm}` : '';
-
+    filtersForSearch = ({ searchTerm/* , selectedFilterBy */ }) =>
+        (searchTerm.length > 0 ? `name:ilike:${searchTerm}` : null)
+        /* FIXME improve the filters
         let filterBy = '';
         if (selectedFilterBy.id === PAGE_CONFIGS.UNTRANSLATED_ID) {
             filterBy = '&filter=translations:empty';
@@ -225,10 +271,9 @@ class TranslationsPage extends PureComponent {
             filterBy = '&filter=translations:gt:0';
         }
 
-        const pagination = `&page=${pager.page}&pageSize=${pager.pageSize}`;
-
-        return urlBase + searchFilter + filterBy + pagination;
-    };
+        return searchFilter + filterBy;
+        */
+    ;
 
     nextSearchFilterWithChange = searchFilterChange => ({
         ...this.state.searchFilter,
@@ -236,8 +281,6 @@ class TranslationsPage extends PureComponent {
     });
 
     promiseToFetchLanguages = () => this.props.d2.Api.getApi().get(PAGE_CONFIGS.LANGUAGES_API_URL);
-
-    promiseToFetchObjects = () => this.props.d2.Api.getApi().get(PAGE_CONFIGS.OBJECTS_API_URL);
 
     buildLanguageSelectItemsArrayFromApiResponse = (languagesResponse) => {
         const locales = languagesResponse ?
@@ -248,29 +291,6 @@ class TranslationsPage extends PureComponent {
 
         return locales.length > 0 ? locales : PAGE_CONFIGS.INITIAL_LOCALES;
     };
-
-    buildObjectSelectItemsArrayFromApiResponse = (schemasResponse) => {
-        const translatablePropertiesFromProperties = (properties) => {
-            const translatableProperties = properties ? properties.filter(property => !!property.translationKey) : [];
-
-            return translatableProperties.length > 0
-                ? translatableProperties
-                : PAGE_CONFIGS.DEFAULT_TRANSLATABLE_PROPERTIES;
-        };
-
-        const schemas = schemasResponse && schemasResponse.schemas ?
-            schemasResponse.schemas.filter(schema =>
-                schema.translatable && this.props.d2.currentUser.canUpdate(this.props.d2.models[schema.name]))
-                .map(object => ({
-                    id: object.name,
-                    name: object.displayName,
-                    relativeApiEndpoint: object.relativeApiEndpoint,
-                    apiResponseProperty: object.plural,
-                    translatableProperties: translatablePropertiesFromProperties(object.properties),
-                })) : [];
-
-        return schemas.length > 0 ? schemas : PAGE_CONFIGS.INITIAL_OBJECTS;
-    } ;
 
     startLoading = () => {
         this.setState({

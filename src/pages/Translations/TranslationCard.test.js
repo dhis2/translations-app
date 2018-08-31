@@ -75,7 +75,11 @@ describe('Test <TranslationsCard /> actions:', () => {
     });
 
     it('Should call onChangeTranslationForObjectAndLocale function when TextField text changes.', () => {
-        wrapper.find(TextField).first().simulate('change');
+        wrapper.find(TextField).first().simulate('change', {
+            target: {
+                value: 'newText',
+            }
+        });
         expect(DEFAULT_PROPS.onChangeTranslationForObjectAndLocale).toHaveBeenCalled();
     });
 
