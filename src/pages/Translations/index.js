@@ -306,7 +306,7 @@ class TranslationsPage extends PureComponent {
         }
     };
 
-    filtersForSearch = ({ searchTerm }) => (searchTerm.length > 0 ? `name:ilike:${searchTerm}` : null);
+    filtersForSearch = ({ searchTerm }) => (searchTerm.trim().length > 0 ? `name:ilike:${searchTerm}` : null);
 
     nextSearchFilterWithChange = searchFilterChange => ({
         ...this.state.searchFilter,
