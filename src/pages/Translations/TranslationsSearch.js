@@ -13,7 +13,7 @@ import Search from '@material-ui/icons/Search';
 import styles from '../../styles';
 import translationsSearchStyles from './TranslationsSearch.style';
 
-const SelectControl = ({ items, label, onChange, value }) => {
+export const SelectControl = ({ items, label, onChange, value }) => {
     /* passes the whole object and not only id */
     const onChangeEnhanced = (event) => {
         onChange(items.find(item => item.id === event.target.value));
@@ -62,7 +62,7 @@ const TranslationsSearch = (props) => {
     return (
         <div style={translationsSearchStyles.container}>
             <Grid container>
-                <Grid item xs={12} md={6} lg={3} style={styles.formControl}>
+                <Grid item xs={12} md={4} style={styles.formControl}>
                     <SelectControl
                         value={props.selectedLocaleId}
                         onChange={props.onLocaleChange}
@@ -70,7 +70,7 @@ const TranslationsSearch = (props) => {
                         label={props.localeSelectLabel}
                     />
                 </Grid>
-                <Grid item xs={12} md={6} lg={3} style={styles.formControl}>
+                <Grid item xs={12} md={4} style={styles.formControl}>
                     <SelectControl
                         value={props.selectedObjectName}
                         onChange={props.onObjectChange}
@@ -78,15 +78,7 @@ const TranslationsSearch = (props) => {
                         label={props.objectSelectLabel}
                     />
                 </Grid>
-                <Grid item xs={12} md={6} lg={3} style={styles.formControl}>
-                    <SelectControl
-                        value={props.selectedFilterId}
-                        onChange={props.onFilterChange}
-                        items={props.filterBySelectItems}
-                        label={props.filterBySelectLabel}
-                    />
-                </Grid>
-                <Grid item xs={12} md={6} lg={3} style={styles.formControl}>
+                <Grid item xs={12} md={4} style={styles.formControl}>
                     <TextField
                         label={props.searchFieldLabel}
                         type="search"
@@ -123,13 +115,6 @@ TranslationsSearch.propTypes = {
     })).isRequired,
     selectedObjectName: PropTypes.string,
     onObjectChange: PropTypes.func,
-    filterBySelectLabel: PropTypes.string.isRequired,
-    filterBySelectItems: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-    })).isRequired,
-    selectedFilterId: PropTypes.string,
-    onFilterChange: PropTypes.func,
     searchFieldLabel: PropTypes.string.isRequired,
     searchTerm: PropTypes.string,
     onSearchTermChange: PropTypes.func,
@@ -141,8 +126,6 @@ TranslationsSearch.defaultProps = {
     onLocaleChange: nonHandler,
     selectedObjectName: null,
     onObjectChange: nonHandler,
-    selectedFilterId: null,
-    onFilterChange: nonHandler,
     searchTerm: '',
     onSearchTermChange: nonHandler,
     onSearchKeyPress: nonHandler,

@@ -47,19 +47,17 @@ class TranslationsPage extends PureComponent {
         super(props);
 
         /* filtering for translatable models and transforming model for select */
-        const schemaEntries = this.reduceModelsToSchemaEntries();
+        const schemaEntries = this.updatableAndTranslatableModelsAsSchemaEntries();
 
         this.state = {
             showSnackbar: false,
             snackbarConf: DEFAULT_SNACKBAR_CONF,
             localeSelectItems: PAGE_CONFIGS.INITIAL_LOCALES,
             objectSelectItems: schemaEntries,
-            filterBySelectItems: PAGE_CONFIGS.FILTER_BY_ITEMS,
             searchFilter: {
                 pager: PAGE_CONFIGS.INITIAL_PAGER,
                 selectedLocale: PAGE_CONFIGS.INITIAL_LOCALES.length > 0 ? PAGE_CONFIGS.INITIAL_LOCALES[0] : null,
                 selectedObject: schemaEntries.length > 0 ? schemaEntries[0] : null,
-                selectedFilterBy: PAGE_CONFIGS.ALL_ITEM,
                 searchTerm: '',
             },
             searchResults: null,
@@ -78,7 +76,7 @@ class TranslationsPage extends PureComponent {
             });
 
             this.applyNextSearchFilter(this.nextSearchFilterWithChange({
-                selectedLocale: this.userLocalInLocales(localeSelectItems),
+                selectedLocale: this.userLocalesIn(localeSelectItems),
             }));
 
             this.clearFeedbackSnackbar();
@@ -93,10 +91,6 @@ class TranslationsPage extends PureComponent {
 
     onObjectChange = (object) => {
         this.applyNextSearchFilter(this.nextSearchFilterWithChange({ selectedObject: object }));
-    };
-
-    onFilterChange = (filterBy) => {
-        this.applyNextSearchFilter(this.nextSearchFilterWithChange({ selectedFilterBy: filterBy }));
     };
 
     onSearchTermChange = (searchTerm) => {
@@ -134,33 +128,39 @@ class TranslationsPage extends PureComponent {
     };
 
     reduceModelsToSchemaEntries = () => {
-        const modelNames = this.arrayOfDuplicatedAndTranslatableSchemaNames();
+        const models = this.arrayOfUniqueUpdatableAndTranslatableModels();
 
-        return modelNames.map((modelName) => {
+        return models.map((modelName) => {
             const model = this.props.d2.models[modelName];
             return modelToSchemaEntry(model);
         });
     };
 
     /*
-        FIXME find a better name
-        Need to do this because models are duplicated by singular and plural endpoint
+        models are duplicated by singular and plural endpoint
+        check the ones which are translatable and updatable
     */
-    arrayOfDuplicatedAndTranslatableSchemaNames = () => {
-        const modelKeys = Object.keys(this.props.d2.models);
+    updatableAndTranslatableModelsAsSchemaEntries = () => {
+        const models = this.props.d2.models || [];
+        const modelKeys = Object.keys(models);
+
         const modelNames = new Set([]);
+        const schemas = [];
+
         for (let i = 0; i < modelKeys.length; i++) {
             const modelKey = modelKeys[i];
-            const model = this.props.d2.models[modelKey];
-            if (model.isTranslatable()) {
+            const model = models[modelKey];
+            const modelName = model.name;
+            if (!modelNames.has(modelName) && model.isTranslatable() && this.props.d2.currentUser.canUpdate(model)) {
                 modelNames.add(model.name);
+                schemas.push(modelToSchemaEntry(model));
             }
         }
 
-        return [...modelNames];
+        return schemas;
     };
 
-    userLocalInLocales = (locales) => {
+    userLocalesIn = (locales) => {
         const currentUser = this.props.d2.currentUser;
 
         const userLocaleId = currentUser && currentUser.userSettings && currentUser.userSettings.keyUiLocale
@@ -261,19 +261,7 @@ class TranslationsPage extends PureComponent {
         }
     };
 
-    filtersForSearch = ({ searchTerm/* , selectedFilterBy */ }) =>
-        (searchTerm.length > 0 ? `name:ilike:${searchTerm}` : null)
-        /* FIXME improve the filters
-        let filterBy = '';
-        if (selectedFilterBy.id === PAGE_CONFIGS.UNTRANSLATED_ID) {
-            filterBy = '&filter=translations:empty';
-        } else if (selectedFilterBy.id === PAGE_CONFIGS.TRANSLATED_ID) {
-            filterBy = '&filter=translations:gt:0';
-        }
-
-        return searchFilter + filterBy;
-        */
-    ;
+    filtersForSearch = ({ searchTerm }) => (searchTerm.length > 0 ? `name:ilike:${searchTerm}` : null);
 
     nextSearchFilterWithChange = searchFilterChange => ({
         ...this.state.searchFilter,
@@ -335,7 +323,6 @@ class TranslationsPage extends PureComponent {
         this.state.objectSelectItems &&
         this.state.searchFilter.selectedLocale &&
         this.state.searchFilter.selectedObject &&
-        this.state.searchFilter.selectedFilterBy &&
         this.state.searchResults;
 
     render() {
@@ -366,10 +353,6 @@ class TranslationsPage extends PureComponent {
                     selectedObjectName={this.state.searchFilter.selectedObject ?
                         this.state.searchFilter.selectedObject.id : null}
                     onObjectChange={this.onObjectChange}
-                    filterBySelectLabel={i18n.t(i18nKeys.searchToolbar.selects.filterBy.label)}
-                    filterBySelectItems={this.state.filterBySelectItems}
-                    selectedFilterId={this.state.searchFilter.selectedFilterBy.id}
-                    onFilterChange={this.onFilterChange}
                     searchFieldLabel={i18n.t(i18nKeys.searchToolbar.searchTextField.label)}
                     searchTerm={this.state.searchFilter.searchTerm}
                     onSearchTermChange={this.onSearchTermChange}
