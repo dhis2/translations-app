@@ -59,6 +59,7 @@ class TranslationsPage extends PureComponent {
                 selectedLocale: PAGE_CONFIGS.INITIAL_LOCALES.length > 0 ? PAGE_CONFIGS.INITIAL_LOCALES[0] : null,
                 selectedObject: schemaEntries.length > 0 ? schemaEntries[0] : null,
                 searchTerm: '',
+                hideTranslated: false,
             },
             searchResults: null,
         };
@@ -85,8 +86,10 @@ class TranslationsPage extends PureComponent {
         });
     }
 
-    onLocaleChange = (locale) => {
-        this.applyNextSearchFilter(this.nextSearchFilterWithChange({ selectedLocale: locale }));
+    onLocaleChange = (selectedLocale) => {
+        this.setState({
+            searchFilter: this.nextSearchFilterWithChange({ selectedLocale }),
+        });
     };
 
     onObjectChange = (object) => {
@@ -127,12 +130,12 @@ class TranslationsPage extends PureComponent {
         }
     };
 
-    reduceModelsToSchemaEntries = () => {
-        const models = this.arrayOfUniqueUpdatableAndTranslatableModels();
-
-        return models.map((modelName) => {
-            const model = this.props.d2.models[modelName];
-            return modelToSchemaEntry(model);
+    toggleHideTranslated = () => {
+        this.setState({
+            searchFilter: {
+                ...this.state.searchFilter,
+                hideTranslated: !this.state.searchFilter.hideTranslated,
+            },
         });
     };
 
@@ -175,7 +178,8 @@ class TranslationsPage extends PureComponent {
         const api = this.props.d2.Api.getApi();
 
         const searchResults = [...this.state.searchResults];
-        const selectedObjectInstance = searchResults.find(objectInstance => objectInstance.id === objectId);
+        const selectedObjectIndex = searchResults.findIndex(objectInstance => objectInstance.id === objectId);
+        const selectedObjectInstance = searchResults[selectedObjectIndex];
 
         if (selectedObjectInstance) {
             this.startLoading();
@@ -193,6 +197,17 @@ class TranslationsPage extends PureComponent {
                 const translations = [...notUpdateTranslations, ...inViewTranslations];
 
                 api.update(translationsUrlForInstance, { translations }).then(() => {
+                    /* open next card and show success message */
+                    if (selectedObjectIndex < searchResults.length - 1) {
+                        selectedObjectInstance.open = false;
+                        selectedObjectInstance.translated = true;
+                        searchResults[selectedObjectIndex + 1].open = true;
+
+                        this.setState({
+                            searchResults,
+                        });
+                    }
+
                     this.showSuccessMessage(i18n.t(i18nKeys.messages.translationsSaved));
                 }).catch((error) => {
                     this.manageError(error);
@@ -201,6 +216,15 @@ class TranslationsPage extends PureComponent {
                 this.manageError(error);
             });
         }
+    };
+
+    openCardWithObjectId = objectId => () => {
+        const searchResults = this.state.searchResults
+            .map(o => (o.id === objectId ? { ...o, open: true } : { ...o, open: false }));
+
+        this.setState({
+            searchResults,
+        });
     };
 
     clearFeedbackSnackbar = () => {
@@ -225,6 +249,11 @@ class TranslationsPage extends PureComponent {
     };
 
     applyNextSearchFilter = (nextSearchFilter) => {
+        if (!this.isSearchFilterValid()) {
+            this.showErrorMessage(i18n.t(i18nKeys.messages.invalidForm));
+            return;
+        }
+
         this.setState({
             searchFilter: nextSearchFilter,
         });
@@ -239,8 +268,24 @@ class TranslationsPage extends PureComponent {
                 fields: 'id,displayName,name,translations',
                 filter: this.filtersForSearch(nextSearchFilter),
             }).then((response) => {
+                /* classify as translated or not */
+                const searchResults = response ? response.toArray() : [];
+                for (let i = 0; i < searchResults.length; i++) {
+                    const object = searchResults[i];
+
+                    /* FIXME move it to a function */
+                    object.translated = object.translations
+                        .filter(t => t.locale === nextSearchFilter.selectedLocale.id)
+                        .some(t => t.value && t.value.length > 0);
+                }
+
+                /* first card is open */
+                if (searchResults.length > 0) {
+                    searchResults[0].open = true;
+                }
+
                 this.setState({
-                    searchResults: response.toArray(),
+                    searchResults,
                     searchFilter: {
                         ...nextSearchFilter,
                         pager: {
@@ -325,6 +370,10 @@ class TranslationsPage extends PureComponent {
         this.state.searchFilter.selectedObject &&
         this.state.searchResults;
 
+    isSearchFilterValid = () =>
+        this.state.searchFilter.selectedLocale && this.state.searchFilter.selectedLocale.id &&
+        this.state.searchFilter.selectedObject && this.state.searchFilter.selectedObject.id;
+
     render() {
         /* Feedback Snackbar */
         const feedbackElement = this.isLoading() ?
@@ -368,6 +417,9 @@ class TranslationsPage extends PureComponent {
                         goToPreviousPage={this.goToPreviousPage}
                         onChangeTranslationForObjectAndLocale={this.onChangeTranslationForObjectAndLocale}
                         saveTranslations={this.saveTranslationForObjectId}
+                        openCard={this.openCardWithObjectId}
+                        hideTranslated={this.state.searchFilter.hideTranslated}
+                        toggleHideTranslated={this.toggleHideTranslated}
                     />
                 }
                 <div id="feedback-snackbar">

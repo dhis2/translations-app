@@ -27,6 +27,7 @@ const DEFAULT_PROPS = {
     translatableProperties: DEFAULT_TRANSLATABLE_PROPERTIES,
     onChangeTranslationForObjectAndLocale: jest.fn(),
     saveTranslations: jest.fn(),
+    open: true,
 };
 
 const ownShallow = (props = DEFAULT_PROPS) => {

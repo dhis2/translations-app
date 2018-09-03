@@ -24,6 +24,7 @@ const DEFAULT_PROPS = {
     goToPreviousPage: jest.fn(),
     onChangeTranslationForObjectAndLocale: jest.fn(),
     saveTranslations: () => jest.fn(),
+    openCard: jest.fn(),
 };
 
 const fakeObjects = [

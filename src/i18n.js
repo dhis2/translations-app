@@ -12,6 +12,11 @@ export const i18nKeys = {
             label: 'Search',
         },
     },
+    list: {
+        hideTranslatedCheckbox: {
+            label: 'Hide Translated',
+        },
+    },
     translationForm: {
         name: 'Name',
         shortName: 'Short name',
@@ -24,6 +29,7 @@ export const i18nKeys = {
     messages: {
         unexpectedError: 'Unexpected Error',
         translationsSaved: 'Translations was saved',
+        invalidForm: 'A locale and object must be selected',
     },
 };
 

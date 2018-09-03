@@ -10,6 +10,9 @@ const styles = {
         paddingLeft: LATERAL_PADDING_FOR_MAIN_CONTAINERS,
         paddingRight: LATERAL_PADDING_FOR_MAIN_CONTAINERS,
     },
+    pagination: {
+        textAlign: 'right',
+    },
 };
 
 export default styles;

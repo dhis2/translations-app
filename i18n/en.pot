@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-09-03T10:01:05.024Z\n"
-"PO-Revision-Date: 2018-09-03T10:01:05.024Z\n"
+"POT-Creation-Date: 2018-09-03T14:03:02.255Z\n"
+"PO-Revision-Date: 2018-09-03T14:03:02.255Z\n"
 
 msgid "Target locale"
 msgstr ""
@@ -15,6 +15,9 @@ msgid "Object"
 msgstr ""
 
 msgid "Search"
+msgstr ""
+
+msgid "Hide Translated"
 msgstr ""
 
 msgid "Name"
@@ -36,4 +39,7 @@ msgid "Unexpected Error"
 msgstr ""
 
 msgid "Translations was saved"
+msgstr ""
+
+msgid "A locale and object must be selected"
 msgstr ""
