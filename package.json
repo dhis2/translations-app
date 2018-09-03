@@ -55,13 +55,20 @@
   },
   "devDependencies": {
     "@dhis2/d2-i18n-generate": "^1.0.19",
+    "chai": "^4.1.2",
+    "cucumber": "^4.2.1",
     "enzyme": "^3.4.4",
     "enzyme-adapter-react-16.3": "^1.0.0",
     "eslint-config-dhis2": "^3.0.7",
     "husky": "^1.0.0-rc.13",
     "import-export": "^1.0.1",
     "jest-enzyme": "^6.0.3",
-    "postcss-rtl": "^1.3.2"
+    "postcss-rtl": "^1.3.2",
+    "wdio-allure-reporter": "^0.7.0",
+    "wdio-cucumber-framework": "^2.2.6",
+    "wdio-selenium-standalone-service": "0.0.10",
+    "wdio-spec-reporter": "^0.1.5",
+    "webdriverio": "^4.13.2"
   },
   "scripts": {
     "manifest": "d2-manifest package.json ./public/manifest.webapp",
@@ -69,6 +76,7 @@
     "build": "yarn manifest && yarn localize && node scripts/build.js",
     "localize": "d2-i18n-generate -n translations-app -p ./i18n/ -o ./src/locales/",
     "test": "node scripts/test.js --env=jsdom",
+    "test-e2e": "wdio ./e2e/config/wdio.conf.js",
     "lint": "yarn localize && eslint src/",
     "validate": "yarn list",
     "deploy": "yarn run build && mvn clean deploy",
