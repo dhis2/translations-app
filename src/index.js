@@ -2,6 +2,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import JssProvider from 'react-jss/lib/JssProvider';
+import { createGenerateClassName } from '@material-ui/core/styles';
+
 /* d2 */
 import { init, getManifest, getUserSettings } from 'd2/lib/d2';
 
@@ -13,6 +16,20 @@ import App from './App';
 import './index.css';
 
 import registerServiceWorker from './registerServiceWorker';
+
+/*
+   FIXME
+   Needs to be used to solve duplicated styles on production
+   This seems to happen due to different material-ui versions
+   See:
+    https://github.com/mui-org/material-ui/issues/8223
+   solution:
+    https://material-ui.com/customization/css-in-js/#creategenerateclassname-options-class-name-generator
+ */
+const generateClassName = createGenerateClassName({
+    dangerouslyUseGlobalCSS: true,
+    productionPrefix: 'translation-app-mui-next',
+});
 
 /* init d2 */
 let d2Instance;
@@ -35,7 +52,11 @@ getManifest('manifest.webapp').then((manifest) => {
         .then(getUserSettings)
         .then(configI18n)
         .then(() => {
-            ReactDOM.render(<App d2={d2Instance} />, document.getElementById('app'));
+            ReactDOM.render(
+                <JssProvider generateClassName={generateClassName}>
+                    <App d2={d2Instance} />
+                </JssProvider>,
+                document.getElementById('app'));
         });
 });
 
