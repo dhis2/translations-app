@@ -69,7 +69,7 @@ const TranslationCard = (props) => {
                     item
                     xs={6}
                 >
-                    <h3>{props.object.displayName}</h3>
+                    <h3>{props.object.name}</h3>
                 </Grid>
                 <Grid
                     style={translationCardStyles.icon}

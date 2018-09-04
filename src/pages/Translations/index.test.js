@@ -6,14 +6,16 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 /* components */
-import App from './App';
-import TranslationPage from './pages/Translations';
+import TranslationPage from './index';
+import TranslationsList from './TranslationsList';
+import TranslationsSearch from './TranslationsSearch';
 
-import fakerData from './utils/testFaker';
+/* utils */
+import fakerData from '../../utils/testFaker';
 
 const ownShallow = () => {
     return shallow(
-        <App
+        <TranslationPage
             d2={fakerData.d2}
         />,
         {
@@ -32,7 +34,11 @@ describe('Test <App /> rendering:', () => {
         ownShallow();
     });
 
-    it('Should renders TranslationPage', () => {
-        expect(wrapper.find(TranslationPage)).toHaveLength(1);
+    it('Should renders TranslationsSearch', () => {
+        expect(wrapper.find(TranslationsSearch)).toHaveLength(1);
+    });
+
+    it('Should renders TranslationsList', () => {
+        expect(wrapper.find(TranslationsList)).toHaveLength(1);
     });
 });

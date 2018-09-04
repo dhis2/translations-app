@@ -61,7 +61,7 @@ class TranslationsPage extends PureComponent {
                 searchTerm: '',
                 hideTranslated: false,
             },
-            searchResults: null,
+            searchResults: [],
         };
     }
 
@@ -364,12 +364,6 @@ class TranslationsPage extends PureComponent {
 
     isLoading = () => this.state.showSnackbar && this.state.snackbarConf.type === FEEDBACK_SNACKBAR_TYPES.LOADING;
 
-    hasResultsToShow = () =>
-        this.state.objectSelectItems &&
-        this.state.searchFilter.selectedLocale &&
-        this.state.searchFilter.selectedObject &&
-        this.state.searchResults;
-
     isSearchFilterValid = () =>
         this.state.searchFilter.selectedLocale && this.state.searchFilter.selectedLocale.id &&
         this.state.searchFilter.selectedObject && this.state.searchFilter.selectedObject.id;
@@ -407,21 +401,19 @@ class TranslationsPage extends PureComponent {
                     onSearchTermChange={this.onSearchTermChange}
                     onSearchKeyPress={this.onSearchKeyPress}
                 />
-                {this.hasResultsToShow() &&
-                    <TranslationsList
-                        localeId={this.state.searchFilter.selectedLocale.id}
-                        objects={this.state.searchResults}
-                        translatableProperties={this.state.searchFilter.selectedObject.translatableProperties}
-                        pager={this.state.searchFilter.pager}
-                        goToNextPage={this.goToNextPage}
-                        goToPreviousPage={this.goToPreviousPage}
-                        onChangeTranslationForObjectAndLocale={this.onChangeTranslationForObjectAndLocale}
-                        saveTranslations={this.saveTranslationForObjectId}
-                        openCard={this.openCardWithObjectId}
-                        hideTranslated={this.state.searchFilter.hideTranslated}
-                        toggleHideTranslated={this.toggleHideTranslated}
-                    />
-                }
+                <TranslationsList
+                    localeId={this.state.searchFilter.selectedLocale.id}
+                    objects={this.state.searchResults}
+                    translatableProperties={this.state.searchFilter.selectedObject.translatableProperties}
+                    pager={this.state.searchFilter.pager}
+                    goToNextPage={this.goToNextPage}
+                    goToPreviousPage={this.goToPreviousPage}
+                    onChangeTranslationForObjectAndLocale={this.onChangeTranslationForObjectAndLocale}
+                    saveTranslations={this.saveTranslationForObjectId}
+                    openCard={this.openCardWithObjectId}
+                    hideTranslated={this.state.searchFilter.hideTranslated}
+                    toggleHideTranslated={this.toggleHideTranslated}
+                />
                 <div id="feedback-snackbar">
                     {feedbackElement}
                 </div>

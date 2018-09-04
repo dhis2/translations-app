@@ -6,7 +6,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 /* d2-ui */
-import { Pagination } from '@dhis2/d2-ui-core';
+import { Pagination, CheckBox } from '@dhis2/d2-ui-core';
 
 /* components */
 import TranslationCard from './TranslationCard';
@@ -15,8 +15,10 @@ import TranslationsList, { NoResults } from './TranslationsList';
 /* utils */
 import { INITIAL_PAGER,  } from './translations.conf';
 import { DEFAULT_LOCALE } from '../../configI18n';
+import fakerData from '../../utils/testFaker';
 
 const DEFAULT_PROPS = {
+    hideTranslated: false,
     localeId: DEFAULT_LOCALE.id,
     objects: [],
     pager: INITIAL_PAGER,
@@ -24,13 +26,9 @@ const DEFAULT_PROPS = {
     goToPreviousPage: jest.fn(),
     onChangeTranslationForObjectAndLocale: jest.fn(),
     saveTranslations: () => jest.fn(),
-    openCard: jest.fn(),
+    openCard: () => jest.fn(),
+    toggleHideTranslated: jest.fn(),
 };
-
-const fakeObjects = [
-    { id: '1', name: '1', displayName: '1', translations: []},
-    { id: '2', name: '2', displayName: '2', translations: []},
-];
 
 const ownShallow = (props = DEFAULT_PROPS) => {
     return shallow(
@@ -58,20 +56,53 @@ describe('Test <TranslationsList /> rendering:', () => {
         expect(wrapper.find(Pagination)).toHaveLength(0);
     });
 
+    it('Should renders no CheckBox when there are no objects', () => {
+        const wrapper = ownShallow();
+        expect(wrapper.find(CheckBox)).toHaveLength(0);
+    });
+
+    it('Should renders CheckBox for hide translated', () => {
+        const wrapper = ownShallow({
+            ...DEFAULT_PROPS,
+            objects: fakerData.objects,
+        });
+        expect(wrapper.find(CheckBox)).toHaveLength(1);
+    });
+
     it('Should renders the correct number of TranslationCard there are objects', () => {
         const wrapper = ownShallow({
             ...DEFAULT_PROPS,
-            objects: fakeObjects,
+            objects: fakerData.objects,
         });
-        expect(wrapper.find(TranslationCard)).toHaveLength(fakeObjects.length);
+        expect(wrapper.find(TranslationCard)).toHaveLength(fakerData.objects.length);
     });
 
     it('Should renders two Pagination (top and bottom) when there are objects', () => {
         const wrapper = ownShallow({
             ...DEFAULT_PROPS,
-            objects: fakeObjects,
+            objects: fakerData.objects,
         });
         expect(wrapper.find(Pagination)).toHaveLength(2);
+    });
+
+    it('Should renders the correct number of TranslationCard when hide translated is checked', () => {
+        const wrapper = ownShallow({
+            ...DEFAULT_PROPS,
+            objects: fakerData.objects,
+            hideTranslated: true,
+        });
+        expect(wrapper.find(TranslationCard)).toHaveLength(fakerData.objects.filter(o => !o.translated).length);
+    });
+});
+
+describe('Test <TranslationsList /> actions:', () => {
+    it('Should call toggleHideTranslated function when Checkbox for hide translated changes.', () => {
+        const wrapper = ownShallow({
+            ...DEFAULT_PROPS,
+            objects: fakerData.objects,
+        });
+        wrapper.find(CheckBox).simulate('change');
+        expect(DEFAULT_PROPS.toggleHideTranslated).toHaveBeenCalled();
     });
 });
 

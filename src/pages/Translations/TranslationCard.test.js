@@ -8,6 +8,8 @@ import { shallow } from 'enzyme';
 /* material-ui */
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
+import Done from '@material-ui/icons/Done';
 
 /* d2-ui components */
 import { Button } from '@dhis2/d2-ui-core';
@@ -18,16 +20,18 @@ import TranslationCard from './TranslationCard';
 /* utils */
 import { DEFAULT_TRANSLATABLE_PROPERTIES } from './translations.conf';
 import { DEFAULT_LOCALE } from '../../configI18n';
+import fakerData from '../../utils/testFaker';
 
-const fakeObject = { id: '1', name: '1', displayName: '1', translations: []};
+const fakeObject = fakerData.objects[0];
 
 const DEFAULT_PROPS = {
+    open: true,
     localeId: DEFAULT_LOCALE.id,
     object: fakeObject,
     translatableProperties: DEFAULT_TRANSLATABLE_PROPERTIES,
     onChangeTranslationForObjectAndLocale: jest.fn(),
     saveTranslations: jest.fn(),
-    open: true,
+    openCard: jest.fn(),
 };
 
 const ownShallow = (props = DEFAULT_PROPS) => {
@@ -42,40 +46,123 @@ const ownShallow = (props = DEFAULT_PROPS) => {
 };
 
 describe('Test <TranslationsCard /> rendering:', () => {
-    let wrapper;
-    beforeEach(() => {
-        wrapper = ownShallow();
-    });
-
     it('Should render without crashing', () => {
         ownShallow();
     });
 
     it('Should renders Paper as container', () => {
+        const wrapper = ownShallow();
         expect(wrapper.find(Paper)).toHaveLength(1);
     });
 
     it('Should renders h3 with object displayName', () => {
+        const wrapper = ownShallow();
         expect(wrapper.find('h3')).toHaveLength(1);
         expect(wrapper.find('h3').text()).toEqual(fakeObject.displayName);
     });
 
-    it('Should renders the correct numbers of TextField components', () => {
+    it('Should renders the correct numbers of TextField components when it is open', () => {
+        const wrapper = ownShallow();
         expect(wrapper.find(TextField)).toHaveLength(DEFAULT_TRANSLATABLE_PROPERTIES.length);
     });
 
-    it('Should renders as Button', () => {
+    it('Should renders a Button when it is open', () => {
+        const wrapper = ownShallow();
         expect(wrapper.find(Button)).toHaveLength(1);
+    });
+
+    it('Should renders a disable Button when it has no translations', () => {
+        const wrapper = ownShallow({
+            ...DEFAULT_PROPS,
+            object: {
+                ...fakeObject,
+                translations: [],
+            }
+        });
+        expect(wrapper.find(Button).props().disabled).toBeTruthy();
+    });
+
+    it('Should renders a disable Button when it has no edited translations', () => {
+        const wrapper = ownShallow({
+            ...DEFAULT_PROPS,
+            object: {
+                ...fakeObject,
+                translations: [{
+                    property: DEFAULT_TRANSLATABLE_PROPERTIES[0].translationKey,
+                    locale: DEFAULT_LOCALE.id,
+                    value: '',
+                }],
+            },
+        });
+        expect(wrapper.find(Button).props().disabled).toBeTruthy();
+    });
+
+    it('Should renders an enable Button when it edited translations', () => {
+        const wrapper = ownShallow({
+            ...DEFAULT_PROPS,
+            object: {
+                ...fakeObject,
+                translations: [{
+                    property: DEFAULT_TRANSLATABLE_PROPERTIES[0].translationKey,
+                    locale: DEFAULT_LOCALE.id,
+                    value: 'someValue',
+                }],
+            },
+        });
+        expect(wrapper.find(Button).props().disabled).toBeFalsy();
+    });
+
+    it('Should renders no TextField when it is not open', () => {
+        const wrapper = ownShallow({
+            ...DEFAULT_PROPS,
+            open: false,
+        });
+        expect(wrapper.find(Button)).toHaveLength(0);
+    });
+
+    it('Should renders no Button when it is not open', () => {
+        const wrapper = ownShallow({
+            ...DEFAULT_PROPS,
+            open: false,
+        });
+        expect(wrapper.find(Button)).toHaveLength(0);
+    });
+
+    it('Should renders Done icon when it is translated', () => {
+        const wrapper = ownShallow({
+            ...DEFAULT_PROPS,
+            object: {
+                ...fakeObject,
+                translated: true,
+            }
+        });
+        expect(wrapper.find(Done)).toHaveLength(1);
+    });
+
+    it('Should renders no Done icon when it is not translated', () => {
+        const wrapper = ownShallow({
+            ...DEFAULT_PROPS,
+            object: {
+                ...fakeObject,
+                translated: false,
+            }
+        });
+        expect(wrapper.find(Done)).toHaveLength(0);
     });
 });
 
 describe('Test <TranslationsCard /> actions:', () => {
-    let wrapper;
-    beforeEach(() => {
-        wrapper = ownShallow();
+    it('Should call openCard function when Header is clicked.', () => {
+        const wrapper = ownShallow({
+            ...DEFAULT_PROPS,
+            open: false,
+        });
+        wrapper.find(Grid).first().simulate('click');
+        expect(DEFAULT_PROPS.openCard).toHaveBeenCalled();
     });
 
     it('Should call onChangeTranslationForObjectAndLocale function when TextField text changes.', () => {
+        const wrapper = ownShallow();
         wrapper.find(TextField).first().simulate('change', {
             target: {
                 value: 'newText',
@@ -85,6 +172,17 @@ describe('Test <TranslationsCard /> actions:', () => {
     });
 
     it('Should call saveTranslations function when button is clicked.', () => {
+        const wrapper = ownShallow({
+            ...DEFAULT_PROPS,
+            object: {
+                ...fakeObject,
+                translations: [{
+                    property: DEFAULT_TRANSLATABLE_PROPERTIES[0].translationKey,
+                    locale: DEFAULT_LOCALE.id,
+                    value: 'someValue',
+                }],
+            },
+        });
         wrapper.find(Button).simulate('click');
         expect(DEFAULT_PROPS.saveTranslations).toHaveBeenCalled();
     });
