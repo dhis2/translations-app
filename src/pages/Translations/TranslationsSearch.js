@@ -62,15 +62,7 @@ const TranslationsSearch = (props) => {
     return (
         <div style={translationsSearchStyles.container}>
             <Grid container>
-                <Grid item xs={12} md={4} style={styles.formControl}>
-                    <SelectControl
-                        value={props.selectedLocaleId}
-                        onChange={props.onLocaleChange}
-                        items={props.localeSelectItems}
-                        label={props.localeSelectLabel}
-                    />
-                </Grid>
-                <Grid item xs={12} md={4} style={styles.formControl}>
+                <Grid item xs={12} md={3} style={styles.formControl}>
                     <SelectControl
                         value={props.selectedObjectName}
                         onChange={props.onObjectChange}
@@ -78,7 +70,23 @@ const TranslationsSearch = (props) => {
                         label={props.objectSelectLabel}
                     />
                 </Grid>
-                <Grid item xs={12} md={4} style={styles.formControl}>
+                <Grid item xs={12} md={3} style={styles.formControl}>
+                    <SelectControl
+                        value={props.selectedFilterId}
+                        onChange={props.onFilterChange}
+                        items={props.filterByItems}
+                        label={props.filterBySelectLabel}
+                    />
+                </Grid>
+                <Grid item xs={12} md={3} style={styles.formControl}>
+                    <SelectControl
+                        value={props.selectedLocaleId}
+                        onChange={props.onLocaleChange}
+                        items={props.localeSelectItems}
+                        label={props.localeSelectLabel}
+                    />
+                </Grid>
+                <Grid item xs={12} md={3} style={styles.formControl}>
                     <TextField
                         label={props.searchFieldLabel}
                         type="search"
@@ -106,6 +114,13 @@ TranslationsSearch.propTypes = {
         id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
     })).isRequired,
+    selectedFilterId: PropTypes.string,
+    onFilterChange: PropTypes.func,
+    filterBySelectLabel: PropTypes.string.isRequired,
+    filterByItems: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+    })).isRequired,
     selectedLocaleId: PropTypes.string,
     onLocaleChange: PropTypes.func,
     objectSelectLabel: PropTypes.string.isRequired,
@@ -124,6 +139,8 @@ TranslationsSearch.propTypes = {
 TranslationsSearch.defaultProps = {
     selectedLocaleId: null,
     onLocaleChange: nonHandler,
+    selectedFilterId: null,
+    onFilterChange: nonHandler,
     selectedObjectName: null,
     onObjectChange: nonHandler,
     searchTerm: '',

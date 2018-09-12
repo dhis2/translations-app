@@ -5,19 +5,31 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-09-12T08:12:41.057Z\n"
-"PO-Revision-Date: 2018-09-12T08:12:41.057Z\n"
-
-msgid "Target locale"
-msgstr ""
+"POT-Creation-Date: 2018-09-12T08:50:28.662Z\n"
+"PO-Revision-Date: 2018-09-12T08:50:28.662Z\n"
 
 msgid "Object"
 msgstr ""
 
-msgid "Search"
+msgid "Target locale"
 msgstr ""
 
-msgid "Hide Translated"
+msgid "Filter by"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "Translated"
+msgstr ""
+
+msgid "Untranslated"
+msgstr ""
+
+msgid "Partial translated"
+msgstr ""
+
+msgid "Search"
 msgstr ""
 
 msgid "Name"

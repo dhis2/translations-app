@@ -1,20 +1,22 @@
 export const i18nKeys = {
     searchToolbar: {
         selects: {
+            objects: {
+                label: 'Object',
+            },
             locales: {
                 label: 'Target locale',
             },
-            objects: {
-                label: 'Object',
+            filterBy: {
+                label: 'Filter by',
+                all: 'All',
+                translated: 'Translated',
+                untranslated: 'Untranslated',
+                partialTranslated: 'Partial translated',
             },
         },
         searchTextField: {
             label: 'Search',
-        },
-    },
-    list: {
-        hideTranslatedCheckbox: {
-            label: 'Hide Translated',
         },
     },
     translationForm: {

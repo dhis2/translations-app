@@ -14,7 +14,7 @@ import TranslationsSearch, { SelectControl } from './TranslationsSearch';
 
 /* utils */
 import { DEFAULT_LOCALE } from '../../configI18n';
-import { INITIAL_LOCALES } from './translations.conf';
+import { INITIAL_LOCALES, FILTER_BY_ITEMS } from './translations.conf';
 
 export const INITIAL_OBJECTS = [
     { id: 'userRole', name: 'User Authority Group' },
@@ -75,6 +75,10 @@ const DEFAULT_SEARCH_PROPS = {
     localeSelectItems: INITIAL_LOCALES,
     selectedLocaleId: DEFAULT_LOCALE.id,
     onLocaleChange: jest.fn(),
+    filterBySelectLabel: 'Filter by',
+    filterByItems: FILTER_BY_ITEMS,
+    selectedFilterId: FILTER_BY_ITEMS[0].id,
+    onFilterChange: jest.fn(),
     objectSelectLabel: 'Object',
     objectSelectItems: INITIAL_OBJECTS,
     selectedObjectName: INITIAL_OBJECTS[0].id,
@@ -158,8 +162,8 @@ describe('Test <TranslationsSearch /> rendering:', () => {
         searchShallow();
     });
 
-    it('Should renders two SelectControls for locales and objects', () => {
-        expect(wrapper.find(SelectControl)).toHaveLength(2);
+    it('Should renders three SelectControls for locales and objects', () => {
+        expect(wrapper.find(SelectControl)).toHaveLength(3);
     });
 
     it('Should renders one TextField for Search', () => {
@@ -173,22 +177,31 @@ describe('Test <TranslationsSearch /> actions:', () => {
         wrapper = searchShallow();
     });
 
-    it('Should call onObjectChange function when object option changes.', () => {
-        wrapper.find(SelectControl).first().simulate('change', {
-            target: {
-                value: 'newLocaleId',
-            }
-        });
-        expect(DEFAULT_SEARCH_PROPS.onLocaleChange).toHaveBeenCalled();
-    });
-
     it('Should call onObjectChange function when locale option changes.', () => {
-        wrapper.find(SelectControl).at(1).simulate('change', {
+        wrapper.find(SelectControl).first().simulate('change', {
             target: {
                 value: 'newObjectId',
             }
         });
         expect(DEFAULT_SEARCH_PROPS.onObjectChange).toHaveBeenCalled();
+    });
+
+    it('Should call onFilterChange function when filter option changes.', () => {
+        wrapper.find(SelectControl).at(1).simulate('change', {
+            target: {
+                value: 'newFilterId',
+            }
+        });
+        expect(DEFAULT_SEARCH_PROPS.onFilterChange).toHaveBeenCalled();
+    });
+
+    it('Should call onLocaleChange function when object option changes.', () => {
+        wrapper.find(SelectControl).at(2).simulate('change', {
+            target: {
+                value: 'newLocaleId',
+            }
+        });
+        expect(DEFAULT_SEARCH_PROPS.onLocaleChange).toHaveBeenCalled();
     });
 
     it('Should call onSearchTermChange function when search term changes.', () => {

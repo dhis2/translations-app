@@ -6,7 +6,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 /* d2-ui */
-import { Pagination, CheckBox } from '@dhis2/d2-ui-core';
+import { Pagination } from '@dhis2/d2-ui-core';
 
 /* components */
 import TranslationCard from './TranslationCard';
@@ -18,7 +18,6 @@ import { DEFAULT_LOCALE } from '../../configI18n';
 import fakerData from '../../utils/testFaker';
 
 const DEFAULT_PROPS = {
-    hideTranslated: false,
     localeId: DEFAULT_LOCALE.id,
     objects: [],
     pager: INITIAL_PAGER,
@@ -27,7 +26,6 @@ const DEFAULT_PROPS = {
     onChangeTranslationForObjectAndLocale: jest.fn(),
     saveTranslations: () => jest.fn(),
     openCard: () => jest.fn(),
-    toggleHideTranslated: jest.fn(),
 };
 
 const ownShallow = (props = DEFAULT_PROPS) => {
@@ -56,19 +54,6 @@ describe('Test <TranslationsList /> rendering:', () => {
         expect(wrapper.find(Pagination)).toHaveLength(0);
     });
 
-    it('Should renders no CheckBox when there are no objects', () => {
-        const wrapper = ownShallow();
-        expect(wrapper.find(CheckBox)).toHaveLength(0);
-    });
-
-    it('Should renders CheckBox for hide translated', () => {
-        const wrapper = ownShallow({
-            ...DEFAULT_PROPS,
-            objects: fakerData.objects,
-        });
-        expect(wrapper.find(CheckBox)).toHaveLength(1);
-    });
-
     it('Should renders the correct number of TranslationCard there are objects', () => {
         const wrapper = ownShallow({
             ...DEFAULT_PROPS,
@@ -83,26 +68,6 @@ describe('Test <TranslationsList /> rendering:', () => {
             objects: fakerData.objects,
         });
         expect(wrapper.find(Pagination)).toHaveLength(2);
-    });
-
-    it('Should renders the correct number of TranslationCard when hide translated is checked', () => {
-        const wrapper = ownShallow({
-            ...DEFAULT_PROPS,
-            objects: fakerData.objects,
-            hideTranslated: true,
-        });
-        expect(wrapper.find(TranslationCard)).toHaveLength(fakerData.objects.filter(o => !o.translated).length);
-    });
-});
-
-describe('Test <TranslationsList /> actions:', () => {
-    it('Should call toggleHideTranslated function when Checkbox for hide translated changes.', () => {
-        const wrapper = ownShallow({
-            ...DEFAULT_PROPS,
-            objects: fakerData.objects,
-        });
-        wrapper.find(CheckBox).simulate('change');
-        expect(DEFAULT_PROPS.toggleHideTranslated).toHaveBeenCalled();
     });
 });
 

@@ -53,13 +53,14 @@ class TranslationsPage extends PureComponent {
             showSnackbar: false,
             snackbarConf: DEFAULT_SNACKBAR_CONF,
             localeSelectItems: PAGE_CONFIGS.INITIAL_LOCALES,
+            filterByItems: PAGE_CONFIGS.FILTER_BY_ITEMS,
             objectSelectItems: schemaEntries,
             searchFilter: {
                 pager: PAGE_CONFIGS.INITIAL_PAGER,
                 selectedLocale: PAGE_CONFIGS.INITIAL_LOCALES.length > 0 ? PAGE_CONFIGS.INITIAL_LOCALES[0] : null,
                 selectedObject: schemaEntries.length > 0 ? schemaEntries[0] : null,
+                selectedFilter: PAGE_CONFIGS.ALL_ITEM,
                 searchTerm: '',
-                hideTranslated: false,
             },
             searchResults: [],
         };
@@ -89,6 +90,12 @@ class TranslationsPage extends PureComponent {
     onLocaleChange = (selectedLocale) => {
         this.setState({
             searchFilter: this.nextSearchFilterWithChange({ selectedLocale }),
+        });
+    };
+
+    onFilterChange = (selectedFilter) => {
+        this.setState({
+            searchFilter: this.nextSearchFilterWithChange({ selectedFilter }),
         });
     };
 
@@ -128,15 +135,6 @@ class TranslationsPage extends PureComponent {
                 searchResults,
             });
         }
-    };
-
-    toggleHideTranslated = () => {
-        this.setState({
-            searchFilter: {
-                ...this.state.searchFilter,
-                hideTranslated: !this.state.searchFilter.hideTranslated,
-            },
-        });
     };
 
     /*
@@ -391,6 +389,11 @@ class TranslationsPage extends PureComponent {
                     selectedLocaleId={this.state.searchFilter.selectedLocale ?
                         this.state.searchFilter.selectedLocale.id : null}
                     onLocaleChange={this.onLocaleChange}
+                    filterBySelectLabel={i18n.t(i18nKeys.searchToolbar.selects.filterBy.label)}
+                    filterByItems={this.state.filterByItems}
+                    selectedFilterId={this.state.searchFilter.selectedFilter ?
+                        this.state.searchFilter.selectedFilter.id : null}
+                    onFilterChange={this.onFilterChange}
                     objectSelectLabel={i18n.t(i18nKeys.searchToolbar.selects.objects.label)}
                     objectSelectItems={this.state.objectSelectItems}
                     selectedObjectName={this.state.searchFilter.selectedObject ?
@@ -411,8 +414,6 @@ class TranslationsPage extends PureComponent {
                     onChangeTranslationForObjectAndLocale={this.onChangeTranslationForObjectAndLocale}
                     saveTranslations={this.saveTranslationForObjectId}
                     openCard={this.openCardWithObjectId}
-                    hideTranslated={this.state.searchFilter.hideTranslated}
-                    toggleHideTranslated={this.toggleHideTranslated}
                 />
                 <div id="feedback-snackbar">
                     {feedbackElement}

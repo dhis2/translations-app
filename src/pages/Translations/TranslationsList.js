@@ -3,21 +3,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 /* d2-ui */
-import { Pagination, CheckBox } from '@dhis2/d2-ui-core';
+import { Pagination } from '@dhis2/d2-ui-core';
 
 /* material-ui */
 import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
 
 /* d2-ui styles */
 import '@dhis2/d2-ui-core/build/css/Pagination.css';
 
 /* components */
 import TranslationCard from './TranslationCard';
-
-/* i18n */
-import { i18nKeys } from '../../i18n';
-import i18n from '../../locales';
 
 /* utils */
 import * as PAGINATION_HELPER from '../../utils/pagination';
@@ -49,33 +44,9 @@ export const NoResults = () => (
 const TranslationsList = props => (props.objects && props.objects.length > 0 ?
     (
         <div style={translationsListStyles.container}>
-            <Grid
-                container
-                alignItems="center"
-            >
-                <Grid
-                    item
-                    xs={12}
-                    sm={6}
-                >
-                    <CheckBox
-                        label={i18n.t(i18nKeys.list.hideTranslatedCheckbox.label)}
-                        checked={props.hideTranslated}
-                        onChange={props.toggleHideTranslated}
-                    />
-                </Grid>
-                <Grid
-                    style={translationsListStyles.pagination}
-                    item
-                    xs={12}
-                    sm={6}
-                >
-                    { PaginationBuilder(props.pager, props.goToNextPage, props.goToPreviousPage) }
-                </Grid>
-            </Grid>
-
+            { PaginationBuilder(props.pager, props.goToNextPage, props.goToPreviousPage) }
             {
-                props.objects.map(object => (props.hideTranslated && object.translated ? null : (
+                props.objects.map(object => (
                     <TranslationCard
                         key={object.id}
                         open={object.open}
@@ -85,7 +56,7 @@ const TranslationsList = props => (props.objects && props.objects.length > 0 ?
                         onChangeTranslationForObjectAndLocale={props.onChangeTranslationForObjectAndLocale}
                         saveTranslations={props.saveTranslations(object.id)}
                         openCard={props.openCard(object.id)}
-                    />)),
+                    />),
                 )
             }
             { PaginationBuilder(props.pager, props.goToNextPage, props.goToPreviousPage) }
@@ -95,7 +66,6 @@ const TranslationsList = props => (props.objects && props.objects.length > 0 ?
     ));
 
 TranslationsList.propTypes = {
-    hideTranslated: PropTypes.bool,
     localeId: PropTypes.string.isRequired,
     objects: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.string.isRequired,
@@ -123,11 +93,9 @@ TranslationsList.propTypes = {
     onChangeTranslationForObjectAndLocale: PropTypes.func.isRequired,
     saveTranslations: PropTypes.func.isRequired,
     openCard: PropTypes.func.isRequired,
-    toggleHideTranslated: PropTypes.func.isRequired,
 };
 
 TranslationsList.defaultProps = {
-    hideTranslated: false,
     translatableProperties: DEFAULT_TRANSLATABLE_PROPERTIES,
 };
 
