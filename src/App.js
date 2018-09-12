@@ -1,5 +1,5 @@
 /* React */
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 /* d2-ui */
@@ -12,21 +12,17 @@ import TranslationsPage from './pages/Translations';
 /* styles */
 import styles from './styles';
 
-class App extends PureComponent {
-  static propTypes = {
-      d2: PropTypes.object.isRequired,
-  };
+const App = props => (
+    <D2UIApp>
+        <HeaderBar d2={props.d2} />
+        <div style={styles.contentArea}>
+            <TranslationsPage d2={props.d2} />
+        </div>
+    </D2UIApp>
+);
 
-  render() {
-      return (
-          <D2UIApp>
-              <HeaderBar d2={this.props.d2} />
-              <div style={styles.contentArea}>
-                  <TranslationsPage d2={this.props.d2} />
-              </div>
-          </D2UIApp>
-      );
-  }
-}
+App.propTypes = {
+    d2: PropTypes.object.isRequired,
+};
 
 export default App;
