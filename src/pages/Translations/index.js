@@ -39,6 +39,45 @@ const modelToSchemaEntry = model => ({
     apiEndpoint: model.apiEndpoint,
 });
 
+/* FIXME move to an external file, Element class */
+/* receives a fat element and translatableProperties to filter translations and translationState for locale */
+/* returns an element only with needed information */
+const flatElementForPropertiesAndLocale = (element, translatableProperties, localeId) => {
+    const translations = [];
+    let translatedProperties = 0;
+
+    for (let j = 0; j < translatableProperties.length; j++) {
+        const property = translatableProperties[j];
+        const translationForPropertyAndLocale = element.translations.find(t =>
+            t.property === property.translationKey && t.locale === localeId && t.value.trim().length,
+        );
+
+        if (translationForPropertyAndLocale) {
+            translatedProperties += 1;
+            translations.push(translationForPropertyAndLocale);
+        } else {
+            translations.push({
+                property: property.translationKey,
+                locale: localeId,
+                value: '',
+            });
+        }
+    }
+
+    let translationState = PAGE_CONFIGS.PARTIAL_TRANSLATED_ID;
+    if (translatedProperties === 0) {
+        translationState = PAGE_CONFIGS.UNTRANSLATED_ID;
+    } else if (translatedProperties === translatableProperties.length) {
+        translationState = PAGE_CONFIGS.TRANSLATED_ID;
+    }
+
+    return {
+        ...element,
+        translations,
+        translationState,
+    };
+};
+
 class TranslationsPage extends PureComponent {
     static propTypes = {
         d2: PropTypes.object.isRequired,
@@ -134,8 +173,8 @@ class TranslationsPage extends PureComponent {
     };
 
     onChangeTranslationForObjectAndLocale = (objectId, localeId, translationKey, value) => {
-        const searchResults = [...this.state.searchResults];
-        const selectedObjectInstance = searchResults.find(objectInstance => objectInstance.id === objectId);
+        const currentPageResults = [...this.state.currentPageResults];
+        const selectedObjectInstance = currentPageResults.find(objectInstance => objectInstance.id === objectId);
         if (selectedObjectInstance) {
             const translationEntry = selectedObjectInstance.translations.find(
                 translation => translation.locale === localeId && translation.property === translationKey);
@@ -149,7 +188,7 @@ class TranslationsPage extends PureComponent {
                 });
             }
             this.setState({
-                searchResults,
+                currentPageResults,
             });
         }
     };
@@ -157,9 +196,10 @@ class TranslationsPage extends PureComponent {
     saveTranslationForObjectId = objectId => () => {
         const api = this.props.d2.Api.getApi();
 
-        const searchResults = [...this.state.searchResults];
-        const selectedObjectIndex = searchResults.findIndex(objectInstance => objectInstance.id === objectId);
-        const selectedObjectInstance = searchResults[selectedObjectIndex];
+        const currentLocale = this.state.searchFilter.selectedLocale.id;
+        const currentPageResults = [...this.state.currentPageResults];
+        const selectedObjectIndex = currentPageResults.findIndex(objectInstance => objectInstance.id === objectId);
+        const selectedObjectInstance = currentPageResults[selectedObjectIndex];
 
         if (selectedObjectInstance) {
             this.startLoading();
@@ -173,22 +213,29 @@ class TranslationsPage extends PureComponent {
             api.get(translationsUrlForInstance).then((response) => {
                 /* other translations which are not for the locale we are updating */
                 const notUpdateTranslations = response.translations
-                    .filter(translation => translation.locale !== this.state.searchFilter.selectedLocale.id);
+                    .filter(translation => translation.locale !== currentLocale);
                 const translations = [...notUpdateTranslations, ...inViewEditedTranslations];
 
                 api.update(translationsUrlForInstance, { translations }).then(() => {
                     /* open next card and show success message */
-                    if (selectedObjectIndex < searchResults.length - 1) {
-                        selectedObjectInstance.open = false;
-                        selectedObjectInstance.translated = true;
-                        searchResults[selectedObjectIndex + 1].open = true;
+                    if (selectedObjectIndex < currentPageResults.length - 1) {
+                        /* update card state and close it */
+                        const flatElement = flatElementForPropertiesAndLocale(
+                            selectedObjectInstance,
+                            this.state.searchFilter.selectedObject.translatableProperties,
+                            currentLocale);
+                        flatElement.open = false;
+                        currentPageResults[selectedObjectIndex] = flatElement;
+
+                        /* open next card */
+                        currentPageResults[selectedObjectIndex + 1].open = true;
+
+                        /* TODO need to sync element at objectInstances as well for further filters */
 
                         this.setState({
-                            searchResults,
+                            currentPageResults,
                         });
                     }
-
-                    /* TODO update card state */
 
                     this.showSuccessMessage(i18n.t(i18nKeys.messages.translationsSaved));
                 }).catch((error) => {
@@ -246,6 +293,7 @@ class TranslationsPage extends PureComponent {
                     this.nextSearchFilterWithChange({ selectedObject: object, pager: PAGE_CONFIGS.INITIAL_PAGER }),
                     objectInstances,
                 );
+
                 this.clearFeedbackSnackbar();
             }).catch((error) => {
                 this.manageError(error);
@@ -305,9 +353,9 @@ class TranslationsPage extends PureComponent {
         searchFilter.pager.pageCount = Math.ceil(searchFilter.pager.total / searchFilter.pager.pageSize);
 
         this.setState({
+            objectInstances: currentObjectInstances,
             searchResults,
             currentPageResults: filterElementsToPager(searchResults, searchFilter.pager),
-            objectInstances: currentObjectInstances,
             searchFilter,
         });
     };
@@ -323,42 +371,15 @@ class TranslationsPage extends PureComponent {
 
             for (let i = 0; i < elements.length; i++) {
                 const element = elements[i];
-                const translatableProperties = this.state.searchFilter.selectedObject.translatableProperties;
-                const translations = [];
-                let translatedProperties = 0;
 
                 if (element.name.trim().toLowerCase().includes(currentSearchTerm)) {
-                    for (let j = 0; j < translatableProperties.length; j++) {
-                        const property = translatableProperties[j];
-                        const translationForPropertyAndLocale = element.translations.find(t =>
-                            t.property === property.translationKey && t.locale === currentLocale,
-                        );
+                    const flatElement = flatElementForPropertiesAndLocale(
+                        element,
+                        this.state.searchFilter.selectedObject.translatableProperties,
+                        currentLocale);
 
-                        if (translationForPropertyAndLocale) {
-                            translatedProperties += 1;
-                            translations.push(translationForPropertyAndLocale);
-                        } else {
-                            translations.push({
-                                property: property.translationKey,
-                                locale: currentLocale,
-                                value: '',
-                            });
-                        }
-                    }
-
-                    let translationState = PAGE_CONFIGS.PARTIAL_TRANSLATED_ID;
-                    if (translatedProperties === 0) {
-                        translationState = PAGE_CONFIGS.UNTRANSLATED_ID;
-                    } else if (translatedProperties === translatableProperties.length) {
-                        translationState = PAGE_CONFIGS.TRANSLATED_ID;
-                    }
-
-                    if ((currentFilterId === PAGE_CONFIGS.ALL_ID || translationState === currentFilterId)) {
-                        newElements.push({
-                            ...element,
-                            translations,
-                            translationState,
-                        });
+                    if ((currentFilterId === PAGE_CONFIGS.ALL_ID || flatElement.translationState === currentFilterId)) {
+                        newElements.push(flatElement);
                     }
                 }
             }
