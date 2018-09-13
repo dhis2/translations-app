@@ -230,7 +230,8 @@ class TranslationsPage extends PureComponent {
                         /* open next card */
                         currentPageResults[selectedObjectIndex + 1].open = true;
 
-                        /* TODO need to sync element at objectInstances as well for further filters */
+                        /* TODO need to sync translations for element at objectInstances as well for further filters */
+                        /* Maybe it is better done at onChangeTranslationForObjectAndLocale */
 
                         this.setState({
                             currentPageResults,
