@@ -18,7 +18,7 @@ import { Button } from '@dhis2/d2-ui-core';
 import TranslationCard from './TranslationCard';
 
 /* utils */
-import { DEFAULT_TRANSLATABLE_PROPERTIES } from './translations.conf';
+import { DEFAULT_TRANSLATABLE_PROPERTIES, TRANSLATED_ID } from './translations.conf';
 import { DEFAULT_LOCALE } from '../../configI18n';
 import fakerData from '../../utils/testFaker';
 
@@ -133,7 +133,7 @@ describe('Test <TranslationsCard /> rendering:', () => {
             ...DEFAULT_PROPS,
             object: {
                 ...fakeObject,
-                translated: true,
+                translationState: TRANSLATED_ID,
             }
         });
         expect(wrapper.find(Done)).toHaveLength(1);

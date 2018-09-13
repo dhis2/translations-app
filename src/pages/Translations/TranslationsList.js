@@ -71,7 +71,7 @@ TranslationsList.propTypes = {
         id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         displayName: PropTypes.string.isRequired,
-        translated: PropTypes.bool.isRequired,
+        translationState: PropTypes.string.isRequired,
         translations: PropTypes.arrayOf(PropTypes.shape({
             property: PropTypes.string.isRequired,
             locale: PropTypes.string.isRequired,

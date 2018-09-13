@@ -11,13 +11,16 @@ import Done from '@material-ui/icons/Done';
 /* d2-ui components */
 import { Button } from '@dhis2/d2-ui-core';
 
+/* utils */
+import { TRANSLATED_ID } from './translations.conf';
+
 /* i18n */
 import { i18nKeys } from '../../i18n';
 import i18n from '../../locales';
 
 /* styles */
 import styles from '../../styles';
-import translationCardStyles from './TranslationCard.style';
+import translationCardStyles, { colors } from './TranslationCard.style';
 
 const translationValueOfObjectForLocaleAndTranslationKey = (object, localeId, translationKey) => {
     const selectedTranslation = object.translations.find(
@@ -36,20 +39,12 @@ const TranslationCard = (props) => {
         );
     };
 
-    const headerStyle = () => {
-        let style = { ...translationCardStyles.header };
-        if (props.object.translated) {
-            style = {
-                ...style,
-                ...translationCardStyles.translated,
-            };
-        }
-        return style;
-    };
+    const headerStyle = () => ({
+        ...translationCardStyles.header,
+        color: colors[props.object.translationState],
+    });
 
-    const isReadyToSubmit = () => props.object.translations
-        .filter(t => t.locale === props.localeId)
-        .some(t => t.value && t.value.trim().length > 0);
+    const isReadyToSubmit = () => props.object.translations.some(t => t.value && t.value.trim().length);
 
     const saveTranslationsOnKeyPress = (event) => {
         if (event.key === 'Enter' && event.ctrlKey && isReadyToSubmit()) {
@@ -76,7 +71,7 @@ const TranslationCard = (props) => {
                     item
                     xs={6}
                 >
-                    {props.object.translated &&
+                    {props.object.translationState === TRANSLATED_ID &&
                         <Done
                             style={translationCardStyles.translated}
                         />
@@ -132,7 +127,7 @@ TranslationCard.propTypes = {
         id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         displayName: PropTypes.string.isRequired,
-        translated: PropTypes.bool.isRequired,
+        translationState: PropTypes.string.isRequired,
         translations: PropTypes.arrayOf(PropTypes.shape({
             property: PropTypes.string.isRequired,
             locale: PropTypes.string.isRequired,
