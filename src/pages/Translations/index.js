@@ -31,7 +31,7 @@ const DEFAULT_SNACKBAR_CONF = {
 };
 
 /* auxiliar methods */
-/* FIXME move to an external file? */
+/* FIXME move to an external file, SchemaEntry class */
 const modelToSchemaEntry = model => ({
     id: model.name,
     name: model.displayName,
@@ -44,6 +44,7 @@ class TranslationsPage extends PureComponent {
         d2: PropTypes.object.isRequired,
     };
 
+    /* configuring initial state */
     constructor(props) {
         super(props);
 
@@ -72,6 +73,7 @@ class TranslationsPage extends PureComponent {
         };
     }
 
+    /* componet lifestyle methods */
     componentDidMount() {
         this.startLoading();
 
@@ -96,6 +98,7 @@ class TranslationsPage extends PureComponent {
         });
     }
 
+    /* event handlers */
     onLocaleChange = (selectedLocale) => {
         this.applyNextSearchFilter(this.nextSearchFilterWithChange({
             selectedLocale,
@@ -151,6 +154,111 @@ class TranslationsPage extends PureComponent {
         }
     };
 
+    saveTranslationForObjectId = objectId => () => {
+        const api = this.props.d2.Api.getApi();
+
+        const searchResults = [...this.state.searchResults];
+        const selectedObjectIndex = searchResults.findIndex(objectInstance => objectInstance.id === objectId);
+        const selectedObjectInstance = searchResults[selectedObjectIndex];
+
+        if (selectedObjectInstance) {
+            this.startLoading();
+
+            /* translations that are being shown and able to be updated, must have a value */
+            const inViewEditedTranslations = selectedObjectInstance.translations.filter(t => t.value.trim().length);
+            const translationsUrlForInstance =
+                `${this.state.searchFilter.selectedObject.apiEndpoint}/${objectId}/translations/`;
+
+            /* request old translations to avoid overwrite other locales updated meanwhile */
+            api.get(translationsUrlForInstance).then((response) => {
+                /* other translations which are not for the locale we are updating */
+                const notUpdateTranslations = response.translations
+                    .filter(translation => translation.locale !== this.state.searchFilter.selectedLocale.id);
+                const translations = [...notUpdateTranslations, ...inViewEditedTranslations];
+
+                api.update(translationsUrlForInstance, { translations }).then(() => {
+                    /* open next card and show success message */
+                    if (selectedObjectIndex < searchResults.length - 1) {
+                        selectedObjectInstance.open = false;
+                        selectedObjectInstance.translated = true;
+                        searchResults[selectedObjectIndex + 1].open = true;
+
+                        this.setState({
+                            searchResults,
+                        });
+                    }
+
+                    /* TODO update card state */
+
+                    this.showSuccessMessage(i18n.t(i18nKeys.messages.translationsSaved));
+                }).catch((error) => {
+                    this.manageError(error);
+                });
+            }).catch((error) => {
+                this.manageError(error);
+            });
+        }
+    };
+
+    goToNextPage = () => {
+        const nextPager = { ...this.state.searchFilter.pager };
+        nextPager.page += 1;
+
+        this.setState({
+            searchFilter: this.nextSearchFilterWithChange({ pager: nextPager }),
+            currentPageResults: filterElementsToPager(this.state.searchResults, nextPager),
+        });
+    };
+
+    goToPreviousPage = () => {
+        const nextPager = { ...this.state.searchFilter.pager };
+        nextPager.page -= 1;
+
+        this.setState({
+            searchFilter: this.nextSearchFilterWithChange({ pager: nextPager }),
+            currentPageResults: filterElementsToPager(this.state.searchResults, nextPager),
+        });
+    };
+
+    openCardWithObjectId = objectId => () => {
+        const currentPageResults = this.state.currentPageResults
+            .map(o => (o.id === objectId ? { ...o, open: true } : { ...o, open: false }));
+
+        this.setState({
+            currentPageResults,
+        });
+    };
+
+    /* Server requests */
+
+    /* fetch instances for new selected object type */
+    fetchElementsForObjectAndUpdateResults = (object) => {
+        const model = object && object.id ? this.props.d2.models[object.id] : null;
+        if (model) {
+            this.startLoading();
+            model.list({
+                paging: false,
+                fields: 'id,displayName,name,translations',
+            }).then((objects) => {
+                const objectInstances = objects ? objects.toArray() : [];
+
+                this.applyNextSearchFilter(
+                    this.nextSearchFilterWithChange({ selectedObject: object, pager: PAGE_CONFIGS.INITIAL_PAGER }),
+                    objectInstances,
+                );
+                this.clearFeedbackSnackbar();
+            }).catch((error) => {
+                this.manageError(error);
+            });
+        } else {
+            this.manageError();
+        }
+    };
+
+    promiseToFetchLanguages = () => this.props.d2.Api.getApi().get(PAGE_CONFIGS.LANGUAGES_API_URL);
+
+    /* Auxiliar functions */
+
     /*
         models are duplicated by singular and plural endpoint
         check the ones which are translatable and updatable
@@ -186,86 +294,7 @@ class TranslationsPage extends PureComponent {
         return userLocale || (locales.length > 0 ? locales[0] : null);
     };
 
-    saveTranslationForObjectId = objectId => () => {
-        const api = this.props.d2.Api.getApi();
-
-        const searchResults = [...this.state.searchResults];
-        const selectedObjectIndex = searchResults.findIndex(objectInstance => objectInstance.id === objectId);
-        const selectedObjectInstance = searchResults[selectedObjectIndex];
-
-        if (selectedObjectInstance) {
-            this.startLoading();
-
-            /* translations that are being shown and able to be updated, must have a value */
-            const inViewEditedTranslations = selectedObjectInstance.translations.filter(t => t.value.trim().length);
-            const translationsUrlForInstance =
-                `${this.state.searchFilter.selectedObject.apiEndpoint}/${objectId}/translations/`;
-
-            /* request old translations to avoid overwrite other locales updated meanwhile */
-            api.get(translationsUrlForInstance).then((response) => {
-                /* other translations which are not for the locale we are updating */
-                const notUpdateTranslations = response.translations
-                    .filter(translation => translation.locale !== this.state.searchFilter.selectedLocale.id);
-                const translations = [...notUpdateTranslations, ...inViewEditedTranslations];
-
-                api.update(translationsUrlForInstance, { translations }).then(() => {
-                    /* open next card and show success message */
-                    if (selectedObjectIndex < searchResults.length - 1) {
-                        selectedObjectInstance.open = false;
-                        selectedObjectInstance.translated = true;
-                        searchResults[selectedObjectIndex + 1].open = true;
-
-                        this.setState({
-                            searchResults,
-                        });
-                    }
-
-                    this.showSuccessMessage(i18n.t(i18nKeys.messages.translationsSaved));
-                }).catch((error) => {
-                    this.manageError(error);
-                });
-            }).catch((error) => {
-                this.manageError(error);
-            });
-        }
-    };
-
-    openCardWithObjectId = objectId => () => {
-        const currentPageResults = this.state.currentPageResults
-            .map(o => (o.id === objectId ? { ...o, open: true } : { ...o, open: false }));
-
-        this.setState({
-            currentPageResults,
-        });
-    };
-
-    clearFeedbackSnackbar = () => {
-        this.setState({
-            showSnackbar: false,
-            snackbarConf: DEFAULT_SNACKBAR_CONF,
-        });
-    };
-
-    goToNextPage = () => {
-        const nextPager = { ...this.state.searchFilter.pager };
-        nextPager.page += 1;
-
-        this.setState({
-            searchFilter: this.nextSearchFilterWithChange({ pager: nextPager }),
-            currentPageResults: filterElementsToPager(this.state.searchResults, nextPager),
-        });
-    };
-
-    goToPreviousPage = () => {
-        const nextPager = { ...this.state.searchFilter.pager };
-        nextPager.page -= 1;
-
-        this.setState({
-            searchFilter: this.nextSearchFilterWithChange({ pager: nextPager }),
-            currentPageResults: filterElementsToPager(this.state.searchResults, nextPager),
-        });
-    };
-
+    /* in memory filter */
     applyNextSearchFilter = (nextSearchFilter, objectInstances = null) => {
         const currentObjectInstances = objectInstances || this.state.objectInstances;
         const searchFilter = { ...nextSearchFilter };
@@ -345,32 +374,6 @@ class TranslationsPage extends PureComponent {
         ...searchFilterChange,
     });
 
-    /* fetch instances for new selected object type */
-    fetchElementsForObjectAndUpdateResults = (object) => {
-        const model = object && object.id ? this.props.d2.models[object.id] : null;
-        if (model) {
-            this.startLoading();
-            model.list({
-                paging: false,
-                fields: 'id,displayName,name,translations',
-            }).then((objects) => {
-                const objectInstances = objects ? objects.toArray() : [];
-
-                this.applyNextSearchFilter(
-                    this.nextSearchFilterWithChange({ selectedObject: object, pager: PAGE_CONFIGS.INITIAL_PAGER }),
-                    objectInstances,
-                );
-                this.clearFeedbackSnackbar();
-            }).catch((error) => {
-                this.manageError(error);
-            });
-        } else {
-            this.manageError();
-        }
-    };
-
-    promiseToFetchLanguages = () => this.props.d2.Api.getApi().get(PAGE_CONFIGS.LANGUAGES_API_URL);
-
     buildLanguageSelectItemsArrayFromApiResponse = (languagesResponse) => {
         const locales = languagesResponse ?
             languagesResponse.map(language => ({
@@ -416,6 +419,13 @@ class TranslationsPage extends PureComponent {
             i18n.t(i18nKeys.messages.unexpectedError);
 
         this.showErrorMessage(messageError);
+    };
+
+    clearFeedbackSnackbar = () => {
+        this.setState({
+            showSnackbar: false,
+            snackbarConf: DEFAULT_SNACKBAR_CONF,
+        });
     };
 
     isLoading = () => this.state.showSnackbar && this.state.snackbarConf.type === FEEDBACK_SNACKBAR_TYPES.LOADING;
