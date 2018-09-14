@@ -1,5 +1,5 @@
 /* React */
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 /* d2-ui */
@@ -473,7 +473,7 @@ class TranslationsPage extends PureComponent {
             );
 
         return (
-            <div>
+            <Fragment>
                 <TranslationsSearch
                     localeSelectLabel={i18n.t(i18nKeys.searchToolbar.selects.locales.label)}
                     localeSelectItems={this.state.localeSelectItems}
@@ -508,7 +508,7 @@ class TranslationsPage extends PureComponent {
                 <div id="feedback-snackbar">
                     {feedbackElement}
                 </div>
-            </div>
+            </Fragment>
         );
     }
 }
