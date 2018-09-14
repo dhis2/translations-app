@@ -495,9 +495,7 @@ class TranslationsPage extends PureComponent {
                     onSearchKeyPress={this.onSearchKeyPress}
                 />
                 <TranslationsList
-                    localeId={this.state.searchFilter.selectedLocale.id}
                     objects={this.state.currentPageResults}
-                    translatableProperties={this.state.searchFilter.selectedObject.translatableProperties}
                     pager={this.state.searchFilter.pager}
                     goToNextPage={this.goToNextPage}
                     goToPreviousPage={this.goToPreviousPage}
