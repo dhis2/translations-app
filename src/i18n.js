@@ -20,10 +20,10 @@ export const i18nKeys = {
         },
     },
     translationForm: {
-        name: 'Name',
-        shortName: 'Short name',
-        description: 'Description',
-        formName: 'Form name',
+        NAME: 'Name',
+        SHORT_NAME: 'Short name',
+        DESCRIPTION: 'Description',
+        FORM_NAME: 'Form name',
         actionButton: {
             label: 'Save',
         },

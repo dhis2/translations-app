@@ -16,7 +16,6 @@ import TranslationCard from './TranslationCard';
 
 /* utils */
 import * as PAGINATION_HELPER from '../../utils/pagination';
-import { DEFAULT_TRANSLATABLE_PROPERTIES } from './translations.conf';
 
 /* styles */
 import styles from '../../styles';
@@ -50,9 +49,7 @@ const TranslationsList = props => (props.objects && props.objects.length > 0 ?
                     <TranslationCard
                         key={object.id}
                         open={object.open}
-                        localeId={props.localeId}
                         object={object}
-                        translatableProperties={props.translatableProperties}
                         onChangeTranslationForObjectAndLocale={props.onChangeTranslationForObjectAndLocale}
                         saveTranslations={props.saveTranslations(object.id)}
                         openCard={props.openCard(object.id)}
@@ -66,7 +63,6 @@ const TranslationsList = props => (props.objects && props.objects.length > 0 ?
     ));
 
 TranslationsList.propTypes = {
-    localeId: PropTypes.string.isRequired,
     objects: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
@@ -78,10 +74,6 @@ TranslationsList.propTypes = {
             value: PropTypes.string.isRequired,
         })).isRequired,
     })).isRequired,
-    translatableProperties: PropTypes.arrayOf(PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        translationKey: PropTypes.string.isRequired,
-    })),
     pager: PropTypes.shape({
         pageSize: PropTypes.number.isRequired,
         page: PropTypes.number.isRequired,
@@ -93,10 +85,6 @@ TranslationsList.propTypes = {
     onChangeTranslationForObjectAndLocale: PropTypes.func.isRequired,
     saveTranslations: PropTypes.func.isRequired,
     openCard: PropTypes.func.isRequired,
-};
-
-TranslationsList.defaultProps = {
-    translatableProperties: DEFAULT_TRANSLATABLE_PROPERTIES,
 };
 
 export default TranslationsList;

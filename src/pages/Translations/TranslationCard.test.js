@@ -23,6 +23,11 @@ import { DEFAULT_LOCALE } from '../../configI18n';
 import fakerData from '../../utils/testFaker';
 
 const fakeObject = fakerData.objects[0];
+const fakeTranslations = DEFAULT_TRANSLATABLE_PROPERTIES.map(property => ({
+    property: property.translationKey,
+    locale: DEFAULT_LOCALE.id,
+    value: 'value',
+}));
 
 const DEFAULT_PROPS = {
     open: true,
@@ -62,8 +67,14 @@ describe('Test <TranslationsCard /> rendering:', () => {
     });
 
     it('Should renders the correct numbers of TextField components when it is open', () => {
-        const wrapper = ownShallow();
-        expect(wrapper.find(TextField)).toHaveLength(DEFAULT_TRANSLATABLE_PROPERTIES.length);
+        const wrapper = ownShallow({
+            ...DEFAULT_PROPS,
+            object: {
+                ...fakeObject,
+                translations: fakeTranslations,
+            },
+        });
+        expect(wrapper.find(TextField)).toHaveLength(fakeTranslations.length);
     });
 
     it('Should renders a Button when it is open', () => {
@@ -162,7 +173,13 @@ describe('Test <TranslationsCard /> actions:', () => {
     });
 
     it('Should call onChangeTranslationForObjectAndLocale function when TextField text changes.', () => {
-        const wrapper = ownShallow();
+        const wrapper = ownShallow({
+            ...DEFAULT_PROPS,
+            object: {
+                ...fakeObject,
+                translations: fakeTranslations,
+            },
+        });
         wrapper.find(TextField).first().simulate('change', {
             target: {
                 value: 'newText',

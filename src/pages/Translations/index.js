@@ -172,21 +172,16 @@ class TranslationsPage extends PureComponent {
         }
     };
 
-    onChangeTranslationForObjectAndLocale = (objectId, localeId, translationKey, value) => {
+    onChangeTranslationForObjectAndLocale = (objectId, translationKey, value) => {
         const currentPageResults = [...this.state.currentPageResults];
         const selectedObjectInstance = currentPageResults.find(objectInstance => objectInstance.id === objectId);
         if (selectedObjectInstance) {
             const translationEntry = selectedObjectInstance.translations.find(
-                translation => translation.locale === localeId && translation.property === translationKey);
+                translation => translation.property === translationKey);
             if (translationEntry) {
                 translationEntry.value = value;
-            } else {
-                selectedObjectInstance.translations.push({
-                    locale: localeId,
-                    property: translationKey,
-                    value,
-                });
             }
+
             this.setState({
                 currentPageResults,
             });
@@ -495,9 +490,7 @@ class TranslationsPage extends PureComponent {
                     onSearchKeyPress={this.onSearchKeyPress}
                 />
                 <TranslationsList
-                    localeId={this.state.searchFilter.selectedLocale.id}
                     objects={this.state.currentPageResults}
-                    translatableProperties={this.state.searchFilter.selectedObject.translatableProperties}
                     pager={this.state.searchFilter.pager}
                     goToNextPage={this.goToNextPage}
                     goToPreviousPage={this.goToPreviousPage}

@@ -22,18 +22,11 @@ import i18n from '../../locales';
 import styles from '../../styles';
 import translationCardStyles, { colors } from './TranslationCard.style';
 
-const translationValueOfObjectForLocaleAndTranslationKey = (object, localeId, translationKey) => {
-    const selectedTranslation = object.translations.find(
-        translation => translation.locale === localeId && translation.property === translationKey);
-    return selectedTranslation ? selectedTranslation.value : '';
-};
-
 const TranslationCard = (props) => {
     const { onChangeTranslationForObjectAndLocale } = props;
     const onChange = translationKey => (event) => {
         onChangeTranslationForObjectAndLocale(
             props.object.id,
-            props.localeId,
             translationKey,
             event.target.value,
         );
@@ -81,24 +74,20 @@ const TranslationCard = (props) => {
             { props.open &&
                 <Fragment>
                     <Grid container>
-                        {props.translatableProperties.map(property => (
+                        {props.object.translations.map(t => (
                             <Grid
-                                key={property.name}
+                                key={t.property}
                                 item
                                 xs={12}
-                                md={props.translatableProperties.length === 1 ? 12 : 6}
+                                md={props.object.translations.length === 1 ? 12 : 6}
                                 style={styles.formControl}
                             >
                                 <TextField
                                     fullWidth
-                                    value={translationValueOfObjectForLocaleAndTranslationKey(
-                                        props.object,
-                                        props.localeId,
-                                        property.translationKey,
-                                    )}
+                                    value={t.value}
                                     type="text"
-                                    label={i18n.t(i18nKeys.translationForm[property.name])}
-                                    onChange={onChange(property.translationKey)}
+                                    label={i18n.t(i18nKeys.translationForm[t.property])}
+                                    onChange={onChange(t.property)}
                                     onKeyPress={saveTranslationsOnKeyPress}
                                 />
                             </Grid>
@@ -122,7 +111,6 @@ const TranslationCard = (props) => {
 
 TranslationCard.propTypes = {
     open: PropTypes.bool,
-    localeId: PropTypes.string.isRequired,
     object: PropTypes.shape({
         id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
@@ -134,10 +122,6 @@ TranslationCard.propTypes = {
             value: PropTypes.string.isRequired,
         })).isRequired,
     }).isRequired,
-    translatableProperties: PropTypes.arrayOf(PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        translationKey: PropTypes.string.isRequired,
-    })).isRequired,
     onChangeTranslationForObjectAndLocale: PropTypes.func.isRequired,
     saveTranslations: PropTypes.func.isRequired,
     openCard: PropTypes.func.isRequired,
