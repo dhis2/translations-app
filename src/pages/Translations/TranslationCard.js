@@ -27,7 +27,6 @@ const TranslationCard = (props) => {
     const onChange = translationKey => (event) => {
         onChangeTranslationForObjectAndLocale(
             props.object.id,
-            props.localeId,
             translationKey,
             event.target.value,
         );
