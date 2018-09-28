@@ -19,8 +19,7 @@
     "dist": "npm run build && npm run postbuild && cd build && zip -r translations-app.zip * && cd ..",
     "convert-po": "node po-converter.js",
     "extract-pot": "node pot-extractor.js",
-    "refresh-translations-template": "npm run extract-pot -- -o translations.pot && git add ./i18n/translations.pot",
-    "deploy": "deploy-build"
+    "refresh-translations-template": "npm run extract-pot -- -o translations.pot && git add ./i18n/translations.pot"
   },
   "keywords": [
     "DHIS2",
@@ -36,7 +35,6 @@
     "rx": "^4.1.0"
   },
   "devDependencies": {
-    "@dhis2/deploy-build": "^1.0.4",
     "babel-core": "^6.7.2",
     "babel-eslint": "^6.0.4",
     "babel-loader": "^6.2.4",
