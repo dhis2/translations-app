@@ -1,24 +1,22 @@
 language: node_js
 node_js:
-- node
-cache:
-  yarn: true
-  directories:
-  - node_modules
-script:
+- '8'
+before_script:
+- npm install --global @dhis2/deploy-build
 - npm rebuild node-sass
+script:
 - npm run build
-after_success:
-- if ( [ "$TRAVIS_BRANCH" == "master" ] || [ ! -z "$TRAVIS_TAG" ] ) && [ "$TRAVIS_REPO_SLUG"
-  == "dhis2/translations-app" ]  &&  [ "$TRAVIS_PULL_REQUEST" == "false" ] ; then
-  mvn clean deploy --settings deploy/settings.xml && exit 0; fi
+deploy:
+- provider: script
+  script: deploy-build
+  skip_cleanup: true
+  on:
+    all_branches: true
+- provider: script
+  script: publish-build
+  skip_cleanup: true
+  on:
+    tags: true
 env:
   global:
-  - secure: M0mbPMzIx2nP0732U975L4rD002CaeqdMBsd5lZCbpK/lEg39zM5WzpApVuHFlo39uOhhxaehMUyH6aBVXEp9Gs+/38+VRvL9r5hWatAbumSDCDn7OmyHun+DXHP0mOM+XduA2mZ4XD/cDwZE6tVlYdtflRXKgLb2eFYEj831LF4vru698l09k1zG1xjz/oqL0KL19dRqBP2lNYRpy24klIXo6CbI9wzd8JfENUVvwq2wHRjk6SM2JBdsWHt2QSYE4KLyB+Eq65Jnz0adtMpGb450v90+MC+u+XT/74p8Sf6hnDtLpWVIAb/leQ9mjTgiF3wOEvtIj2C83pdGm61a+kYZ8hOTvm6oqZpNG1SYyayp//y0iSOOJ2KkX81w+CJTeYzi1k85vShg2DAr2kmWUkbI4Us70HmMKxJ+uHUkxIvGnXchWL7vgE5qtgcEp3Knec5WHUlOdVsAIzemZ3yPyGfrVvFCRrdsLyJyvDTnyMzrOpETc54dhSVZ4i2JrpjIf5wDtkQXnfwZK4JvI4+cK6C7qsxELAiKIrj2wx27rsyE/PtmO2i3rahcgSJYvgiFt6DvBPFAhterMVbx7Moxn/PQZbV39uSba2tatJhXfN6lZcwBg5HgczVs1xRhw530dILKQfticbOIiE3QFgYiDcQ+2S5BOcj83MYUKZzzNo=
-  - secure: QpAKQ7cVezYiWpfdQeVdn8gAO8pz4BbyV2bu52urQQwHLQVlqqT4kE0p5ZOi8g1wuxqEAXncDp8F+CG6txfqAcYsDV03hjt35UyFzoGnlzzgeaIe/GDKX6pITtzOvKYE7wSd6WIfnbHRME/DebCsecLwoF61MGB7n3ZD8cKPbPnZ3CRN8OWwMdNAq/rcWmjMe6Urpf99f+yKFDlRsYv1jL/CApvX/VKMVoxSKXKcEyn20YiSz8UACOpaScDivXrIR6IDFYDr9SwG+75Xim/lYkZFt+oDKugdo4TFaUNXaDRjlFUVT0Vc7S/v8dh8qKaajvZk2gc1RSTc4HMmb300UZzBFmKL2a1PcfjOGFa4DMXsgnP2f24gWrWtfT9bpnYZkAN9kchIYYe7aMpNG3sOOCJYn3Ru/RQqR/0i9TdeoVCgv1Syhp8ppia7GhbXYSB5qnK5e0nZ7YKd74k58LbN9WU1VQF4A5cYWTCE+rL3mJAJxxnEw3HY49UclAYkcFG10KLPAz6zHYIBk9jXSdIzwTWq35TCHfTdPVeeEAmFZEx/glbmWcQ0HrPyQpysqxLMqw6MvMHMkDrOHBz9+PEx1c+BcbScaQJPnU5zN8QYMm/ZNro51qKHn4WThfAth07+tTCv6eMLV3t8GPJB9fJmD6JkCIvtWXMpUQLfFf9KFNY=
-notifications:
-  slack:
-    rooms:
-      secure: e28mGUXonEd8bRto15PES/hl7upgRHK3bWmTLFvgbO5ZnxK/O1UHZ3prD4Rkm0L426EqN5sdZ5l/FPQE9QFhQaWFdRPwN8YG47qkv9xLc3fOO0kUeKrPGu00IKQgWhiw2jhOKwkfZ5S6eneY+jBCPEXMAo5Ts2dNpDHCxhTKtsOGWLD1OuqynsYQq4rYtwFVmOZ1zaD0sfACJMZ00QCeEzKLdOGpoTRHgoHrN+wvoVs0NnlxV4DpIyoAOiwqQkVauviBY+AAAM/PQ6J1ZVR0OaIuukmOeozuoGsKti8ghymIutckk+TT7Pr7JOFOnC/+kAciniJ9fxWEdSPMyoWzaq8c0QSyQhWvigHpf7hIvZK4pvAnWzw1dKQ7iIPvceTexTAMrZamMkp5up9+P9sCxjBrOW3JqZES5u68QBEGIrY0kS8ZUCNZU7N/knsGNZ7dSWPamQNUI1Hnatxs2dWDdJDYWbrz8+hsPJ0oq8HHBjk3mY5oxHCyL3SuN1h89NhrWJo1Lo9J+UX6xkzdEIPdoNoh5vVkjHuYsvZsAJFviYns//8ybnSejY9XRHZPnQ79ygQ7JASufSbYzOFlTnKEFTTD4V8NwhMuJhUA9ih1Y2ktzpZkvscWYeyRGrS6ehpDcuSh91hWL6KL2++Fk7UvpaM/lkdkAE6NmNYqyKsaT0I=
-    on_success: change
-    on_failure: always
+    secure: Q2HQF9WlW8yX/zuoBrWwn0ITKoLHDlRqGIHP67RxRGKitPfs0XHdvlmKar1GMBijrx4xE39RAzVlXYdOcb/4lN1NqlnB3x5dl0CRReVaI1glpx9q1h5XUWLZd0mC70Zdqujt90/pyWnFD1h4yITXvco50PvZjkh3VlK8v7p8/0cbv9pwwtaxCOmw05jLVPq9eccPPXD3onEmfp6XqUOHsFA8yipi+1W/w1+2IhtwtlMhmbA5G4On0L3D2OTP9KYm3bmj59kGxzMmpCvuoY0NPI5TxzJyj9rCrXewNTdJOlV8D0RULs66IDpnkDKAlClRjEXNG1nfRQHZIuZnUF30Snbf3yvvoQlHyJy378o93UxWDlffR7GdDcMLaAFM3ThBFbvE8M2KvM77e/pEdXRKgQh64SyRta/iFPizGZJ71b0jbjR+wsyjsFwXNcb2MdPR9GciizQML2Sn8VwcYgOAzuNHrWPQEm0GiXglCOs3rZp2Nl6wHdEFKtipt2TWRDaVyaj4l+mCt/tnw1gLejFLkJWt/0dh71xPVipSmybvhgu1uyqDEz6aEXWli1h+yZFiFiu5u4AIM+OGdWHXuB/yzH2DhZoDez/iWD6/YCvBgTu3rUyyBh3WXA2zPpcb2RZ5oZiesnBahZeWKpamPRNheymNacHi7GnmBExPFQS/3rM=
