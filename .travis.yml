@@ -1,16 +1,27 @@
 language: node_js
 node_js:
-- node
+- '8'
+cache:
+  yarn: true
+  directories:
+  - node_modules
+before_script:
+- npm install --global @dhis2/deploy-build
 script:
-- yarn lint
-- yarn coverage
+- npm run lint
+- npm run coverage
 - npm run build
-after_script:
-- "./cc-test-reporter after-build -d --exit-code $TRAVIS_TEST_RESULT"
-- if ( [ "$TRAVIS_BRANCH" == "master" ] || [ ! -z "$TRAVIS_TAG" ] ) && [ "$TRAVIS_REPO_SLUG"
-  == "dhis2/translations-app" ]  &&  [ "$TRAVIS_PULL_REQUEST" == "false" ] ; then mvn clean
-  deploy --settings deploy/settings.xml && exit 0; fi
+deploy:
+- provider: script
+  script: deploy-build
+  skip_cleanup: true
+  on:
+    all_branches: true
+- provider: script
+  script: publish-build
+  skip_cleanup: true
+  on:
+    tags: true
 env:
   global:
-  - secure: Zg3p/KEMW5lUwoFpbB+GqXFLZMM1uZrM2BpYkNdD0cK+bWARyTvpvEFH8yQQseyEfrfGTRAWMoyNR58MVpMQbrRipep0ronLPMjKi8wXUqP7ZNHpm7iifZPT412Pog/XX0EI2VMxjBRrqZtVrEmkYe1eA9eiRHzAyG17t/mxuHzoWUiJUiU2qODRvguW9bp9NLSuP3cGYEALQhbgHxG8oaD633OWrZ14At1Je7FrP4ExgG4MAZPMfWb2wYsvn3VYl7ord+TBaHh7reJlsFlwO5EgDpYiMettRHFo9iqK6upCai04njCHioYCjBmEmK/g05A7JVeHRUP/nxweslAQWOOOUJbxB18by2rRvawCXaOHVVlHH7czuXGrrlyR5W4Ghb6cLYOKJHlSLrBA0DXS3zia1MAJz+byhMQO06WaU8ARdx8BDzvzL4mWgko2f0cFmJT9mL8+CeaZf2Hb2jlmSUH9xZTqlyy01YUF8SG5y3S5uw/XfxqWyLU8BiiAJXdJPH5eMFAER/SxP/IZ8jzKv4zlBTkYkoqOWrwIhjB22lK6/i+jmvg8QjZ7c4KtQGuFh+gJ5p77MTLabiS8b3qiiSVQKgfrOL7g+xxbuallF9uHiNil1FbAma6i9HVNlzVtBB3mw0Q1ojQPeNh305s6FdzyRpOoKNZb3yGd57kR5m8=
-  - secure: NOu+rM5Vz9p2NIhgSrIa/4osW+0nOJW9dVkbwyLQJ7X8mEEBjC0stVwbmsruXPbLT06iN6lyQ1bbGcrsAPwJfRjPoNOd2usAeXswlrP2JWE1DhH8VQAnT4p4IdP8cbAHjeXgMx4GmeW9+8Tz5LMBRzKEquxTAsjb/gJEW3s0i0O+001XLcxZz0sPZshqXa/voqHEuOeJ4d4hlJQyJW0r3DVDeFiKLUbcZO5fnNMFFfNYvIfyKV9otyS2eblVO3LM2OSiiwdfObzMBbhVxMTs5WQKTXKCRqUjdLrL/Cmj7UkjzW+SmPcN2VC3pVG9BUIn6cnmc2BYpskeLZ8w37M5M0J2K3Bl8X+THDcu6z4gQwwOyZI7J0O3rC2sBkJ5eQqa85IoehccxS+Bbl9gOjKiCGYYM2NTgA+mocIYz9tkmBdDfuQzuK2UXLqTy0kQPwovF1KQHGxct0pqP4JhYDbzHdlvLoWUeYqefr9FAboJE/EgZyl1/yBqrp4W6sdUp775EQqQnggJxneGvK9hdpdY9Ba/WefT6IzCA6tH80zjoCQquavLOf7r8H32UmCatAhxIxTe6g6t4p+OiZSUYbZn2WDsXANwMxMlxWOgZblSkIvdc5bphHlSUrgtjKrXNY9trKkKrGRtERHEDyfWqYCJN7U2wzEcq9PPVgP1gyLnMTM=
+    secure: Q2HQF9WlW8yX/zuoBrWwn0ITKoLHDlRqGIHP67RxRGKitPfs0XHdvlmKar1GMBijrx4xE39RAzVlXYdOcb/4lN1NqlnB3x5dl0CRReVaI1glpx9q1h5XUWLZd0mC70Zdqujt90/pyWnFD1h4yITXvco50PvZjkh3VlK8v7p8/0cbv9pwwtaxCOmw05jLVPq9eccPPXD3onEmfp6XqUOHsFA8yipi+1W/w1+2IhtwtlMhmbA5G4On0L3D2OTP9KYm3bmj59kGxzMmpCvuoY0NPI5TxzJyj9rCrXewNTdJOlV8D0RULs66IDpnkDKAlClRjEXNG1nfRQHZIuZnUF30Snbf3yvvoQlHyJy378o93UxWDlffR7GdDcMLaAFM3ThBFbvE8M2KvM77e/pEdXRKgQh64SyRta/iFPizGZJ71b0jbjR+wsyjsFwXNcb2MdPR9GciizQML2Sn8VwcYgOAzuNHrWPQEm0GiXglCOs3rZp2Nl6wHdEFKtipt2TWRDaVyaj4l+mCt/tnw1gLejFLkJWt/0dh71xPVipSmybvhgu1uyqDEz6aEXWli1h+yZFiFiu5u4AIM+OGdWHXuB/yzH2DhZoDez/iWD6/YCvBgTu3rUyyBh3WXA2zPpcb2RZ5oZiesnBahZeWKpamPRNheymNacHi7GnmBExPFQS/3rM=
