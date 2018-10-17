@@ -99,7 +99,7 @@ const TranslationCard = (props) => {
                                     type="text"
                                     label={i18n.t(i18nKeys.translationForm[property.name])}
                                     onChange={onChange(property.translationKey)}
-                                    onKeyPress={saveTranslationsOnKeyPress}
+                                    onKeyDown={saveTranslationsOnKeyPress}
                                 />
                             </Grid>
                         ))}

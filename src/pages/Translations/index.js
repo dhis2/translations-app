@@ -198,8 +198,17 @@ class TranslationsPage extends PureComponent {
 
         const currentLocale = this.state.searchFilter.selectedLocale.id;
         const currentPageResults = [...this.state.currentPageResults];
-        const selectedObjectIndex = currentPageResults.findIndex(objectInstance => objectInstance.id === objectId);
+        const selectedObjectIndex = currentPageResults
+            .findIndex(objectInstance => objectInstance.id === objectId);
         const selectedObjectInstance = currentPageResults[selectedObjectIndex];
+
+        const searchResults = [...this.state.searchResults];
+        const selectedObjectIndexInSearchResults = searchResults
+            .findIndex(objectInstance => objectInstance.id === objectId);
+
+        const originalInstances = [...this.state.objectInstances];
+        const selectedOriginalObjectIndex = originalInstances
+            .findIndex(originalInstance => originalInstance.id === objectId);
 
         if (selectedObjectInstance) {
             this.startLoading();
@@ -218,25 +227,27 @@ class TranslationsPage extends PureComponent {
 
                 api.update(translationsUrlForInstance, { translations }).then(() => {
                     /* open next card and show success message */
+                    /* update card state and close it */
+                    const flatElement = flatElementForPropertiesAndLocale(
+                        selectedObjectInstance,
+                        this.state.searchFilter.selectedObject.translatableProperties,
+                        currentLocale);
+                    flatElement.open = false;
+
+                    currentPageResults[selectedObjectIndex] = flatElement;
+                    searchResults[selectedObjectIndexInSearchResults] = flatElement;
+                    originalInstances[selectedOriginalObjectIndex] = flatElement;
+
+                    /* open next card */
                     if (selectedObjectIndex < currentPageResults.length - 1) {
-                        /* update card state and close it */
-                        const flatElement = flatElementForPropertiesAndLocale(
-                            selectedObjectInstance,
-                            this.state.searchFilter.selectedObject.translatableProperties,
-                            currentLocale);
-                        flatElement.open = false;
-                        currentPageResults[selectedObjectIndex] = flatElement;
-
-                        /* open next card */
                         currentPageResults[selectedObjectIndex + 1].open = true;
-
-                        /* TODO need to sync translations for element at objectInstances as well for further filters */
-                        /* Maybe it is better done at onChangeTranslationForObjectAndLocale */
-
-                        this.setState({
-                            currentPageResults,
-                        });
                     }
+
+                    this.setState({
+                        currentPageResults,
+                        searchResults,
+                        objectInstances: originalInstances,
+                    });
 
                     this.showSuccessMessage(i18n.t(i18nKeys.messages.translationsSaved));
                 }).catch((error) => {
@@ -376,7 +387,8 @@ class TranslationsPage extends PureComponent {
                 if (element.name.trim().toLowerCase().includes(currentSearchTerm)) {
                     const flatElement = flatElementForPropertiesAndLocale(
                         element,
-                        this.state.searchFilter.selectedObject.translatableProperties,
+                        // this.state.searchFilter.selectedObject.translatableProperties,
+                        searchFilter.selectedObject.translatableProperties,
                         currentLocale);
 
                     if ((currentFilterId === PAGE_CONFIGS.ALL_ID || flatElement.translationState === currentFilterId)) {

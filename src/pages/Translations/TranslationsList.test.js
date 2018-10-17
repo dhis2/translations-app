@@ -13,7 +13,7 @@ import TranslationCard from './TranslationCard';
 import TranslationsList, { NoResults } from './TranslationsList';
 
 /* utils */
-import { INITIAL_PAGER,  } from './translations.conf';
+import { INITIAL_PAGER, TRANSLATED_ID, } from './translations.conf';
 import { DEFAULT_LOCALE } from '../../configI18n';
 import fakerData from '../../utils/testFaker';
 
@@ -21,6 +21,7 @@ const DEFAULT_PROPS = {
     localeId: DEFAULT_LOCALE.id,
     objects: [],
     pager: INITIAL_PAGER,
+    translationState: TRANSLATED_ID,
     goToNextPage: jest.fn(),
     goToPreviousPage: jest.fn(),
     onChangeTranslationForObjectAndLocale: jest.fn(),

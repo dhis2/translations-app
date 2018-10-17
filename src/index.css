@@ -7,3 +7,7 @@ html {
   background: #f3f3f3;
   font-family: 'Roboto', sans-serif;
 }
+
+#menu- {
+  z-index: 1500;
+}

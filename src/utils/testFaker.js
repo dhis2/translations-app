@@ -1,4 +1,4 @@
-import { DEFAULT_TRANSLATABLE_PROPERTIES } from '../pages/Translations/translations.conf';
+import { DEFAULT_TRANSLATABLE_PROPERTIES, UNTRANSLATED_ID, TRANSLATED_ID } from '../pages/Translations/translations.conf';
 
 const fakerData = {
     d2: {
@@ -22,11 +22,11 @@ const fakerData = {
         },
     },
     objects: [
-        { id: '1', name: '1', displayName: '1', translations: [], translated: true },
-        { id: '2', name: '2', displayName: '2', translations: [], translated: false },
-        { id: '3', name: '3', displayName: '3', translations: [], translated: false },
-        { id: '4', name: '4', displayName: '4', translations: [], translated: false },
-        { id: '5', name: '5', displayName: '5', translations: [], translated: true },
+        { id: '1', name: '1', displayName: '1', translations: [], translationState: TRANSLATED_ID },
+        { id: '2', name: '2', displayName: '2', translations: [], translationState: UNTRANSLATED_ID },
+        { id: '3', name: '3', displayName: '3', translations: [], translationState: UNTRANSLATED_ID },
+        { id: '4', name: '4', displayName: '4', translations: [], translationState: UNTRANSLATED_ID },
+        { id: '5', name: '5', displayName: '5', translations: [], translationState: TRANSLATED_ID },
     ],
 };
 
