@@ -232,7 +232,7 @@ class TranslationsPage extends PureComponent {
                         selectedObjectInstance,
                         this.state.searchFilter.selectedObject.translatableProperties,
                         currentLocale);
-                    // Must keep all existing translations for other locales (flatElementForPropertiesAndLocale keeps
+                    // Must keep all existing translations for other locales "flatElementForPropertiesAndLocale" keeps
                     // only translations for selected locale
                     flatElement.translations = [...translations];
                     flatElement.open = false;
