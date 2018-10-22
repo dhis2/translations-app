@@ -10,6 +10,13 @@
 ### Running the dev server
 * add `http://localhost:3000` url to your DHIS2 CORS whitelist. (This can be done in the settings app);
 
+* in the root folder of the project create `.env.development.local` file with the following content:
+    ```sh
+    REACT_APP_DHIS2_BASE_URL=http://localhost:8080
+    REACT_APP_DHIS2_API_VERSION=30
+    CI=true
+    ```
+    
 * Execute the following commands:
     ```sh
     yarn install
