@@ -343,6 +343,17 @@ class TranslationsPage extends PureComponent {
             }
         }
 
+        schemas.sort(
+            (objectA, objectB) => {
+                if (objectA.name > objectB.name) {
+                    return 1;
+                } else if (objectB.name > objectA.name) {
+                    return -1;
+                }
+                return 0;
+            },
+        );
+
         return schemas;
     };
 
