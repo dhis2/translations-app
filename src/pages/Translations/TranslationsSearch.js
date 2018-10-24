@@ -62,7 +62,7 @@ const TranslationsSearch = (props) => {
     return (
         <div style={translationsSearchStyles.container}>
             <Grid container>
-                <Grid item xs={12} md={3} style={styles.formControl}>
+                <Grid id={'select-object-id'} item xs={12} md={3} style={styles.formControl}>
                     <SelectControl
                         value={props.selectedObjectName}
                         onChange={props.onObjectChange}
@@ -70,7 +70,7 @@ const TranslationsSearch = (props) => {
                         label={props.objectSelectLabel}
                     />
                 </Grid>
-                <Grid item xs={12} md={3} style={styles.formControl}>
+                <Grid id={'select-filter-id'} item xs={12} md={3} style={styles.formControl}>
                     <SelectControl
                         value={props.selectedFilterId}
                         onChange={props.onFilterChange}
@@ -78,7 +78,7 @@ const TranslationsSearch = (props) => {
                         label={props.filterBySelectLabel}
                     />
                 </Grid>
-                <Grid item xs={12} md={3} style={styles.formControl}>
+                <Grid id={'select-locale-id'} item xs={12} md={3} style={styles.formControl}>
                     <SelectControl
                         value={props.selectedLocaleId}
                         onChange={props.onLocaleChange}
@@ -86,7 +86,7 @@ const TranslationsSearch = (props) => {
                         label={props.localeSelectLabel}
                     />
                 </Grid>
-                <Grid item xs={12} md={3} style={styles.formControl}>
+                <Grid id={'select-search-id'} item xs={12} md={3} style={styles.formControl}>
                     <TextField
                         label={props.searchFieldLabel}
                         type="search"

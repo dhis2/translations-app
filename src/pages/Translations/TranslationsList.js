@@ -43,7 +43,7 @@ export const NoResults = () => (
 
 const TranslationsList = props => (props.objects && props.objects.length > 0 ?
     (
-        <div style={translationsListStyles.container}>
+        <div id={'translation-list-container'} style={translationsListStyles.container}>
             { PaginationBuilder(props.pager, props.goToNextPage, props.goToPreviousPage) }
             {
                 props.objects.map(object => (

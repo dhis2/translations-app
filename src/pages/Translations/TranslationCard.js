@@ -84,6 +84,7 @@ const TranslationCard = (props) => {
                         {props.translatableProperties.map(property => (
                             <Grid
                                 key={property.name}
+                                id={property.name}
                                 item
                                 xs={12}
                                 md={props.translatableProperties.length === 1 ? 12 : 6}
