@@ -29,7 +29,7 @@ const translationValueOfObjectForLocaleAndTranslationKey = (object, localeId, tr
 };
 
 const TranslationCard = (props) => {
-    const { onChangeTranslationForObjectAndLocale } = props;
+    const { onChangeTranslationForObjectAndLocale, hasUnsavedChanges } = props;
     const onChange = translationKey => (event) => {
         onChangeTranslationForObjectAndLocale(
             props.object.id,
@@ -39,21 +39,25 @@ const TranslationCard = (props) => {
         );
     };
 
+    const checkSave = () => !hasUnsavedChanges();
+
     const headerStyle = () => ({
         ...translationCardStyles.header,
         color: colors[props.object.translationState],
     });
 
-    const isReadyToSubmit = () => props.object.translations.some(t => t.value && t.value.trim().length);
-
     const saveTranslationsOnKeyPress = (event) => {
-        if (event.key === 'Enter' && event.ctrlKey && isReadyToSubmit()) {
+        if (event.key === 'Enter' && event.ctrlKey && !checkSave()) {
             props.saveTranslations();
         }
     };
 
     return (
-        <Paper style={styles.cardContainer}>
+        <Paper
+            tabIndex={0}
+            onFocus={props.openCard}
+            style={styles.cardContainer}
+        >
             <Grid
                 style={headerStyle()}
                 onClick={props.openCard}
@@ -81,7 +85,7 @@ const TranslationCard = (props) => {
             { props.open &&
                 <Fragment>
                     <Grid container>
-                        {props.translatableProperties.map(property => (
+                        {props.translatableProperties.map((property, index) => (
                             <Grid
                                 key={property.name}
                                 id={property.name}
@@ -91,6 +95,7 @@ const TranslationCard = (props) => {
                                 style={styles.formControl}
                             >
                                 <TextField
+                                    autoFocus={index === 0}
                                     fullWidth
                                     value={translationValueOfObjectForLocaleAndTranslationKey(
                                         props.object,
@@ -101,6 +106,8 @@ const TranslationCard = (props) => {
                                     label={i18n.t(i18nKeys.translationForm[property.name])}
                                     onChange={onChange(property.translationKey)}
                                     onKeyDown={saveTranslationsOnKeyPress}
+                                    onClick={props.clearFeedback}
+                                    onBlur={props.clearFeedback}
                                 />
                             </Grid>
                         ))}
@@ -110,7 +117,7 @@ const TranslationCard = (props) => {
                             raised
                             color="primary"
                             onClick={props.saveTranslations}
-                            disabled={!isReadyToSubmit()}
+                            disabled={checkSave()}
                         >
                             {i18n.t(i18nKeys.translationForm.actionButton.label)}
                         </Button>
@@ -123,6 +130,7 @@ const TranslationCard = (props) => {
 
 TranslationCard.propTypes = {
     open: PropTypes.bool,
+    hasUnsavedChanges: PropTypes.func,
     localeId: PropTypes.string.isRequired,
     object: PropTypes.shape({
         id: PropTypes.string.isRequired,
@@ -142,10 +150,12 @@ TranslationCard.propTypes = {
     onChangeTranslationForObjectAndLocale: PropTypes.func.isRequired,
     saveTranslations: PropTypes.func.isRequired,
     openCard: PropTypes.func.isRequired,
+    clearFeedback: PropTypes.func.isRequired,
 };
 
 TranslationCard.defaultProps = {
     open: false,
+    hasUnsavedChanges: () => false,
 };
 
 export default TranslationCard;

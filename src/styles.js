@@ -18,6 +18,7 @@ const styles = {
         paddingRight: 10,
     },
     cardContainer: {
+        outline: 'none',
         paddingLeft: 10,
         paddingTop: 10,
         paddingBottom: 10,

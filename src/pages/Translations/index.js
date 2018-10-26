@@ -109,6 +109,8 @@ class TranslationsPage extends PureComponent {
             searchResults: [],
             /* object filtered for current page */
             currentPageResults: [],
+            /* changes array */
+            unsavedChangesMap: [],
         };
     }
 
@@ -153,6 +155,7 @@ class TranslationsPage extends PureComponent {
     };
 
     onObjectChange = (object) => {
+        this.state.unsavedChangesMap = [];
         this.fetchElementsForObjectAndUpdateResults(object);
     };
 
@@ -173,6 +176,33 @@ class TranslationsPage extends PureComponent {
     };
 
     onChangeTranslationForObjectAndLocale = (objectId, localeId, translationKey, value) => {
+        // can reach here without click anywhere
+        this.clearFeedbackSnackbar();
+
+        // Keep unsaved translations
+        if (!this.state.unsavedChangesMap.some(
+            unsavedChange => unsavedChange.objectId === objectId && unsavedChange.localeId === localeId,
+        )) {
+            this.state.unsavedChangesMap.push({ objectId, localeId });
+        }
+
+        this.updateOriginalsOnChange(objectId, localeId, translationKey, value);
+
+        // Update current search results to keep state between pages
+        const searchResults = [...this.state.searchResults];
+        const searchResultsItemInstance = searchResults.find(objectInstance => objectInstance.id === objectId);
+        const translationEntryForSearchResult = searchResultsItemInstance.translations.find(
+            translation => translation.locale === localeId && translation.property === translationKey);
+        if (translationEntryForSearchResult) {
+            translationEntryForSearchResult.value = value;
+        } else {
+            searchResultsItemInstance.translations.push({
+                locale: localeId,
+                property: translationKey,
+                value,
+            });
+        }
+
         const currentPageResults = [...this.state.currentPageResults];
         const selectedObjectInstance = currentPageResults.find(objectInstance => objectInstance.id === objectId);
         if (selectedObjectInstance) {
@@ -187,8 +217,27 @@ class TranslationsPage extends PureComponent {
                     value,
                 });
             }
-            this.setState({
-                currentPageResults,
+        }
+
+        this.setState({
+            currentPageResults,
+            searchResults,
+        });
+    };
+
+    updateOriginalsOnChange = (objectId, localeId, translationKey, value) => {
+        // Update original objects to keep state between filters
+        const originals = [...this.state.objectInstances];
+        const originalItemInstance = originals.find(objectInstance => objectInstance.id === objectId);
+        const translationEntryForOriginal = originalItemInstance.translations.find(
+            translation => translation.locale === localeId && translation.property === translationKey);
+        if (translationEntryForOriginal) {
+            translationEntryForOriginal.value = value;
+        } else {
+            originalItemInstance.translations.push({
+                locale: localeId,
+                property: translationKey,
+                value,
             });
         }
     };
@@ -210,6 +259,8 @@ class TranslationsPage extends PureComponent {
         const selectedOriginalObjectIndex = originalInstances
             .findIndex(originalInstance => originalInstance.id === objectId);
 
+        let unsaved = [...this.state.unsavedChangesMap];
+
         if (selectedObjectInstance) {
             this.startLoading();
 
@@ -218,44 +269,46 @@ class TranslationsPage extends PureComponent {
             const translationsUrlForInstance =
                 `${this.state.searchFilter.selectedObject.apiEndpoint}/${objectId}/translations/`;
 
-            /* request old translations to avoid overwrite other locales updated meanwhile */
-            api.get(translationsUrlForInstance).then((response) => {
-                /* other translations which are not for the locale we are updating */
-                const notUpdateTranslations = response.translations
-                    .filter(translation => translation.locale !== currentLocale);
-                const translations = [...notUpdateTranslations, ...inViewEditedTranslations];
+            const translations = [
+                ...originalInstances[selectedOriginalObjectIndex].translations,
+                ...inViewEditedTranslations,
+            ];
 
-                api.update(translationsUrlForInstance, { translations }).then(() => {
-                    /* open next card and show success message */
-                    /* update card state and close it */
-                    const flatElement = flatElementForPropertiesAndLocale(
-                        selectedObjectInstance,
-                        this.state.searchFilter.selectedObject.translatableProperties,
-                        currentLocale);
-                    // Must keep all existing translations for other locales "flatElementForPropertiesAndLocale" keeps
-                    // only translations for selected locale
-                    flatElement.translations = [...translations];
-                    flatElement.open = false;
+            api.update(translationsUrlForInstance, { translations }).then(() => {
+                /* open next card and show success message */
+                /* update card state and close it */
+                const flatElement = flatElementForPropertiesAndLocale(
+                    selectedObjectInstance,
+                    this.state.searchFilter.selectedObject.translatableProperties,
+                    currentLocale);
 
-                    currentPageResults[selectedObjectIndex] = flatElement;
-                    searchResults[selectedObjectIndexInSearchResults] = flatElement;
-                    originalInstances[selectedOriginalObjectIndex] = flatElement;
+                // Must keep all existing translations for other locales "flatElementForPropertiesAndLocale" keeps
+                // only translations for selected locale
+                flatElement.translations = [...translations];
+                flatElement.open = false;
 
-                    /* open next card */
-                    if (selectedObjectIndex < currentPageResults.length - 1) {
-                        currentPageResults[selectedObjectIndex + 1].open = true;
-                    }
+                currentPageResults[selectedObjectIndex] = flatElement;
+                searchResults[selectedObjectIndexInSearchResults] = flatElement;
+                originalInstances[selectedOriginalObjectIndex] = flatElement;
 
-                    this.setState({
-                        currentPageResults,
-                        searchResults,
-                        objectInstances: originalInstances,
-                    });
+                // Remove item from unsavedChanges
+                unsaved = unsaved.filter(
+                    element => !(element.objectId === objectId && element.localeId === currentLocale),
+                );
 
-                    this.showSuccessMessage(i18n.t(i18nKeys.messages.translationsSaved));
-                }).catch((error) => {
-                    this.manageError(error);
+                /* open next card */
+                if (selectedObjectIndex < currentPageResults.length - 1) {
+                    currentPageResults[selectedObjectIndex + 1].open = true;
+                }
+
+                this.setState({
+                    currentPageResults,
+                    searchResults,
+                    objectInstances: originalInstances,
+                    unsavedChangesMap: unsaved,
                 });
+
+                this.showSuccessMessage(i18n.t(i18nKeys.messages.translationsSaved));
             }).catch((error) => {
                 this.manageError(error);
             });
@@ -289,6 +342,13 @@ class TranslationsPage extends PureComponent {
         this.setState({
             currentPageResults,
         });
+    };
+
+    hasUnsavedChanges = objectId => () => {
+        const currentLocale = this.state.searchFilter.selectedLocale.id;
+        return this.state.unsavedChangesMap.some(
+            unsavedChange => unsavedChange.objectId === objectId && unsavedChange.localeId === currentLocale,
+        );
     };
 
     /* Server requests */
@@ -530,6 +590,8 @@ class TranslationsPage extends PureComponent {
                     onChangeTranslationForObjectAndLocale={this.onChangeTranslationForObjectAndLocale}
                     saveTranslations={this.saveTranslationForObjectId}
                     openCard={this.openCardWithObjectId}
+                    hasUnsavedChanges={this.hasUnsavedChanges}
+                    clearFeedback={this.clearFeedbackSnackbar}
                 />
                 <div id="feedback-snackbar">
                     {feedbackElement}

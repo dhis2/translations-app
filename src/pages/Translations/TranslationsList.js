@@ -50,12 +50,14 @@ const TranslationsList = props => (props.objects && props.objects.length > 0 ?
                     <TranslationCard
                         key={object.id}
                         open={object.open}
+                        hasUnsavedChanges={props.hasUnsavedChanges(object.id)}
                         localeId={props.localeId}
                         object={object}
                         translatableProperties={props.translatableProperties}
                         onChangeTranslationForObjectAndLocale={props.onChangeTranslationForObjectAndLocale}
                         saveTranslations={props.saveTranslations(object.id)}
                         openCard={props.openCard(object.id)}
+                        clearFeedback={props.clearFeedback}
                     />),
                 )
             }
@@ -93,6 +95,8 @@ TranslationsList.propTypes = {
     onChangeTranslationForObjectAndLocale: PropTypes.func.isRequired,
     saveTranslations: PropTypes.func.isRequired,
     openCard: PropTypes.func.isRequired,
+    hasUnsavedChanges: PropTypes.func.isRequired,
+    clearFeedback: PropTypes.func.isRequired,
 };
 
 TranslationsList.defaultProps = {

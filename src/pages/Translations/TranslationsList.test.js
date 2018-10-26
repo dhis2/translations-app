@@ -25,6 +25,8 @@ const DEFAULT_PROPS = {
     goToNextPage: jest.fn(),
     goToPreviousPage: jest.fn(),
     onChangeTranslationForObjectAndLocale: jest.fn(),
+    hasUnsavedChanges: jest.fn(),
+    clearFeedback: jest.fn(),
     saveTranslations: () => jest.fn(),
     openCard: () => jest.fn(),
 };

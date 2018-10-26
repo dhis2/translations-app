@@ -30,7 +30,7 @@ export const i18nKeys = {
     },
     messages: {
         unexpectedError: 'Unexpected Error',
-        translationsSaved: 'Translations was saved',
+        translationsSaved: 'Translations were saved',
         invalidForm: 'A locale and object must be selected',
     },
 };

@@ -32,6 +32,8 @@ const DEFAULT_PROPS = {
     onChangeTranslationForObjectAndLocale: jest.fn(),
     saveTranslations: jest.fn(),
     openCard: jest.fn(),
+    hasUnsavedChanges: () => true,
+    clearFeedback: jest.fn(),
 };
 
 const ownShallow = (props = DEFAULT_PROPS) => {
@@ -74,6 +76,7 @@ describe('Test <TranslationsCard /> rendering:', () => {
     it('Should renders a disable Button when it has no translations', () => {
         const wrapper = ownShallow({
             ...DEFAULT_PROPS,
+            hasUnsavedChanges: () => false,
             object: {
                 ...fakeObject,
                 translations: [],
@@ -85,6 +88,7 @@ describe('Test <TranslationsCard /> rendering:', () => {
     it('Should renders a disable Button when it has no edited translations', () => {
         const wrapper = ownShallow({
             ...DEFAULT_PROPS,
+            hasUnsavedChanges: () => false,
             object: {
                 ...fakeObject,
                 translations: [{
