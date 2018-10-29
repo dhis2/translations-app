@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-10-26T15:48:21.483Z\n"
-"PO-Revision-Date: 2018-10-26T15:48:21.483Z\n"
+"POT-Creation-Date: 2018-10-29T18:28:54.081Z\n"
+"PO-Revision-Date: 2018-10-29T18:28:54.081Z\n"
 
 msgid "Object"
 msgstr ""
@@ -47,6 +47,9 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
+msgid "Changes on object will be lost if you do not save them first."
+msgstr ""
+
 msgid "Unexpected Error"
 msgstr ""
 
@@ -54,4 +57,13 @@ msgid "Translations were saved"
 msgstr ""
 
 msgid "A locale and object must be selected"
+msgstr ""
+
+msgid "Keep editing"
+msgstr ""
+
+msgid "Discard changes"
+msgstr ""
+
+msgid "Unsaved changes"
 msgstr ""

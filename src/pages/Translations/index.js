@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 /* d2-ui */
 import { FeedbackSnackbar, CircularProgress } from '@dhis2/d2-ui-core';
+import ConfirmationDialog from './ConfirmationDialog';
 
 /* components */
 import TranslationsSearch from './TranslationsSearch';
@@ -91,6 +92,7 @@ class TranslationsPage extends PureComponent {
         const schemaEntries = this.updatableAndTranslatableModelsAsSchemaEntries();
 
         this.state = {
+            showConfirmation: false,
             showSnackbar: false,
             snackbarConf: DEFAULT_SNACKBAR_CONF,
             localeSelectItems: PAGE_CONFIGS.INITIAL_LOCALES,
@@ -111,6 +113,7 @@ class TranslationsPage extends PureComponent {
             currentPageResults: [],
             /* changes array */
             unsavedChangesMap: [],
+            nextSelectedObject: null,
         };
     }
 
@@ -155,8 +158,12 @@ class TranslationsPage extends PureComponent {
     };
 
     onObjectChange = (object) => {
-        this.state.unsavedChangesMap = [];
-        this.fetchElementsForObjectAndUpdateResults(object);
+        if (this.state.unsavedChangesMap.length) {
+            this.setState({ showConfirmation: true, nextSelectedObject: object });
+        } else {
+            this.state.unsavedChangesMap = [];
+            this.fetchElementsForObjectAndUpdateResults(object);
+        }
     };
 
     onSearchTermChange = (searchTerm) => {
@@ -223,6 +230,15 @@ class TranslationsPage extends PureComponent {
             currentPageResults,
             searchResults,
         });
+    };
+
+    closeConfirmation = (response) => {
+        if (response) {
+            this.fetchElementsForObjectAndUpdateResults(this.state.nextSelectedObject);
+            this.state.unsavedChangesMap = [];
+            this.state.nextSelectedObject = null;
+        }
+        this.setState({ showConfirmation: false });
     };
 
     updateOriginalsOnChange = (objectId, localeId, translationKey, value) => {
@@ -596,6 +612,7 @@ class TranslationsPage extends PureComponent {
                 <div id="feedback-snackbar">
                     {feedbackElement}
                 </div>
+                <ConfirmationDialog open={this.state.showConfirmation} closeConfirmation={this.closeConfirmation} />
             </Fragment>
         );
     }

@@ -29,10 +29,16 @@ export const i18nKeys = {
         },
     },
     messages: {
+        unsavedChanges: 'Changes on object will be lost if you do not save them first.',
         unexpectedError: 'Unexpected Error',
         translationsSaved: 'Translations were saved',
         invalidForm: 'A locale and object must be selected',
     },
+    btns: {
+        keepEditing: 'Keep editing',
+        discard: 'Discard changes',
+    },
+    unsavedChangesTitle: 'Unsaved changes',
 };
 
 export default i18nKeys;

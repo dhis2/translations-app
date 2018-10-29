@@ -25,6 +25,9 @@ const styles = {
         paddingRight: 10,
         marginBottom: 20,
     },
+    actionBtns: {
+        marginLeft: 10,
+    },
 };
 
 export default styles;
