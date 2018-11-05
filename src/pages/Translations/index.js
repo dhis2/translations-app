@@ -463,7 +463,6 @@ class TranslationsPage extends PureComponent {
     };
 
     /* FIXME improve the algorithm -- Lodash could be a good library to use, and divide it to models/classes */
-    // eslint-disable-next-line
     prepareElementsToShowAndFilter = (elements, searchFilter) => {
         if (elements && elements.length) {
             const currentLocale = searchFilter.selectedLocale.id;
