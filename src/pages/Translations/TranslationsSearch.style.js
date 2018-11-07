@@ -1,4 +1,4 @@
-import { LATERAL_PADDING_FOR_MAIN_CONTAINERS } from '../../styles';
+import { LATERAL_PADDING_FOR_MAIN_CONTAINERS } from '../../styles'
 
 const styles = {
     container: {
@@ -8,7 +8,6 @@ const styles = {
         paddingBottom: 20,
         backgroundColor: '#e8e8e8',
     },
-};
+}
 
-export default styles;
-
+export default styles

@@ -1,5 +1,6 @@
+/* global browser */
 module.exports = class Page {
     open(path = '') {
-        browser.url(`/${path}`);
+        browser.url(`/${path}`)
     }
-};
+}

@@ -4,24 +4,24 @@
 
 ### Pre-requisites
 
-* DHIS2 instance running
-* node v9.3.0+
-* yarn v1.3.2+
+-   DHIS2 instance running
+-   node v9.3.0+
+-   yarn v1.3.2+
 
 ### Running the dev server
 
-* add `http://localhost:3000` url to your DHIS2 CORS whitelist. (This can be done in the settings app).
+-   add `http://localhost:3000` url to your DHIS2 CORS whitelist. (This can be done in the settings app).
 
-* in the root folder of the project make a copy of `.env.template` and name it `.env.development.local`.
+-   in the root folder of the project make a copy of `.env.template` and name it `.env.development.local`.
 
-* Execute the following commands:
+-   Execute the following commands:
 
     ```sh
     yarn install
     yarn start
     ```
 
-* Open your browser at `http://localhost:3000` (you must to be logged in into DHIS2).
+-   Open your browser at `http://localhost:3000` (you must to be logged in into DHIS2).
 
 ### Building the project
 

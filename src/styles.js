@@ -1,6 +1,6 @@
-export const HEADER_HEIGHT = 48;
-export const MAX_WIDTH = 1400;
-export const LATERAL_PADDING_FOR_MAIN_CONTAINERS = 20;
+export const HEADER_HEIGHT = 48
+export const MAX_WIDTH = 1400
+export const LATERAL_PADDING_FOR_MAIN_CONTAINERS = 20
 
 const styles = {
     contentArea: {
@@ -28,6 +28,6 @@ const styles = {
     actionBtns: {
         marginLeft: 10,
     },
-};
+}
 
-export default styles;
+export default styles

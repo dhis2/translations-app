@@ -1,26 +1,26 @@
 /* React */
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 /* d2-ui */
-import { Pagination } from '@dhis2/d2-ui-core';
+import { Pagination } from '@dhis2/d2-ui-core'
 
 /* material-ui */
-import Paper from '@material-ui/core/Paper';
+import Paper from '@material-ui/core/Paper'
 
 /* d2-ui styles */
-import '@dhis2/d2-ui-core/build/css/Pagination.css';
+import '@dhis2/d2-ui-core/build/css/Pagination.css'
 
 /* components */
-import TranslationCard from './TranslationCard';
+import TranslationCard from './TranslationCard'
 
 /* utils */
-import * as PAGINATION_HELPER from '../../utils/pagination';
-import { DEFAULT_TRANSLATABLE_PROPERTIES } from './translations.conf';
+import * as PAGINATION_HELPER from '../../utils/pagination'
+import { DEFAULT_TRANSLATABLE_PROPERTIES } from './translations.conf'
 
 /* styles */
-import styles from '../../styles';
-import translationsListStyles from './TranslationsList.style';
+import styles from '../../styles'
+import translationsListStyles from './TranslationsList.style'
 
 const PaginationBuilder = (pager, goToNextPage, goToPreviousPage) => (
     <Pagination
@@ -31,59 +31,74 @@ const PaginationBuilder = (pager, goToNextPage, goToPreviousPage) => (
         onPreviousPageClick={goToPreviousPage}
         currentlyShown={PAGINATION_HELPER.calculatePageValue(pager)}
     />
-);
+)
 
 export const NoResults = () => (
     <div style={translationsListStyles.noResultsContainer}>
-        <Paper style={styles.cardContainer}>
-            No Results
-        </Paper>
+        <Paper style={styles.cardContainer}>No Results</Paper>
     </div>
-);
+)
 
-const TranslationsList = props => (props.objects && props.objects.length > 0 ?
-    (
-        <div id={'translation-list-container'} style={translationsListStyles.container}>
-            { PaginationBuilder(props.pager, props.goToNextPage, props.goToPreviousPage) }
-            {
-                props.objects.map(object => (
-                    <TranslationCard
-                        key={object.id}
-                        open={object.open}
-                        hasUnsavedChanges={props.hasUnsavedChanges(object.id)}
-                        localeId={props.localeId}
-                        object={object}
-                        translatableProperties={props.translatableProperties}
-                        onChangeTranslationForObjectAndLocale={props.onChangeTranslationForObjectAndLocale}
-                        saveTranslations={props.saveTranslations(object.id)}
-                        openCard={props.openCard(object.id)}
-                        clearFeedback={props.clearFeedback}
-                    />),
-                )
-            }
-            { PaginationBuilder(props.pager, props.goToNextPage, props.goToPreviousPage) }
+const TranslationsList = props =>
+    props.objects && props.objects.length > 0 ? (
+        <div
+            id={'translation-list-container'}
+            style={translationsListStyles.container}
+        >
+            {PaginationBuilder(
+                props.pager,
+                props.goToNextPage,
+                props.goToPreviousPage
+            )}
+            {props.objects.map(object => (
+                <TranslationCard
+                    key={object.id}
+                    open={object.open}
+                    hasUnsavedChanges={props.hasUnsavedChanges(object.id)}
+                    localeId={props.localeId}
+                    object={object}
+                    translatableProperties={props.translatableProperties}
+                    onChangeTranslationForObjectAndLocale={
+                        props.onChangeTranslationForObjectAndLocale
+                    }
+                    saveTranslations={props.saveTranslations(object.id)}
+                    openCard={props.openCard(object.id)}
+                    clearFeedback={props.clearFeedback}
+                />
+            ))}
+            {PaginationBuilder(
+                props.pager,
+                props.goToNextPage,
+                props.goToPreviousPage
+            )}
         </div>
     ) : (
         <NoResults />
-    ));
+    )
 
 TranslationsList.propTypes = {
     localeId: PropTypes.string.isRequired,
-    objects: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-        displayName: PropTypes.string.isRequired,
-        translationState: PropTypes.string.isRequired,
-        translations: PropTypes.arrayOf(PropTypes.shape({
-            property: PropTypes.string.isRequired,
-            locale: PropTypes.string.isRequired,
-            value: PropTypes.string.isRequired,
-        })).isRequired,
-    })).isRequired,
-    translatableProperties: PropTypes.arrayOf(PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        translationKey: PropTypes.string.isRequired,
-    })),
+    objects: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+            displayName: PropTypes.string.isRequired,
+            translationState: PropTypes.string.isRequired,
+            translations: PropTypes.arrayOf(
+                PropTypes.shape({
+                    property: PropTypes.string.isRequired,
+                    locale: PropTypes.string.isRequired,
+                    value: PropTypes.string.isRequired,
+                })
+            ).isRequired,
+        })
+    ).isRequired,
+    translatableProperties: PropTypes.arrayOf(
+        PropTypes.shape({
+            name: PropTypes.string.isRequired,
+            translationKey: PropTypes.string.isRequired,
+        })
+    ),
     pager: PropTypes.shape({
         pageSize: PropTypes.number.isRequired,
         page: PropTypes.number.isRequired,
@@ -97,11 +112,10 @@ TranslationsList.propTypes = {
     openCard: PropTypes.func.isRequired,
     hasUnsavedChanges: PropTypes.func.isRequired,
     clearFeedback: PropTypes.func.isRequired,
-};
+}
 
 TranslationsList.defaultProps = {
     translatableProperties: DEFAULT_TRANSLATABLE_PROPERTIES,
-};
+}
 
-export default TranslationsList;
-
+export default TranslationsList

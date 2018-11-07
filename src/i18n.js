@@ -29,7 +29,8 @@ export const i18nKeys = {
         },
     },
     messages: {
-        unsavedChanges: 'Changes on object will be lost if you do not save them first.',
+        unsavedChanges:
+            'Changes on object will be lost if you do not save them first.',
         unexpectedError: 'Unexpected Error',
         translationsSaved: 'Translations were saved',
         invalidForm: 'A locale and object must be selected',
@@ -39,6 +40,6 @@ export const i18nKeys = {
         discard: 'Discard changes',
     },
     unsavedChangesTitle: 'Unsaved changes',
-};
+}
 
-export default i18nKeys;
+export default i18nKeys

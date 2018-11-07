@@ -1,56 +1,63 @@
 /* React */
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
+import React, { Fragment } from 'react'
+import PropTypes from 'prop-types'
 
 /* material-ui */
-import Paper from '@material-ui/core/Paper';
-import TextField from '@material-ui/core/TextField';
-import Grid from '@material-ui/core/Grid';
-import Done from '@material-ui/icons/Done';
+import Paper from '@material-ui/core/Paper'
+import TextField from '@material-ui/core/TextField'
+import Grid from '@material-ui/core/Grid'
+import Done from '@material-ui/icons/Done'
 
 /* d2-ui components */
-import { Button } from '@dhis2/d2-ui-core';
+import { Button } from '@dhis2/d2-ui-core'
 
 /* utils */
-import { TRANSLATED_ID } from './translations.conf';
+import { TRANSLATED_ID } from './translations.conf'
 
 /* i18n */
-import { i18nKeys } from '../../i18n';
-import i18n from '../../locales';
+import { i18nKeys } from '../../i18n'
+import i18n from '../../locales'
 
 /* styles */
-import styles from '../../styles';
-import translationCardStyles, { colors } from './TranslationCard.style';
+import styles from '../../styles'
+import translationCardStyles, { colors } from './TranslationCard.style'
 
-const translationValueOfObjectForLocaleAndTranslationKey = (object, localeId, translationKey) => {
+const translationValueOfObjectForLocaleAndTranslationKey = (
+    object,
+    localeId,
+    translationKey
+) => {
     const selectedTranslation = object.translations.find(
-        translation => translation.locale === localeId && translation.property === translationKey);
-    return selectedTranslation ? selectedTranslation.value : '';
-};
+        translation =>
+            translation.locale === localeId &&
+            translation.property === translationKey
+    )
+    return selectedTranslation ? selectedTranslation.value : ''
+}
 
-const TranslationCard = (props) => {
-    const { onChangeTranslationForObjectAndLocale, hasUnsavedChanges } = props;
-    const onChange = translationKey => (event) => {
+const TranslationCard = props => {
+    const { onChangeTranslationForObjectAndLocale, hasUnsavedChanges } = props
+    const onChange = translationKey => event => {
         onChangeTranslationForObjectAndLocale(
             props.object.id,
             props.localeId,
             translationKey,
-            event.target.value,
-        );
-    };
+            event.target.value
+        )
+    }
 
-    const checkSave = () => !hasUnsavedChanges();
+    const checkSave = () => !hasUnsavedChanges()
 
     const headerStyle = () => ({
         ...translationCardStyles.header,
         color: colors[props.object.translationState],
-    });
+    })
 
-    const saveTranslationsOnKeyPress = (event) => {
+    const saveTranslationsOnKeyPress = event => {
         if (event.key === 'Enter' && event.ctrlKey && !checkSave()) {
-            props.saveTranslations();
+            props.saveTranslations()
         }
-    };
+    }
 
     return (
         <Paper
@@ -64,25 +71,16 @@ const TranslationCard = (props) => {
                 container
                 alignItems="center"
             >
-                <Grid
-                    item
-                    xs={6}
-                >
+                <Grid item xs={6}>
                     <h3>{props.object.name}</h3>
                 </Grid>
-                <Grid
-                    style={translationCardStyles.icon}
-                    item
-                    xs={6}
-                >
-                    {props.object.translationState === TRANSLATED_ID &&
-                        <Done
-                            style={translationCardStyles.translated}
-                        />
-                    }
+                <Grid style={translationCardStyles.icon} item xs={6}>
+                    {props.object.translationState === TRANSLATED_ID && (
+                        <Done style={translationCardStyles.translated} />
+                    )}
                 </Grid>
             </Grid>
-            { props.open &&
+            {props.open && (
                 <Fragment>
                     <Grid container>
                         {props.translatableProperties.map((property, index) => (
@@ -91,7 +89,11 @@ const TranslationCard = (props) => {
                                 id={property.name}
                                 item
                                 xs={12}
-                                md={props.translatableProperties.length === 1 ? 12 : 6}
+                                md={
+                                    props.translatableProperties.length === 1
+                                        ? 12
+                                        : 6
+                                }
                                 style={styles.formControl}
                             >
                                 <TextField
@@ -100,10 +102,12 @@ const TranslationCard = (props) => {
                                     value={translationValueOfObjectForLocaleAndTranslationKey(
                                         props.object,
                                         props.localeId,
-                                        property.translationKey,
+                                        property.translationKey
                                     )}
                                     type="text"
-                                    label={i18n.t(i18nKeys.translationForm[property.name])}
+                                    label={i18n.t(
+                                        i18nKeys.translationForm[property.name]
+                                    )}
                                     onChange={onChange(property.translationKey)}
                                     onKeyDown={saveTranslationsOnKeyPress}
                                     onClick={props.clearFeedback}
@@ -119,14 +123,16 @@ const TranslationCard = (props) => {
                             onClick={props.saveTranslations}
                             disabled={checkSave()}
                         >
-                            {i18n.t(i18nKeys.translationForm.actionButton.label)}
+                            {i18n.t(
+                                i18nKeys.translationForm.actionButton.label
+                            )}
                         </Button>
                     </div>
                 </Fragment>
-            }
+            )}
         </Paper>
-    );
-};
+    )
+}
 
 TranslationCard.propTypes = {
     open: PropTypes.bool,
@@ -137,25 +143,29 @@ TranslationCard.propTypes = {
         name: PropTypes.string.isRequired,
         displayName: PropTypes.string.isRequired,
         translationState: PropTypes.string.isRequired,
-        translations: PropTypes.arrayOf(PropTypes.shape({
-            property: PropTypes.string.isRequired,
-            locale: PropTypes.string.isRequired,
-            value: PropTypes.string.isRequired,
-        })).isRequired,
+        translations: PropTypes.arrayOf(
+            PropTypes.shape({
+                property: PropTypes.string.isRequired,
+                locale: PropTypes.string.isRequired,
+                value: PropTypes.string.isRequired,
+            })
+        ).isRequired,
     }).isRequired,
-    translatableProperties: PropTypes.arrayOf(PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        translationKey: PropTypes.string.isRequired,
-    })).isRequired,
+    translatableProperties: PropTypes.arrayOf(
+        PropTypes.shape({
+            name: PropTypes.string.isRequired,
+            translationKey: PropTypes.string.isRequired,
+        })
+    ).isRequired,
     onChangeTranslationForObjectAndLocale: PropTypes.func.isRequired,
     saveTranslations: PropTypes.func.isRequired,
     openCard: PropTypes.func.isRequired,
     clearFeedback: PropTypes.func.isRequired,
-};
+}
 
 TranslationCard.defaultProps = {
     open: false,
     hasUnsavedChanges: () => false,
-};
+}
 
-export default TranslationCard;
+export default TranslationCard

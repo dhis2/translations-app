@@ -1,6 +1,6 @@
 /* React */
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 
 /*
    FIXME
@@ -11,37 +11,37 @@ import ReactDOM from 'react-dom';
    solution:
     https://material-ui.com/customization/css-in-js/#creategenerateclassname-options-class-name-generator
 */
-import JssProvider from 'react-jss/lib/JssProvider';
+import JssProvider from 'react-jss/lib/JssProvider'
 
 /* d2 */
-import { init, getManifest, getUserSettings } from 'd2/lib/d2';
+import { init, getManifest, getUserSettings } from 'd2/lib/d2'
 
 /* i18n */
-import { configI18n } from './configI18n';
+import { configI18n } from './configI18n'
 
-import App from './App';
+import App from './App'
 
-import './index.css';
+import './index.css'
 
-import registerServiceWorker from './registerServiceWorker';
+import registerServiceWorker from './registerServiceWorker'
 
 /* init d2 */
-let d2Instance;
+let d2Instance
 
-getManifest('manifest.webapp').then((manifest) => {
+getManifest('manifest.webapp').then(manifest => {
     const baseUrl =
-    process.env.NODE_ENV === 'production'
-        ? `${manifest.getBaseUrl()}/api/${manifest.dhis2.apiVersion}`
-        : `${process.env.REACT_APP_DHIS2_BASE_URL}/api/${
-            manifest.dhis2.apiVersion
-        }`;
+        process.env.NODE_ENV === 'production'
+            ? `${manifest.getBaseUrl()}/api/${manifest.dhis2.apiVersion}`
+            : `${process.env.REACT_APP_DHIS2_BASE_URL}/api/${
+                  manifest.dhis2.apiVersion
+              }`
 
     // init d2 with configs
     init({
         baseUrl,
     })
-        .then((d2) => {
-            d2Instance = d2;
+        .then(d2 => {
+            d2Instance = d2
         })
         .then(getUserSettings)
         .then(configI18n)
@@ -50,8 +50,9 @@ getManifest('manifest.webapp').then((manifest) => {
                 <JssProvider>
                     <App d2={d2Instance} />
                 </JssProvider>,
-                document.getElementById('app'));
-        });
-});
+                document.getElementById('app')
+            )
+        })
+})
 
-registerServiceWorker();
+registerServiceWorker()

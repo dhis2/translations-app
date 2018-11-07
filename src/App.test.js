@@ -1,38 +1,33 @@
 /* eslint-disable */
 /* React */
-import React from 'react';
+import React from 'react'
 
 /* unit testing tools */
-import { shallow } from 'enzyme';
+import { shallow } from 'enzyme'
 
 /* components */
-import App from './App';
-import TranslationPage from './pages/Translations';
+import App from './App'
+import TranslationPage from './pages/Translations'
 
-import fakerData from './utils/testFaker';
+import fakerData from './utils/testFaker'
 
 const ownShallow = () => {
-    return shallow(
-        <App
-            d2={fakerData.d2}
-        />,
-        {
-            disableLifecycleMethods: true,
-        }
-    );
-};
+    return shallow(<App d2={fakerData.d2} />, {
+        disableLifecycleMethods: true,
+    })
+}
 
 describe('Test <App /> rendering:', () => {
-    let wrapper;
+    let wrapper
     beforeEach(() => {
-        wrapper = ownShallow();
-    });
+        wrapper = ownShallow()
+    })
 
     it('Should render without crashing', () => {
-        ownShallow();
-    });
+        ownShallow()
+    })
 
     it('Should renders TranslationPage', () => {
-        expect(wrapper.find(TranslationPage)).toHaveLength(1);
-    });
-});
+        expect(wrapper.find(TranslationPage)).toHaveLength(1)
+    })
+})

@@ -1,23 +1,23 @@
 /* React */
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 /* material-ui */
-import MenuItem from '@material-ui/core/MenuItem';
-import TextField from '@material-ui/core/TextField';
-import Grid from '@material-ui/core/Grid';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import Search from '@material-ui/icons/Search';
+import MenuItem from '@material-ui/core/MenuItem'
+import TextField from '@material-ui/core/TextField'
+import Grid from '@material-ui/core/Grid'
+import InputAdornment from '@material-ui/core/InputAdornment'
+import Search from '@material-ui/icons/Search'
 
 /* styles */
-import styles from '../../styles';
-import translationsSearchStyles from './TranslationsSearch.style';
+import styles from '../../styles'
+import translationsSearchStyles from './TranslationsSearch.style'
 
 export const SelectControl = ({ items, label, onChange, value }) => {
     /* passes the whole object and not only id */
-    const onChangeEnhanced = (event) => {
-        onChange(items.find(item => item.id === event.target.value));
-    };
+    const onChangeEnhanced = event => {
+        onChange(items.find(item => item.id === event.target.value))
+    }
 
     return (
         <TextField
@@ -33,36 +33,44 @@ export const SelectControl = ({ items, label, onChange, value }) => {
                 </MenuItem>
             ))}
         </TextField>
-    );
-};
+    )
+}
 
 SelectControl.propTypes = {
     label: PropTypes.string.isRequired,
-    items: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-    })).isRequired,
+    items: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+        })
+    ).isRequired,
     value: PropTypes.string,
     onChange: PropTypes.func,
-};
+}
 
 SelectControl.defaultProps = {
     value: '',
     onChange: () => null,
-};
+}
 
 /* to avoid null exceptions */
-const nonHandler = () => null;
+const nonHandler = () => null
 
-const TranslationsSearch = (props) => {
-    const onChangeForSearchFieldEnhanced = (event) => {
-        props.onSearchTermChange(event.target.value);
-    };
+const TranslationsSearch = props => {
+    const onChangeForSearchFieldEnhanced = event => {
+        props.onSearchTermChange(event.target.value)
+    }
 
     return (
         <div style={translationsSearchStyles.container}>
             <Grid container>
-                <Grid id={'select-object-id'} item xs={12} md={3} style={styles.formControl}>
+                <Grid
+                    id={'select-object-id'}
+                    item
+                    xs={12}
+                    md={3}
+                    style={styles.formControl}
+                >
                     <SelectControl
                         value={props.selectedObjectName}
                         onChange={props.onObjectChange}
@@ -70,7 +78,13 @@ const TranslationsSearch = (props) => {
                         label={props.objectSelectLabel}
                     />
                 </Grid>
-                <Grid id={'select-filter-id'} item xs={12} md={3} style={styles.formControl}>
+                <Grid
+                    id={'select-filter-id'}
+                    item
+                    xs={12}
+                    md={3}
+                    style={styles.formControl}
+                >
                     <SelectControl
                         value={props.selectedFilterId}
                         onChange={props.onFilterChange}
@@ -78,7 +92,13 @@ const TranslationsSearch = (props) => {
                         label={props.filterBySelectLabel}
                     />
                 </Grid>
-                <Grid id={'select-locale-id'} item xs={12} md={3} style={styles.formControl}>
+                <Grid
+                    id={'select-locale-id'}
+                    item
+                    xs={12}
+                    md={3}
+                    style={styles.formControl}
+                >
                     <SelectControl
                         value={props.selectedLocaleId}
                         onChange={props.onLocaleChange}
@@ -86,7 +106,13 @@ const TranslationsSearch = (props) => {
                         label={props.localeSelectLabel}
                     />
                 </Grid>
-                <Grid id={'select-search-id'} item xs={12} md={3} style={styles.formControl}>
+                <Grid
+                    id={'select-search-id'}
+                    item
+                    xs={12}
+                    md={3}
+                    style={styles.formControl}
+                >
                     <TextField
                         label={props.searchFieldLabel}
                         type="search"
@@ -105,36 +131,42 @@ const TranslationsSearch = (props) => {
                 </Grid>
             </Grid>
         </div>
-    );
-};
+    )
+}
 
 TranslationsSearch.propTypes = {
     localeSelectLabel: PropTypes.string.isRequired,
-    localeSelectItems: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-    })).isRequired,
+    localeSelectItems: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+        })
+    ).isRequired,
     selectedFilterId: PropTypes.string,
     onFilterChange: PropTypes.func,
     filterBySelectLabel: PropTypes.string.isRequired,
-    filterByItems: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-    })).isRequired,
+    filterByItems: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+        })
+    ).isRequired,
     selectedLocaleId: PropTypes.string,
     onLocaleChange: PropTypes.func,
     objectSelectLabel: PropTypes.string.isRequired,
-    objectSelectItems: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-    })).isRequired,
+    objectSelectItems: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+        })
+    ).isRequired,
     selectedObjectName: PropTypes.string,
     onObjectChange: PropTypes.func,
     searchFieldLabel: PropTypes.string.isRequired,
     searchTerm: PropTypes.string,
     onSearchTermChange: PropTypes.func,
     onSearchKeyPress: PropTypes.func,
-};
+}
 
 TranslationsSearch.defaultProps = {
     selectedLocaleId: null,
@@ -146,6 +178,6 @@ TranslationsSearch.defaultProps = {
     searchTerm: '',
     onSearchTermChange: nonHandler,
     onSearchKeyPress: nonHandler,
-};
+}
 
-export default TranslationsSearch;
+export default TranslationsSearch

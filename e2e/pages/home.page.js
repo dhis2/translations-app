@@ -1,16 +1,12 @@
-const Page = require('./page');
+const Page = require('./page')
 
 class HomePage extends Page {
-    constructor() {
-        super();
-    }
-
     /**
      * ACTIONS
      */
     open() {
-        super.open();
+        super.open()
     }
 }
 
-module.exports = new HomePage();
+module.exports = new HomePage()

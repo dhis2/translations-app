@@ -48,6 +48,7 @@
     "whatwg-fetch": "2.0.3"
   },
   "devDependencies": {
+    "@dhis2/code-style": "^1.4.2",
     "@dhis2/d2-i18n-generate": "^1.0.19",
     "chai": "^4.1.2",
     "cucumber": "^4.2.1",
@@ -70,14 +71,15 @@
     "localize": "d2-i18n-generate -n translations-app -p ./i18n/ -o ./src/locales/",
     "test": "node scripts/test.js --env=jsdom",
     "test-e2e": "wdio ./e2e/config/wdio.conf.js",
-    "validate": "yarn list",
     "extract-pot": "node scripts/pot-extractor.js",
     "refresh-translations-template": "yarn extract-pot -o en.pot && git add ./i18n/en.pot",
-    "coverage": "yarn test --coverage"
+    "coverage": "yarn test --coverage",
+    "format": "yarn localize && code-style"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn validate && yarn test && yarn refresh-translations-template"
+      "commit-msg": "commit-style",
+      "pre-commit": "yarn format && yarn test && yarn refresh-translations-template"
     }
   },
   "manifest.webapp": {

@@ -1,20 +1,20 @@
 /* eslint-disable */
 /* React */
-import React from 'react';
+import React from 'react'
 
 /* unit testing tools */
-import { shallow } from 'enzyme';
+import { shallow } from 'enzyme'
 
 /* material-ui */
-import MenuItem from '@material-ui/core/MenuItem';
-import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem'
+import TextField from '@material-ui/core/TextField'
 
 /* components */
-import TranslationsSearch, { SelectControl } from './TranslationsSearch';
+import TranslationsSearch, { SelectControl } from './TranslationsSearch'
 
 /* utils */
-import { DEFAULT_LOCALE } from '../../configI18n';
-import { INITIAL_LOCALES, FILTER_BY_ITEMS } from './translations.conf';
+import { DEFAULT_LOCALE } from '../../configI18n'
+import { INITIAL_LOCALES, FILTER_BY_ITEMS } from './translations.conf'
 
 export const INITIAL_OBJECTS = [
     { id: 'userRole', name: 'User Authority Group' },
@@ -53,8 +53,12 @@ export const INITIAL_OBJECTS = [
     { id: 'relationshipType', name: 'Relationship Type' },
     { id: 'trackedEntityType', name: 'Tracked Entity Type' },
     { id: 'trackedEntityAttribute', name: 'Tracked Entity Attribute' },
-    { id: 'programTrackedEntityAttributeGroup', name: 'Program Tracked Entity Attribute Group' },
-    { id: 'programStage', name: 'Program Stage' }, { id: 'program', name: 'Program' },
+    {
+        id: 'programTrackedEntityAttributeGroup',
+        name: 'Program Tracked Entity Attribute Group',
+    },
+    { id: 'programStage', name: 'Program Stage' },
+    { id: 'program', name: 'Program' },
     { id: 'eventReport', name: 'Event Report' },
     { id: 'eventChart', name: 'Event Chart' },
     { id: 'programIndicator', name: 'Program Indicator' },
@@ -68,7 +72,7 @@ export const INITIAL_OBJECTS = [
     { id: 'predictorGroup', name: 'Predictor Group' },
     { id: 'dashboardItem', name: 'Dashboard Item' },
     { id: 'dashboard', name: 'Dashboard' },
-];
+]
 
 const DEFAULT_SEARCH_PROPS = {
     localeSelectLabel: 'Locale',
@@ -86,136 +90,136 @@ const DEFAULT_SEARCH_PROPS = {
     searchFieldLabel: 'Search',
     onSearchTermChange: jest.fn(),
     onSearchKeyPress: jest.fn(),
-};
+}
 
 const DEFAULT_SELECT_PROPS = {
     label: 'Select',
     items: INITIAL_OBJECTS,
     onChange: jest.fn(),
-};
+}
 
 const searchShallow = (props = DEFAULT_SEARCH_PROPS) => {
-    return shallow(
-        <TranslationsSearch
-            { ...props }
-        />,
-        {
-            disableLifecycleMethods: true,
-        }
-    );
-};
+    return shallow(<TranslationsSearch {...props} />, {
+        disableLifecycleMethods: true,
+    })
+}
 
 const selectShallow = (props = DEFAULT_SELECT_PROPS) => {
-    return shallow(
-        <SelectControl
-            { ...props }
-        />,
-        {
-            disableLifecycleMethods: true,
-        }
-    );
-};
+    return shallow(<SelectControl {...props} />, {
+        disableLifecycleMethods: true,
+    })
+}
 
 describe('Test <SelectControl /> rendering:', () => {
-    let wrapper;
+    let wrapper
     beforeEach(() => {
-        wrapper = selectShallow();
-    });
+        wrapper = selectShallow()
+    })
 
     it('Should render without crashing', () => {
-        selectShallow();
-    });
+        selectShallow()
+    })
 
     it('Should renders one TextField', () => {
-        expect(wrapper.find(TextField)).toHaveLength(1);
-    });
+        expect(wrapper.find(TextField)).toHaveLength(1)
+    })
 
     it('Should renders the correct numbers of options', () => {
-        expect(wrapper.find(MenuItem)).toHaveLength(INITIAL_OBJECTS.length);
-    });
-});
+        expect(wrapper.find(MenuItem)).toHaveLength(INITIAL_OBJECTS.length)
+    })
+})
 
 describe('Test <SelectControl /> actions:', () => {
-    let wrapper;
+    let wrapper
     beforeEach(() => {
-        wrapper = selectShallow();
-    });
+        wrapper = selectShallow()
+    })
 
     it('Should call onChange function when selected option changes.', () => {
-        wrapper.find(TextField).first().simulate('change', {
-            target: {
-                value: 'newId',
-            }
-        });
-        expect(DEFAULT_SELECT_PROPS.onChange).toHaveBeenCalled();
-    });
-});
-
+        wrapper
+            .find(TextField)
+            .first()
+            .simulate('change', {
+                target: {
+                    value: 'newId',
+                },
+            })
+        expect(DEFAULT_SELECT_PROPS.onChange).toHaveBeenCalled()
+    })
+})
 
 describe('Test <TranslationsSearch /> rendering:', () => {
-    let wrapper;
+    let wrapper
     beforeEach(() => {
-        wrapper = searchShallow();
-    });
+        wrapper = searchShallow()
+    })
 
     it('Should render without crashing', () => {
-        searchShallow();
-    });
+        searchShallow()
+    })
 
     it('Should renders three SelectControls for locales and objects', () => {
-        expect(wrapper.find(SelectControl)).toHaveLength(3);
-    });
+        expect(wrapper.find(SelectControl)).toHaveLength(3)
+    })
 
     it('Should renders one TextField for Search', () => {
-        expect(wrapper.find(TextField)).toHaveLength(1);
-    });
-});
+        expect(wrapper.find(TextField)).toHaveLength(1)
+    })
+})
 
 describe('Test <TranslationsSearch /> actions:', () => {
-    let wrapper;
+    let wrapper
     beforeEach(() => {
-        wrapper = searchShallow();
-    });
+        wrapper = searchShallow()
+    })
 
     it('Should call onObjectChange function when locale option changes.', () => {
-        wrapper.find(SelectControl).first().simulate('change', {
-            target: {
-                value: 'newObjectId',
-            }
-        });
-        expect(DEFAULT_SEARCH_PROPS.onObjectChange).toHaveBeenCalled();
-    });
+        wrapper
+            .find(SelectControl)
+            .first()
+            .simulate('change', {
+                target: {
+                    value: 'newObjectId',
+                },
+            })
+        expect(DEFAULT_SEARCH_PROPS.onObjectChange).toHaveBeenCalled()
+    })
 
     it('Should call onFilterChange function when filter option changes.', () => {
-        wrapper.find(SelectControl).at(1).simulate('change', {
-            target: {
-                value: 'newFilterId',
-            }
-        });
-        expect(DEFAULT_SEARCH_PROPS.onFilterChange).toHaveBeenCalled();
-    });
+        wrapper
+            .find(SelectControl)
+            .at(1)
+            .simulate('change', {
+                target: {
+                    value: 'newFilterId',
+                },
+            })
+        expect(DEFAULT_SEARCH_PROPS.onFilterChange).toHaveBeenCalled()
+    })
 
     it('Should call onLocaleChange function when object option changes.', () => {
-        wrapper.find(SelectControl).at(2).simulate('change', {
-            target: {
-                value: 'newLocaleId',
-            }
-        });
-        expect(DEFAULT_SEARCH_PROPS.onLocaleChange).toHaveBeenCalled();
-    });
+        wrapper
+            .find(SelectControl)
+            .at(2)
+            .simulate('change', {
+                target: {
+                    value: 'newLocaleId',
+                },
+            })
+        expect(DEFAULT_SEARCH_PROPS.onLocaleChange).toHaveBeenCalled()
+    })
 
     it('Should call onSearchTermChange function when search term changes.', () => {
         wrapper.find(TextField).simulate('change', {
             target: {
                 value: 'newSearch',
-            }
-        });
-        expect(DEFAULT_SEARCH_PROPS.onSearchTermChange).toHaveBeenCalled();
-    });
+            },
+        })
+        expect(DEFAULT_SEARCH_PROPS.onSearchTermChange).toHaveBeenCalled()
+    })
 
     it('Should call onSearchKeyPress function when key is pressed for search field.', () => {
-        wrapper.find(TextField).simulate('keyPress');
-        expect(DEFAULT_SEARCH_PROPS.onSearchKeyPress).toHaveBeenCalled();
-    });
-});
-
+        wrapper.find(TextField).simulate('keyPress')
+        expect(DEFAULT_SEARCH_PROPS.onSearchKeyPress).toHaveBeenCalled()
+    })
+})

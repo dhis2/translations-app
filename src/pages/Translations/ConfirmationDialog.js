@@ -1,38 +1,36 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import { withStyles } from '@material-ui/core/styles';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
+import { withStyles } from '@material-ui/core/styles'
+import Dialog from '@material-ui/core/Dialog'
+import DialogActions from '@material-ui/core/DialogActions'
+import DialogContent from '@material-ui/core/DialogContent'
+import DialogContentText from '@material-ui/core/DialogContentText'
+import DialogTitle from '@material-ui/core/DialogTitle'
 
 /* d2-ui components */
-import { Button } from '@dhis2/d2-ui-core';
-import { i18nKeys } from '../../i18n';
-import i18n from '../../locales';
+import { Button } from '@dhis2/d2-ui-core'
+import { i18nKeys } from '../../i18n'
+import i18n from '../../locales'
 
 /* styles */
-import styles from '../../styles';
+import styles from '../../styles'
 
-const ConfirmationDialog = (props) => {
+const ConfirmationDialog = props => {
     const keepEditing = () => {
-        props.closeConfirmation(false);
-    };
+        props.closeConfirmation(false)
+    }
 
     const discard = () => {
-        props.closeConfirmation(true);
-    };
+        props.closeConfirmation(true)
+    }
 
     const StyledDialog = withStyles({
         root: { margin: 8 },
-    })(DialogActions);
+    })(DialogActions)
 
     return (
-        <Dialog
-            open={props.open}
-        >
+        <Dialog open={props.open}>
             <DialogTitle>{i18n.t(i18nKeys.unsavedChangesTitle)}</DialogTitle>
             <DialogContent>
                 <DialogContentText>
@@ -46,18 +44,24 @@ const ConfirmationDialog = (props) => {
                     </Button>
                 </span>
                 <span id={'discard-changes-btn-id'}>
-                    <Button style={styles.actionBtns} raised color="primary" onClick={discard} autoFocus>
+                    <Button
+                        style={styles.actionBtns}
+                        raised
+                        color="primary"
+                        onClick={discard}
+                        autoFocus
+                    >
                         {i18n.t(i18nKeys.btns.discard)}
                     </Button>
                 </span>
             </StyledDialog>
         </Dialog>
-    );
-};
+    )
+}
 
 ConfirmationDialog.propTypes = {
     open: PropTypes.bool.isRequired,
     closeConfirmation: PropTypes.func.isRequired,
-};
+}
 
-export default ConfirmationDialog;
+export default ConfirmationDialog
