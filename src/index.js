@@ -1,3 +1,4 @@
+/* global DHIS_CONFIG */
 /* React */
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -29,12 +30,14 @@ import registerServiceWorker from './registerServiceWorker'
 let d2Instance
 
 getManifest('manifest.webapp').then(manifest => {
-    const baseUrl =
-        process.env.NODE_ENV === 'production'
-            ? `${manifest.getBaseUrl()}/api/${manifest.dhis2.apiVersion}`
-            : `${process.env.REACT_APP_DHIS2_BASE_URL}/api/${
-                  manifest.dhis2.apiVersion
-              }`
+    let baseUrl
+    if (process.env.NODE_ENV === 'production') {
+        baseUrl = `${manifest.getBaseUrl()}/api/${manifest.dhis2.apiVersion}`
+    } else {
+        baseUrl = DHIS_CONFIG.baseUrl
+            ? `${DHIS_CONFIG.baseUrl}/api/${manifest.dhis2.apiVersion}`
+            : `http://localhost:8080/api/${manifest.dhis2.apiVersion}`
+    }
 
     // init d2 with configs
     init({

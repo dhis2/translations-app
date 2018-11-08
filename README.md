@@ -5,23 +5,30 @@
 ### Pre-requisites
 
 -   DHIS2 instance running
--   node v9.3.0+
+-   node 8 LTS
 -   yarn v1.3.2+
 
 ### Running the dev server
 
 -   add `http://localhost:3000` url to your DHIS2 CORS whitelist. (This can be done in the settings app).
 
--   in the root folder of the project make a copy of `.env.template` and name it `.env.development.local`.
+-   By default app will use `http://localhost:8080` as API URL, if you want to change it, create a config.json file
+    inside DHIS2_HOME with following content "replacing url for the required one":
 
--   Execute the following commands:
+        ```json
+        {
+            "baseUrl": "http://localhost:8080"
+        }
+        ```
+
+*   Execute the following commands:
 
     ```sh
     yarn install
     yarn start
     ```
 
--   Open your browser at `http://localhost:3000` (you must to be logged in into DHIS2).
+*   Open your browser at `http://localhost:3000` (you must to be logged in into DHIS2).
 
 ### Building the project
 
@@ -32,6 +39,8 @@ yarn build
 ```
 
 ### Unit testing
+
+-   in the root folder of the project make a copy of `.env.template` and name it `.env.test.local`.
 
 To execute unit tests run the following command:
 
