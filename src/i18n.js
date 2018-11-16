@@ -40,6 +40,10 @@ export const i18nKeys = {
         discard: 'Discard changes',
     },
     unsavedChangesTitle: 'Unsaved changes',
+    d2UiComponents: {
+        app_search_placeholder: 'Search apps',
+        manage_my_apps: 'Manage my apps',
+    },
 }
 
 export default i18nKeys

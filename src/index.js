@@ -18,7 +18,7 @@ import JssProvider from 'react-jss/lib/JssProvider'
 import { init, getManifest, getUserSettings } from 'd2/lib/d2'
 
 /* i18n */
-import { configI18n } from './configI18n'
+import { configI18n, injectTranslationsToD2 } from './configI18n'
 
 import App from './App'
 
@@ -49,6 +49,7 @@ getManifest('manifest.webapp').then(manifest => {
         .then(getUserSettings)
         .then(configI18n)
         .then(() => {
+            injectTranslationsToD2(d2Instance)
             ReactDOM.render(
                 <JssProvider>
                     <App d2={d2Instance} />
