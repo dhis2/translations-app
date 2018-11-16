@@ -48,10 +48,17 @@ const TranslationCard = props => {
 
     const checkSave = () => !hasUnsavedChanges()
 
-    const headerStyle = () => ({
-        ...translationCardStyles.header,
-        color: colors[props.object.translationState],
-    })
+    const getState = () =>
+        hasUnsavedChanges()
+            ? hasUnsavedChanges().originalState
+            : props.object.translationState
+
+    const headerStyle = () => {
+        return {
+            ...translationCardStyles.header,
+            color: colors[getState()],
+        }
+    }
 
     const saveTranslationsOnKeyPress = event => {
         if (event.key === 'Enter' && event.ctrlKey && !checkSave()) {
@@ -75,7 +82,7 @@ const TranslationCard = props => {
                     <h3>{props.object.name}</h3>
                 </Grid>
                 <Grid style={translationCardStyles.icon} item xs={6}>
-                    {props.object.translationState === TRANSLATED_ID && (
+                    {getState() === TRANSLATED_ID && (
                         <Done style={translationCardStyles.translated} />
                     )}
                 </Grid>

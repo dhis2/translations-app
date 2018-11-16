@@ -122,7 +122,7 @@ class TranslationsPage extends PureComponent {
             searchResults: [],
             /* object filtered for current page */
             currentPageResults: [],
-            /* changes array */
+            /* changes array - id, locale, state before save*/
             unsavedChangesMap: [],
             nextSelectedObject: null,
         }
@@ -219,17 +219,6 @@ class TranslationsPage extends PureComponent {
         // can reach here without click anywhere
         this.clearFeedbackSnackbar()
 
-        // Keep unsaved translations
-        if (
-            !this.state.unsavedChangesMap.some(
-                unsavedChange =>
-                    unsavedChange.objectId === objectId &&
-                    unsavedChange.localeId === localeId
-            )
-        ) {
-            this.state.unsavedChangesMap.push({ objectId, localeId })
-        }
-
         this.updateOriginalsOnChange(objectId, localeId, translationKey, value)
 
         // Update current search results to keep state between pages
@@ -298,6 +287,28 @@ class TranslationsPage extends PureComponent {
         const originalItemInstance = originals.find(
             objectInstance => objectInstance.id === objectId
         )
+
+        const elementWithState = flatElementForPropertiesAndLocale(
+            originalItemInstance,
+            this.state.searchFilter.selectedObject.translatableProperties,
+            this.state.searchFilter.selectedLocale.id
+        )
+
+        // Keep unsaved translations
+        if (
+            !this.state.unsavedChangesMap.some(
+                unsavedChange =>
+                    unsavedChange.objectId === objectId &&
+                    unsavedChange.localeId === localeId
+            )
+        ) {
+            this.state.unsavedChangesMap.push({
+                objectId,
+                localeId,
+                originalState: elementWithState.translationState,
+            })
+        }
+
         const translationEntryForOriginal = originalItemInstance.translations.find(
             translation =>
                 translation.locale === localeId &&
@@ -352,7 +363,9 @@ class TranslationsPage extends PureComponent {
                 ...inViewEditedTranslations,
             ]
 
-            api.update(translationsUrlForInstance, { translations })
+            api.update(translationsUrlForInstance, {
+                translations: inViewEditedTranslations,
+            })
                 .then(() => {
                     /* open next card and show success message */
                     /* update card state and close it */
@@ -444,7 +457,7 @@ class TranslationsPage extends PureComponent {
 
     hasUnsavedChanges = objectId => () => {
         const currentLocale = this.state.searchFilter.selectedLocale.id
-        return this.state.unsavedChangesMap.some(
+        return this.state.unsavedChangesMap.find(
             unsavedChange =>
                 unsavedChange.objectId === objectId &&
                 unsavedChange.localeId === currentLocale
@@ -580,7 +593,6 @@ class TranslationsPage extends PureComponent {
 
             for (let i = 0; i < elements.length; i++) {
                 const element = elements[i]
-
                 if (
                     element.name
                         .trim()
@@ -589,14 +601,17 @@ class TranslationsPage extends PureComponent {
                 ) {
                     const flatElement = flatElementForPropertiesAndLocale(
                         element,
-                        // this.state.searchFilter.selectedObject.translatableProperties,
                         searchFilter.selectedObject.translatableProperties,
                         currentLocale
                     )
 
+                    const state = this.hasUnsavedChanges(element.id)()
+                        ? this.hasUnsavedChanges(element.id)().originalState
+                        : flatElement.translationState
+
                     if (
                         currentFilterId === PAGE_CONFIGS.ALL_ID ||
-                        flatElement.translationState === currentFilterId
+                        state === currentFilterId
                     ) {
                         newElements.push(flatElement)
                     }

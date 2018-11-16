@@ -142,6 +142,7 @@ describe('Test <TranslationsCard /> rendering:', () => {
     it('Should renders Done icon when it is translated', () => {
         const wrapper = ownShallow({
             ...DEFAULT_PROPS,
+            hasUnsavedChanges: () => false,
             object: {
                 ...fakeObject,
                 translationState: TRANSLATED_ID,
@@ -150,7 +151,7 @@ describe('Test <TranslationsCard /> rendering:', () => {
         expect(wrapper.find(Done)).toHaveLength(1)
     })
 
-    it('Should renders no Done icon when it is not translated', () => {
+    it('Should not render Done icon when it is not translated', () => {
         const wrapper = ownShallow({
             ...DEFAULT_PROPS,
             object: {
