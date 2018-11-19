@@ -63,6 +63,7 @@ const TranslationsList = props =>
                     }
                     saveTranslations={props.saveTranslations(object.id)}
                     openCard={props.openCard(object.id)}
+                    openCardOnClick={props.openCardOnClick(object.id)}
                     clearFeedback={props.clearFeedback}
                 />
             ))}
@@ -110,6 +111,7 @@ TranslationsList.propTypes = {
     onChangeTranslationForObjectAndLocale: PropTypes.func.isRequired,
     saveTranslations: PropTypes.func.isRequired,
     openCard: PropTypes.func.isRequired,
+    openCardOnClick: PropTypes.func.isRequired,
     hasUnsavedChanges: PropTypes.func.isRequired,
     clearFeedback: PropTypes.func.isRequired,
 }

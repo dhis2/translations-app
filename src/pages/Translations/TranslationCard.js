@@ -74,7 +74,7 @@ const TranslationCard = props => {
         >
             <Grid
                 style={headerStyle()}
-                onClick={props.openCard}
+                onClick={props.openCardOnClick}
                 container
                 alignItems="center"
             >
@@ -167,6 +167,7 @@ TranslationCard.propTypes = {
     onChangeTranslationForObjectAndLocale: PropTypes.func.isRequired,
     saveTranslations: PropTypes.func.isRequired,
     openCard: PropTypes.func.isRequired,
+    openCardOnClick: PropTypes.func.isRequired,
     clearFeedback: PropTypes.func.isRequired,
 }
 

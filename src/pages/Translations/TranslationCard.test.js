@@ -36,6 +36,7 @@ const DEFAULT_PROPS = {
     onChangeTranslationForObjectAndLocale: jest.fn(),
     saveTranslations: jest.fn(),
     openCard: jest.fn(),
+    openCardOnClick: jest.fn(),
     hasUnsavedChanges: () => true,
     clearFeedback: jest.fn(),
 }
@@ -164,7 +165,7 @@ describe('Test <TranslationsCard /> rendering:', () => {
 })
 
 describe('Test <TranslationsCard /> actions:', () => {
-    it('Should call openCard function when Header is clicked.', () => {
+    it('Should call openCardOnClick function when Header is clicked.', () => {
         const wrapper = ownShallow({
             ...DEFAULT_PROPS,
             open: false,
@@ -173,7 +174,7 @@ describe('Test <TranslationsCard /> actions:', () => {
             .find(Grid)
             .first()
             .simulate('click')
-        expect(DEFAULT_PROPS.openCard).toHaveBeenCalled()
+        expect(DEFAULT_PROPS.openCardOnClick).toHaveBeenCalled()
     })
 
     it('Should call onChangeTranslationForObjectAndLocale function when TextField text changes.', () => {

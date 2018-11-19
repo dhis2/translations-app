@@ -455,6 +455,11 @@ class TranslationsPage extends PureComponent {
         })
     }
 
+    openCardOnClick = objectId => () => {
+        this.clearFeedbackSnackbar()
+        this.openCardWithObjectId(objectId)
+    }
+
     hasUnsavedChanges = objectId => () => {
         const currentLocale = this.state.searchFilter.selectedLocale.id
         return this.state.unsavedChangesMap.find(
@@ -762,6 +767,7 @@ class TranslationsPage extends PureComponent {
                     }
                     saveTranslations={this.saveTranslationForObjectId}
                     openCard={this.openCardWithObjectId}
+                    openCardOnClick={this.openCardOnClick}
                     hasUnsavedChanges={this.hasUnsavedChanges}
                     clearFeedback={this.clearFeedbackSnackbar}
                 />

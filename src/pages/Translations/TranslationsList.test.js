@@ -29,6 +29,7 @@ const DEFAULT_PROPS = {
     clearFeedback: jest.fn(),
     saveTranslations: () => jest.fn(),
     openCard: () => jest.fn(),
+    openCardOnClick: () => jest.fn(),
 }
 
 const ownShallow = (props = DEFAULT_PROPS) => {
