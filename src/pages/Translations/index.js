@@ -358,13 +358,14 @@ class TranslationsPage extends PureComponent {
                 this.state.searchFilter.selectedObject.apiEndpoint
             }/${objectId}/translations/`
 
+            //Must save translations to other languages too
             const translations = [
                 ...originalInstances[selectedOriginalObjectIndex].translations,
                 ...inViewEditedTranslations,
             ]
 
             api.update(translationsUrlForInstance, {
-                translations: inViewEditedTranslations,
+                translations: translations,
             })
                 .then(() => {
                     /* open next card and show success message */
@@ -460,8 +461,10 @@ class TranslationsPage extends PureComponent {
         this.openCardWithObjectId(objectId)
     }
 
-    hasUnsavedChanges = objectId => () => {
-        const currentLocale = this.state.searchFilter.selectedLocale.id
+    hasUnsavedChanges = (objectId, locale = null) => () => {
+        const currentLocale = locale
+            ? locale
+            : this.state.searchFilter.selectedLocale.id
         return this.state.unsavedChangesMap.find(
             unsavedChange =>
                 unsavedChange.objectId === objectId &&
@@ -610,8 +613,12 @@ class TranslationsPage extends PureComponent {
                         currentLocale
                     )
 
-                    const state = this.hasUnsavedChanges(element.id)()
-                        ? this.hasUnsavedChanges(element.id)().originalState
+                    const state = this.hasUnsavedChanges(
+                        element.id,
+                        currentLocale
+                    )()
+                        ? this.hasUnsavedChanges(element.id, currentLocale)()
+                              .originalState
                         : flatElement.translationState
 
                     if (
