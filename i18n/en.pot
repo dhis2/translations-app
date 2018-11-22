@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-11-20T13:35:29.643Z\n"
-"PO-Revision-Date: 2018-11-20T13:35:29.643Z\n"
+"POT-Creation-Date: 2018-11-22T16:00:27.639Z\n"
+"PO-Revision-Date: 2018-11-22T16:00:27.639Z\n"
 
 msgid "Object"
 msgstr ""
@@ -68,8 +68,35 @@ msgstr ""
 msgid "Unsaved changes"
 msgstr ""
 
+msgid "Settings"
+msgstr ""
+
 msgid "Search apps"
 msgstr ""
 
+msgid "Profile"
+msgstr ""
+
+msgid "Account"
+msgstr ""
+
+msgid "Help"
+msgstr ""
+
+msgid "Log out"
+msgstr ""
+
+msgid "About DHIS 2"
+msgstr ""
+
 msgid "Manage my apps"
+msgstr ""
+
+msgid "No results found"
+msgstr ""
+
+msgid "Interpretations"
+msgstr ""
+
+msgid "Messages"
 msgstr ""
