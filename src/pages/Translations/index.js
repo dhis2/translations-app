@@ -359,8 +359,8 @@ class TranslationsPage extends PureComponent {
                 this.state.searchFilter.selectedObject.apiEndpoint
             }/${objectId}/translations/`
 
-            // Translations that are being shown and able to be updated, must have a value
-            // This ones are the translations we whant to update
+            // Translations that are being shown and able to be updated
+            // This ones are the translations we want to update
             const inViewEditedTranslations = selectedObjectInstance.translations.filter(
                 t => t.value.trim().length && t.locale === currentLocale
             )
