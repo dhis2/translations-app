@@ -1,6 +1,6 @@
 # DHIS2 Translations App
 
-[![Build Status](https://travis-ci.com/dhis2/translations-app.svg)](https://travis-ci.com/dhis2/translations-app)
+[![Build Status](https://travis-ci.com/dhis2/translations-app.svg)](https://travis-ci.com/dhis2/translations-app) [![Greenkeeper badge](https://badges.greenkeeper.io/dhis2/translations-app.svg)](https://greenkeeper.io/)
 
 ### Pre-requisites
 
