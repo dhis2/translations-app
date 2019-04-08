@@ -1,0 +1,123 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-11-27T14:38:34.304Z\n"
+"PO-Revision-Date: 2016-12-01 08:09+0000\n"
+"Last-Translator: Jason Pickering <jason.p.pickering@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.8\n"
+"X-POOTLE-MTIME: 1480579777.000000\n"
+
+msgid "Object"
+msgstr "Objektmeny"
+
+msgid "Target locale"
+msgstr "Mål lokal"
+
+msgid "Filter by"
+msgstr "Filtrera med"
+
+msgid "All"
+msgstr "Alla"
+
+msgid "Translated"
+msgstr "Översatt"
+
+msgid "Untranslated"
+msgstr "Oöversatta"
+
+msgid "Partial translated"
+msgstr "Delvis översatt"
+
+msgid "Search"
+msgstr "Sök"
+
+msgid "Name"
+msgstr "Namn"
+
+msgid "Short name"
+msgstr "Kortnamn"
+
+msgid "Description"
+msgstr "Beskrivning"
+
+msgid "Form name"
+msgstr "Formulär namn"
+
+msgid "Save"
+msgstr "Spara"
+
+msgid "Changes on object will be lost if you do not save them first."
+msgstr "Ändringar på objekt kommer bli förlorade om du inte sparar dem först."
+
+msgid "Unexpected Error"
+msgstr "Oväntat fel"
+
+msgid "Translations were saved"
+msgstr "Översättningar sparades"
+
+msgid "A locale and object must be selected"
+msgstr "En lokal och objekt måste väljas"
+
+msgid "Keep editing"
+msgstr "Fortsätt redigera"
+
+msgid "Discard changes"
+msgstr "Ignorera ändringar"
+
+msgid "Unsaved changes"
+msgstr "Ej sparade ändringar"
+
+msgid "Settings"
+msgstr "Inställningar"
+
+msgid "Search apps"
+msgstr "Sök appar"
+
+msgid "Profile"
+msgstr "Profil"
+
+msgid "Account"
+msgstr "Konto"
+
+msgid "Help"
+msgstr "Hjälp"
+
+msgid "Log out"
+msgstr "Logga ut"
+
+msgid "About DHIS 2"
+msgstr "Om DHIS 2"
+
+msgid "Manage my apps"
+msgstr "Hantera mina appar"
+
+msgid "No results found"
+msgstr "Inga resultat hittades"
+
+msgid "Interpretations"
+msgstr "Tolkningar"
+
+msgid "Messages"
+msgstr "Meddelanden"
+
+#~ msgid "Translations App"
+#~ msgstr "Översättning App"
+
+#~ msgid "Select a locale"
+#~ msgstr "Välj ett lokal"
+
+#~ msgid "Select an Object Type"
+#~ msgstr "Välj en objekttyp"
+
+#~ msgid "Could not locate that type of Object"
+#~ msgstr "Kunde inte hitta den typ av objekt"
+
+#~ msgid "No records available to translate."
+#~ msgstr "Inga objekt finns att översätta."
