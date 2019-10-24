@@ -1,0 +1,109 @@
+# Translators:
+# Aprisa Chrysantina <aprisa.chrysantina@gmail.com>, 2019
+# Viktor Varland <viktor@dhis2.org>, 2019
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"POT-Creation-Date: 2018-11-27T14:38:34.304Z\n"
+"PO-Revision-Date: 2019-08-05 12:15+0000\n"
+"Last-Translator: Viktor Varland <viktor@dhis2.org>, 2019\n"
+"Language-Team: Indonesian (https://www.transifex.com/hisp-uio/teams/100509/id/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: id\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Object"
+msgstr "Objek"
+
+msgid "Target locale"
+msgstr ""
+
+msgid "Filter by"
+msgstr ""
+
+msgid "All"
+msgstr "Semua"
+
+msgid "Translated"
+msgstr ""
+
+msgid "Untranslated"
+msgstr ""
+
+msgid "Partial translated"
+msgstr ""
+
+msgid "Search"
+msgstr "Pencarian"
+
+msgid "Name"
+msgstr "Nama"
+
+msgid "Short name"
+msgstr ""
+
+msgid "Description"
+msgstr "Deskripsi"
+
+msgid "Form name"
+msgstr ""
+
+msgid "Save"
+msgstr "Simpan"
+
+msgid "Changes on object will be lost if you do not save them first."
+msgstr ""
+
+msgid "Unexpected Error"
+msgstr ""
+
+msgid "Translations were saved"
+msgstr ""
+
+msgid "A locale and object must be selected"
+msgstr ""
+
+msgid "Keep editing"
+msgstr ""
+
+msgid "Discard changes"
+msgstr ""
+
+msgid "Unsaved changes"
+msgstr ""
+
+msgid "Settings"
+msgstr "Setting"
+
+msgid "Search apps"
+msgstr "Cari app"
+
+msgid "Profile"
+msgstr "Profil"
+
+msgid "Account"
+msgstr "Akun"
+
+msgid "Help"
+msgstr "Bantuan"
+
+msgid "Log out"
+msgstr "Keluar"
+
+msgid "About DHIS 2"
+msgstr "Tentang DHIS2"
+
+msgid "Manage my apps"
+msgstr "Kelola app saya"
+
+msgid "No results found"
+msgstr "Tidak ada hasil ditemukan"
+
+msgid "Interpretations"
+msgstr "Interpretasi"
+
+msgid "Messages"
+msgstr "Pesan"
