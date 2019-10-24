@@ -1,103 +1,109 @@
+# Translators:
+# phil_dhis2, 2019
+# Viktor Varland <viktor@dhis2.org>, 2019
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-08 05:49+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: ps\n"
+"Project-Id-Version: i18next-conv\n"
+"POT-Creation-Date: 2018-11-27T14:38:34.304Z\n"
+"PO-Revision-Date: 2019-09-02 16:01+0000\n"
+"Last-Translator: Viktor Varland <viktor@dhis2.org>, 2019\n"
+"Language-Team: Pushto (https://www.transifex.com/hisp-uio/teams/100509/ps/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.2.5\n"
-"X-Pootle-Path: /ps/translations-app/i18n/ps.po\n"
-"X-Pootle-Revision: 43889\n"
+"Language: ps\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: error_could_not_find_object
-msgid "Could not locate that type of Object"
-msgstr "دا ډول شی پیدا نشو"
-
-#: select_object_type
-msgid "Select an Object Type"
-msgstr "د یوه شي ډول انتخاب کړئ"
-
-#: saved
-msgid "Saved"
-msgstr "ثبت شو"
-
-#: target_locale
-msgid "Target Locale"
-msgstr "ټاکلی ځای"
-
-#: filter_by
-msgid "Filter By"
-msgstr "لخوا فیلټر شوي"
-
-#: filter_by_all
-msgid "All"
-msgstr "ټول"
-
-#: filter_by_translated
-msgid "Translated"
-msgstr "ژباړل شوي دي"
-
-#: filter_by_untranslated
-msgid "Untranslated"
-msgstr "نه دي ژباړل شوي"
-
-#: object
 msgid "Object"
 msgstr "شی (څیز)"
 
-#: first_page
-msgid "First page"
-msgstr "لومړۍ پاڼه"
+msgid "Target locale"
+msgstr ""
 
-#: previous_page
-msgid "Previous page"
-msgstr "مخکینۍ پاڼه"
+msgid "Filter by"
+msgstr ""
 
-#: next_page
-msgid "Next page"
-msgstr "راتلونکې پاڼه"
+msgid "All"
+msgstr "ټول"
 
-#: final_page
-msgid "Final page"
-msgstr "وروستۍ پاڼه"
+msgid "Translated"
+msgstr "ژباړل شوي دي"
 
-#: short_name
-msgid "Short name"
-msgstr "لنډ نوم"
+msgid "Untranslated"
+msgstr "نه دي ژباړل شوي"
 
-#: description
-msgid "Description"
-msgstr "تشریح"
+msgid "Partial translated"
+msgstr ""
 
-#: form_name
-msgid "Form name"
-msgstr "د فورمې نوم"
+msgid "Search"
+msgstr "جستجو"
 
-#: name
 msgid "Name"
-msgstr "نوم"
+msgstr "نوم [ ژباړه ـ نښه ـ نوم ]"
 
-#: save
+msgid "Short name"
+msgstr "لنډ نوم [ لنډ - نوم ]"
+
+msgid "Description"
+msgstr "تشریح [ ژباړه ـ نښه ـ تشریح ]"
+
+msgid "Form name"
+msgstr "د نوم ډول"
+
 msgid "Save"
-msgstr "ثبت"
+msgstr "ثبت یې کړئ [ ژباړه - ثبت کړئ ]"
 
-#: no_results
-msgid "No records available to translate."
-msgstr "د ژباړې لپاره هېڅ ډول ریکارډ شتون نه لري"
+msgid "Changes on object will be lost if you do not save them first."
+msgstr ""
 
-#: tool
-msgid "Translations App"
-msgstr "د ژباړې اپلیکیشن"
+msgid "Unexpected Error"
+msgstr ""
 
-#: help
+msgid "Translations were saved"
+msgstr ""
+
+msgid "A locale and object must be selected"
+msgstr ""
+
+msgid "Keep editing"
+msgstr ""
+
+msgid "Discard changes"
+msgstr ""
+
+msgid "Unsaved changes"
+msgstr ""
+
+msgid "Settings"
+msgstr "ترتیبات [ ترتیبات ]"
+
+msgid "Search apps"
+msgstr "د پلټنې اپلیکېشنونه"
+
+msgid "Profile"
+msgstr "مشخصات یاپروفایل"
+
+msgid "Account"
+msgstr "حساب"
+
 msgid "Help"
 msgstr "مرسته"
 
-#: select_language
-msgid "Select a locale"
-msgstr "یو ځای غوره کړئ"
+msgid "Log out"
+msgstr "له سیسټم څخه ووځئ"
+
+msgid "About DHIS 2"
+msgstr "د ولسوالۍ د روغتیايي مالوماتو د ۲ سافټوېر (DHIS 2) په هکله"
+
+msgid "Manage my apps"
+msgstr "زما پروګرامونه یا اپلیکېشنونه ترتیب کړئ"
+
+msgid "No results found"
+msgstr "هېڅ پایله ترلاسه نه شوه"
+
+msgid "Interpretations"
+msgstr "شفاهي ژباړې"
+
+msgid "Messages"
+msgstr "پېغامونه"
