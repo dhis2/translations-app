@@ -1,0 +1,109 @@
+# Translators:
+# phil_dhis2, 2019
+# Viktor Varland <viktor@dhis2.org>, 2019
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"POT-Creation-Date: 2018-11-27T14:38:34.304Z\n"
+"PO-Revision-Date: 2019-09-02 16:01+0000\n"
+"Last-Translator: Viktor Varland <viktor@dhis2.org>, 2019\n"
+"Language-Team: Vietnamese (https://www.transifex.com/hisp-uio/teams/100509/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Object"
+msgstr "Đối tượng"
+
+msgid "Target locale"
+msgstr ""
+
+msgid "Filter by"
+msgstr ""
+
+msgid "All"
+msgstr "Tất cả"
+
+msgid "Translated"
+msgstr "Đã dịch"
+
+msgid "Untranslated"
+msgstr "Chưa dịch"
+
+msgid "Partial translated"
+msgstr ""
+
+msgid "Search"
+msgstr "Tìm kiếm"
+
+msgid "Name"
+msgstr "Tên tài khoản"
+
+msgid "Short name"
+msgstr "Tên ngắn"
+
+msgid "Description"
+msgstr "Miêu tả"
+
+msgid "Form name"
+msgstr "Tên biểu"
+
+msgid "Save"
+msgstr "Lưu lại"
+
+msgid "Changes on object will be lost if you do not save them first."
+msgstr ""
+
+msgid "Unexpected Error"
+msgstr ""
+
+msgid "Translations were saved"
+msgstr ""
+
+msgid "A locale and object must be selected"
+msgstr ""
+
+msgid "Keep editing"
+msgstr ""
+
+msgid "Discard changes"
+msgstr ""
+
+msgid "Unsaved changes"
+msgstr ""
+
+msgid "Settings"
+msgstr "Các thiết lập"
+
+msgid "Search apps"
+msgstr "Tìm kiếm ứng dụng"
+
+msgid "Profile"
+msgstr "Hồ sơ"
+
+msgid "Account"
+msgstr "Tài khoản"
+
+msgid "Help"
+msgstr "Giúp đỡ"
+
+msgid "Log out"
+msgstr "Đăng xuất"
+
+msgid "About DHIS 2"
+msgstr "Giới thiệu về DHIS 2"
+
+msgid "Manage my apps"
+msgstr "Quản lý ứng dụng của tôi"
+
+msgid "No results found"
+msgstr "Không tìm thấy kết quả nào"
+
+msgid "Interpretations"
+msgstr "Diễn giải báo cáo"
+
+msgid "Messages"
+msgstr "Tin nhắn"
