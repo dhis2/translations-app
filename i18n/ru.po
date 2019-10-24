@@ -1,91 +1,109 @@
+# Translators:
+# phil_dhis2, 2019
+# Viktor Varland <viktor@dhis2.org>, 2019
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-01 05:01+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: ru\n"
+"Project-Id-Version: i18next-conv\n"
+"POT-Creation-Date: 2018-11-27T14:38:34.304Z\n"
+"PO-Revision-Date: 2019-09-02 16:01+0000\n"
+"Last-Translator: Viktor Varland <viktor@dhis2.org>, 2019\n"
+"Language-Team: Russian (https://www.transifex.com/hisp-uio/teams/100509/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.2.5\n"
-"X-Pootle-Path: /ru/translations-app/i18n/ru.po\n"
-"X-Pootle-Revision: 54115\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: error_could_not_find_object
-msgid "Could not locate that type of Object"
-msgstr "Не удалось найти этот тип объекта"
-
-#: select_object_type
-msgid "Select an Object Type"
-msgstr "Выберите тип объекта"
-
-#: saved
-msgid "Saved"
-msgstr "Сохраненный"
-
-#: target_locale
-msgid "Target Locale"
-msgstr "Целевая локализация"
-
-#: filter_by
-msgid "Filter By"
-msgstr "Фильтровать по"
-
-#: filter_by_all
-msgid "All"
-msgstr "Все"
-
-#: filter_by_translated
-msgid "Translated"
-msgstr "Переведенный"
-
-#: filter_by_untranslated
-msgid "Untranslated"
-msgstr "Не переведено"
-
-#: object
 msgid "Object"
 msgstr "Объект"
 
-#: first_page
-msgid "First page"
-msgstr "Первая страница"
+msgid "Target locale"
+msgstr ""
 
-#: previous_page
-msgid "Previous page"
-msgstr "Предыдущая страница"
+msgid "Filter by"
+msgstr ""
 
-#: next_page
-msgid "Next page"
-msgstr "Следущая страница"
+msgid "All"
+msgstr "Все"
 
-#: final_page
-msgid "Final page"
-msgstr "Последняя страница"
+msgid "Translated"
+msgstr ""
 
-#: short_name
-msgid "Short name"
-msgstr "Короткое имя"
+msgid "Untranslated"
+msgstr ""
 
-#: description
-msgid "Description"
-msgstr "Описание"
+msgid "Partial translated"
+msgstr ""
 
-#: form_name
-msgid "Form name"
-msgstr "Имя формы"
+msgid "Search"
+msgstr "Поиск"
 
-#: name
 msgid "Name"
 msgstr "Название"
 
-#: save
+msgid "Short name"
+msgstr "Короткое имя"
+
+msgid "Description"
+msgstr "Описание"
+
+msgid "Form name"
+msgstr "Название формы"
+
 msgid "Save"
 msgstr "Сохранить"
 
-#: no_results
-msgid "No records available to translate."
-msgstr "Нет записей для перевода."
+msgid "Changes on object will be lost if you do not save them first."
+msgstr ""
+
+msgid "Unexpected Error"
+msgstr ""
+
+msgid "Translations were saved"
+msgstr ""
+
+msgid "A locale and object must be selected"
+msgstr ""
+
+msgid "Keep editing"
+msgstr ""
+
+msgid "Discard changes"
+msgstr ""
+
+msgid "Unsaved changes"
+msgstr ""
+
+msgid "Settings"
+msgstr "Настройки"
+
+msgid "Search apps"
+msgstr "Search apps"
+
+msgid "Profile"
+msgstr "Профиль"
+
+msgid "Account"
+msgstr "Учетная запись"
+
+msgid "Help"
+msgstr "Помощь"
+
+msgid "Log out"
+msgstr "Выйти"
+
+msgid "About DHIS 2"
+msgstr "О DHIS 2"
+
+msgid "Manage my apps"
+msgstr "Manage my apps"
+
+msgid "No results found"
+msgstr "No results found"
+
+msgid "Interpretations"
+msgstr "Интерпретации"
+
+msgid "Messages"
+msgstr "Сообщения"
