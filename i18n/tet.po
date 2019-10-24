@@ -1,0 +1,108 @@
+# Translators:
+# phil_dhis2, 2019
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"POT-Creation-Date: 2018-11-27T14:38:34.304Z\n"
+"PO-Revision-Date: 2019-09-02 16:01+0000\n"
+"Last-Translator: phil_dhis2, 2019\n"
+"Language-Team: Tetum (Tetun) (https://www.transifex.com/hisp-uio/teams/100509/tet/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: tet\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Object"
+msgstr ""
+
+msgid "Target locale"
+msgstr ""
+
+msgid "Filter by"
+msgstr ""
+
+msgid "All"
+msgstr "Hotu"
+
+msgid "Translated"
+msgstr ""
+
+msgid "Untranslated"
+msgstr ""
+
+msgid "Partial translated"
+msgstr ""
+
+msgid "Search"
+msgstr ""
+
+msgid "Name"
+msgstr "Naran"
+
+msgid "Short name"
+msgstr "Naran badak"
+
+msgid "Description"
+msgstr "Deskrisaun"
+
+msgid "Form name"
+msgstr "Formuláriu nia naran"
+
+msgid "Save"
+msgstr "Rai"
+
+msgid "Changes on object will be lost if you do not save them first."
+msgstr ""
+
+msgid "Unexpected Error"
+msgstr ""
+
+msgid "Translations were saved"
+msgstr ""
+
+msgid "A locale and object must be selected"
+msgstr ""
+
+msgid "Keep editing"
+msgstr ""
+
+msgid "Discard changes"
+msgstr ""
+
+msgid "Unsaved changes"
+msgstr ""
+
+msgid "Settings"
+msgstr "Konfigurasaun"
+
+msgid "Search apps"
+msgstr "Buka aplikasoens"
+
+msgid "Profile"
+msgstr "Perfil"
+
+msgid "Account"
+msgstr "Konta"
+
+msgid "Help"
+msgstr "Ajuda"
+
+msgid "Log out"
+msgstr "Log out"
+
+msgid "About DHIS 2"
+msgstr "Konabá DHIS 2"
+
+msgid "Manage my apps"
+msgstr ""
+
+msgid "No results found"
+msgstr ""
+
+msgid "Interpretations"
+msgstr "Interpretasoens"
+
+msgid "Messages"
+msgstr "Mensajens"
