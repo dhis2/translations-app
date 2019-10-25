@@ -2732,12 +2732,6 @@ cyclist@~0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-0.2.2.tgz#1b33792e11e914a2fd6d6ed6447464444e5fa640"
 
-d2-i18n@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/d2-i18n/-/d2-i18n-1.0.3.tgz#16fd6e42bf2ed3fbf3d2c37be99945222ab2570f"
-  dependencies:
-    i18next "^10.3"
-
 d2-manifest@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/d2-manifest/-/d2-manifest-1.0.0.tgz#19d4a4c4e8151442ab730e932c9c2170be9ebcc9"
