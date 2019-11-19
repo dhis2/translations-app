@@ -45,7 +45,7 @@ msgid "Short name"
 msgstr "Nom court"
 
 msgid "Description"
-msgstr "Description"
+msgstr ""
 
 msgid "Form name"
 msgstr "Nom dans le formulaire"
@@ -105,4 +105,4 @@ msgid "Interpretations"
 msgstr "interprétations"
 
 msgid "Messages"
-msgstr "Messages"
+msgstr ""
