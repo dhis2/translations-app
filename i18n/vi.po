@@ -87,7 +87,7 @@ msgid "Account"
 msgstr "Tài khoản"
 
 msgid "Help"
-msgstr "Help"
+msgstr ""
 
 msgid "Log out"
 msgstr "Đăng xuất"
