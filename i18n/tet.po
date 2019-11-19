@@ -90,7 +90,7 @@ msgid "Help"
 msgstr "Ajuda"
 
 msgid "Log out"
-msgstr "Log out"
+msgstr ""
 
 msgid "About DHIS 2"
 msgstr "Konabá DHIS 2"
