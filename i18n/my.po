@@ -78,7 +78,7 @@ msgid "Settings"
 msgstr "တည်ဆောက်ထားသည့်အနေအထား"
 
 msgid "Search apps"
-msgstr "Search apps"
+msgstr ""
 
 msgid "Profile"
 msgstr "အတ္ထုပ္ပတ္တိအကျဉ်း"
@@ -96,10 +96,10 @@ msgid "About DHIS 2"
 msgstr "DHIS 2 အကြောင်း"
 
 msgid "Manage my apps"
-msgstr "Manage my apps"
+msgstr ""
 
 msgid "No results found"
-msgstr "No results found"
+msgstr ""
 
 msgid "Interpretations"
 msgstr "Interpretations"
