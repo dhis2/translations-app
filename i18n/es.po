@@ -96,10 +96,10 @@ msgid "About DHIS 2"
 msgstr "Sobre DHIS 2"
 
 msgid "Manage my apps"
-msgstr "Manage my apps"
+msgstr ""
 
 msgid "No results found"
-msgstr "No results found"
+msgstr ""
 
 msgid "Interpretations"
 msgstr "Interpretaciones"
