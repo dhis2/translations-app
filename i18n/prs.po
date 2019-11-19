@@ -24,7 +24,7 @@ msgid "Filter by"
 msgstr ""
 
 msgid "All"
-msgstr ""
+msgstr "همه"
 
 msgid "Translated"
 msgstr ""
@@ -48,7 +48,7 @@ msgid "Description"
 msgstr "شرح"
 
 msgid "Form name"
-msgstr ""
+msgstr "اسم فورمه"
 
 msgid "Save"
 msgstr "ذخیره"
@@ -78,7 +78,7 @@ msgid "Settings"
 msgstr "تنظیمات"
 
 msgid "Search apps"
-msgstr ""
+msgstr "جستجوی برنامه ها"
 
 msgid "Profile"
 msgstr "مشخصات"
@@ -96,13 +96,13 @@ msgid "About DHIS 2"
 msgstr "درباره DHIS 2"
 
 msgid "Manage my apps"
-msgstr ""
+msgstr "مدیریت برنامه ها"
 
 msgid "No results found"
-msgstr ""
+msgstr "هیج نتیجه ی یافت نشد"
 
 msgid "Interpretations"
 msgstr "تفسیر ها"
 
 msgid "Messages"
-msgstr ""
+msgstr "پیام ها"
