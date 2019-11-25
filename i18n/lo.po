@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2018-11-27T14:38:34.304Z\n"
+"POT-Creation-Date: 2019-10-25T10:21:35.386Z\n"
 "PO-Revision-Date: 2019-09-02 16:01+0000\n"
 "Last-Translator: phil_dhis2, 2019\n"
 "Language-Team: Lao (https://www.transifex.com/hisp-uio/teams/100509/lo/)\n"
