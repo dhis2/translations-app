@@ -1,12 +1,13 @@
 # Translators:
-# Viktor Varland <viktor@dhis2.org>, 2019
+# phil_dhis2, 2020
+# Viktor Varland <viktor@dhis2.org>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2019-10-25T13:08:36.863Z\n"
-"PO-Revision-Date: 2019-08-05 12:15+0000\n"
-"Last-Translator: Viktor Varland <viktor@dhis2.org>, 2019\n"
+"PO-Revision-Date: 2020-02-28 15:08+0000\n"
+"Last-Translator: Viktor Varland <viktor@dhis2.org>, 2020\n"
 "Language-Team: Swedish (https://www.transifex.com/hisp-uio/teams/100509/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -42,13 +43,13 @@ msgid "Name"
 msgstr "Namn"
 
 msgid "Short name"
-msgstr "Kortnamn"
+msgstr "Kort namn"
 
 msgid "Description"
 msgstr "Beskrivning"
 
 msgid "Form name"
-msgstr "Formulär namn"
+msgstr "Form namn"
 
 msgid "Save"
 msgstr "Spara"
@@ -78,7 +79,7 @@ msgid "Settings"
 msgstr "Inställningar"
 
 msgid "Search apps"
-msgstr "Sök appar"
+msgstr "Sök program"
 
 msgid "Profile"
 msgstr "Profil"
@@ -93,7 +94,7 @@ msgid "Log out"
 msgstr "Logga ut"
 
 msgid "About DHIS 2"
-msgstr "Om DHIS 2"
+msgstr "Ca dhis 2"
 
 msgid "Manage my apps"
 msgstr "Hantera mina appar"
@@ -102,7 +103,7 @@ msgid "No results found"
 msgstr "Inga resultat hittades"
 
 msgid "Interpretations"
-msgstr "Tolkningar"
+msgstr "tolkningar"
 
 msgid "Messages"
-msgstr "Meddelanden"
+msgstr "meddelanden"
