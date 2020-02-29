@@ -1,13 +1,12 @@
 # Translators:
-# Viktor Varland <viktor@dhis2.org>, 2019
-# Aung Kyi Min <AungKyi.Min@savethechildren.org>, 2019
+# phil_dhis2, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2019-10-25T13:08:36.863Z\n"
-"PO-Revision-Date: 2019-08-05 12:15+0000\n"
-"Last-Translator: Aung Kyi Min <AungKyi.Min@savethechildren.org>, 2019\n"
+"PO-Revision-Date: 2020-02-28 15:08+0000\n"
+"Last-Translator: phil_dhis2, 2020\n"
 "Language-Team: Burmese (https://www.transifex.com/hisp-uio/teams/100509/my/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,7 +24,7 @@ msgid "Filter by"
 msgstr ""
 
 msgid "All"
-msgstr "ရွေးချယ်ပါ/ အားလုံး"
+msgstr "အားလုံး"
 
 msgid "Translated"
 msgstr ""
@@ -49,10 +48,10 @@ msgid "Description"
 msgstr "ဖော်ပြချက်"
 
 msgid "Form name"
-msgstr "အမည်ပုံစံအမည်ပုံစံ"
+msgstr "ပုံစံအမည်"
 
 msgid "Save"
-msgstr "သိမ်းဆည်းပါ။"
+msgstr "သိမ်းဆည်းသည်"
 
 msgid "Changes on object will be lost if you do not save them first."
 msgstr ""
@@ -76,10 +75,10 @@ msgid "Unsaved changes"
 msgstr ""
 
 msgid "Settings"
-msgstr "သတ်မှတ်ချက်များ"
+msgstr "တည်ဆောက်ထားသည့်အနေအထား"
 
 msgid "Search apps"
-msgstr ""
+msgstr "Search apps"
 
 msgid "Profile"
 msgstr "အတ္ထုပ္ပတ္တိအကျဉ်း"
@@ -97,10 +96,10 @@ msgid "About DHIS 2"
 msgstr "DHIS 2 အကြောင်း"
 
 msgid "Manage my apps"
-msgstr ""
+msgstr "Manage my apps"
 
 msgid "No results found"
-msgstr ""
+msgstr "No results found"
 
 msgid "Interpretations"
 msgstr "ဘာသာပြန်ခြင်းများ"
