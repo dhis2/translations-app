@@ -1,12 +1,13 @@
 # Translators:
-# Viktor Varland <viktor@dhis2.org>, 2019
+# phil_dhis2, 2020
+# Viktor Varland <viktor@dhis2.org>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2019-10-25T13:08:36.863Z\n"
-"PO-Revision-Date: 2019-08-05 12:15+0000\n"
-"Last-Translator: Viktor Varland <viktor@dhis2.org>, 2019\n"
+"PO-Revision-Date: 2020-02-28 15:08+0000\n"
+"Last-Translator: Viktor Varland <viktor@dhis2.org>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/hisp-uio/teams/100509/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -42,13 +43,13 @@ msgid "Name"
 msgstr "Nombre"
 
 msgid "Short name"
-msgstr "Nombre corto"
+msgstr "Abreviatura"
 
 msgid "Description"
 msgstr "Descripción"
 
 msgid "Form name"
-msgstr "Nombre del formulario"
+msgstr "Nombre de formato"
 
 msgid "Save"
 msgstr "Guardar"
@@ -75,7 +76,7 @@ msgid "Unsaved changes"
 msgstr ""
 
 msgid "Settings"
-msgstr "Configuraciones"
+msgstr "Configuración"
 
 msgid "Search apps"
 msgstr "Buscar aplicaciones"
@@ -90,16 +91,16 @@ msgid "Help"
 msgstr "Ayuda"
 
 msgid "Log out"
-msgstr "Cerrar sesión"
+msgstr "Salir"
 
 msgid "About DHIS 2"
 msgstr "Sobre DHIS 2"
 
 msgid "Manage my apps"
-msgstr ""
+msgstr "Manage my apps"
 
 msgid "No results found"
-msgstr ""
+msgstr "No results found"
 
 msgid "Interpretations"
 msgstr "Interpretaciones"
