@@ -1,12 +1,13 @@
 # Translators:
-# Viktor Varland <viktor@dhis2.org>, 2019
+# phil_dhis2, 2020
+# Viktor Varland <viktor@dhis2.org>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2019-10-25T13:08:36.863Z\n"
-"PO-Revision-Date: 2019-08-05 12:15+0000\n"
-"Last-Translator: Viktor Varland <viktor@dhis2.org>, 2019\n"
+"PO-Revision-Date: 2020-02-28 15:08+0000\n"
+"Last-Translator: Viktor Varland <viktor@dhis2.org>, 2020\n"
 "Language-Team: Vietnamese (https://www.transifex.com/hisp-uio/teams/100509/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -42,16 +43,16 @@ msgid "Name"
 msgstr "Tên"
 
 msgid "Short name"
-msgstr "Tên ngắn"
+msgstr "Tên rút gọn"
 
 msgid "Description"
-msgstr "Mô tả"
+msgstr "Miêu tả"
 
 msgid "Form name"
-msgstr "Tên biểu mẫu"
+msgstr "Tên biểu"
 
 msgid "Save"
-msgstr "Lưu"
+msgstr "Lưu lại"
 
 msgid "Changes on object will be lost if you do not save them first."
 msgstr ""
@@ -78,7 +79,7 @@ msgid "Settings"
 msgstr "Cài đặt"
 
 msgid "Search apps"
-msgstr "Tìm ứng dụng"
+msgstr "Tìm kiếm ứng dụng"
 
 msgid "Profile"
 msgstr "Hồ sơ"
@@ -87,13 +88,13 @@ msgid "Account"
 msgstr "Tài khoản"
 
 msgid "Help"
-msgstr ""
+msgstr "Giúp đỡ"
 
 msgid "Log out"
 msgstr "Đăng xuất"
 
 msgid "About DHIS 2"
-msgstr "Giới thiệu DHIS 2"
+msgstr "Giới thiệu về DHIS 2"
 
 msgid "Manage my apps"
 msgstr "Quản lý ứng dụng của tôi"
