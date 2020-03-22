@@ -17,25 +17,25 @@ msgstr ""
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 msgid "Object"
-msgstr ""
+msgstr "الكائن"
 
 msgid "Target locale"
-msgstr ""
+msgstr "اللغة المستهدفة"
 
 msgid "Filter by"
-msgstr ""
+msgstr "تصفية حسب"
 
 msgid "All"
 msgstr "الجميع"
 
 msgid "Translated"
-msgstr ""
+msgstr "مترجم"
 
 msgid "Untranslated"
-msgstr ""
+msgstr "غير مترجم"
 
 msgid "Partial translated"
-msgstr ""
+msgstr "مترجم جزئياً"
 
 msgid "Search"
 msgstr "البحث"
@@ -56,22 +56,22 @@ msgid "Save"
 msgstr "حفظ"
 
 msgid "Changes on object will be lost if you do not save them first."
-msgstr ""
+msgstr "ستفقد التغييرات على الكائن إذا لم تقم بحفظها أولاً."
 
 msgid "Unexpected Error"
-msgstr ""
+msgstr "خطأ غير متوقع"
 
 msgid "Translations were saved"
-msgstr ""
+msgstr "تم حفظ الترجمة"
 
 msgid "A locale and object must be selected"
-msgstr ""
+msgstr "يجب تحديد اللغة والكائن"
 
 msgid "Keep editing"
-msgstr ""
+msgstr "استمر في التعديل"
 
 msgid "Discard changes"
-msgstr ""
+msgstr "تجاهل التغييرات"
 
 msgid "Unsaved changes"
 msgstr "تعديلات لم يتم حفظها"
