@@ -105,7 +105,7 @@ msgid "No results found"
 msgstr "没有发现"
 
 msgid "Interpretations"
-msgstr ""
+msgstr "注释"
 
 msgid "Messages"
-msgstr ""
+msgstr "消息"
