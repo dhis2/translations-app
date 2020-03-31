@@ -23,7 +23,7 @@ msgid "Target locale"
 msgstr ""
 
 msgid "Filter by"
-msgstr ""
+msgstr "Filtrer par"
 
 msgid "All"
 msgstr "Tout"
@@ -47,7 +47,7 @@ msgid "Short name"
 msgstr "Nom court"
 
 msgid "Description"
-msgstr ""
+msgstr "Description"
 
 msgid "Form name"
 msgstr "Nom dans le formulaire"
@@ -59,7 +59,7 @@ msgid "Changes on object will be lost if you do not save them first."
 msgstr ""
 
 msgid "Unexpected Error"
-msgstr ""
+msgstr "Erreur inattendue "
 
 msgid "Translations were saved"
 msgstr ""
@@ -71,7 +71,7 @@ msgid "Keep editing"
 msgstr ""
 
 msgid "Discard changes"
-msgstr ""
+msgstr "Abandonner les modifications"
 
 msgid "Unsaved changes"
 msgstr ""
