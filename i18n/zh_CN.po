@@ -25,7 +25,7 @@ msgid "Filter by"
 msgstr ""
 
 msgid "All"
-msgstr ""
+msgstr "全部"
 
 msgid "Translated"
 msgstr ""
@@ -40,13 +40,13 @@ msgid "Search"
 msgstr "搜索"
 
 msgid "Name"
-msgstr ""
+msgstr "名称"
 
 msgid "Short name"
 msgstr ""
 
 msgid "Description"
-msgstr ""
+msgstr "描述"
 
 msgid "Form name"
 msgstr ""
@@ -82,7 +82,7 @@ msgid "Search apps"
 msgstr "搜索应用"
 
 msgid "Profile"
-msgstr ""
+msgstr "基本信息"
 
 msgid "Account"
 msgstr "账号"
@@ -91,10 +91,10 @@ msgid "Help"
 msgstr "帮助"
 
 msgid "Log out"
-msgstr ""
+msgstr "退出"
 
 msgid "About DHIS 2"
-msgstr ""
+msgstr "关于"
 
 msgid "Manage my apps"
 msgstr ""
