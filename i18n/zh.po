@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "Object"
-msgstr ""
+msgstr "对象"
 
 msgid "Target locale"
 msgstr ""
@@ -99,7 +99,7 @@ msgid "About DHIS 2"
 msgstr "关于综合卫生信息管理平台"
 
 msgid "Manage my apps"
-msgstr ""
+msgstr "管理我的应用"
 
 msgid "No results found"
 msgstr "没有发现"
