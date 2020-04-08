@@ -43,7 +43,7 @@ msgid "Name"
 msgstr "名称"
 
 msgid "Short name"
-msgstr ""
+msgstr "缩写名"
 
 msgid "Description"
 msgstr "描述"
@@ -97,7 +97,7 @@ msgid "About DHIS 2"
 msgstr "关于"
 
 msgid "Manage my apps"
-msgstr ""
+msgstr "管理我的应用"
 
 msgid "No results found"
 msgstr ""
