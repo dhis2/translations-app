@@ -103,7 +103,7 @@ msgid "No results found"
 msgstr ""
 
 msgid "Interpretations"
-msgstr ""
+msgstr "Tolkninger"
 
 msgid "Messages"
 msgstr "Meldinger"
