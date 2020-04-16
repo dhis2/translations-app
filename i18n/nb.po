@@ -82,7 +82,7 @@ msgid "Search apps"
 msgstr "Søk etter apper"
 
 msgid "Profile"
-msgstr "profil"
+msgstr "Profil"
 
 msgid "Account"
 msgstr "Brukerkonto"
@@ -100,7 +100,7 @@ msgid "Manage my apps"
 msgstr "Administrer applikasjonene mine"
 
 msgid "No results found"
-msgstr ""
+msgstr "Ingen resultater funnet"
 
 msgid "Interpretations"
 msgstr "Tolkninger"
