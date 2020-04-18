@@ -1,24 +1,22 @@
 # Translators:
-# phil_dhis2, 2019
-# Viktor Varland <viktor@dhis2.org>, 2019
-# easylin <lin_xd@126.com>, 2020
-# 晓东 林 <13981924470@126.com>, 2020
+# Caroline Hesthagen Holen <carolinehholen@gmail.com>, 2020
+# Karoline Tufte Lien <karoline@dhis2.org>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2019-10-25T10:21:35.386Z\n"
 "PO-Revision-Date: 2019-09-02 16:01+0000\n"
-"Last-Translator: 晓东 林 <13981924470@126.com>, 2020\n"
-"Language-Team: Chinese (https://www.transifex.com/hisp-uio/teams/100509/zh/)\n"
+"Last-Translator: Karoline Tufte Lien <karoline@dhis2.org>, 2020\n"
+"Language-Team: Norwegian Bokmål (https://www.transifex.com/hisp-uio/teams/100509/nb/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: nb\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "Object"
-msgstr "对象"
+msgstr ""
 
 msgid "Target locale"
 msgstr ""
@@ -27,7 +25,7 @@ msgid "Filter by"
 msgstr ""
 
 msgid "All"
-msgstr "全部"
+msgstr "Alt"
 
 msgid "Translated"
 msgstr ""
@@ -39,22 +37,22 @@ msgid "Partial translated"
 msgstr ""
 
 msgid "Search"
-msgstr "搜索"
+msgstr "Søk"
 
 msgid "Name"
-msgstr "名称"
+msgstr "Navn"
 
 msgid "Short name"
-msgstr "缩写名"
+msgstr "Kort navn"
 
 msgid "Description"
-msgstr "描述"
+msgstr "Beskrivelse"
 
 msgid "Form name"
-msgstr "表单名称"
+msgstr "Skjemanavn"
 
 msgid "Save"
-msgstr "保存"
+msgstr "Lagre"
 
 msgid "Changes on object will be lost if you do not save them first."
 msgstr ""
@@ -75,37 +73,37 @@ msgid "Discard changes"
 msgstr ""
 
 msgid "Unsaved changes"
-msgstr "没有保存的修改"
+msgstr ""
 
 msgid "Settings"
-msgstr "设置"
+msgstr "Innstillinger"
 
 msgid "Search apps"
-msgstr "搜索 apps"
+msgstr "Søk etter apper"
 
 msgid "Profile"
-msgstr "简历"
+msgstr "Profil"
 
 msgid "Account"
-msgstr "账号"
+msgstr "Brukerkonto"
 
 msgid "Help"
-msgstr "帮助"
+msgstr "Hjelp"
 
 msgid "Log out"
-msgstr "登出"
+msgstr "Logg ut"
 
 msgid "About DHIS 2"
-msgstr "关于综合卫生信息管理平台"
+msgstr "Om DHIS 2"
 
 msgid "Manage my apps"
-msgstr "管理我的应用"
+msgstr "Administrer applikasjonene mine"
 
 msgid "No results found"
-msgstr "没有发现"
+msgstr "Ingen resultater funnet"
 
 msgid "Interpretations"
-msgstr "注释"
+msgstr "Tolkninger"
 
 msgid "Messages"
-msgstr "消息"
+msgstr "Meldinger"
