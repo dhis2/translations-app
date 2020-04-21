@@ -21,22 +21,22 @@ msgid "Object"
 msgstr "对象"
 
 msgid "Target locale"
-msgstr ""
+msgstr "目标方言"
 
 msgid "Filter by"
-msgstr ""
+msgstr "过滤"
 
 msgid "All"
 msgstr "全部"
 
 msgid "Translated"
-msgstr ""
+msgstr "已翻译"
 
 msgid "Untranslated"
-msgstr ""
+msgstr "未翻译"
 
 msgid "Partial translated"
-msgstr ""
+msgstr "部分翻译"
 
 msgid "Search"
 msgstr "搜索"
@@ -57,22 +57,22 @@ msgid "Save"
 msgstr "保存"
 
 msgid "Changes on object will be lost if you do not save them first."
-msgstr ""
+msgstr "你不先保存改变将丢失"
 
 msgid "Unexpected Error"
-msgstr ""
+msgstr "意外错误"
 
 msgid "Translations were saved"
-msgstr ""
+msgstr "翻译已经被保存"
 
 msgid "A locale and object must be selected"
-msgstr ""
+msgstr "方言和对象需选择"
 
 msgid "Keep editing"
-msgstr ""
+msgstr "继续编辑"
 
 msgid "Discard changes"
-msgstr ""
+msgstr "忽略修改"
 
 msgid "Unsaved changes"
 msgstr "没有保存的修改"
