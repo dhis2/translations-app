@@ -73,7 +73,7 @@ msgid "Discard changes"
 msgstr ""
 
 msgid "Unsaved changes"
-msgstr ""
+msgstr "Ikke lagrede endringer"
 
 msgid "Settings"
 msgstr "Innstillinger"
