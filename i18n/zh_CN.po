@@ -103,7 +103,7 @@ msgid "No results found"
 msgstr ""
 
 msgid "Interpretations"
-msgstr ""
+msgstr "注释"
 
 msgid "Messages"
 msgstr "消息"
