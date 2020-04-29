@@ -1,21 +1,21 @@
 # 
 # Translators:
+# phil_dhis2, 2019
 # Viktor Varland <viktor@dhis2.org>, 2019
-# Aung Kyi Min <AungKyi.Min@savethechildren.org>, 2019
-# phil_dhis2, 2020
+# KRG HIS <antonia.bezenchek@informa.pro>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2019-10-25T13:08:36.863Z\n"
 "PO-Revision-Date: 2019-08-05 12:15+0000\n"
-"Last-Translator: phil_dhis2, 2020\n"
-"Language-Team: Burmese (https://www.transifex.com/hisp-uio/teams/100509/my/)\n"
+"Last-Translator: KRG HIS <antonia.bezenchek@informa.pro>, 2020\n"
+"Language-Team: Central Kurdish (https://www.transifex.com/hisp-uio/teams/100509/ckb/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: my\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: ckb\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "Object"
 msgstr ""
@@ -27,7 +27,7 @@ msgid "Filter by"
 msgstr ""
 
 msgid "All"
-msgstr "ရွေးချယ်ပါ/ အားလုံး"
+msgstr ""
 
 msgid "Translated"
 msgstr ""
@@ -39,22 +39,22 @@ msgid "Partial translated"
 msgstr ""
 
 msgid "Search"
-msgstr ""
+msgstr "طةران"
 
 msgid "Name"
-msgstr "အမည်"
+msgstr ""
 
 msgid "Short name"
-msgstr "အမည်တို"
+msgstr ""
 
 msgid "Description"
-msgstr "ဖော်ပြချက်"
+msgstr ""
 
 msgid "Form name"
-msgstr "အမည်ပုံစံအမည်ပုံစံ"
+msgstr ""
 
 msgid "Save"
-msgstr "သိမ်းဆည်းပါ။"
+msgstr "خةزن كردن"
 
 msgid "Changes on object will be lost if you do not save them first."
 msgstr ""
@@ -75,37 +75,37 @@ msgid "Discard changes"
 msgstr ""
 
 msgid "Unsaved changes"
-msgstr ""
+msgstr "گۆڕانکاریە تۆمارنەکراوەکان"
 
 msgid "Settings"
-msgstr "သတ်မှတ်ချက်များ"
+msgstr "ريكخستن"
 
 msgid "Search apps"
-msgstr "Search apps"
+msgstr ""
 
 msgid "Profile"
-msgstr "အတ္ထုပ္ပတ္တိအကျဉ်း"
+msgstr "پرۆفایل"
 
 msgid "Account"
-msgstr "စာရင်း"
+msgstr ""
 
 msgid "Help"
-msgstr "အကူအညီတောင်းခံရန်"
+msgstr "هاوكاري"
 
 msgid "Log out"
-msgstr "စနစ်မှထွက်ခြင်း"
+msgstr "جونةدةرةوة"
 
 msgid "About DHIS 2"
-msgstr "DHIS 2 အကြောင်း"
+msgstr ""
 
 msgid "Manage my apps"
-msgstr "Manage my apps"
+msgstr ""
 
 msgid "No results found"
-msgstr "No results found"
+msgstr ""
 
 msgid "Interpretations"
-msgstr "ဘာသာပြန်ခြင်းများ"
+msgstr ""
 
 msgid "Messages"
-msgstr "သတင်းများ"
+msgstr ""
