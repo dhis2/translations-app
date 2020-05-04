@@ -1,14 +1,14 @@
 # 
 # Translators:
-# Caroline Hesthagen Holen <carolinehholen@gmail.com>, 2020
 # Karoline Tufte Lien <karoline@dhis2.org>, 2020
+# Caroline Hesthagen Holen <carolinehholen@gmail.com>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2019-10-25T13:08:36.863Z\n"
 "PO-Revision-Date: 2020-02-28 15:08+0000\n"
-"Last-Translator: Karoline Tufte Lien <karoline@dhis2.org>, 2020\n"
+"Last-Translator: Caroline Hesthagen Holen <carolinehholen@gmail.com>, 2020\n"
 "Language-Team: Norwegian Bokmål (https://www.transifex.com/hisp-uio/teams/100509/nb/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,25 +17,25 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "Object"
-msgstr ""
+msgstr "Objekt"
 
 msgid "Target locale"
-msgstr ""
+msgstr "Målsted"
 
 msgid "Filter by"
-msgstr ""
+msgstr "Filtrer etter"
 
 msgid "All"
 msgstr "Alt"
 
 msgid "Translated"
-msgstr ""
+msgstr "Oversatt"
 
 msgid "Untranslated"
-msgstr ""
+msgstr "Ikke oversatt"
 
 msgid "Partial translated"
-msgstr ""
+msgstr "Delvis oversatt"
 
 msgid "Search"
 msgstr "Søk"
@@ -56,22 +56,22 @@ msgid "Save"
 msgstr "Lagre"
 
 msgid "Changes on object will be lost if you do not save them first."
-msgstr ""
+msgstr "Endringer på objektet vil bli borte hvis du ikke lagrer dem først."
 
 msgid "Unexpected Error"
-msgstr ""
+msgstr "Uventet feil"
 
 msgid "Translations were saved"
-msgstr ""
+msgstr "Oversettelser ble lagret"
 
 msgid "A locale and object must be selected"
-msgstr ""
+msgstr "Et språk og et objekt må velges"
 
 msgid "Keep editing"
-msgstr ""
+msgstr "Fortsett å rediger"
 
 msgid "Discard changes"
-msgstr ""
+msgstr "Forkast endringer"
 
 msgid "Unsaved changes"
 msgstr "Ikke lagrede endringer"
