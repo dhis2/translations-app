@@ -2,13 +2,14 @@
 # Translators:
 # phil_dhis2, 2019
 # Viktor Varland <viktor@dhis2.org>, 2019
+# Ge Joao <gsimango@saudigitus.org>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2018-11-27T14:38:34.304Z\n"
 "PO-Revision-Date: 2019-09-02 16:01+0000\n"
-"Last-Translator: Viktor Varland <viktor@dhis2.org>, 2019\n"
+"Last-Translator: Ge Joao <gsimango@saudigitus.org>, 2020\n"
 "Language-Team: Portuguese (https://www.transifex.com/hisp-uio/teams/100509/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,10 +21,10 @@ msgid "Object"
 msgstr "Objeto"
 
 msgid "Target locale"
-msgstr ""
+msgstr "Local de destino"
 
 msgid "Filter by"
-msgstr ""
+msgstr "Filtrar por"
 
 msgid "All"
 msgstr "Tudo"
@@ -35,7 +36,7 @@ msgid "Untranslated"
 msgstr "Por Traduzir"
 
 msgid "Partial translated"
-msgstr ""
+msgstr "Tradução parcial"
 
 msgid "Search"
 msgstr "Pesquisar"
@@ -57,24 +58,25 @@ msgstr "Salvar"
 
 msgid "Changes on object will be lost if you do not save them first."
 msgstr ""
+"As alterações no objecto serão perdidas se você não as salvar primeiro."
 
 msgid "Unexpected Error"
-msgstr ""
+msgstr "Erro inesperado"
 
 msgid "Translations were saved"
-msgstr ""
+msgstr "Traduções foram salvas"
 
 msgid "A locale and object must be selected"
-msgstr ""
+msgstr "Um código de idioma e um objeto devem ser selecionados"
 
 msgid "Keep editing"
-msgstr ""
+msgstr "Continue editando"
 
 msgid "Discard changes"
-msgstr ""
+msgstr "Descartar mudanças"
 
 msgid "Unsaved changes"
-msgstr ""
+msgstr "Alterações não salvas"
 
 msgid "Settings"
 msgstr "Definições"
@@ -98,10 +100,10 @@ msgid "About DHIS 2"
 msgstr "Acerca de DHIS2"
 
 msgid "Manage my apps"
-msgstr ""
+msgstr "Gerenciar meus aplicativos"
 
 msgid "No results found"
-msgstr ""
+msgstr "Nenhum resultado encontrado"
 
 msgid "Interpretations"
 msgstr "Interpretações"
