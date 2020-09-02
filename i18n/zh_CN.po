@@ -17,7 +17,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "Object"
-msgstr ""
+msgstr "对象"
 
 msgid "Target locale"
 msgstr ""
