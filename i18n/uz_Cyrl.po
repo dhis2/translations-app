@@ -1,0 +1,109 @@
+# 
+# Translators:
+# Ibatov <ibatovk@who.int>, 2020
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"POT-Creation-Date: 2019-10-25T13:08:36.863Z\n"
+"PO-Revision-Date: 2020-02-28 15:08+0000\n"
+"Last-Translator: Ibatov <ibatovk@who.int>, 2020\n"
+"Language-Team: Uzbek (Cyrillic) (https://www.transifex.com/hisp-uio/teams/100509/uz@Cyrl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: uz@Cyrl\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Object"
+msgstr ""
+
+msgid "Target locale"
+msgstr ""
+
+msgid "Filter by"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "Translated"
+msgstr ""
+
+msgid "Untranslated"
+msgstr ""
+
+msgid "Partial translated"
+msgstr ""
+
+msgid "Search"
+msgstr "Излаш"
+
+msgid "Name"
+msgstr "Исми"
+
+msgid "Short name"
+msgstr ""
+
+msgid "Description"
+msgstr "Тавсиф"
+
+msgid "Form name"
+msgstr "Шакл номи"
+
+msgid "Save"
+msgstr "Сақлаш"
+
+msgid "Changes on object will be lost if you do not save them first."
+msgstr ""
+
+msgid "Unexpected Error"
+msgstr ""
+
+msgid "Translations were saved"
+msgstr ""
+
+msgid "A locale and object must be selected"
+msgstr ""
+
+msgid "Keep editing"
+msgstr ""
+
+msgid "Discard changes"
+msgstr ""
+
+msgid "Unsaved changes"
+msgstr ""
+
+msgid "Settings"
+msgstr "Созламалар"
+
+msgid "Search apps"
+msgstr "Иловаларни қидириш"
+
+msgid "Profile"
+msgstr "Профил"
+
+msgid "Account"
+msgstr "Рақами"
+
+msgid "Help"
+msgstr "Ёрдам"
+
+msgid "Log out"
+msgstr "Чиқиш"
+
+msgid "About DHIS 2"
+msgstr "DHIS2 ҳақида"
+
+msgid "Manage my apps"
+msgstr "Иловаларимни бошқариш"
+
+msgid "No results found"
+msgstr "Ҳеч қандай натижа топилмади"
+
+msgid "Interpretations"
+msgstr "Шарҳлар"
+
+msgid "Messages"
+msgstr "Хабарлар"
