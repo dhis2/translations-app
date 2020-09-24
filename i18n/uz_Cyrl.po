@@ -25,7 +25,7 @@ msgid "Filter by"
 msgstr ""
 
 msgid "All"
-msgstr ""
+msgstr "Барчаси"
 
 msgid "Translated"
 msgstr ""
