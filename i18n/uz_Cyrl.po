@@ -16,25 +16,25 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "Object"
-msgstr ""
+msgstr "Объект"
 
 msgid "Target locale"
-msgstr ""
+msgstr "Нишон ҳудуди"
 
 msgid "Filter by"
-msgstr ""
+msgstr "Бўйича фильтр"
 
 msgid "All"
 msgstr "Барчаси"
 
 msgid "Translated"
-msgstr ""
+msgstr "Таржима қилинган"
 
 msgid "Untranslated"
-msgstr ""
+msgstr "Таржима қилинмаган"
 
 msgid "Partial translated"
-msgstr ""
+msgstr "Қисман таржима қилинган"
 
 msgid "Search"
 msgstr "Излаш"
@@ -43,7 +43,7 @@ msgid "Name"
 msgstr "Исми"
 
 msgid "Short name"
-msgstr ""
+msgstr "Қисқача номи"
 
 msgid "Description"
 msgstr "Тавсиф"
@@ -55,25 +55,25 @@ msgid "Save"
 msgstr "Сақлаш"
 
 msgid "Changes on object will be lost if you do not save them first."
-msgstr ""
+msgstr "Агарда объектга киритилган ўзгартиришлар сақланмаса, улар йўқотилади"
 
 msgid "Unexpected Error"
-msgstr ""
+msgstr "Кутилмаган хато"
 
 msgid "Translations were saved"
-msgstr ""
+msgstr "Таржималар сақланган"
 
 msgid "A locale and object must be selected"
-msgstr ""
+msgstr "Маҳаллий тил ва объект танланган бўлиши лозим"
 
 msgid "Keep editing"
-msgstr ""
+msgstr "Таҳрирни давом этинг"
 
 msgid "Discard changes"
-msgstr ""
+msgstr "Ўзгартиришлар бекор қилинсин"
 
 msgid "Unsaved changes"
-msgstr ""
+msgstr "Сақланмаган ўзгартиришлар"
 
 msgid "Settings"
 msgstr "Созламалар"
@@ -103,7 +103,7 @@ msgid "No results found"
 msgstr "Ҳеч қандай натижа топилмади"
 
 msgid "Interpretations"
-msgstr "Шарҳлар"
+msgstr "Талқинлар"
 
 msgid "Messages"
 msgstr "Хабарлар"
