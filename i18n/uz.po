@@ -1,0 +1,109 @@
+# 
+# Translators:
+# Ibatov <ibatovk@who.int>, 2020
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"POT-Creation-Date: 2018-11-27T14:38:34.304Z\n"
+"PO-Revision-Date: 2019-09-02 16:01+0000\n"
+"Last-Translator: Ibatov <ibatovk@who.int>, 2020\n"
+"Language-Team: Uzbek (Cyrillic) (https://www.transifex.com/hisp-uio/teams/100509/uz@Cyrl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: uz@Cyrl\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Object"
+msgstr "Объект"
+
+msgid "Target locale"
+msgstr "Нишон ҳудуди"
+
+msgid "Filter by"
+msgstr "Бўйича фильтр"
+
+msgid "All"
+msgstr "Барчаси"
+
+msgid "Translated"
+msgstr "Таржима қилинган"
+
+msgid "Untranslated"
+msgstr "Таржима қилинмаган"
+
+msgid "Partial translated"
+msgstr "Қисман таржима қилинган"
+
+msgid "Search"
+msgstr "Излаш"
+
+msgid "Name"
+msgstr "Исми"
+
+msgid "Short name"
+msgstr "Қисқача номи"
+
+msgid "Description"
+msgstr "Тавсиф"
+
+msgid "Form name"
+msgstr "Шакл номи"
+
+msgid "Save"
+msgstr "Сақлаш"
+
+msgid "Changes on object will be lost if you do not save them first."
+msgstr "Агарда объектга киритилган ўзгартиришлар сақланмаса, улар йўқотилади"
+
+msgid "Unexpected Error"
+msgstr "Кутилмаган хато"
+
+msgid "Translations were saved"
+msgstr "Таржималар сақланган"
+
+msgid "A locale and object must be selected"
+msgstr "Маҳаллий тил ва объект танланган бўлиши лозим"
+
+msgid "Keep editing"
+msgstr "Таҳрирни давом этинг"
+
+msgid "Discard changes"
+msgstr "Ўзгартиришлар бекор қилинсин"
+
+msgid "Unsaved changes"
+msgstr "Сақланмаган ўзгартиришлар"
+
+msgid "Settings"
+msgstr "Созламалар"
+
+msgid "Search apps"
+msgstr "Иловаларни қидириш"
+
+msgid "Profile"
+msgstr "Профил"
+
+msgid "Account"
+msgstr "Рақами"
+
+msgid "Help"
+msgstr "Ёрдам"
+
+msgid "Log out"
+msgstr "Чиқиш"
+
+msgid "About DHIS 2"
+msgstr "DHIS2 ҳақида"
+
+msgid "Manage my apps"
+msgstr "Иловаларимни бошқариш"
+
+msgid "No results found"
+msgstr "Ҳеч қандай натижа топилмади"
+
+msgid "Interpretations"
+msgstr "Шарҳлар"
+
+msgid "Messages"
+msgstr "Хабарлар"
