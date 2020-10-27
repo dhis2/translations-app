@@ -1,0 +1,109 @@
+# 
+# Translators:
+# Jiří Podhorecký, 2020
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"POT-Creation-Date: 2019-10-25T10:21:35.386Z\n"
+"PO-Revision-Date: 2019-09-02 16:01+0000\n"
+"Last-Translator: Jiří Podhorecký, 2020\n"
+"Language-Team: Czech (https://www.transifex.com/hisp-uio/teams/100509/cs/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+
+msgid "Object"
+msgstr ""
+
+msgid "Target locale"
+msgstr ""
+
+msgid "Filter by"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "Translated"
+msgstr ""
+
+msgid "Untranslated"
+msgstr ""
+
+msgid "Partial translated"
+msgstr ""
+
+msgid "Search"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Short name"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Form name"
+msgstr ""
+
+msgid "Save"
+msgstr "Uložit"
+
+msgid "Changes on object will be lost if you do not save them first."
+msgstr ""
+
+msgid "Unexpected Error"
+msgstr ""
+
+msgid "Translations were saved"
+msgstr ""
+
+msgid "A locale and object must be selected"
+msgstr ""
+
+msgid "Keep editing"
+msgstr ""
+
+msgid "Discard changes"
+msgstr ""
+
+msgid "Unsaved changes"
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+msgid "Search apps"
+msgstr ""
+
+msgid "Profile"
+msgstr ""
+
+msgid "Account"
+msgstr ""
+
+msgid "Help"
+msgstr ""
+
+msgid "Log out"
+msgstr ""
+
+msgid "About DHIS 2"
+msgstr ""
+
+msgid "Manage my apps"
+msgstr ""
+
+msgid "No results found"
+msgstr ""
+
+msgid "Interpretations"
+msgstr ""
+
+msgid "Messages"
+msgstr ""
