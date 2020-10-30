@@ -25,7 +25,7 @@ msgid "Filter by"
 msgstr ""
 
 msgid "All"
-msgstr ""
+msgstr "Vše"
 
 msgid "Translated"
 msgstr ""
@@ -85,7 +85,7 @@ msgid "Profile"
 msgstr ""
 
 msgid "Account"
-msgstr ""
+msgstr "Účet"
 
 msgid "Help"
 msgstr ""
