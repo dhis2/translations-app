@@ -37,7 +37,7 @@ msgid "Partial translated"
 msgstr ""
 
 msgid "Search"
-msgstr ""
+msgstr "Hledat"
 
 msgid "Name"
 msgstr ""
