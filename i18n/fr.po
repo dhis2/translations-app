@@ -102,7 +102,7 @@ msgid "Manage my apps"
 msgstr ""
 
 msgid "No results found"
-msgstr ""
+msgstr "Aucun résultat trouvé"
 
 msgid "Interpretations"
 msgstr "interprétations"
