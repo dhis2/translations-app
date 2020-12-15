@@ -61,7 +61,7 @@ msgid "Unexpected Error"
 msgstr "Кутилмаган хато"
 
 msgid "Translations were saved"
-msgstr "Таржималар сақланган"
+msgstr "Таржималар сақланди"
 
 msgid "A locale and object must be selected"
 msgstr "Маҳаллий тил ва объект танланган бўлиши лозим"
