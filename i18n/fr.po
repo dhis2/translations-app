@@ -99,7 +99,7 @@ msgid "About DHIS 2"
 msgstr "A propos de DHIS2"
 
 msgid "Manage my apps"
-msgstr ""
+msgstr "Gérer mes applications"
 
 msgid "No results found"
 msgstr "Aucun résultat trouvé"
