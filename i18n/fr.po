@@ -100,7 +100,7 @@ msgid "About DHIS 2"
 msgstr "À propos DHIS 2"
 
 msgid "Manage my apps"
-msgstr ""
+msgstr "Gérer mes applications"
 
 msgid "No results found"
 msgstr "Aucun résultat trouvé"
