@@ -1,15 +1,15 @@
 # 
 # Translators:
-# phil_dhis2, 2019
-# Viktor Varland <viktor@dhis2.org>, 2019
 # easylin <lin_xd@126.com>, 2020
+# phil_dhis2, 2020
+# Viktor Varland <viktor@dhis2.org>, 2020
 # 晓东 林 <13981924470@126.com>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2019-10-25T13:08:36.863Z\n"
-"PO-Revision-Date: 2019-08-05 12:15+0000\n"
+"POT-Creation-Date: 2020-12-01T13:00:49.964Z\n"
+"PO-Revision-Date: 2020-12-22 22:18+0000\n"
 "Last-Translator: 晓东 林 <13981924470@126.com>, 2020\n"
 "Language-Team: Chinese (https://www.transifex.com/hisp-uio/teams/100509/zh/)\n"
 "MIME-Version: 1.0\n"
@@ -76,7 +76,7 @@ msgid "Discard changes"
 msgstr "忽略修改"
 
 msgid "Unsaved changes"
-msgstr "没有保存的修改"
+msgstr "未保存的更改"
 
 msgid "Settings"
 msgstr "设置"
@@ -85,7 +85,7 @@ msgid "Search apps"
 msgstr "搜索 apps"
 
 msgid "Profile"
-msgstr "简历"
+msgstr "基本信息"
 
 msgid "Account"
 msgstr "账号"
@@ -94,19 +94,19 @@ msgid "Help"
 msgstr "帮助"
 
 msgid "Log out"
-msgstr "登出"
+msgstr "退出"
 
 msgid "About DHIS 2"
-msgstr "关于综合卫生信息管理平台"
+msgstr "关于DHIS2"
 
 msgid "Manage my apps"
-msgstr "管理我的应用"
+msgstr "管理我的小应用"
 
 msgid "No results found"
-msgstr "没有发现"
+msgstr "没有结果"
 
 msgid "Interpretations"
-msgstr "注释"
+msgstr "解释"
 
 msgid "Messages"
 msgstr "消息"

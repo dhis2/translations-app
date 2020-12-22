@@ -1,0 +1,109 @@
+# 
+# Translators:
+# trendspotter, 2020
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"POT-Creation-Date: 2020-12-01T13:00:49.964Z\n"
+"PO-Revision-Date: 2020-12-22 22:18+0000\n"
+"Last-Translator: trendspotter, 2020\n"
+"Language-Team: Czech (https://www.transifex.com/hisp-uio/teams/100509/cs/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+
+msgid "Object"
+msgstr "Objekt"
+
+msgid "Target locale"
+msgstr "Cílové národní prostředí"
+
+msgid "Filter by"
+msgstr "Filtrovat podle"
+
+msgid "All"
+msgstr "Vše"
+
+msgid "Translated"
+msgstr "Přeloženo"
+
+msgid "Untranslated"
+msgstr "Nepřeloženo"
+
+msgid "Partial translated"
+msgstr "Částečně přeloženo"
+
+msgid "Search"
+msgstr "Hledat"
+
+msgid "Name"
+msgstr "Název"
+
+msgid "Short name"
+msgstr "Krátký název"
+
+msgid "Description"
+msgstr "Popis"
+
+msgid "Form name"
+msgstr "Název formuláře"
+
+msgid "Save"
+msgstr "Uložit"
+
+msgid "Changes on object will be lost if you do not save them first."
+msgstr "Změny objektu budou ztraceny, pokud je nejdříve neuložíte."
+
+msgid "Unexpected Error"
+msgstr "Neočekávaná chyba"
+
+msgid "Translations were saved"
+msgstr "Překlady byly uloženy"
+
+msgid "A locale and object must be selected"
+msgstr "Musí být vybráno národní prostředí a objekt"
+
+msgid "Keep editing"
+msgstr "Pokračovat v úpravách"
+
+msgid "Discard changes"
+msgstr "Zrušit změny"
+
+msgid "Unsaved changes"
+msgstr "Neuložené změny"
+
+msgid "Settings"
+msgstr "Nastavení"
+
+msgid "Search apps"
+msgstr "Hledat aplikace"
+
+msgid "Profile"
+msgstr "Profil"
+
+msgid "Account"
+msgstr "Účet"
+
+msgid "Help"
+msgstr "Nápověda"
+
+msgid "Log out"
+msgstr "Odhlásit se"
+
+msgid "About DHIS 2"
+msgstr "O DHIS 2"
+
+msgid "Manage my apps"
+msgstr "Spravovat moje aplikace"
+
+msgid "No results found"
+msgstr "Nenalezeny žádné výsledky"
+
+msgid "Interpretations"
+msgstr "Interpretace"
+
+msgid "Messages"
+msgstr "Zprávy"
