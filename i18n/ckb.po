@@ -1,14 +1,14 @@
 # 
 # Translators:
-# phil_dhis2, 2019
-# Viktor Varland <viktor@dhis2.org>, 2019
+# phil_dhis2, 2020
+# Viktor Varland <viktor@dhis2.org>, 2020
 # KRG HIS <antonia.bezenchek@informa.pro>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2019-10-25T13:08:36.863Z\n"
-"PO-Revision-Date: 2019-08-05 12:15+0000\n"
+"POT-Creation-Date: 2020-12-01T13:00:49.964Z\n"
+"PO-Revision-Date: 2020-12-22 22:18+0000\n"
 "Last-Translator: KRG HIS <antonia.bezenchek@informa.pro>, 2020\n"
 "Language-Team: Central Kurdish (https://www.transifex.com/hisp-uio/teams/100509/ckb/)\n"
 "MIME-Version: 1.0\n"
@@ -39,7 +39,7 @@ msgid "Partial translated"
 msgstr ""
 
 msgid "Search"
-msgstr "طةران"
+msgstr "گەڕان"
 
 msgid "Name"
 msgstr ""
@@ -54,7 +54,7 @@ msgid "Form name"
 msgstr ""
 
 msgid "Save"
-msgstr "خةزن كردن"
+msgstr "تۆمارکردن"
 
 msgid "Changes on object will be lost if you do not save them first."
 msgstr ""
