@@ -75,7 +75,7 @@ msgid "Discard changes"
 msgstr ""
 
 msgid "Unsaved changes"
-msgstr ""
+msgstr "Các thay đổi chưa được lưu"
 
 msgid "Settings"
 msgstr "Cài đặt"
