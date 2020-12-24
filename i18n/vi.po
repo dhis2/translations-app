@@ -2,13 +2,14 @@
 # Translators:
 # Viktor Varland <viktor@dhis2.org>, 2019
 # phil_dhis2, 2020
+# Mai Nguyen <thanhmai.jica@gmail.com>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2020-12-01T12:51:47.503Z\n"
 "PO-Revision-Date: 2019-08-05 12:15+0000\n"
-"Last-Translator: phil_dhis2, 2020\n"
+"Last-Translator: Mai Nguyen <thanhmai.jica@gmail.com>, 2020\n"
 "Language-Team: Vietnamese (https://www.transifex.com/hisp-uio/teams/100509/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -74,7 +75,7 @@ msgid "Discard changes"
 msgstr ""
 
 msgid "Unsaved changes"
-msgstr ""
+msgstr "Các thay đổi chưa được lưu"
 
 msgid "Settings"
 msgstr "Cài đặt"
