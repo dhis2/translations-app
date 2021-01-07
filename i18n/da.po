@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2019-10-25T13:08:36.863Z\n"
+"POT-Creation-Date: 2021-01-07T12:25:22.942Z\n"
 "PO-Revision-Date: 2020-02-28 15:08+0000\n"
 "Last-Translator: phil_dhis2, 2020\n"
 "Language-Team: Danish (https://www.transifex.com/hisp-uio/teams/100509/da/)\n"
@@ -50,6 +50,36 @@ msgstr "Description"
 
 msgid "Form name"
 msgstr "Form name"
+
+msgid "Numerator description"
+msgstr ""
+
+msgid "Denominator description"
+msgstr ""
+
+msgid "From to name"
+msgstr ""
+
+msgid "To from name"
+msgstr ""
+
+msgid "Instruction"
+msgstr ""
+
+msgid "Incident date label"
+msgstr ""
+
+msgid "Enrollment date label"
+msgstr ""
+
+msgid "Execution date label"
+msgstr ""
+
+msgid "Due date label"
+msgstr ""
+
+msgid "Content"
+msgstr ""
 
 msgid "Save"
 msgstr "Save"
