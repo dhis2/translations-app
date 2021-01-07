@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2019-10-25T12:31:45.689Z\n"
-"PO-Revision-Date: 2019-10-25T12:31:45.689Z\n"
+"POT-Creation-Date: 2021-01-11T09:25:09.747Z\n"
+"PO-Revision-Date: 2021-01-11T09:25:09.747Z\n"
 
 msgid "Object"
 msgstr ""
@@ -42,6 +42,36 @@ msgid "Description"
 msgstr ""
 
 msgid "Form name"
+msgstr ""
+
+msgid "Numerator description"
+msgstr ""
+
+msgid "Denominator description"
+msgstr ""
+
+msgid "From to name"
+msgstr ""
+
+msgid "To from name"
+msgstr ""
+
+msgid "Instruction"
+msgstr ""
+
+msgid "Incident date label"
+msgstr ""
+
+msgid "Enrollment date label"
+msgstr ""
+
+msgid "Execution date label"
+msgstr ""
+
+msgid "Due date label"
+msgstr ""
+
+msgid "Content"
 msgstr ""
 
 msgid "Save"
