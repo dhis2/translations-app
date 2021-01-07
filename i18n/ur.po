@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-12-01T13:00:49.964Z\n"
+"POT-Creation-Date: 2021-01-07T12:27:40.665Z\n"
 "PO-Revision-Date: 2020-12-22 22:18+0000\n"
 "Last-Translator: Viktor Varland <viktor@dhis2.org>, 2020\n"
 "Language-Team: Urdu (https://www.transifex.com/hisp-uio/teams/100509/ur/)\n"
@@ -51,6 +51,36 @@ msgstr "تفصیلات"
 
 msgid "Form name"
 msgstr "فارم کا نام"
+
+msgid "Numerator description"
+msgstr ""
+
+msgid "Denominator description"
+msgstr ""
+
+msgid "From to name"
+msgstr ""
+
+msgid "To from name"
+msgstr ""
+
+msgid "Instruction"
+msgstr ""
+
+msgid "Incident date label"
+msgstr ""
+
+msgid "Enrollment date label"
+msgstr ""
+
+msgid "Execution date label"
+msgstr ""
+
+msgid "Due date label"
+msgstr ""
+
+msgid "Content"
+msgstr ""
 
 msgid "Save"
 msgstr "محفوظ"
