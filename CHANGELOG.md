@@ -1,3 +1,10 @@
+## [26.1.6](https://github.com/dhis2/translations-app/compare/v26.1.5...v26.1.6) (2021-01-07)
+
+
+### Bug Fixes
+
+* add missing field label translations ([0a7e536](https://github.com/dhis2/translations-app/commit/0a7e536b256e4ecd98afb630ffe302b7c20526c7))
+
 ## [26.1.5](https://github.com/dhis2/translations-app/compare/v26.1.4...v26.1.5) (2020-12-24)
 
 ### Bug Fixes
