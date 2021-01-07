@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-12-01T12:51:47.503Z\n"
+"POT-Creation-Date: 2021-01-07T10:01:44.426Z\n"
 "PO-Revision-Date: 2019-08-05 12:15+0000\n"
 "Last-Translator: easylin <lin_xd@126.com>, 2020\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/hisp-uio/teams/100509/zh_CN/)\n"
@@ -51,6 +51,36 @@ msgstr "描述"
 
 msgid "Form name"
 msgstr "表单名称"
+
+msgid "Numerator description"
+msgstr ""
+
+msgid "Denominator description"
+msgstr ""
+
+msgid "From to name"
+msgstr ""
+
+msgid "To from name"
+msgstr ""
+
+msgid "Instruction"
+msgstr ""
+
+msgid "Incident date label"
+msgstr ""
+
+msgid "Enrollment date label"
+msgstr ""
+
+msgid "Execution date label"
+msgstr ""
+
+msgid "Due date label"
+msgstr ""
+
+msgid "Content"
+msgstr ""
 
 msgid "Save"
 msgstr "保存"
