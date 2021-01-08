@@ -1,16 +1,16 @@
 # 
 # Translators:
 # easylin <lin_xd@126.com>, 2020
-# phil_dhis2, 2020
 # Viktor Varland <viktor@dhis2.org>, 2020
-# 晓东 林 <13981924470@126.com>, 2020
+# phil_dhis2, 2021
+# 晓东 林 <13981924470@126.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2021-01-07T12:27:40.665Z\n"
 "PO-Revision-Date: 2020-12-22 22:18+0000\n"
-"Last-Translator: 晓东 林 <13981924470@126.com>, 2020\n"
+"Last-Translator: 晓东 林 <13981924470@126.com>, 2021\n"
 "Language-Team: Chinese (https://www.transifex.com/hisp-uio/teams/100509/zh/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -55,10 +55,10 @@ msgid "Form name"
 msgstr "表单名称"
 
 msgid "Numerator description"
-msgstr ""
+msgstr "描述"
 
 msgid "Denominator description"
-msgstr ""
+msgstr "分母描述"
 
 msgid "From to name"
 msgstr ""
@@ -67,7 +67,7 @@ msgid "To from name"
 msgstr ""
 
 msgid "Instruction"
-msgstr ""
+msgstr "Instruction"
 
 msgid "Incident date label"
 msgstr ""
@@ -82,7 +82,7 @@ msgid "Due date label"
 msgstr ""
 
 msgid "Content"
-msgstr ""
+msgstr "内容"
 
 msgid "Save"
 msgstr "保存"
