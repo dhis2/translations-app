@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2019-10-25T12:31:45.689Z\n"
+"POT-Creation-Date: 2021-01-11T09:25:09.747Z\n"
 "PO-Revision-Date: 2019-09-02 16:01+0000\n"
 "Last-Translator: Mai Nguyen <thanhmai.jica@gmail.com>, 2020\n"
 "Language-Team: Vietnamese (https://www.transifex.com/hisp-uio/teams/100509/vi/)\n"
@@ -52,6 +52,36 @@ msgstr "Miêu tả"
 
 msgid "Form name"
 msgstr "Tên biểu"
+
+msgid "Numerator description"
+msgstr ""
+
+msgid "Denominator description"
+msgstr ""
+
+msgid "From to name"
+msgstr ""
+
+msgid "To from name"
+msgstr ""
+
+msgid "Instruction"
+msgstr ""
+
+msgid "Incident date label"
+msgstr ""
+
+msgid "Enrollment date label"
+msgstr ""
+
+msgid "Execution date label"
+msgstr ""
+
+msgid "Due date label"
+msgstr ""
+
+msgid "Content"
+msgstr ""
 
 msgid "Save"
 msgstr "Lưu lại"
