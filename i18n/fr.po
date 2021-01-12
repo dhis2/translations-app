@@ -1,16 +1,16 @@
 # 
 # Translators:
-# phil_dhis2, 2019
 # Viktor Varland <viktor@dhis2.org>, 2019
 # Karoline Tufte Lien <karoline@dhis2.org>, 2020
 # Yao Selom SAKA <saka.yao@yahoo.fr>, 2020
+# phil_dhis2, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2021-01-11T09:25:09.747Z\n"
 "PO-Revision-Date: 2019-09-02 16:01+0000\n"
-"Last-Translator: Yao Selom SAKA <saka.yao@yahoo.fr>, 2020\n"
+"Last-Translator: phil_dhis2, 2021\n"
 "Language-Team: French (https://www.transifex.com/hisp-uio/teams/100509/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -55,10 +55,10 @@ msgid "Form name"
 msgstr "Nom dans le formulaire"
 
 msgid "Numerator description"
-msgstr ""
+msgstr "Description du numérateur"
 
 msgid "Denominator description"
-msgstr ""
+msgstr "Description du dénominateur"
 
 msgid "From to name"
 msgstr ""
@@ -67,7 +67,7 @@ msgid "To from name"
 msgstr ""
 
 msgid "Instruction"
-msgstr ""
+msgstr "Instruction"
 
 msgid "Incident date label"
 msgstr ""
