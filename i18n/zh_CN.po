@@ -104,7 +104,7 @@ msgid "Discard changes"
 msgstr ""
 
 msgid "Unsaved changes"
-msgstr ""
+msgstr "未保存的更改"
 
 msgid "Settings"
 msgstr "设置"
