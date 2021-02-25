@@ -48,6 +48,7 @@
     "whatwg-fetch": "2.0.3"
   },
   "devDependencies": {
+    "@dhis2/cli-style": "^7.3.0",
     "@dhis2/d2-i18n-generate": "^1.1.1",
     "chai": "^4.1.2",
     "cucumber": "^4.2.1",
