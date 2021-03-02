@@ -53,7 +53,7 @@ const flatElementForPropertiesAndLocale = (
 
     for (let j = 0; j < translatableProperties.length; j++) {
         const property = translatableProperties[j]
-        const translationForPropertyAndLocale = element.translations.find(
+        const translationForPropertyAndLocale = element.translations?.find(
             t =>
                 t.property === property.translationKey &&
                 t.locale === localeId &&
@@ -736,6 +736,7 @@ class TranslationsPage extends PureComponent {
     }
 
     manageError = error => {
+        console.error(error)
         const messageError =
             error && error.message
                 ? error.message
