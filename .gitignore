@@ -32,8 +32,3 @@ chromeDownloads
 
 # i18n json files
 src/locales/
-
-# DHIS2 code-style
-.browserslistrc
-.eslintrc.js
-.prettierrc.js
