@@ -1,9 +1,6 @@
-/* React */
 import { FeedbackSnackbar, CircularProgress } from '@dhis2/d2-ui-core'
 import PropTypes from 'prop-types'
 import React, { PureComponent, Fragment } from 'react'
-
-/* d2-ui */
 import { DEFAULT_LOCALE } from '../../configI18n'
 import { i18nKeys } from '../../i18n'
 import i18n from '../../locales'
@@ -11,19 +8,10 @@ import styles from '../../styles'
 import * as FEEDBACK_SNACKBAR_TYPES from '../../utils/feedbackSnackBarTypes'
 import { filterElementsToPager } from '../../utils/pagination'
 import ConfirmationDialog from './ConfirmationDialog'
-
-/* components */
 import * as PAGE_CONFIGS from './translations.conf'
 import TranslationsList from './TranslationsList'
 import TranslationsSearch from './TranslationsSearch'
 
-/* i18n */
-
-/* utils */
-
-/* styles */
-
-/* constants */
 const DEFAULT_SNACKBAR_CONF = {
     type: FEEDBACK_SNACKBAR_TYPES.NONE,
     message: '',
@@ -210,16 +198,21 @@ class TranslationsPage extends PureComponent {
         }
     }
 
-    onChangeTranslationForObjectAndLocale = (
+    onChangeTranslationForObjectAndLocale = ({
         objectId,
         localeId,
         translationKey,
-        value
-    ) => {
+        value,
+    }) => {
         // can reach here without click anywhere
         this.clearFeedbackSnackbar()
 
-        this.updateOriginalsOnChange(objectId, localeId, translationKey, value)
+        this.updateOriginalsOnChange({
+            objectId,
+            localeId,
+            translationKey,
+            value,
+        })
 
         // Update current search results to keep state between pages
         const searchResults = [...this.state.searchResults]
@@ -281,7 +274,12 @@ class TranslationsPage extends PureComponent {
         this.setState({ showConfirmation: false })
     }
 
-    updateOriginalsOnChange = (objectId, localeId, translationKey, value) => {
+    updateOriginalsOnChange = ({
+        objectId,
+        localeId,
+        translationKey,
+        value,
+    }) => {
         // Update original objects to keep state between filters
         const originals = [...this.state.objectInstances]
         const originalItemInstance = originals.find(

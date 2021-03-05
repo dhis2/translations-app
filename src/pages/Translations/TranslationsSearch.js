@@ -1,6 +1,3 @@
-/* React */
-
-/* material-ui */
 import Grid from '@material-ui/core/Grid'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import MenuItem from '@material-ui/core/MenuItem'
@@ -8,8 +5,6 @@ import TextField from '@material-ui/core/TextField'
 import Search from '@material-ui/icons/Search'
 import PropTypes from 'prop-types'
 import React from 'react'
-
-/* styles */
 import styles from '../../styles'
 import translationsSearchStyles from './TranslationsSearch.style'
 
@@ -37,13 +32,13 @@ export const SelectControl = ({ items, label, onChange, value }) => {
 }
 
 SelectControl.propTypes = {
-    label: PropTypes.string.isRequired,
     items: PropTypes.arrayOf(
         PropTypes.shape({
             id: PropTypes.string.isRequired,
             name: PropTypes.string.isRequired,
         })
     ).isRequired,
+    label: PropTypes.string.isRequired,
     value: PropTypes.string,
     onChange: PropTypes.func,
 }
@@ -135,37 +130,37 @@ const TranslationsSearch = props => {
 }
 
 TranslationsSearch.propTypes = {
-    localeSelectLabel: PropTypes.string.isRequired,
-    localeSelectItems: PropTypes.arrayOf(
-        PropTypes.shape({
-            id: PropTypes.string.isRequired,
-            name: PropTypes.string.isRequired,
-        })
-    ).isRequired,
-    selectedFilterId: PropTypes.string,
-    onFilterChange: PropTypes.func,
-    filterBySelectLabel: PropTypes.string.isRequired,
     filterByItems: PropTypes.arrayOf(
         PropTypes.shape({
             id: PropTypes.string.isRequired,
             name: PropTypes.string.isRequired,
         })
     ).isRequired,
-    selectedLocaleId: PropTypes.string,
-    onLocaleChange: PropTypes.func,
-    objectSelectLabel: PropTypes.string.isRequired,
+    filterBySelectLabel: PropTypes.string.isRequired,
+    localeSelectItems: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+        })
+    ).isRequired,
+    localeSelectLabel: PropTypes.string.isRequired,
     objectSelectItems: PropTypes.arrayOf(
         PropTypes.shape({
             id: PropTypes.string.isRequired,
             name: PropTypes.string.isRequired,
         })
     ).isRequired,
-    selectedObjectName: PropTypes.string,
-    onObjectChange: PropTypes.func,
+    objectSelectLabel: PropTypes.string.isRequired,
     searchFieldLabel: PropTypes.string.isRequired,
     searchTerm: PropTypes.string,
-    onSearchTermChange: PropTypes.func,
+    selectedFilterId: PropTypes.string,
+    selectedLocaleId: PropTypes.string,
+    selectedObjectName: PropTypes.string,
+    onFilterChange: PropTypes.func,
+    onLocaleChange: PropTypes.func,
+    onObjectChange: PropTypes.func,
     onSearchKeyPress: PropTypes.func,
+    onSearchTermChange: PropTypes.func,
 }
 
 TranslationsSearch.defaultProps = {

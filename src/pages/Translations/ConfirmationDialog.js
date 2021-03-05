@@ -7,12 +7,8 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 import { withStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
 import React from 'react'
-
-/* d2-ui components */
 import { i18nKeys } from '../../i18n'
 import i18n from '../../locales'
-
-/* styles */
 import styles from '../../styles'
 
 const ConfirmationDialog = props => {
@@ -59,8 +55,8 @@ const ConfirmationDialog = props => {
 }
 
 ConfirmationDialog.propTypes = {
-    open: PropTypes.bool.isRequired,
     closeConfirmation: PropTypes.func.isRequired,
+    open: PropTypes.bool.isRequired,
 }
 
 export default ConfirmationDialog

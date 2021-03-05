@@ -1,23 +1,12 @@
-/* React */
 import { Button } from '@dhis2/d2-ui-core'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
-
-/* material-ui */
 import TextField from '@material-ui/core/TextField'
 import Done from '@material-ui/icons/Done'
 import PropTypes from 'prop-types'
-
-/* d2-ui components */
 import React, { Fragment } from 'react'
-
-/* utils */
-
-/* i18n */
 import { i18nKeys } from '../../i18n'
 import i18n from '../../locales'
-
-/* styles */
 import styles from '../../styles'
 import translationCardStyles, { colors } from './TranslationCard.style'
 import { TRANSLATED_ID } from './translations.conf'
@@ -38,12 +27,12 @@ const translationValueOfObjectForLocaleAndTranslationKey = (
 const TranslationCard = props => {
     const { onChangeTranslationForObjectAndLocale, hasUnsavedChanges } = props
     const onChange = translationKey => event => {
-        onChangeTranslationForObjectAndLocale(
-            props.object.id,
-            props.localeId,
+        onChangeTranslationForObjectAndLocale({
+            objectId: props.object.id,
+            localeId: props.localeId,
             translationKey,
-            event.target.value
-        )
+            value: event.target.value,
+        })
     }
 
     const checkSave = () => !hasUnsavedChanges()
@@ -142,22 +131,25 @@ const TranslationCard = props => {
 }
 
 TranslationCard.propTypes = {
-    open: PropTypes.bool,
-    hasUnsavedChanges: PropTypes.func,
+    clearFeedback: PropTypes.func.isRequired,
+    hasUnsavedChanges: PropTypes.func.isRequired,
     localeId: PropTypes.string.isRequired,
     object: PropTypes.shape({
+        displayName: PropTypes.string.isRequired,
         id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
-        displayName: PropTypes.string.isRequired,
         translationState: PropTypes.string.isRequired,
         translations: PropTypes.arrayOf(
             PropTypes.shape({
-                property: PropTypes.string.isRequired,
                 locale: PropTypes.string.isRequired,
+                property: PropTypes.string.isRequired,
                 value: PropTypes.string.isRequired,
             })
         ).isRequired,
     }).isRequired,
+    openCard: PropTypes.func.isRequired,
+    openCardOnClick: PropTypes.func.isRequired,
+    saveTranslations: PropTypes.func.isRequired,
     translatableProperties: PropTypes.arrayOf(
         PropTypes.shape({
             name: PropTypes.string.isRequired,
@@ -165,10 +157,7 @@ TranslationCard.propTypes = {
         })
     ).isRequired,
     onChangeTranslationForObjectAndLocale: PropTypes.func.isRequired,
-    saveTranslations: PropTypes.func.isRequired,
-    openCard: PropTypes.func.isRequired,
-    openCardOnClick: PropTypes.func.isRequired,
-    clearFeedback: PropTypes.func.isRequired,
+    open: PropTypes.bool,
 }
 
 TranslationCard.defaultProps = {
