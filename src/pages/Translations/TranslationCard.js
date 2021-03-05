@@ -1,18 +1,17 @@
 /* React */
-import React, { Fragment } from 'react'
-import PropTypes from 'prop-types'
+import { Button } from '@dhis2/d2-ui-core'
+import Grid from '@material-ui/core/Grid'
+import Paper from '@material-ui/core/Paper'
 
 /* material-ui */
-import Paper from '@material-ui/core/Paper'
 import TextField from '@material-ui/core/TextField'
-import Grid from '@material-ui/core/Grid'
 import Done from '@material-ui/icons/Done'
+import PropTypes from 'prop-types'
 
 /* d2-ui components */
-import { Button } from '@dhis2/d2-ui-core'
+import React, { Fragment } from 'react'
 
 /* utils */
-import { TRANSLATED_ID } from './translations.conf'
 
 /* i18n */
 import { i18nKeys } from '../../i18n'
@@ -21,6 +20,7 @@ import i18n from '../../locales'
 /* styles */
 import styles from '../../styles'
 import translationCardStyles, { colors } from './TranslationCard.style'
+import { TRANSLATED_ID } from './translations.conf'
 
 const translationValueOfObjectForLocaleAndTranslationKey = (
     object,

@@ -1,27 +1,27 @@
 /* React */
-import React, { PureComponent, Fragment } from 'react'
+import { FeedbackSnackbar, CircularProgress } from '@dhis2/d2-ui-core'
 import PropTypes from 'prop-types'
+import React, { PureComponent, Fragment } from 'react'
 
 /* d2-ui */
-import { FeedbackSnackbar, CircularProgress } from '@dhis2/d2-ui-core'
+import { DEFAULT_LOCALE } from '../../configI18n'
+import { i18nKeys } from '../../i18n'
+import i18n from '../../locales'
+import styles from '../../styles'
+import * as FEEDBACK_SNACKBAR_TYPES from '../../utils/feedbackSnackBarTypes'
+import { filterElementsToPager } from '../../utils/pagination'
 import ConfirmationDialog from './ConfirmationDialog'
 
 /* components */
-import TranslationsSearch from './TranslationsSearch'
+import * as PAGE_CONFIGS from './translations.conf'
 import TranslationsList from './TranslationsList'
+import TranslationsSearch from './TranslationsSearch'
 
 /* i18n */
-import { i18nKeys } from '../../i18n'
-import i18n from '../../locales'
 
 /* utils */
-import * as PAGE_CONFIGS from './translations.conf'
-import * as FEEDBACK_SNACKBAR_TYPES from '../../utils/feedbackSnackBarTypes'
-import { filterElementsToPager } from '../../utils/pagination'
-import { DEFAULT_LOCALE } from '../../configI18n'
 
 /* styles */
-import styles from '../../styles'
 
 /* constants */
 const DEFAULT_SNACKBAR_CONF = {
@@ -355,9 +355,7 @@ class TranslationsPage extends PureComponent {
         if (selectedObjectInstance) {
             this.startLoading()
 
-            const translationsUrlForInstance = `${
-                this.state.searchFilter.selectedObject.apiEndpoint
-            }/${objectId}/translations/`
+            const translationsUrlForInstance = `${this.state.searchFilter.selectedObject.apiEndpoint}/${objectId}/translations/`
 
             // Translations that are being shown and able to be updated
             // This ones are the translations we want to update
@@ -499,9 +497,8 @@ class TranslationsPage extends PureComponent {
     }
 
     openCardWithObjectId = objectId => () => {
-        const currentPageResults = this.state.currentPageResults.map(
-            o =>
-                o.id === objectId ? { ...o, open: true } : { ...o, open: false }
+        const currentPageResults = this.state.currentPageResults.map(o =>
+            o.id === objectId ? { ...o, open: true } : { ...o, open: false }
         )
 
         this.setState({

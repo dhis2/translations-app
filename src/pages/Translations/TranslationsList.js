@@ -1,25 +1,25 @@
 /* React */
-import React from 'react'
+import { Pagination } from '@dhis2/d2-ui-core'
+import Paper from '@material-ui/core/Paper'
 import PropTypes from 'prop-types'
+import React from 'react'
 
 /* d2-ui */
-import { Pagination } from '@dhis2/d2-ui-core'
 
 /* material-ui */
-import Paper from '@material-ui/core/Paper'
 
 /* d2-ui styles */
 import '@dhis2/d2-ui-core/build/css/Pagination.css'
 
 /* components */
+import styles from '../../styles'
+import * as PAGINATION_HELPER from '../../utils/pagination'
 import TranslationCard from './TranslationCard'
 
 /* utils */
-import * as PAGINATION_HELPER from '../../utils/pagination'
 import { DEFAULT_TRANSLATABLE_PROPERTIES } from './translations.conf'
 
 /* styles */
-import styles from '../../styles'
 import translationsListStyles from './TranslationsList.style'
 
 const PaginationBuilder = (pager, goToNextPage, goToPreviousPage) => (

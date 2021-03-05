@@ -1,60 +1,45 @@
-# DHIS2 Translations App
+This project was bootstrapped with [DHIS2 Application Platform](https://github.com/dhis2/app-platform).
 
-[![Build Status](https://travis-ci.com/dhis2/translations-app.svg)](https://travis-ci.com/dhis2/translations-app)
+## Available Scripts
 
-### Pre-requisites
+In the project directory, you can run:
 
--   DHIS2 instance running
--   node 8 LTS
--   yarn v1.3.2+
+### `yarn start`
 
-### Running the dev server
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
--   add `http://localhost:3000` url to your DHIS2 CORS whitelist. (This can be done in the settings app).
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
 
--   By default app will use `http://localhost:8080` as API URL, if you want to change it, create a config.json file
-    inside DHIS2_HOME with following content "replacing url for the required one":
+### `yarn test`
 
-        ```json
-        {
-            "baseUrl": "http://localhost:8080"
-        }
-        ```
+Launches the test runner and runs all available tests found in `/src`.<br />
 
-*   Execute the following commands:
+See the section about [running tests](https://platform.dhis2.nu/#/scripts/test) for more information.
 
-    ```sh
-    yarn install
-    yarn start
-    ```
+### `yarn build`
 
-*   Open your browser at `http://localhost:3000` (you must to be logged in into DHIS2).
+Builds the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-### Building the project
+The build is minified and the filenames include the hashes.<br />
+A deployable `.zip` file can be found in `build/bundle`!
 
-To build a production version of the application run the following command:
+See the section about [building](https://platform.dhis2.nu/#/scripts/build) for more information.
 
-```sh
-yarn build
-```
+### `yarn deploy`
 
-### Unit testing
+Deploys the built app in the `build` folder to a running DHIS2 instance.<br />
+This command will prompt you to enter a server URL as well as the username and password of a DHIS2 user with the App Management authority.<br/>
+You must run `yarn build` before running `yarn deploy`.<br />
 
--   in the root folder of the project make a copy of `.env.template` and name it `.env.test.local`.
+See the section about [deploying](https://platform.dhis2.nu/#/scripts/deploy) for more information.
 
-To execute unit tests run the following command:
+## Learn More
 
-```sh
-yarn test
-```
+You can learn more about the platform in the [DHIS2 Application Platform Documentation](https://platform.dhis2.nu/).
 
-### E2E testing
+You can learn more about the runtime in the [DHIS2 Application Runtime Documentation](https://runtime.dhis2.nu/).
 
-To execute end-to-end tests run the following command:
-
-```sh
-export DHIS2_BASE_URL=http://your_dhis2_instance.com/
-yarn test-e2e
-```
-
-You must have the dev server running on port 3000, as explained previously.
+To learn React, check out the [React documentation](https://reactjs.org/).

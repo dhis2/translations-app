@@ -1,13 +1,13 @@
 /* React */
-import React from 'react'
-import PropTypes from 'prop-types'
 
 /* material-ui */
-import MenuItem from '@material-ui/core/MenuItem'
-import TextField from '@material-ui/core/TextField'
 import Grid from '@material-ui/core/Grid'
 import InputAdornment from '@material-ui/core/InputAdornment'
+import MenuItem from '@material-ui/core/MenuItem'
+import TextField from '@material-ui/core/TextField'
 import Search from '@material-ui/icons/Search'
+import PropTypes from 'prop-types'
+import React from 'react'
 
 /* styles */
 import styles from '../../styles'

@@ -1,5 +1,6 @@
 /* global DHIS_CONFIG */
 /* React */
+import { init, getManifest, getUserSettings } from 'd2/lib/d2'
 import React from 'react'
 import ReactDOM from 'react-dom'
 
@@ -15,12 +16,10 @@ import ReactDOM from 'react-dom'
 import JssProvider from 'react-jss/lib/JssProvider'
 
 /* d2 */
-import { init, getManifest, getUserSettings } from 'd2/lib/d2'
 
 /* i18n */
-import { configI18n, injectTranslationsToD2 } from './configI18n'
-
 import App from './App'
+import { configI18n, injectTranslationsToD2 } from './configI18n'
 
 import './index.css'
 
