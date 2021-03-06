@@ -30,6 +30,7 @@
         "@material-ui/core": "^3.0.1",
         "@material-ui/icons": "^3.0.1",
         "d2": "^31.9.0",
+        "material-design-icons-iconfont": "^6.1.0",
         "prop-types": "^15.7.2"
     }
 }

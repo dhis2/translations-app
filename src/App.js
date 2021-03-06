@@ -1,6 +1,7 @@
 import { useD2 } from '@dhis2/app-runtime-adapter-d2'
 import React from 'react'
 import App from './components/App'
+import 'material-design-icons-iconfont'
 
 const AppWrapper = () => {
     const { d2 } = useD2()
