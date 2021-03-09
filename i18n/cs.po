@@ -1,13 +1,13 @@
 # 
 # Translators:
-# trendspotter, 2021
+# trendspotter, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2021-01-07T10:01:44.426Z\n"
-"PO-Revision-Date: 2019-08-05 12:15+0000\n"
-"Last-Translator: trendspotter, 2021\n"
+"PO-Revision-Date: 2019-09-02 16:01+0000\n"
+"Last-Translator: trendspotter, 2020\n"
 "Language-Team: Czech (https://www.transifex.com/hisp-uio/teams/100509/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -52,34 +52,34 @@ msgid "Form name"
 msgstr "Název formuláře"
 
 msgid "Numerator description"
-msgstr "Popis čitatele"
+msgstr ""
 
 msgid "Denominator description"
-msgstr "Popis jmenovatele"
+msgstr ""
 
 msgid "From to name"
-msgstr "Od do název"
+msgstr ""
 
 msgid "To from name"
-msgstr "Do Od název"
+msgstr ""
 
 msgid "Instruction"
-msgstr "Návod"
+msgstr ""
 
 msgid "Incident date label"
-msgstr "Štítek s datem incidentu"
+msgstr ""
 
 msgid "Enrollment date label"
-msgstr "Štítek s datem zápisu"
+msgstr ""
 
 msgid "Execution date label"
-msgstr "Štítek s datem provedení"
+msgstr ""
 
 msgid "Due date label"
-msgstr "Štítek s termínem platnosti"
+msgstr ""
 
 msgid "Content"
-msgstr "Obsah"
+msgstr ""
 
 msgid "Save"
 msgstr "Uložit"
