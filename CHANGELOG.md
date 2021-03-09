@@ -1,3 +1,10 @@
+# [26.2.0](https://github.com/dhis2/translations-app/compare/v26.1.13...v26.2.0) (2021-03-09)
+
+
+### Features
+
+* port to app-platform ([#491](https://github.com/dhis2/translations-app/issues/491)) ([34bbd52](https://github.com/dhis2/translations-app/commit/34bbd527011c88e0ba4b924bdd64ad1f03b4c631))
+
 ## [26.1.13](https://github.com/dhis2/translations-app/compare/v26.1.12...v26.1.13) (2021-02-18)
 
 
