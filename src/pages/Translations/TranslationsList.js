@@ -10,14 +10,16 @@ import { DEFAULT_TRANSLATABLE_PROPERTIES } from './translations.conf'
 import translationsListStyles from './TranslationsList.style'
 
 const PaginationBuilder = (pager, goToNextPage, goToPreviousPage) => (
-    <Pagination
-        total={pager.total}
-        hasNextPage={PAGINATION_HELPER.hasNextPage(pager)}
-        hasPreviousPage={PAGINATION_HELPER.hasPreviousPage(pager)}
-        onNextPageClick={goToNextPage}
-        onPreviousPageClick={goToPreviousPage}
-        currentlyShown={PAGINATION_HELPER.calculatePageValue(pager)}
-    />
+    <div data-test="dhis2-translations-pagination">
+        <Pagination
+            total={pager.total}
+            hasNextPage={PAGINATION_HELPER.hasNextPage(pager)}
+            hasPreviousPage={PAGINATION_HELPER.hasPreviousPage(pager)}
+            onNextPageClick={goToNextPage}
+            onPreviousPageClick={goToPreviousPage}
+            currentlyShown={PAGINATION_HELPER.calculatePageValue(pager)}
+        />
+    </div>
 )
 
 export const NoResults = () => (
