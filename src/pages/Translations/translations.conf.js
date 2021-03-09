@@ -1,7 +1,7 @@
 /* i18n */
+import { DEFAULT_LOCALE } from '../../configI18n'
 import { i18nKeys } from '../../i18n'
 import i18n from '../../locales'
-import { DEFAULT_LOCALE } from '../../configI18n'
 
 /* API Endpoints */
 export const LANGUAGES_API_URL = '/locales/db?paging=false'

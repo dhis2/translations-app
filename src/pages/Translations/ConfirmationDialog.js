@@ -1,19 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-
-import { withStyles } from '@material-ui/core/styles'
+import { Button } from '@dhis2/d2-ui-core'
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogTitle from '@material-ui/core/DialogTitle'
-
-/* d2-ui components */
-import { Button } from '@dhis2/d2-ui-core'
+import { withStyles } from '@material-ui/core/styles'
+import PropTypes from 'prop-types'
+import React from 'react'
 import { i18nKeys } from '../../i18n'
 import i18n from '../../locales'
-
-/* styles */
 import styles from '../../styles'
 
 const ConfirmationDialog = props => {
@@ -60,8 +55,8 @@ const ConfirmationDialog = props => {
 }
 
 ConfirmationDialog.propTypes = {
-    open: PropTypes.bool.isRequired,
     closeConfirmation: PropTypes.func.isRequired,
+    open: PropTypes.bool.isRequired,
 }
 
 export default ConfirmationDialog

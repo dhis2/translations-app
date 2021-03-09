@@ -1,28 +1,16 @@
-/* React */
+import { useD2 } from '@dhis2/app-runtime-adapter-d2'
 import React from 'react'
-import PropTypes from 'prop-types'
+import App from './components/App'
+import 'material-design-icons-iconfont'
 
-/* d2-ui */
-import D2UIApp from '@dhis2/d2-ui-app'
-import HeaderBar from '@dhis2/d2-ui-header-bar'
+const AppWrapper = () => {
+    const { d2 } = useD2()
 
-/* components */
-import TranslationsPage from './pages/Translations'
+    if (!d2) {
+        return null
+    }
 
-/* styles */
-import styles from './styles'
-
-const App = props => (
-    <D2UIApp>
-        <HeaderBar d2={props.d2} />
-        <div style={styles.contentArea}>
-            <TranslationsPage d2={props.d2} />
-        </div>
-    </D2UIApp>
-)
-
-App.propTypes = {
-    d2: PropTypes.object.isRequired,
+    return <App d2={d2} />
 }
 
-export default App
+export default AppWrapper
