@@ -1,16 +1,16 @@
 # 
 # Translators:
+# phil_dhis2, 2019
 # Viktor Varland <viktor@dhis2.org>, 2019
-# phil_dhis2, 2021
-# 晓东 林 <13981924470@126.com>, 2021
-# easylin <lin_xd@126.com>, 2021
+# easylin <lin_xd@126.com>, 2020
+# 晓东 林 <13981924470@126.com>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2021-01-07T10:01:44.426Z\n"
-"PO-Revision-Date: 2019-08-05 12:15+0000\n"
-"Last-Translator: easylin <lin_xd@126.com>, 2021\n"
+"PO-Revision-Date: 2019-09-02 16:01+0000\n"
+"Last-Translator: 晓东 林 <13981924470@126.com>, 2020\n"
 "Language-Team: Chinese (https://www.transifex.com/hisp-uio/teams/100509/zh/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -55,34 +55,34 @@ msgid "Form name"
 msgstr "表单名称"
 
 msgid "Numerator description"
-msgstr "描述"
+msgstr ""
 
 msgid "Denominator description"
-msgstr "分母描述"
+msgstr ""
 
 msgid "From to name"
-msgstr "源自名称"
+msgstr ""
 
 msgid "To from name"
-msgstr "目标名称"
+msgstr ""
 
 msgid "Instruction"
-msgstr "Instruction"
+msgstr ""
 
 msgid "Incident date label"
-msgstr "事故日期标签"
+msgstr ""
 
 msgid "Enrollment date label"
-msgstr "注册日期标签"
+msgstr ""
 
 msgid "Execution date label"
-msgstr "执行日期标签"
+msgstr ""
 
 msgid "Due date label"
-msgstr "到期日标签"
+msgstr ""
 
 msgid "Content"
-msgstr "内容"
+msgstr ""
 
 msgid "Save"
 msgstr "保存"
