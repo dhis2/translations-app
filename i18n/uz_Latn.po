@@ -52,10 +52,10 @@ msgid "Form name"
 msgstr "Shakl nomi"
 
 msgid "Numerator description"
-msgstr ""
+msgstr "Numerator tavsifi"
 
 msgid "Denominator description"
-msgstr ""
+msgstr "Nomzod tavsifi"
 
 msgid "From to name"
 msgstr ""
@@ -64,7 +64,7 @@ msgid "To from name"
 msgstr ""
 
 msgid "Instruction"
-msgstr ""
+msgstr "Yoʼriqnoma"
 
 msgid "Incident date label"
 msgstr ""
@@ -79,7 +79,7 @@ msgid "Due date label"
 msgstr ""
 
 msgid "Content"
-msgstr ""
+msgstr "Tarkib"
 
 msgid "Save"
 msgstr "Saqlash"

@@ -53,10 +53,10 @@ msgid "Form name"
 msgstr "表单名称"
 
 msgid "Numerator description"
-msgstr ""
+msgstr "描述"
 
 msgid "Denominator description"
-msgstr ""
+msgstr "分母描述"
 
 msgid "From to name"
 msgstr ""
@@ -65,7 +65,7 @@ msgid "To from name"
 msgstr ""
 
 msgid "Instruction"
-msgstr ""
+msgstr "指令"
 
 msgid "Incident date label"
 msgstr ""
@@ -80,7 +80,7 @@ msgid "Due date label"
 msgstr ""
 
 msgid "Content"
-msgstr ""
+msgstr "内容"
 
 msgid "Save"
 msgstr "保存"
