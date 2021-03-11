@@ -1,3 +1,10 @@
+## [26.2.1](https://github.com/dhis2/translations-app/compare/v26.2.0...v26.2.1) (2021-03-11)
+
+
+### Bug Fixes
+
+* upgrade to @dhis2/cli-app-scripts@6 (DHIS2-9893) ([ead203e](https://github.com/dhis2/translations-app/commit/ead203e19f420d8e5e87a76203341876c362a2a9))
+
 # [26.2.0](https://github.com/dhis2/translations-app/compare/v26.1.13...v26.2.0) (2021-03-09)
 
 
