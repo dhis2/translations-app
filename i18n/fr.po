@@ -83,7 +83,7 @@ msgid "Due date label"
 msgstr ""
 
 msgid "Content"
-msgstr ""
+msgstr "Contenu"
 
 msgid "Save"
 msgstr "Enregistrer"
