@@ -72,7 +72,7 @@ msgid "Keep editing"
 msgstr ""
 
 msgid "Discard changes"
-msgstr ""
+msgstr "Descartar los cambios"
 
 msgid "Unsaved changes"
 msgstr "Cambios no guardados"
