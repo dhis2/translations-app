@@ -24,7 +24,7 @@ import App from './App'
 
 import './index.css'
 
-import registerServiceWorker from './registerServiceWorker'
+import { unregister } from './registerServiceWorker'
 
 /* init d2 */
 let d2Instance
@@ -59,4 +59,4 @@ getManifest('manifest.webapp').then(manifest => {
         })
 })
 
-registerServiceWorker()
+unregister()
