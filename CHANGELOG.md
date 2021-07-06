@@ -1,3 +1,10 @@
+## [26.2.9](https://github.com/dhis2/translations-app/compare/v26.2.8...v26.2.9) (2021-07-06)
+
+
+### Bug Fixes
+
+* update cli app scripts to use killswitch sw ([#540](https://github.com/dhis2/translations-app/issues/540)) ([3aa4f78](https://github.com/dhis2/translations-app/commit/3aa4f7871dfec7cc9b000493e19818e9fdcd6ebe))
+
 ## [26.2.8](https://github.com/dhis2/translations-app/compare/v26.2.7...v26.2.8) (2021-06-25)
 
 
