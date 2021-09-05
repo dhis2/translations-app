@@ -1,14 +1,14 @@
 # 
 # Translators:
-# Viktor Varland <viktor@dhis2.org>, 2019
 # phil_dhis2, 2021
+# Viktor Varland <viktor@dhis2.org>, 2021
 # Ge Joao <gsimango@saudigitus.org>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2021-01-07T10:01:44.426Z\n"
-"PO-Revision-Date: 2019-08-05 12:15+0000\n"
+"PO-Revision-Date: 2021-09-04 00:40+0000\n"
 "Last-Translator: Ge Joao <gsimango@saudigitus.org>, 2021\n"
 "Language-Team: Portuguese (https://www.transifex.com/hisp-uio/teams/100509/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "Object"
-msgstr "Objeto"
+msgstr "Objecto"
 
 msgid "Target locale"
 msgstr "Local de destino"
@@ -27,7 +27,7 @@ msgid "Filter by"
 msgstr "Filtrar por"
 
 msgid "All"
-msgstr "Todo"
+msgstr "Tudo"
 
 msgid "Translated"
 msgstr "Traduzida"
@@ -45,7 +45,7 @@ msgid "Name"
 msgstr "Nome"
 
 msgid "Short name"
-msgstr "Abreviatura"
+msgstr "Nome curto"
 
 msgid "Description"
 msgstr "Descrição"
@@ -84,7 +84,7 @@ msgid "Content"
 msgstr "Conteudo "
 
 msgid "Save"
-msgstr "Gravar"
+msgstr "Salvar"
 
 msgid "Changes on object will be lost if you do not save them first."
 msgstr ""
@@ -109,7 +109,7 @@ msgid "Unsaved changes"
 msgstr "Alterações não salvas"
 
 msgid "Settings"
-msgstr "Configurações"
+msgstr "Configuração"
 
 msgid "Search apps"
 msgstr "Pesquisar aplicações"
@@ -127,7 +127,7 @@ msgid "Log out"
 msgstr "Sair"
 
 msgid "About DHIS 2"
-msgstr "Sobre DHIS 2"
+msgstr "Acerca de DHIS2"
 
 msgid "Manage my apps"
 msgstr "Gerenciar meus aplicativos"
