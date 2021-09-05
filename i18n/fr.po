@@ -1,16 +1,16 @@
 # 
 # Translators:
-# Viktor Varland <viktor@dhis2.org>, 2019
-# Karoline Tufte Lien <karoline@dhis2.org>, 2020
-# Yao Selom Saka <ysaka@hispwca.org>, 2020
 # phil_dhis2, 2021
+# Viktor Varland <viktor@dhis2.org>, 2021
+# Karoline Tufte Lien <karoline@dhis2.org>, 2021
+# Yao Selom Saka <ysaka@hispwca.org>, 2021
 # Yayra Gomado <ygomado@hispwca.org>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2021-01-07T10:01:44.426Z\n"
-"PO-Revision-Date: 2019-08-05 12:15+0000\n"
+"PO-Revision-Date: 2021-09-04 00:40+0000\n"
 "Last-Translator: Yayra Gomado <ygomado@hispwca.org>, 2021\n"
 "Language-Team: French (https://www.transifex.com/hisp-uio/teams/100509/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +29,7 @@ msgid "Filter by"
 msgstr "Filtrer par"
 
 msgid "All"
-msgstr "Tous"
+msgstr "Tout"
 
 msgid "Translated"
 msgstr ""
@@ -110,10 +110,10 @@ msgid "Unsaved changes"
 msgstr "Modifications non enregistrées"
 
 msgid "Settings"
-msgstr "Réglages"
+msgstr "Paramètres"
 
 msgid "Search apps"
-msgstr "Chercher applications"
+msgstr "Chercher applis"
 
 msgid "Profile"
 msgstr "Profil"
@@ -128,7 +128,7 @@ msgid "Log out"
 msgstr "Déconnexion"
 
 msgid "About DHIS 2"
-msgstr "A propos de DHIS2"
+msgstr "À propos DHIS 2"
 
 msgid "Manage my apps"
 msgstr "Gérer mes applications"
