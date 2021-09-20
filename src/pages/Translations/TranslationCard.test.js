@@ -170,10 +170,7 @@ describe('Test <TranslationsCard /> actions:', () => {
             ...DEFAULT_PROPS,
             open: false,
         })
-        wrapper
-            .find(Grid)
-            .first()
-            .simulate('click')
+        wrapper.find(Grid).first().simulate('click')
         expect(DEFAULT_PROPS.openCardOnClick).toHaveBeenCalled()
     })
 

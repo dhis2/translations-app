@@ -38,18 +38,12 @@ describe('Test <ConfirmationDialog /> actions:', () => {
     })
 
     it('Should call closeConfirmation function with "false" when Keep editing button is clicked.', () => {
-        wrapper
-            .find(Button)
-            .at(0)
-            .simulate('click')
+        wrapper.find(Button).at(0).simulate('click')
         expect(DEFAULT_PROPS.closeConfirmation).toHaveBeenCalledWith(false)
     })
 
     it('Should call closeConfirmation function with "true" when Discard button is clicked.', () => {
-        wrapper
-            .find(Button)
-            .at(1)
-            .simulate('click')
+        wrapper.find(Button).at(1).simulate('click')
         expect(DEFAULT_PROPS.closeConfirmation).toHaveBeenCalledWith(true)
     })
 })

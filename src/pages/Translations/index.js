@@ -1,27 +1,25 @@
 /* React */
-import React, { PureComponent, Fragment } from 'react'
-import PropTypes from 'prop-types'
-
-/* d2-ui */
 import { FeedbackSnackbar, CircularProgress } from '@dhis2/d2-ui-core'
-import ConfirmationDialog from './ConfirmationDialog'
-
-/* components */
-import TranslationsSearch from './TranslationsSearch'
-import TranslationsList from './TranslationsList'
-
-/* i18n */
+import PropTypes from 'prop-types'
+import React, { PureComponent, Fragment } from 'react'
+/* d2-ui */
+import { DEFAULT_LOCALE } from '../../configI18n'
 import { i18nKeys } from '../../i18n'
 import i18n from '../../locales'
-
-/* utils */
-import * as PAGE_CONFIGS from './translations.conf'
+import styles from '../../styles'
 import * as FEEDBACK_SNACKBAR_TYPES from '../../utils/feedbackSnackBarTypes'
 import { filterElementsToPager } from '../../utils/pagination'
-import { DEFAULT_LOCALE } from '../../configI18n'
+import ConfirmationDialog from './ConfirmationDialog'
+/* components */
+import * as PAGE_CONFIGS from './translations.conf'
+import TranslationsList from './TranslationsList'
+import TranslationsSearch from './TranslationsSearch'
+
+/* i18n */
+
+/* utils */
 
 /* styles */
-import styles from '../../styles'
 
 /* constants */
 const DEFAULT_SNACKBAR_CONF = {
@@ -96,7 +94,8 @@ class TranslationsPage extends PureComponent {
         super(props)
 
         /* filtering for translatable models and transforming model for select */
-        const schemaEntries = this.updatableAndTranslatableModelsAsSchemaEntries()
+        const schemaEntries =
+            this.updatableAndTranslatableModelsAsSchemaEntries()
 
         this.state = {
             showConfirmation: false,
@@ -135,9 +134,8 @@ class TranslationsPage extends PureComponent {
         /* Fetch languages and objects for Filter component */
         this.promiseToFetchLanguages()
             .then(response => {
-                const localeSelectItems = this.buildLanguageSelectItemsArrayFromApiResponse(
-                    response
-                )
+                const localeSelectItems =
+                    this.buildLanguageSelectItemsArrayFromApiResponse(response)
 
                 this.setState({
                     localeSelectItems,
@@ -210,6 +208,7 @@ class TranslationsPage extends PureComponent {
         }
     }
 
+    /* eslint-disable max-params */
     onChangeTranslationForObjectAndLocale = (
         objectId,
         localeId,
@@ -226,11 +225,12 @@ class TranslationsPage extends PureComponent {
         const searchResultsItemInstance = searchResults.find(
             objectInstance => objectInstance.id === objectId
         )
-        const translationEntryForSearchResult = searchResultsItemInstance.translations.find(
-            translation =>
-                translation.locale === localeId &&
-                translation.property === translationKey
-        )
+        const translationEntryForSearchResult =
+            searchResultsItemInstance.translations.find(
+                translation =>
+                    translation.locale === localeId &&
+                    translation.property === translationKey
+            )
         if (translationEntryForSearchResult) {
             translationEntryForSearchResult.value = value
         } else {
@@ -267,6 +267,7 @@ class TranslationsPage extends PureComponent {
             searchResults,
         })
     }
+    /* eslint-enable */
 
     closeConfirmation = response => {
         if (response) {
@@ -281,6 +282,7 @@ class TranslationsPage extends PureComponent {
         this.setState({ showConfirmation: false })
     }
 
+    // eslint-disable-next-line max-params
     updateOriginalsOnChange = (objectId, localeId, translationKey, value) => {
         // Update original objects to keep state between filters
         const originals = [...this.state.objectInstances]
@@ -310,11 +312,12 @@ class TranslationsPage extends PureComponent {
             })
         }
 
-        const translationEntryForOriginal = originalItemInstance.translations.find(
-            translation =>
-                translation.locale === localeId &&
-                translation.property === translationKey
-        )
+        const translationEntryForOriginal =
+            originalItemInstance.translations.find(
+                translation =>
+                    translation.locale === localeId &&
+                    translation.property === translationKey
+            )
         if (translationEntryForOriginal) {
             translationEntryForOriginal.value = value
         } else {
@@ -355,15 +358,14 @@ class TranslationsPage extends PureComponent {
         if (selectedObjectInstance) {
             this.startLoading()
 
-            const translationsUrlForInstance = `${
-                this.state.searchFilter.selectedObject.apiEndpoint
-            }/${objectId}/translations/`
+            const translationsUrlForInstance = `${this.state.searchFilter.selectedObject.apiEndpoint}/${objectId}/translations/`
 
             // Translations that are being shown and able to be updated
             // This ones are the translations we want to update
-            const inViewEditedTranslations = selectedObjectInstance.translations.filter(
-                t => t.value.trim().length && t.locale === currentLocale
-            )
+            const inViewEditedTranslations =
+                selectedObjectInstance.translations.filter(
+                    t => t.value.trim().length && t.locale === currentLocale
+                )
 
             // Process all translations loaded from server and also edited ones (remove empty ones)
             let allTranslationsForElement = originalInstances.find(
@@ -377,16 +379,18 @@ class TranslationsPage extends PureComponent {
             const allUnsavedForElement = unsaved.filter(
                 element => element.objectId === objectId
             )
-            const allOriginalTranslationsForUnsaved = allUnsavedForElement.flatMap(
-                element => element.originalTranslations
-            )
+            const allOriginalTranslationsForUnsaved =
+                allUnsavedForElement.flatMap(
+                    element => element.originalTranslations
+                )
             let filterTranslations = allTranslationsForElement.map(
                 translation => {
-                    const existInNotSaved = allOriginalTranslationsForUnsaved.find(
-                        t =>
-                            t.property === translation.property &&
-                            t.locale === translation.locale
-                    )
+                    const existInNotSaved =
+                        allOriginalTranslationsForUnsaved.find(
+                            t =>
+                                t.property === translation.property &&
+                                t.locale === translation.locale
+                        )
                     // Keep original value of edited translations for other locales
                     if (existInNotSaved) {
                         if (
@@ -436,9 +440,8 @@ class TranslationsPage extends PureComponent {
                     flatElement.open = false
 
                     currentPageResults[selectedObjectIndex] = flatElement
-                    searchResults[
-                        selectedObjectIndexInSearchResults
-                    ] = flatElement
+                    searchResults[selectedObjectIndexInSearchResults] =
+                        flatElement
                     originalInstances[selectedOriginalObjectIndex] = flatElement
 
                     // Remove item from unsavedChanges
@@ -499,9 +502,8 @@ class TranslationsPage extends PureComponent {
     }
 
     openCardWithObjectId = objectId => () => {
-        const currentPageResults = this.state.currentPageResults.map(
-            o =>
-                o.id === objectId ? { ...o, open: true } : { ...o, open: false }
+        const currentPageResults = this.state.currentPageResults.map(o =>
+            o.id === objectId ? { ...o, open: true } : { ...o, open: false }
         )
 
         this.setState({
@@ -514,17 +516,19 @@ class TranslationsPage extends PureComponent {
         this.openCardWithObjectId(objectId)
     }
 
-    hasUnsavedChanges = (objectId, locale = null) => () => {
-        const currentLocale = locale
-            ? locale
-            : this.state.searchFilter.selectedLocale.id
+    hasUnsavedChanges =
+        (objectId, locale = null) =>
+        () => {
+            const currentLocale = locale
+                ? locale
+                : this.state.searchFilter.selectedLocale.id
 
-        return this.state.unsavedChangesMap.find(
-            unsavedChange =>
-                unsavedChange.objectId === objectId &&
-                unsavedChange.localeId === currentLocale
-        )
-    }
+            return this.state.unsavedChangesMap.find(
+                unsavedChange =>
+                    unsavedChange.objectId === objectId &&
+                    unsavedChange.localeId === currentLocale
+            )
+        }
 
     /* Server requests */
 

@@ -1,25 +1,19 @@
 /* React */
-import React from 'react'
-import PropTypes from 'prop-types'
-
-/* d2-ui */
 import { Pagination } from '@dhis2/d2-ui-core'
-
-/* material-ui */
 import Paper from '@material-ui/core/Paper'
-
+import PropTypes from 'prop-types'
+import React from 'react'
+/* d2-ui */
+/* material-ui */
 /* d2-ui styles */
 import '@dhis2/d2-ui-core/build/css/Pagination.css'
-
 /* components */
-import TranslationCard from './TranslationCard'
-
-/* utils */
-import * as PAGINATION_HELPER from '../../utils/pagination'
-import { DEFAULT_TRANSLATABLE_PROPERTIES } from './translations.conf'
-
-/* styles */
 import styles from '../../styles'
+import * as PAGINATION_HELPER from '../../utils/pagination'
+import TranslationCard from './TranslationCard'
+/* utils */
+import { DEFAULT_TRANSLATABLE_PROPERTIES } from './translations.conf'
+/* styles */
 import translationsListStyles from './TranslationsList.style'
 
 const PaginationBuilder = (pager, goToNextPage, goToPreviousPage) => (
@@ -78,42 +72,42 @@ const TranslationsList = props =>
     )
 
 TranslationsList.propTypes = {
+    clearFeedback: PropTypes.func.isRequired,
+    goToNextPage: PropTypes.func.isRequired,
+    goToPreviousPage: PropTypes.func.isRequired,
+    hasUnsavedChanges: PropTypes.func.isRequired,
     localeId: PropTypes.string.isRequired,
     objects: PropTypes.arrayOf(
         PropTypes.shape({
+            displayName: PropTypes.string.isRequired,
             id: PropTypes.string.isRequired,
             name: PropTypes.string.isRequired,
-            displayName: PropTypes.string.isRequired,
             translationState: PropTypes.string.isRequired,
             translations: PropTypes.arrayOf(
                 PropTypes.shape({
-                    property: PropTypes.string.isRequired,
                     locale: PropTypes.string.isRequired,
+                    property: PropTypes.string.isRequired,
                     value: PropTypes.string.isRequired,
                 })
             ).isRequired,
         })
     ).isRequired,
+    openCard: PropTypes.func.isRequired,
+    openCardOnClick: PropTypes.func.isRequired,
+    pager: PropTypes.shape({
+        page: PropTypes.number.isRequired,
+        pageCount: PropTypes.number.isRequired,
+        pageSize: PropTypes.number.isRequired,
+        total: PropTypes.number.isRequired,
+    }).isRequired,
+    saveTranslations: PropTypes.func.isRequired,
+    onChangeTranslationForObjectAndLocale: PropTypes.func.isRequired,
     translatableProperties: PropTypes.arrayOf(
         PropTypes.shape({
             name: PropTypes.string.isRequired,
             translationKey: PropTypes.string.isRequired,
         })
     ),
-    pager: PropTypes.shape({
-        pageSize: PropTypes.number.isRequired,
-        page: PropTypes.number.isRequired,
-        total: PropTypes.number.isRequired,
-        pageCount: PropTypes.number.isRequired,
-    }).isRequired,
-    goToNextPage: PropTypes.func.isRequired,
-    goToPreviousPage: PropTypes.func.isRequired,
-    onChangeTranslationForObjectAndLocale: PropTypes.func.isRequired,
-    saveTranslations: PropTypes.func.isRequired,
-    openCard: PropTypes.func.isRequired,
-    openCardOnClick: PropTypes.func.isRequired,
-    hasUnsavedChanges: PropTypes.func.isRequired,
-    clearFeedback: PropTypes.func.isRequired,
 }
 
 TranslationsList.defaultProps = {

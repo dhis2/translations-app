@@ -1,7 +1,6 @@
 /* global browser */
 const { expect } = require('chai')
 const { defineSupportCode } = require('cucumber')
-
 const dhis2Page = require('../pages/dhis2.page.js')
 const homePage = require('../pages/home.page')
 
@@ -84,10 +83,7 @@ defineSupportCode(({ Given, When, Then }) => {
     // **************************************************************
     Then(/^I select the search input$/, () => {
         browser.element('#select-search-id').waitForVisible(DEFAULT_WAIT_TIME)
-        browser
-            .element('#select-search-id')
-            .element('<input>')
-            .click()
+        browser.element('#select-search-id').element('<input>').click()
     })
 
     Then(/^I write the search term$/, () => {
@@ -109,15 +105,12 @@ defineSupportCode(({ Given, When, Then }) => {
         const visibleResults = browser.elements(
             '#translation-list-container div[class^=MuiPaperroot]'
         ).value
-        for (let item of visibleResults) {
+        for (const item of visibleResults) {
             const itemName = item
                 .elements('div[class^=MuiGridcontainer')
                 .value[0].getText()
             expect(
-                itemName
-                    .trim()
-                    .toLowerCase()
-                    .includes(SEARCH_TERM)
+                itemName.trim().toLowerCase().includes(SEARCH_TERM)
             ).to.equal(true)
         }
     })
@@ -128,13 +121,10 @@ defineSupportCode(({ Given, When, Then }) => {
     Then(/^I select the (.+) filter$/, filter => {
         this.selectedFilter = filter
         browser.element('#select-filter-id').waitForVisible(DEFAULT_WAIT_TIME)
-        browser
-            .element('#select-filter-id')
-            .element('div[role=button]')
-            .click()
+        browser.element('#select-filter-id').element('div[role=button]').click()
         browser.element('div[role=document]').waitForVisible(DEFAULT_WAIT_TIME)
         const filterOptions = browser.elements('div[role=document] ul li').value
-        for (let option of filterOptions) {
+        for (const option of filterOptions) {
             if (option.getAttribute('data-value') === filter) {
                 option.click()
                 break
@@ -148,7 +138,7 @@ defineSupportCode(({ Given, When, Then }) => {
             const visibleResults = browser.elements(
                 '#translation-list-container div[class^=MuiPaperroot]'
             ).value
-            for (let item of visibleResults) {
+            for (const item of visibleResults) {
                 if (this.selectedFilter === 'TRANSLATED') {
                     const isTranslated =
                         item
@@ -180,13 +170,10 @@ defineSupportCode(({ Given, When, Then }) => {
     // **************************************************************
     Then(/^I select the object type (.+)$/, object => {
         browser.element('#select-object-id').waitForVisible(DEFAULT_WAIT_TIME)
-        browser
-            .element('#select-object-id')
-            .element('div[role=button]')
-            .click()
+        browser.element('#select-object-id').element('div[role=button]').click()
         browser.element('div[role=document]').waitForVisible(DEFAULT_WAIT_TIME)
         const objectOptions = browser.elements('div[role=document] ul li').value
-        for (let option of objectOptions) {
+        for (const option of objectOptions) {
             if (option.getAttribute('data-value') === object) {
                 option.click()
                 break
@@ -197,13 +184,10 @@ defineSupportCode(({ Given, When, Then }) => {
 
     Then(/^I select the target locale (.+)$/, locale => {
         browser.element('#select-locale-id').waitForVisible(DEFAULT_WAIT_TIME)
-        browser
-            .element('#select-locale-id')
-            .element('div[role=button]')
-            .click()
+        browser.element('#select-locale-id').element('div[role=button]').click()
         browser.element('div[role=document]').waitForVisible(DEFAULT_WAIT_TIME)
         const locales = browser.elements('div[role=document] ul li').value
-        for (let selectLocale of locales) {
+        for (const selectLocale of locales) {
             if (selectLocale.getAttribute('data-value') === locale) {
                 selectLocale.click()
                 break
