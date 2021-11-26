@@ -5,13 +5,14 @@
 # Yao Selom Saka <ysaka@hispwca.org>, 2020
 # phil_dhis2, 2021
 # Yayra Gomado <ygomado@hispwca.org>, 2021
+# tx_e2f_fr r25 <tx_e2f_fr_r25@ate2f.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2021-01-07T12:27:40.665Z\n"
 "PO-Revision-Date: 2020-12-22 22:18+0000\n"
-"Last-Translator: Yayra Gomado <ygomado@hispwca.org>, 2021\n"
+"Last-Translator: tx_e2f_fr r25 <tx_e2f_fr_r25@ate2f.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/hisp-uio/teams/100509/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +24,7 @@ msgid "Object"
 msgstr "Objet"
 
 msgid "Target locale"
-msgstr ""
+msgstr "Localisation cible"
 
 msgid "Filter by"
 msgstr "Filtrer par"
@@ -32,13 +33,13 @@ msgid "All"
 msgstr "Tout"
 
 msgid "Translated"
-msgstr ""
+msgstr "Traduit"
 
 msgid "Untranslated"
-msgstr ""
+msgstr "Non traduit"
 
 msgid "Partial translated"
-msgstr ""
+msgstr "Partiellement traduit"
 
 msgid "Search"
 msgstr "Chercher"
@@ -62,25 +63,25 @@ msgid "Denominator description"
 msgstr "Description du dénominateur"
 
 msgid "From to name"
-msgstr ""
+msgstr "Nom de/à"
 
 msgid "To from name"
-msgstr ""
+msgstr "Nom à/de"
 
 msgid "Instruction"
 msgstr "Instruction"
 
 msgid "Incident date label"
-msgstr ""
+msgstr "Étiquette de date d'incident"
 
 msgid "Enrollment date label"
-msgstr ""
+msgstr "Étiquette de date d'inscription"
 
 msgid "Execution date label"
-msgstr ""
+msgstr "Étiquette de date d'exécution"
 
 msgid "Due date label"
-msgstr ""
+msgstr "Étiquette de date d'échéance"
 
 msgid "Content"
 msgstr "Contenu"
@@ -90,18 +91,20 @@ msgstr "Enregistrer"
 
 msgid "Changes on object will be lost if you do not save them first."
 msgstr ""
+"Les modifications apportées à l'objet seront perdues si vous ne les "
+"enregistrez pas."
 
 msgid "Unexpected Error"
 msgstr "Erreur inattendue "
 
 msgid "Translations were saved"
-msgstr ""
+msgstr "Les traductions ont été enregistrées"
 
 msgid "A locale and object must be selected"
-msgstr ""
+msgstr "Une localisation et un objet doivent être sélectionnés"
 
 msgid "Keep editing"
-msgstr ""
+msgstr "Continuer l'édition"
 
 msgid "Discard changes"
 msgstr "Abandonner les modifications"
