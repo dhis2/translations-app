@@ -69,16 +69,16 @@ msgid "Instruction"
 msgstr "التعليمات"
 
 msgid "Incident date label"
-msgstr ""
+msgstr "تسمية تاريخ الحدوث"
 
 msgid "Enrollment date label"
-msgstr ""
+msgstr "تسمية تاريخ التسجيل"
 
 msgid "Execution date label"
-msgstr ""
+msgstr "تسمية تاريخ التنفيذ"
 
 msgid "Due date label"
-msgstr ""
+msgstr "تسمية تاريخ الاستحقاق"
 
 msgid "Content"
 msgstr "المحتوى"
