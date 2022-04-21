@@ -1,16 +1,16 @@
 # 
 # Translators:
-# Viktor Varland <viktor@dhis2.org>, 2019
-# phil_dhis2, 2021
-# 晓东 林 <13981924470@126.com>, 2021
-# easylin <lin_xd@126.com>, 2021
+# phil_dhis2, 2022
+# easylin <lin_xd@126.com>, 2022
+# Viktor Varland <viktor@dhis2.org>, 2022
+# 晓东 林 <13981924470@126.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2021-01-07T10:01:44.426Z\n"
-"PO-Revision-Date: 2019-08-05 12:15+0000\n"
-"Last-Translator: easylin <lin_xd@126.com>, 2021\n"
+"PO-Revision-Date: 2022-04-20 11:01+0000\n"
+"Last-Translator: 晓东 林 <13981924470@126.com>, 2022\n"
 "Language-Team: Chinese (https://www.transifex.com/hisp-uio/teams/100509/zh/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -70,7 +70,7 @@ msgid "Instruction"
 msgstr "Instruction"
 
 msgid "Incident date label"
-msgstr "事故日期标签"
+msgstr "事件日期标签"
 
 msgid "Enrollment date label"
 msgstr "注册日期标签"
@@ -79,7 +79,7 @@ msgid "Execution date label"
 msgstr "执行日期标签"
 
 msgid "Due date label"
-msgstr "到期日标签"
+msgstr "截止日期标签"
 
 msgid "Content"
 msgstr "内容"
@@ -106,7 +106,7 @@ msgid "Discard changes"
 msgstr "忽略修改"
 
 msgid "Unsaved changes"
-msgstr "没有保存的修改"
+msgstr "未保存的更改"
 
 msgid "Settings"
 msgstr "设置"
@@ -115,7 +115,7 @@ msgid "Search apps"
 msgstr "搜索 apps"
 
 msgid "Profile"
-msgstr "简历"
+msgstr "基本信息"
 
 msgid "Account"
 msgstr "账号"
@@ -124,19 +124,19 @@ msgid "Help"
 msgstr "帮助"
 
 msgid "Log out"
-msgstr "登出"
+msgstr "退出"
 
 msgid "About DHIS 2"
-msgstr "关于综合卫生信息管理平台"
+msgstr "关于 DHIS 2"
 
 msgid "Manage my apps"
-msgstr "管理我的应用"
+msgstr "管理我的小应用"
 
 msgid "No results found"
-msgstr "没有发现"
+msgstr "没有结果"
 
 msgid "Interpretations"
-msgstr "注释"
+msgstr "解释"
 
 msgid "Messages"
 msgstr "消息"

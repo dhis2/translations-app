@@ -1,14 +1,14 @@
 # 
 # Translators:
-# 晓东 林 <13981924470@126.com>, 2020
-# easylin <lin_xd@126.com>, 2021
+# 晓东 林 <13981924470@126.com>, 2022
+# easylin <lin_xd@126.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2021-01-07T10:01:44.426Z\n"
-"PO-Revision-Date: 2019-08-05 12:15+0000\n"
-"Last-Translator: easylin <lin_xd@126.com>, 2021\n"
+"PO-Revision-Date: 2022-04-20 11:01+0000\n"
+"Last-Translator: easylin <lin_xd@126.com>, 2022\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/hisp-uio/teams/100509/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -44,7 +44,7 @@ msgid "Name"
 msgstr "名称"
 
 msgid "Short name"
-msgstr "缩写名"
+msgstr "缩写"
 
 msgid "Description"
 msgstr "描述"
@@ -110,28 +110,28 @@ msgid "Settings"
 msgstr "设置"
 
 msgid "Search apps"
-msgstr "搜索应用"
+msgstr "搜索 apps"
 
 msgid "Profile"
-msgstr "基本信息"
+msgstr "简历"
 
 msgid "Account"
-msgstr "账号"
+msgstr "账户"
 
 msgid "Help"
 msgstr "帮助"
 
 msgid "Log out"
-msgstr "退出"
+msgstr "登出"
 
 msgid "About DHIS 2"
-msgstr "关于"
+msgstr "关于综合卫生信息管理平台"
 
 msgid "Manage my apps"
 msgstr "管理我的应用"
 
 msgid "No results found"
-msgstr "没有发现"
+msgstr "没有结果"
 
 msgid "Interpretations"
 msgstr "注释"

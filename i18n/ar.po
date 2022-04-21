@@ -1,15 +1,14 @@
 # 
 # Translators:
-# Viktor Varland <viktor@dhis2.org>, 2019
-# phil_dhis2, 2021
-# Hamza Assada <7amza.it@gmail.com>, 2021
+# Hamza Assada <7amza.it@gmail.com>, 2022
+# phil_dhis2, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2021-01-07T10:01:44.426Z\n"
-"PO-Revision-Date: 2019-08-05 12:15+0000\n"
-"Last-Translator: Hamza Assada <7amza.it@gmail.com>, 2021\n"
+"PO-Revision-Date: 2022-04-20 11:01+0000\n"
+"Last-Translator: phil_dhis2, 2022\n"
 "Language-Team: Arabic (https://www.transifex.com/hisp-uio/teams/100509/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -39,10 +38,10 @@ msgid "Partial translated"
 msgstr "مترجم جزئياً"
 
 msgid "Search"
-msgstr "البحث"
+msgstr "بحث"
 
 msgid "Name"
-msgstr "الاسم"
+msgstr "الإسم"
 
 msgid "Short name"
 msgstr "الاسم المختصر"
@@ -105,7 +104,7 @@ msgid "Discard changes"
 msgstr "تجاهل التغييرات"
 
 msgid "Unsaved changes"
-msgstr "تعديلات لم يتم حفظها"
+msgstr "تغييرات غير محفوظة"
 
 msgid "Settings"
 msgstr "الإعدادات"
@@ -114,7 +113,7 @@ msgid "Search apps"
 msgstr "البحث في التطبيقات"
 
 msgid "Profile"
-msgstr "ملف التعريف"
+msgstr "الملف الشخصي"
 
 msgid "Account"
 msgstr "الحساب"
@@ -132,7 +131,7 @@ msgid "Manage my apps"
 msgstr "إدارة تطبيقاتي"
 
 msgid "No results found"
-msgstr "لم يتم العثور على أية نتائج"
+msgstr "لم يتم العثور على أي نتائج"
 
 msgid "Interpretations"
 msgstr "التفسيرات"
