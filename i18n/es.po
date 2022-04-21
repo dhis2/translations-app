@@ -1,16 +1,17 @@
 # 
 # Translators:
-# Viktor Varland <viktor@dhis2.org>, 2019
-# phil_dhis2, 2021
-# Alison Andrade <aandrade@ippfwhr.org>, 2021
-# Adela Zamorano <adela.zamorano.del.aguila@gmail.com>, 2021
+# Viktor Varland <viktor@dhis2.org>, 2022
+# Alison Andrade <aandrade@ippfwhr.org>, 2022
+# Adela Zamorano <adela.zamorano.del.aguila@gmail.com>, 2022
+# Prabhjot Singh, 2022
+# phil_dhis2, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2021-01-07T10:01:44.426Z\n"
-"PO-Revision-Date: 2019-08-05 12:15+0000\n"
-"Last-Translator: Adela Zamorano <adela.zamorano.del.aguila@gmail.com>, 2021\n"
+"PO-Revision-Date: 2022-04-20 11:01+0000\n"
+"Last-Translator: phil_dhis2, 2022\n"
 "Language-Team: Spanish (https://www.transifex.com/hisp-uio/teams/100509/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -46,13 +47,13 @@ msgid "Name"
 msgstr "Nombre"
 
 msgid "Short name"
-msgstr "Nombre corto"
+msgstr "Abreviatura"
 
 msgid "Description"
 msgstr "Descripción"
 
 msgid "Form name"
-msgstr "Nombre del formulario"
+msgstr "Nombre de formato"
 
 msgid "Numerator description"
 msgstr "Descripción del numerador"
@@ -109,10 +110,10 @@ msgid "Unsaved changes"
 msgstr "Cambios no guardados"
 
 msgid "Settings"
-msgstr "Configuraciones"
+msgstr "Configuración"
 
 msgid "Search apps"
-msgstr "Buscar aplicaciones"
+msgstr "Buscar una aplicación"
 
 msgid "Profile"
 msgstr "Perfil"
@@ -124,7 +125,7 @@ msgid "Help"
 msgstr "Ayuda"
 
 msgid "Log out"
-msgstr "Cerrar sesión"
+msgstr "Salir"
 
 msgid "About DHIS 2"
 msgstr "Sobre DHIS 2"
