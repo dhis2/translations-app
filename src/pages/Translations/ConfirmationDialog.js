@@ -11,7 +11,7 @@ import { i18nKeys } from '../../i18n'
 import i18n from '../../locales'
 import styles from '../../styles'
 
-const ConfirmationDialog = props => {
+const ConfirmationDialog = (props) => {
     const keepEditing = () => {
         props.closeConfirmation(false)
     }

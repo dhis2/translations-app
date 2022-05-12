@@ -10,8 +10,8 @@ import translationsSearchStyles from './TranslationsSearch.style'
 
 export const SelectControl = ({ items, label, onChange, value }) => {
     /* passes the whole object and not only id */
-    const onChangeEnhanced = event => {
-        onChange(items.find(item => item.id === event.target.value))
+    const onChangeEnhanced = (event) => {
+        onChange(items.find((item) => item.id === event.target.value))
     }
 
     return (
@@ -22,7 +22,7 @@ export const SelectControl = ({ items, label, onChange, value }) => {
             onChange={onChangeEnhanced}
             fullWidth
         >
-            {items.map(item => (
+            {items.map((item) => (
                 <MenuItem key={item.id} value={item.id}>
                     {item.name}
                 </MenuItem>
@@ -51,8 +51,8 @@ SelectControl.defaultProps = {
 /* to avoid null exceptions */
 const nonHandler = () => null
 
-const TranslationsSearch = props => {
-    const onChangeForSearchFieldEnhanced = event => {
+const TranslationsSearch = (props) => {
+    const onChangeForSearchFieldEnhanced = (event) => {
         props.onSearchTermChange(event.target.value)
     }
 

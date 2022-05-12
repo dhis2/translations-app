@@ -1,4 +1,4 @@
-export const calculatePageValue = pager => {
+export const calculatePageValue = (pager) => {
     const pageSize = pager.pageSize
     const { total, pageCount, page } = pager
     const pageCalculationValue =
@@ -21,5 +21,5 @@ export const filterElementsToPager = (elements, { page, pageSize }) => {
     return pageElements
 }
 
-export const hasNextPage = pager => () => pager.page < pager.pageCount
-export const hasPreviousPage = pager => () => pager.page > 1
+export const hasNextPage = (pager) => () => pager.page < pager.pageCount
+export const hasPreviousPage = (pager) => () => pager.page > 1

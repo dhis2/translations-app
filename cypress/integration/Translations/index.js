@@ -47,9 +47,9 @@ Given('I select the search input and enter the search term', () => {
 
 Then('Displayed result items contain the search term', () => {
     cy.get('#translation-list-container').should('be.visible')
-    cy.getWithDataTest('{item}').should($items => {
-        const texts = $items.get().map(elem => elem.textContent.toLowerCase())
-        const allTextsContainSearchTerm = texts.every(t =>
+    cy.getWithDataTest('{item}').should(($items) => {
+        const texts = $items.get().map((elem) => elem.textContent.toLowerCase())
+        const allTextsContainSearchTerm = texts.every((t) =>
             t.includes(searchTerm)
         )
         expect(allTextsContainSearchTerm).to.equal(true)
@@ -58,7 +58,7 @@ Then('Displayed result items contain the search term', () => {
 
 // Scenario: I want to translate an object property
 
-Then(/^I select the object type (.+)$/, object => {
+Then(/^I select the object type (.+)$/, (object) => {
     cy.get('#select-object-id div[role=button]').click()
     cy.get('div[role=document]').should('be.visible')
     Cypress.$('div[role=document] ul li').each((i, objectOption) => {
@@ -69,7 +69,7 @@ Then(/^I select the object type (.+)$/, object => {
     cy.get('#translation-list-container').should('be.visible')
 })
 
-Then(/^I select the target locale (.+)$/, locale => {
+Then(/^I select the target locale (.+)$/, (locale) => {
     cy.get('#select-locale-id div[role=button]').click({ force: true })
     cy.get('div[role=document]').should('be.visible')
     Cypress.$('div[role=document] ul li').each((i, selectLocale) => {

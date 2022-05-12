@@ -17,16 +17,16 @@ const translationValueOfObjectForLocaleAndTranslationKey = (
     translationKey
 ) => {
     const selectedTranslation = object.translations.find(
-        translation =>
+        (translation) =>
             translation.locale === localeId &&
             translation.property === translationKey
     )
     return selectedTranslation ? selectedTranslation.value : ''
 }
 
-const TranslationCard = props => {
+const TranslationCard = (props) => {
     const { onChangeTranslationForObjectAndLocale, hasUnsavedChanges } = props
-    const onChange = translationKey => event => {
+    const onChange = (translationKey) => (event) => {
         onChangeTranslationForObjectAndLocale({
             objectId: props.object.id,
             localeId: props.localeId,
@@ -49,7 +49,7 @@ const TranslationCard = props => {
         }
     }
 
-    const saveTranslationsOnKeyPress = event => {
+    const saveTranslationsOnKeyPress = (event) => {
         if (event.key === 'Enter' && event.ctrlKey && !checkSave()) {
             props.saveTranslations()
         }

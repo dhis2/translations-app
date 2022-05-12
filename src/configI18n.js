@@ -3,16 +3,16 @@ import i18n from './locales'
 
 export const DEFAULT_LOCALE = { id: 'en', name: 'English' }
 
-const isLangRTL = code => {
+const isLangRTL = (code) => {
     const langs = ['ar', 'fa', 'ur']
-    const prefixed = langs.map(c => `${c}-`)
+    const prefixed = langs.map((c) => `${c}-`)
     return (
         langs.includes(code) ||
-        prefixed.filter(c => code.startsWith(c)).length > 0
+        prefixed.filter((c) => code.startsWith(c)).length > 0
     )
 }
 
-export const configI18n = userSettings => {
+export const configI18n = (userSettings) => {
     const lang = userSettings.keyUiLocale || DEFAULT_LOCALE.id
     if (isLangRTL(lang)) {
         document.body.setAttribute('dir', 'rtl')
@@ -21,7 +21,7 @@ export const configI18n = userSettings => {
     i18n.changeLanguage(lang)
 }
 
-export const injectTranslationsToD2 = d2 => {
+export const injectTranslationsToD2 = (d2) => {
     if (d2) {
         const translations = {}
         const translationKeys = Object.keys(i18nKeys.d2UiComponents)

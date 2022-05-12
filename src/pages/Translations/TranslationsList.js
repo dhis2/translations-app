@@ -28,7 +28,7 @@ export const NoResults = () => (
     </div>
 )
 
-const TranslationsList = props =>
+const TranslationsList = (props) =>
     props.objects && props.objects.length > 0 ? (
         <div
             id={'translation-list-container'}
@@ -39,7 +39,7 @@ const TranslationsList = props =>
                 props.goToNextPage,
                 props.goToPreviousPage
             )}
-            {props.objects.map(object => (
+            {props.objects.map((object) => (
                 <TranslationCard
                     key={object.id}
                     open={object.open}
