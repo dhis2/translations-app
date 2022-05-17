@@ -108,7 +108,7 @@ msgid "Keep editing"
 msgstr "Continuer l’édition"
 
 msgid "Discard changes"
-msgstr "Abandonner les modifications"
+msgstr "Annuler les modifications"
 
 msgid "Unsaved changes"
 msgstr "Modifications non enregistrées"
@@ -117,7 +117,7 @@ msgid "Settings"
 msgstr "Paramètres"
 
 msgid "Search apps"
-msgstr "Chercher applis"
+msgstr "Rechercher des applis"
 
 msgid "Profile"
 msgstr "Profil"
