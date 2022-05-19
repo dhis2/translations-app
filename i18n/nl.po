@@ -130,7 +130,7 @@ msgid "Manage my apps"
 msgstr ""
 
 msgid "No results found"
-msgstr ""
+msgstr "Geen resultaten gevonden"
 
 msgid "Interpretations"
 msgstr "Interpretaties"
