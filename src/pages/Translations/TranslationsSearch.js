@@ -2,11 +2,11 @@ import Grid from '@material-ui/core/Grid'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import MenuItem from '@material-ui/core/MenuItem'
 import TextField from '@material-ui/core/TextField'
-import Search from '@material-ui/icons/Search'
+import Search from '@material-ui/icons/Search.js'
 import PropTypes from 'prop-types'
 import React from 'react'
-import styles from '../../styles'
-import translationsSearchStyles from './TranslationsSearch.style'
+import styles from '../../styles.js'
+import translationsSearchStyles from './TranslationsSearch.style.js'
 
 export const SelectControl = ({ items, label, onChange, value }) => {
     /* passes the whole object and not only id */

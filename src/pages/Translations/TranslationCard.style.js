@@ -2,7 +2,7 @@ import {
     TRANSLATED_ID,
     UNTRANSLATED_ID,
     PARTIAL_TRANSLATED_ID,
-} from './translations.conf'
+} from './translations.conf.js'
 
 export const colors = {
     [TRANSLATED_ID]: '#1c9d17',

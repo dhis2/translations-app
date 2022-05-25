@@ -1,4 +1,4 @@
-import { LATERAL_PADDING_FOR_MAIN_CONTAINERS } from '../../styles'
+import { LATERAL_PADDING_FOR_MAIN_CONTAINERS } from '../../styles.js'
 
 const styles = {
     container: {

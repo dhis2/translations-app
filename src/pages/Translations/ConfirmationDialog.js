@@ -7,9 +7,9 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 import { withStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { i18nKeys } from '../../i18n'
-import i18n from '../../locales'
-import styles from '../../styles'
+import { i18nKeys } from '../../i18n.js'
+import i18n from '../../locales/index.js'
+import styles from '../../styles.js'
 
 const ConfirmationDialog = (props) => {
     const keepEditing = () => {

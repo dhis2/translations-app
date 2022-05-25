@@ -2,7 +2,7 @@ import {
     DEFAULT_TRANSLATABLE_PROPERTIES,
     UNTRANSLATED_ID,
     TRANSLATED_ID,
-} from '../pages/Translations/translations.conf'
+} from '../pages/Translations/translations.conf.js'
 
 const fakerData = {
     d2: {
