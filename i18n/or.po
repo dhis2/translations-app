@@ -1,0 +1,139 @@
+# 
+# Translators:
+# SubhamJena <subhamjena8465@gmail.com>, 2022
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"POT-Creation-Date: 2021-01-07T10:01:44.426Z\n"
+"PO-Revision-Date: 2021-09-04 00:40+0000\n"
+"Last-Translator: SubhamJena <subhamjena8465@gmail.com>, 2022\n"
+"Language-Team: Odia (https://www.transifex.com/hisp-uio/teams/100509/or/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: or\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Object"
+msgstr ""
+
+msgid "Target locale"
+msgstr ""
+
+msgid "Filter by"
+msgstr ""
+
+msgid "All"
+msgstr "ସବୁ"
+
+msgid "Translated"
+msgstr ""
+
+msgid "Untranslated"
+msgstr ""
+
+msgid "Partial translated"
+msgstr ""
+
+msgid "Search"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Short name"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Form name"
+msgstr ""
+
+msgid "Numerator description"
+msgstr ""
+
+msgid "Denominator description"
+msgstr ""
+
+msgid "From to name"
+msgstr ""
+
+msgid "To from name"
+msgstr ""
+
+msgid "Instruction"
+msgstr ""
+
+msgid "Incident date label"
+msgstr ""
+
+msgid "Enrollment date label"
+msgstr ""
+
+msgid "Execution date label"
+msgstr ""
+
+msgid "Due date label"
+msgstr ""
+
+msgid "Content"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Changes on object will be lost if you do not save them first."
+msgstr ""
+
+msgid "Unexpected Error"
+msgstr ""
+
+msgid "Translations were saved"
+msgstr ""
+
+msgid "A locale and object must be selected"
+msgstr ""
+
+msgid "Keep editing"
+msgstr ""
+
+msgid "Discard changes"
+msgstr ""
+
+msgid "Unsaved changes"
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+msgid "Search apps"
+msgstr ""
+
+msgid "Profile"
+msgstr ""
+
+msgid "Account"
+msgstr ""
+
+msgid "Help"
+msgstr ""
+
+msgid "Log out"
+msgstr ""
+
+msgid "About DHIS 2"
+msgstr ""
+
+msgid "Manage my apps"
+msgstr ""
+
+msgid "No results found"
+msgstr ""
+
+msgid "Interpretations"
+msgstr ""
+
+msgid "Messages"
+msgstr ""
