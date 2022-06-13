@@ -3,11 +3,11 @@ import Paper from '@material-ui/core/Paper'
 import PropTypes from 'prop-types'
 import React from 'react'
 import '@dhis2/d2-ui-core/build/css/Pagination.css'
-import styles from '../../styles'
-import * as PAGINATION_HELPER from '../../utils/pagination'
-import TranslationCard from './TranslationCard'
-import { DEFAULT_TRANSLATABLE_PROPERTIES } from './translations.conf'
-import translationsListStyles from './TranslationsList.style'
+import styles from '../../styles.js'
+import * as PAGINATION_HELPER from '../../utils/pagination.js'
+import TranslationCard from './TranslationCard.js'
+import { DEFAULT_TRANSLATABLE_PROPERTIES } from './translations.conf.js'
+import translationsListStyles from './TranslationsList.style.js'
 
 const PaginationBuilder = (pager, goToNextPage, goToPreviousPage) => (
     <div data-test="dhis2-translations-pagination">
@@ -28,7 +28,7 @@ export const NoResults = () => (
     </div>
 )
 
-const TranslationsList = props =>
+const TranslationsList = (props) =>
     props.objects && props.objects.length > 0 ? (
         <div
             id={'translation-list-container'}
@@ -39,7 +39,7 @@ const TranslationsList = props =>
                 props.goToNextPage,
                 props.goToPreviousPage
             )}
-            {props.objects.map(object => (
+            {props.objects.map((object) => (
                 <TranslationCard
                     key={object.id}
                     open={object.open}

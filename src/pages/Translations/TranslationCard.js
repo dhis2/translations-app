@@ -5,11 +5,11 @@ import TextField from '@material-ui/core/TextField'
 import Done from '@material-ui/icons/Done'
 import PropTypes from 'prop-types'
 import React, { Fragment } from 'react'
-import { i18nKeys } from '../../i18n'
-import i18n from '../../locales'
-import styles from '../../styles'
-import translationCardStyles, { colors } from './TranslationCard.style'
-import { TRANSLATED_ID } from './translations.conf'
+import { i18nKeys } from '../../i18n.js'
+import i18n from '../../locales/index.js'
+import styles from '../../styles.js'
+import translationCardStyles, { colors } from './TranslationCard.style.js'
+import { TRANSLATED_ID } from './translations.conf.js'
 
 const translationValueOfObjectForLocaleAndTranslationKey = (
     object,
@@ -17,16 +17,16 @@ const translationValueOfObjectForLocaleAndTranslationKey = (
     translationKey
 ) => {
     const selectedTranslation = object.translations.find(
-        translation =>
+        (translation) =>
             translation.locale === localeId &&
             translation.property === translationKey
     )
     return selectedTranslation ? selectedTranslation.value : ''
 }
 
-const TranslationCard = props => {
+const TranslationCard = (props) => {
     const { onChangeTranslationForObjectAndLocale, hasUnsavedChanges } = props
-    const onChange = translationKey => event => {
+    const onChange = (translationKey) => (event) => {
         onChangeTranslationForObjectAndLocale({
             objectId: props.object.id,
             localeId: props.localeId,
@@ -49,7 +49,7 @@ const TranslationCard = props => {
         }
     }
 
-    const saveTranslationsOnKeyPress = event => {
+    const saveTranslationsOnKeyPress = (event) => {
         if (event.key === 'Enter' && event.ctrlKey && !checkSave()) {
             props.saveTranslations()
         }

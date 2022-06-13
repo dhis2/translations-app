@@ -2,16 +2,16 @@ import Grid from '@material-ui/core/Grid'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import MenuItem from '@material-ui/core/MenuItem'
 import TextField from '@material-ui/core/TextField'
-import Search from '@material-ui/icons/Search'
+import Search from '@material-ui/icons/Search.js'
 import PropTypes from 'prop-types'
 import React from 'react'
-import styles from '../../styles'
-import translationsSearchStyles from './TranslationsSearch.style'
+import styles from '../../styles.js'
+import translationsSearchStyles from './TranslationsSearch.style.js'
 
 export const SelectControl = ({ items, label, onChange, value }) => {
     /* passes the whole object and not only id */
-    const onChangeEnhanced = event => {
-        onChange(items.find(item => item.id === event.target.value))
+    const onChangeEnhanced = (event) => {
+        onChange(items.find((item) => item.id === event.target.value))
     }
 
     return (
@@ -22,7 +22,7 @@ export const SelectControl = ({ items, label, onChange, value }) => {
             onChange={onChangeEnhanced}
             fullWidth
         >
-            {items.map(item => (
+            {items.map((item) => (
                 <MenuItem key={item.id} value={item.id}>
                     {item.name}
                 </MenuItem>
@@ -51,8 +51,8 @@ SelectControl.defaultProps = {
 /* to avoid null exceptions */
 const nonHandler = () => null
 
-const TranslationsSearch = props => {
-    const onChangeForSearchFieldEnhanced = event => {
+const TranslationsSearch = (props) => {
+    const onChangeForSearchFieldEnhanced = (event) => {
         props.onSearchTermChange(event.target.value)
     }
 

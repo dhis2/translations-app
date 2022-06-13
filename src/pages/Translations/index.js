@@ -1,16 +1,16 @@
 import { FeedbackSnackbar, CircularProgress } from '@dhis2/d2-ui-core'
 import PropTypes from 'prop-types'
 import React, { PureComponent, Fragment } from 'react'
-import { DEFAULT_LOCALE } from '../../configI18n'
-import { i18nKeys } from '../../i18n'
-import i18n from '../../locales'
-import styles from '../../styles'
-import * as FEEDBACK_SNACKBAR_TYPES from '../../utils/feedbackSnackBarTypes'
-import { filterElementsToPager } from '../../utils/pagination'
-import ConfirmationDialog from './ConfirmationDialog'
-import * as PAGE_CONFIGS from './translations.conf'
-import TranslationsList from './TranslationsList'
-import TranslationsSearch from './TranslationsSearch'
+import { DEFAULT_LOCALE } from '../../configI18n.js'
+import { i18nKeys } from '../../i18n.js'
+import i18n from '../../locales/index.js'
+import styles from '../../styles.js'
+import * as FEEDBACK_SNACKBAR_TYPES from '../../utils/feedbackSnackBarTypes.js'
+import { filterElementsToPager } from '../../utils/pagination.js'
+import ConfirmationDialog from './ConfirmationDialog.js'
+import * as PAGE_CONFIGS from './translations.conf.js'
+import TranslationsList from './TranslationsList.js'
+import TranslationsSearch from './TranslationsSearch.js'
 
 const DEFAULT_SNACKBAR_CONF = {
     type: FEEDBACK_SNACKBAR_TYPES.NONE,
@@ -21,7 +21,7 @@ const DEFAULT_SNACKBAR_CONF = {
 
 /* auxiliar methods */
 /* FIXME move to an external file, SchemaEntry class */
-const modelToSchemaEntry = model => ({
+const modelToSchemaEntry = (model) => ({
     id: model.name,
     name: model.displayName,
     translatableProperties: model.getTranslatablePropertiesWithKeys(),
@@ -42,7 +42,7 @@ const flatElementForPropertiesAndLocale = (
     for (let j = 0; j < translatableProperties.length; j++) {
         const property = translatableProperties[j]
         const translationForPropertyAndLocale = element.translations.find(
-            t =>
+            (t) =>
                 t.property === property.translationKey &&
                 t.locale === localeId &&
                 t.value.trim().length
@@ -84,7 +84,8 @@ class TranslationsPage extends PureComponent {
         super(props)
 
         /* filtering for translatable models and transforming model for select */
-        const schemaEntries = this.updatableAndTranslatableModelsAsSchemaEntries()
+        const schemaEntries =
+            this.updatableAndTranslatableModelsAsSchemaEntries()
 
         this.state = {
             showConfirmation: false,
@@ -122,10 +123,9 @@ class TranslationsPage extends PureComponent {
 
         /* Fetch languages and objects for Filter component */
         this.promiseToFetchLanguages()
-            .then(response => {
-                const localeSelectItems = this.buildLanguageSelectItemsArrayFromApiResponse(
-                    response
-                )
+            .then((response) => {
+                const localeSelectItems =
+                    this.buildLanguageSelectItemsArrayFromApiResponse(response)
 
                 this.setState({
                     localeSelectItems,
@@ -144,13 +144,13 @@ class TranslationsPage extends PureComponent {
 
                 this.clearFeedbackSnackbar()
             })
-            .catch(error => {
+            .catch((error) => {
                 this.manageError(error)
             })
     }
 
     /* event handlers */
-    onLocaleChange = selectedLocale => {
+    onLocaleChange = (selectedLocale) => {
         this.applyNextSearchFilter(
             this.nextSearchFilterWithChange({
                 selectedLocale,
@@ -159,7 +159,7 @@ class TranslationsPage extends PureComponent {
         )
     }
 
-    onFilterChange = selectedFilter => {
+    onFilterChange = (selectedFilter) => {
         this.applyNextSearchFilter(
             this.nextSearchFilterWithChange({
                 selectedFilter,
@@ -168,7 +168,7 @@ class TranslationsPage extends PureComponent {
         )
     }
 
-    onObjectChange = object => {
+    onObjectChange = (object) => {
         if (this.state.unsavedChangesMap.length) {
             this.setState({
                 showConfirmation: true,
@@ -180,13 +180,13 @@ class TranslationsPage extends PureComponent {
         }
     }
 
-    onSearchTermChange = searchTerm => {
+    onSearchTermChange = (searchTerm) => {
         this.setState({
             searchFilter: this.nextSearchFilterWithChange({ searchTerm }),
         })
     }
 
-    onSearchKeyPress = event => {
+    onSearchKeyPress = (event) => {
         if (event.key === 'Enter') {
             const searchTerm = event.target.value
             this.applyNextSearchFilter(
@@ -217,13 +217,14 @@ class TranslationsPage extends PureComponent {
         // Update current search results to keep state between pages
         const searchResults = [...this.state.searchResults]
         const searchResultsItemInstance = searchResults.find(
-            objectInstance => objectInstance.id === objectId
+            (objectInstance) => objectInstance.id === objectId
         )
-        const translationEntryForSearchResult = searchResultsItemInstance.translations.find(
-            translation =>
-                translation.locale === localeId &&
-                translation.property === translationKey
-        )
+        const translationEntryForSearchResult =
+            searchResultsItemInstance.translations.find(
+                (translation) =>
+                    translation.locale === localeId &&
+                    translation.property === translationKey
+            )
         if (translationEntryForSearchResult) {
             translationEntryForSearchResult.value = value
         } else {
@@ -236,11 +237,11 @@ class TranslationsPage extends PureComponent {
 
         const currentPageResults = [...this.state.currentPageResults]
         const selectedObjectInstance = currentPageResults.find(
-            objectInstance => objectInstance.id === objectId
+            (objectInstance) => objectInstance.id === objectId
         )
         if (selectedObjectInstance) {
             const translationEntry = selectedObjectInstance.translations.find(
-                translation =>
+                (translation) =>
                     translation.locale === localeId &&
                     translation.property === translationKey
             )
@@ -261,7 +262,7 @@ class TranslationsPage extends PureComponent {
         })
     }
 
-    closeConfirmation = response => {
+    closeConfirmation = (response) => {
         if (response) {
             this.fetchElementsForObjectAndUpdateResults(
                 this.state.nextSelectedObject
@@ -283,7 +284,7 @@ class TranslationsPage extends PureComponent {
         // Update original objects to keep state between filters
         const originals = [...this.state.objectInstances]
         const originalItemInstance = originals.find(
-            objectInstance => objectInstance.id === objectId
+            (objectInstance) => objectInstance.id === objectId
         )
 
         const elementWithState = flatElementForPropertiesAndLocale(
@@ -295,7 +296,7 @@ class TranslationsPage extends PureComponent {
         // Keep unsaved translations
         if (
             !this.state.unsavedChangesMap.some(
-                unsavedChange =>
+                (unsavedChange) =>
                     unsavedChange.objectId === objectId &&
                     unsavedChange.localeId === localeId
             )
@@ -308,11 +309,12 @@ class TranslationsPage extends PureComponent {
             })
         }
 
-        const translationEntryForOriginal = originalItemInstance.translations.find(
-            translation =>
-                translation.locale === localeId &&
-                translation.property === translationKey
-        )
+        const translationEntryForOriginal =
+            originalItemInstance.translations.find(
+                (translation) =>
+                    translation.locale === localeId &&
+                    translation.property === translationKey
+            )
         if (translationEntryForOriginal) {
             translationEntryForOriginal.value = value
         } else {
@@ -324,27 +326,27 @@ class TranslationsPage extends PureComponent {
         }
     }
 
-    saveTranslationForObjectId = objectId => () => {
+    saveTranslationForObjectId = (objectId) => () => {
         const api = this.props.d2.Api.getApi()
         const currentLocale = this.state.searchFilter.selectedLocale.id
 
         // Current page results to update after save
         const currentPageResults = [...this.state.currentPageResults]
         const selectedObjectIndex = currentPageResults.findIndex(
-            objectInstance => objectInstance.id === objectId
+            (objectInstance) => objectInstance.id === objectId
         )
         const selectedObjectInstance = currentPageResults[selectedObjectIndex]
 
         // Current search results to update after save
         const searchResults = [...this.state.searchResults]
         const selectedObjectIndexInSearchResults = searchResults.findIndex(
-            objectInstance => objectInstance.id === objectId
+            (objectInstance) => objectInstance.id === objectId
         )
 
         // All translatins loaded from server to update after save
         const originalInstances = [...this.state.objectInstances]
         const selectedOriginalObjectIndex = originalInstances.findIndex(
-            originalInstance => originalInstance.id === objectId
+            (originalInstance) => originalInstance.id === objectId
         )
 
         // Unsaved changes
@@ -357,32 +359,35 @@ class TranslationsPage extends PureComponent {
 
             // Translations that are being shown and able to be updated
             // This ones are the translations we want to update
-            const inViewEditedTranslations = selectedObjectInstance.translations.filter(
-                t => t.value.trim().length && t.locale === currentLocale
-            )
+            const inViewEditedTranslations =
+                selectedObjectInstance.translations.filter(
+                    (t) => t.value.trim().length && t.locale === currentLocale
+                )
 
             // Process all translations loaded from server and also edited ones (remove empty ones)
             let allTranslationsForElement = originalInstances.find(
-                element => element.id === objectId
+                (element) => element.id === objectId
             ).translations
             allTranslationsForElement = allTranslationsForElement.filter(
-                t => t.value.trim().length
+                (t) => t.value.trim().length
             )
 
             // If edited, we need to replace value with original one and send it to server
             const allUnsavedForElement = unsaved.filter(
-                element => element.objectId === objectId
+                (element) => element.objectId === objectId
             )
-            const allOriginalTranslationsForUnsaved = allUnsavedForElement.flatMap(
-                element => element.originalTranslations
-            )
+            const allOriginalTranslationsForUnsaved =
+                allUnsavedForElement.flatMap(
+                    (element) => element.originalTranslations
+                )
             let filterTranslations = allTranslationsForElement.map(
-                translation => {
-                    const existInNotSaved = allOriginalTranslationsForUnsaved.find(
-                        t =>
-                            t.property === translation.property &&
-                            t.locale === translation.locale
-                    )
+                (translation) => {
+                    const existInNotSaved =
+                        allOriginalTranslationsForUnsaved.find(
+                            (t) =>
+                                t.property === translation.property &&
+                                t.locale === translation.locale
+                        )
                     // Keep original value of edited translations for other locales
                     if (existInNotSaved) {
                         if (
@@ -405,7 +410,7 @@ class TranslationsPage extends PureComponent {
 
             // Remove translations that have been edited, not saved and do not have original value
             filterTranslations = filterTranslations.filter(
-                element => element != null
+                (element) => element != null
             )
 
             const translations = [
@@ -432,14 +437,13 @@ class TranslationsPage extends PureComponent {
                     flatElement.open = false
 
                     currentPageResults[selectedObjectIndex] = flatElement
-                    searchResults[
-                        selectedObjectIndexInSearchResults
-                    ] = flatElement
+                    searchResults[selectedObjectIndexInSearchResults] =
+                        flatElement
                     originalInstances[selectedOriginalObjectIndex] = flatElement
 
                     // Remove item from unsavedChanges
                     unsaved = unsaved.filter(
-                        element =>
+                        (element) =>
                             !(
                                 element.objectId === objectId &&
                                 element.localeId === currentLocale
@@ -462,7 +466,7 @@ class TranslationsPage extends PureComponent {
                         i18n.t(i18nKeys.messages.translationsSaved)
                     )
                 })
-                .catch(error => {
+                .catch((error) => {
                     this.manageError(error)
                 })
         }
@@ -494,8 +498,8 @@ class TranslationsPage extends PureComponent {
         })
     }
 
-    openCardWithObjectId = objectId => () => {
-        const currentPageResults = this.state.currentPageResults.map(o =>
+    openCardWithObjectId = (objectId) => () => {
+        const currentPageResults = this.state.currentPageResults.map((o) =>
             o.id === objectId ? { ...o, open: true } : { ...o, open: false }
         )
 
@@ -504,27 +508,29 @@ class TranslationsPage extends PureComponent {
         })
     }
 
-    openCardOnClick = objectId => () => {
+    openCardOnClick = (objectId) => () => {
         this.clearFeedbackSnackbar()
         this.openCardWithObjectId(objectId)
     }
 
-    hasUnsavedChanges = (objectId, locale = null) => () => {
-        const currentLocale = locale
-            ? locale
-            : this.state.searchFilter.selectedLocale.id
+    hasUnsavedChanges =
+        (objectId, locale = null) =>
+        () => {
+            const currentLocale = locale
+                ? locale
+                : this.state.searchFilter.selectedLocale.id
 
-        return this.state.unsavedChangesMap.find(
-            unsavedChange =>
-                unsavedChange.objectId === objectId &&
-                unsavedChange.localeId === currentLocale
-        )
-    }
+            return this.state.unsavedChangesMap.find(
+                (unsavedChange) =>
+                    unsavedChange.objectId === objectId &&
+                    unsavedChange.localeId === currentLocale
+            )
+        }
 
     /* Server requests */
 
     /* fetch instances for new selected object type */
-    fetchElementsForObjectAndUpdateResults = object => {
+    fetchElementsForObjectAndUpdateResults = (object) => {
         const model =
             object && object.id ? this.props.d2.models[object.id] : null
         if (model) {
@@ -534,7 +540,7 @@ class TranslationsPage extends PureComponent {
                     paging: false,
                     fields: 'id,displayName,name,translations',
                 })
-                .then(objects => {
+                .then((objects) => {
                     const objectInstances = objects ? objects.toArray() : []
 
                     this.applyNextSearchFilter(
@@ -547,7 +553,7 @@ class TranslationsPage extends PureComponent {
 
                     this.clearFeedbackSnackbar()
                 })
-                .catch(error => {
+                .catch((error) => {
                     this.manageError(error)
                 })
         } else {
@@ -597,7 +603,7 @@ class TranslationsPage extends PureComponent {
         return schemas
     }
 
-    userLocaleFrom = locales => {
+    userLocaleFrom = (locales) => {
         const currentUser = this.props.d2.currentUser
 
         const userLocaleId =
@@ -606,7 +612,7 @@ class TranslationsPage extends PureComponent {
             currentUser.userSettings.keyUiLocale
                 ? currentUser.userSettings.keyUiLocale
                 : DEFAULT_LOCALE.id
-        const userLocale = locales.find(locale => locale.id === userLocaleId)
+        const userLocale = locales.find((locale) => locale.id === userLocaleId)
 
         return userLocale || (locales.length > 0 ? locales[0] : null)
     }
@@ -685,14 +691,14 @@ class TranslationsPage extends PureComponent {
         return []
     }
 
-    nextSearchFilterWithChange = searchFilterChange => ({
+    nextSearchFilterWithChange = (searchFilterChange) => ({
         ...this.state.searchFilter,
         ...searchFilterChange,
     })
 
-    buildLanguageSelectItemsArrayFromApiResponse = languagesResponse => {
+    buildLanguageSelectItemsArrayFromApiResponse = (languagesResponse) => {
         const locales = languagesResponse
-            ? languagesResponse.map(language => ({
+            ? languagesResponse.map((language) => ({
                   id: language.locale,
                   name: language.name,
               }))
@@ -710,7 +716,7 @@ class TranslationsPage extends PureComponent {
         })
     }
 
-    showSuccessMessage = message => {
+    showSuccessMessage = (message) => {
         this.setState({
             showSnackbar: true,
             snackbarConf: {
@@ -720,7 +726,7 @@ class TranslationsPage extends PureComponent {
         })
     }
 
-    showErrorMessage = message => {
+    showErrorMessage = (message) => {
         this.setState({
             showSnackbar: true,
             snackbarConf: {
@@ -730,7 +736,7 @@ class TranslationsPage extends PureComponent {
         })
     }
 
-    manageError = error => {
+    manageError = (error) => {
         const messageError =
             error && error.message
                 ? error.message
