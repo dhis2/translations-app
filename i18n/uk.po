@@ -1,15 +1,15 @@
 # 
 # Translators:
-# Viktor Varland <viktor@dhis2.org>, 2019
-# phil_dhis2, 2021
-# Nadiia <semchuk@aph.org.ua>, 2021
+# Viktor Varland <viktor@dhis2.org>, 2022
+# phil_dhis2, 2022
+# Nadiia <semchuk@aph.org.ua>, 2022
 # Éva Tamási, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2021-01-07T10:01:44.426Z\n"
-"PO-Revision-Date: 2019-08-05 12:15+0000\n"
+"PO-Revision-Date: 2022-10-15 22:33+0000\n"
 "Last-Translator: Éva Tamási, 2022\n"
 "Language-Team: Ukrainian (https://www.transifex.com/hisp-uio/teams/100509/uk/)\n"
 "MIME-Version: 1.0\n"
@@ -28,7 +28,7 @@ msgid "Filter by"
 msgstr "Фільтр за"
 
 msgid "All"
-msgstr "Всі"
+msgstr "Усі"
 
 msgid "Translated"
 msgstr "Перекладено"
@@ -49,7 +49,7 @@ msgid "Short name"
 msgstr "Коротке ім'я"
 
 msgid "Description"
-msgstr "Змалювання"
+msgstr "Опис"
 
 msgid "Form name"
 msgstr "Назва форми"
@@ -121,10 +121,10 @@ msgid "Account"
 msgstr "Обліковий запис"
 
 msgid "Help"
-msgstr "Допомога"
+msgstr "Довідка"
 
 msgid "Log out"
-msgstr "Вийти з системи"
+msgstr "Вийти із системи"
 
 msgid "About DHIS 2"
 msgstr "Про DHIS 2"
