@@ -99,7 +99,7 @@ msgid "A locale and object must be selected"
 msgstr ""
 
 msgid "Keep editing"
-msgstr ""
+msgstr "ສຶບຕໍ່ແກ້ໄຂ"
 
 msgid "Discard changes"
 msgstr "ລຶບການປ່ຽນແປງ"
