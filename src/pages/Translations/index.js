@@ -700,7 +700,10 @@ class TranslationsPage extends PureComponent {
         const locales = languagesResponse
             ? languagesResponse.map((language) => ({
                   id: language.locale,
-                  name: language.name,
+                  name:
+                      language.name === language.displayName
+                          ? language.name
+                          : `${language.name} — ${language.displayName}`,
               }))
             : []
 
