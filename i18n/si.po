@@ -25,7 +25,7 @@ msgid "Filter by"
 msgstr ""
 
 msgid "All"
-msgstr ""
+msgstr "සියල්ල"
 
 msgid "Translated"
 msgstr ""
@@ -37,7 +37,7 @@ msgid "Partial translated"
 msgstr ""
 
 msgid "Search"
-msgstr ""
+msgstr "සොයන්න"
 
 msgid "Name"
 msgstr ""
@@ -46,7 +46,7 @@ msgid "Short name"
 msgstr ""
 
 msgid "Description"
-msgstr ""
+msgstr "විස්තරය"
 
 msgid "Form name"
 msgstr ""
@@ -100,7 +100,7 @@ msgid "Keep editing"
 msgstr ""
 
 msgid "Discard changes"
-msgstr ""
+msgstr "වෙනස් කිරීම් ඉවතලන්න"
 
 msgid "Unsaved changes"
 msgstr ""
