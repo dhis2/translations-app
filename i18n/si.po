@@ -40,7 +40,7 @@ msgid "Search"
 msgstr "සොයන්න"
 
 msgid "Name"
-msgstr ""
+msgstr "නම"
 
 msgid "Short name"
 msgstr ""
@@ -82,7 +82,7 @@ msgid "Content"
 msgstr ""
 
 msgid "Save"
-msgstr ""
+msgstr "සුරකින්න"
 
 msgid "Changes on object will be lost if you do not save them first."
 msgstr ""
@@ -118,7 +118,7 @@ msgid "Account"
 msgstr ""
 
 msgid "Help"
-msgstr ""
+msgstr "උදවු"
 
 msgid "Log out"
 msgstr ""
