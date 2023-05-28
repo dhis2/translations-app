@@ -124,7 +124,7 @@ msgid "Log out"
 msgstr ""
 
 msgid "About DHIS 2"
-msgstr ""
+msgstr "DHIS 2 ගැන"
 
 msgid "Manage my apps"
 msgstr ""
