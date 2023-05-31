@@ -1,3 +1,10 @@
+## [26.2.36](https://github.com/dhis2/translations-app/compare/v26.2.35...v26.2.36) (2023-05-31)
+
+
+### Bug Fixes
+
+* update languages drop down [DHIS2-15327] ([7ecc793](https://github.com/dhis2/translations-app/commit/7ecc793e70aaa1251dbc9946139c71b7d9ad2658))
+
 ## [26.2.35](https://github.com/dhis2/translations-app/compare/v26.2.34...v26.2.35) (2023-05-28)
 
 
