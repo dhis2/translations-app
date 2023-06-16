@@ -38,7 +38,7 @@ msgid "Partial translated"
 msgstr ""
 
 msgid "Search"
-msgstr ""
+msgstr "Zoek"
 
 msgid "Name"
 msgstr "Naam"
@@ -101,7 +101,7 @@ msgid "Keep editing"
 msgstr ""
 
 msgid "Discard changes"
-msgstr ""
+msgstr "Veranderingen ongedaan maken"
 
 msgid "Unsaved changes"
 msgstr ""
@@ -110,7 +110,7 @@ msgid "Settings"
 msgstr "Instellingen"
 
 msgid "Search apps"
-msgstr ""
+msgstr "Zoek apps"
 
 msgid "Profile"
 msgstr "Profiel"
