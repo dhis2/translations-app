@@ -104,7 +104,7 @@ msgid "Discard changes"
 msgstr "Veranderingen ongedaan maken"
 
 msgid "Unsaved changes"
-msgstr ""
+msgstr "Niet-opgeslagen wijzigingen"
 
 msgid "Settings"
 msgstr "Instellingen"
