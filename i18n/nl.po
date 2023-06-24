@@ -98,7 +98,7 @@ msgid "A locale and object must be selected"
 msgstr ""
 
 msgid "Keep editing"
-msgstr ""
+msgstr "Blijf bewerken"
 
 msgid "Discard changes"
 msgstr "Veranderingen ongedaan maken"
