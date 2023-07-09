@@ -1,3 +1,10 @@
+## [26.2.44](https://github.com/dhis2/translations-app/compare/v26.2.43...v26.2.44) (2023-07-09)
+
+
+### Bug Fixes
+
+* **translations:** sync translations from transifex (master) ([f357cac](https://github.com/dhis2/translations-app/commit/f357cac5bcbbe68e44deb3cba71ffe437b3f4c65))
+
 ## [26.2.43](https://github.com/dhis2/translations-app/compare/v26.2.42...v26.2.43) (2023-06-29)
 
 
