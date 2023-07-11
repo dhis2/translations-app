@@ -27,7 +27,7 @@ msgid "Target locale"
 msgstr ""
 
 msgid "Filter by"
-msgstr ""
+msgstr "Filtrar por"
 
 msgid "All"
 msgstr "Todos"
