@@ -1,0 +1,140 @@
+# 
+# Translators:
+# Yury Rogachev <yury@dhis2.org>, 2022
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"POT-Creation-Date: 2021-01-07T10:01:44.426Z\n"
+"PO-Revision-Date: 2022-10-15 22:33+0000\n"
+"Last-Translator: Yury Rogachev <yury@dhis2.org>, 2022\n"
+"Language-Team: Uzbek (Latin) (https://app.transifex.com/hisp-uio/teams/100509/uz@Latn/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: uz@Latn\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Object"
+msgstr "Obʼekt"
+
+msgid "Target locale"
+msgstr "Nishon hududi"
+
+msgid "Filter by"
+msgstr "Boʼyicha filtr"
+
+msgid "All"
+msgstr "Barchasi"
+
+msgid "Translated"
+msgstr "Tarjima qilingan"
+
+msgid "Untranslated"
+msgstr "Tarjima qilinmagan"
+
+msgid "Partial translated"
+msgstr "Qisman tarjima qilingan"
+
+msgid "Search"
+msgstr "Izlash"
+
+msgid "Name"
+msgstr "Исми"
+
+msgid "Short name"
+msgstr "Qisqacha nomi"
+
+msgid "Description"
+msgstr "Tavsif"
+
+msgid "Form name"
+msgstr "Shakl nomi"
+
+msgid "Numerator description"
+msgstr "Numerator tavsifi"
+
+msgid "Denominator description"
+msgstr "Nomzod tavsifi"
+
+msgid "From to name"
+msgstr ""
+
+msgid "To from name"
+msgstr ""
+
+msgid "Instruction"
+msgstr "Yoʼriqnoma"
+
+msgid "Incident date label"
+msgstr ""
+
+msgid "Enrollment date label"
+msgstr ""
+
+msgid "Execution date label"
+msgstr ""
+
+msgid "Due date label"
+msgstr ""
+
+msgid "Content"
+msgstr "Tarkib"
+
+msgid "Save"
+msgstr "Saqlash"
+
+msgid "Changes on object will be lost if you do not save them first."
+msgstr ""
+"Аgarda obʼektga kiritilgan oʼzgartirishlar saqlanmasa, ular yoʼqotiladi"
+
+msgid "Unexpected Error"
+msgstr "Kutilmagan xato"
+
+msgid "Translations were saved"
+msgstr "Tarjimalar saqlangan"
+
+msgid "A locale and object must be selected"
+msgstr "Mahalliy til va obʼekt tanlangan boʼlishi lozim"
+
+msgid "Keep editing"
+msgstr "Tahrirni davom eting"
+
+msgid "Discard changes"
+msgstr "Oʼzgartirishlar bekor qilinsin"
+
+msgid "Unsaved changes"
+msgstr "Saqlanmagan oʼzgartirishlar"
+
+msgid "Settings"
+msgstr "Sozlamalar"
+
+msgid "Search apps"
+msgstr "Ilovalarni qidirish"
+
+msgid "Profile"
+msgstr "Profil"
+
+msgid "Account"
+msgstr "Raqami"
+
+msgid "Help"
+msgstr "Yordam"
+
+msgid "Log out"
+msgstr "Chiqish"
+
+msgid "About DHIS 2"
+msgstr "DHIS2 haqida"
+
+msgid "Manage my apps"
+msgstr "Ilovalarimni boshqarish"
+
+msgid "No results found"
+msgstr "Hech qanday natija topilmadi"
+
+msgid "Interpretations"
+msgstr "Talqinlar"
+
+msgid "Messages"
+msgstr "Xabarlar"
