@@ -23,7 +23,7 @@ msgid "Target locale"
 msgstr ""
 
 msgid "Filter by"
-msgstr ""
+msgstr "过滤"
 
 msgid "All"
 msgstr "全部"
