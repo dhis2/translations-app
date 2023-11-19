@@ -58,25 +58,25 @@ msgid "Denominator description"
 msgstr "Номзод тавсифи"
 
 msgid "From to name"
-msgstr ""
+msgstr "Номидан бошлаб"
 
 msgid "To from name"
-msgstr ""
+msgstr "Номидан"
 
 msgid "Instruction"
 msgstr "Йўриқнома"
 
 msgid "Incident date label"
-msgstr ""
+msgstr "Ҳодиса санаси ёрлиғи"
 
 msgid "Enrollment date label"
-msgstr ""
+msgstr "Қайд этиш санаси ёрлиғи"
 
 msgid "Execution date label"
-msgstr ""
+msgstr "Бажарилишҳ санаси ёрлиғи"
 
 msgid "Due date label"
-msgstr ""
+msgstr "Ёрлиқ санаси орқали"
 
 msgid "Content"
 msgstr "Таркиб"
