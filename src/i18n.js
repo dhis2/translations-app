@@ -37,6 +37,14 @@ export const i18nKeys = {
         actionButton: {
             label: 'Save',
         },
+        domainAxisLabel: 'Domain axis label',
+        rangeAxisLabel: 'Range axis label',
+        targetLineLabel: 'Target line label',
+        subtitle: 'Subtitle',
+        title: 'Title',
+        baseLineLabel: 'Base line label',
+        subjectTemplate: 'Subject template',
+        messageTemplate: 'Message template',
     },
     messages: {
         unsavedChanges:
