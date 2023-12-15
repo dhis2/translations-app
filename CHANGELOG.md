@@ -1,3 +1,11 @@
+## [26.2.49](https://github.com/dhis2/translations-app/compare/v26.2.48...v26.2.49) (2023-12-15)
+
+
+### Bug Fixes
+
+* add/handle missing property translations [DHIS2-11316] ([#849](https://github.com/dhis2/translations-app/issues/849)) ([20c79dd](https://github.com/dhis2/translations-app/commit/20c79dde978a7b5a5d6912e96d4fc112e86ffd89))
+* allow programRuleAction translations [DHIS2-12971] ([#848](https://github.com/dhis2/translations-app/issues/848)) ([400b5d1](https://github.com/dhis2/translations-app/commit/400b5d13bfd581cfa95f44c16d26ed8bebc991b1))
+
 ## [26.2.48](https://github.com/dhis2/translations-app/compare/v26.2.47...v26.2.48) (2023-11-19)
 
 
