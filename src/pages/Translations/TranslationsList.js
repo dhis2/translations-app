@@ -54,6 +54,7 @@ const TranslationsList = (props) =>
                     openCard={props.openCard(object.id)}
                     openCardOnClick={props.openCardOnClick(object.id)}
                     clearFeedback={props.clearFeedback}
+                    cardTitleProperty={props.cardTitleProperty}
                 />
             ))}
             {PaginationBuilder(
@@ -67,6 +68,7 @@ const TranslationsList = (props) =>
     )
 
 TranslationsList.propTypes = {
+    cardTitleProperty: PropTypes.string.isRequired,
     clearFeedback: PropTypes.func.isRequired,
     goToNextPage: PropTypes.func.isRequired,
     goToPreviousPage: PropTypes.func.isRequired,
