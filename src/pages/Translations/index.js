@@ -19,6 +19,10 @@ const DEFAULT_SNACKBAR_CONF = {
     onActionClick: null,
 }
 
+const OVERRIDE_TITLE_AND_SEARCH_PROPS = {
+    programRuleAction: 'content',
+}
+
 /* auxiliar methods */
 /* FIXME move to an external file, SchemaEntry class */
 const modelToSchemaEntry = (model) => ({
@@ -538,7 +542,7 @@ class TranslationsPage extends PureComponent {
             model
                 .list({
                     paging: false,
-                    fields: 'id,displayName,name,translations',
+                    fields: 'id,displayName,name,content,translations',
                 })
                 .then((objects) => {
                     const objectInstances = objects ? objects.toArray() : []
@@ -653,14 +657,17 @@ class TranslationsPage extends PureComponent {
                 .trim()
                 .toLowerCase()
             const newElements = []
-
             for (let i = 0; i < elements.length; i++) {
                 const element = elements[i]
                 if (
-                    element.name
-                        .trim()
-                        .toLowerCase()
-                        .includes(currentSearchTerm)
+                    element[
+                        OVERRIDE_TITLE_AND_SEARCH_PROPS[
+                            searchFilter.selectedObject?.id
+                        ] ?? 'name'
+                    ]
+                        ?.trim()
+                        ?.toLowerCase()
+                        ?.includes(currentSearchTerm)
                 ) {
                     const flatElement = flatElementForPropertiesAndLocale(
                         element,
@@ -832,6 +839,11 @@ class TranslationsPage extends PureComponent {
                     openCardOnClick={this.openCardOnClick}
                     hasUnsavedChanges={this.hasUnsavedChanges}
                     clearFeedback={this.clearFeedbackSnackbar}
+                    cardTitleProperty={
+                        OVERRIDE_TITLE_AND_SEARCH_PROPS[
+                            this.state?.searchFilter?.selectedObject?.id
+                        ] ?? 'name'
+                    }
                 />
                 <div id="feedback-snackbar">{feedbackElement}</div>
                 <ConfirmationDialog
