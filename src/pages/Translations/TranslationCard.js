@@ -69,7 +69,7 @@ const TranslationCard = (props) => {
                     alignItems="center"
                 >
                     <Grid item xs={6}>
-                        <h3>{props.object.name}</h3>
+                        <h3>{props.object[props.cardTitleProperty]}</h3>
                     </Grid>
                     <Grid style={translationCardStyles.icon} item xs={6}>
                         {getState() === TRANSLATED_ID && (
@@ -145,6 +145,7 @@ const TranslationCard = (props) => {
 }
 
 TranslationCard.propTypes = {
+    cardTitleProperty: PropTypes.string.isRequired,
     clearFeedback: PropTypes.func.isRequired,
     hasUnsavedChanges: PropTypes.func.isRequired,
     localeId: PropTypes.string.isRequired,
