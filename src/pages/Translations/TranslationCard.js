@@ -107,7 +107,7 @@ const TranslationCard = props => {
                                             label={i18n.t(
                                                 i18nKeys.translationForm[
                                                     property.name
-                                                ]
+                                                ] ?? property.name
                                             )}
                                             onChange={onChange(
                                                 property.translationKey
