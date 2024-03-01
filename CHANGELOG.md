@@ -1,3 +1,15 @@
+# [100.0.0](https://github.com/dhis2/translations-app/compare/v99.9.9...v100.0.0) (2024-03-01)
+
+
+### Features
+
+* trigger release ([4351956](https://github.com/dhis2/translations-app/commit/4351956fa8e96965cd1dbe435289be2f60212552))
+
+
+### BREAKING CHANGES
+
+* bump to v100.0.0 for continuous release
+
 ## [26.2.50](https://github.com/dhis2/translations-app/compare/v26.2.49...v26.2.50) (2024-02-28)
 
 
