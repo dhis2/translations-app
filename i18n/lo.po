@@ -2,15 +2,15 @@
 # Translators:
 # Viktor Varland <viktor@dhis2.org>, 2022
 # Philip Larsen Donnelly, 2022
-# Namwan Chanthavisouk, 2024
 # Saysamone Sibounma, 2024
+# Namwan Chanthavisouk, 2024
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2021-01-07T10:01:44.426Z\n"
 "PO-Revision-Date: 2022-10-15 22:33+0000\n"
-"Last-Translator: Saysamone Sibounma, 2024\n"
+"Last-Translator: Namwan Chanthavisouk, 2024\n"
 "Language-Team: Lao (https://app.transifex.com/hisp-uio/teams/100509/lo/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -106,7 +106,7 @@ msgid "Discard changes"
 msgstr "ລຶບການປ່ຽນແປງ"
 
 msgid "Unsaved changes"
-msgstr ""
+msgstr "ການປ່ຽນແປງທີ່ບໍ່ໄດ້ບັນທຶກໄວ້"
 
 msgid "Settings"
 msgstr "ຕັ້ງຄ່າ"
