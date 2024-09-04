@@ -34,7 +34,7 @@
         "@dhis2/d2-ui-app": "^1.0.8",
         "@dhis2/d2-ui-core": "^1.3.2",
         "@dhis2/prop-types": "^2.0.3",
-        "@dhis2/ui": "^6.5.5",
+        "@dhis2/ui": "^9.11.3",
         "@material-ui/core": "^3.0.1",
         "@material-ui/icons": "^3.0.1",
         "d2": "^31.9.0",
