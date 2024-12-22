@@ -2,15 +2,16 @@
 # Translators:
 # Thuy Nguyen <thuynguyen@hispvietnam.org>, 2023
 # Viktor Varland <viktor@dhis2.org>, 2023
-# phil_dhis2, 2023
+# Philip Larsen Donnelly, 2023
 # Mai Nguyen <thanhmai.jica@gmail.com>, 2023
+# Em Le <em.hispvietnam@gmail.com>, 2024
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2021-01-07T10:01:44.426Z\n"
 "PO-Revision-Date: 2023-05-22 19:22+0000\n"
-"Last-Translator: Mai Nguyen <thanhmai.jica@gmail.com>, 2023\n"
+"Last-Translator: Em Le <em.hispvietnam@gmail.com>, 2024\n"
 "Language-Team: Vietnamese (https://app.transifex.com/hisp-uio/teams/100509/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,10 +23,10 @@ msgid "Object"
 msgstr "Đối tượng"
 
 msgid "Target locale"
-msgstr ""
+msgstr "Ngôn ngữ mục tiêu"
 
 msgid "Filter by"
-msgstr ""
+msgstr "Lọc bởi"
 
 msgid "All"
 msgstr "Tất cả"
@@ -37,7 +38,7 @@ msgid "Untranslated"
 msgstr "Chưa dịch"
 
 msgid "Partial translated"
-msgstr ""
+msgstr "Đã dịch một phần"
 
 msgid "Search"
 msgstr "Tìm kiếm"
@@ -61,43 +62,44 @@ msgid "Denominator description"
 msgstr "Miêu tả mẩu số"
 
 msgid "From to name"
-msgstr ""
+msgstr "Từ đến tên"
 
 msgid "To from name"
-msgstr ""
+msgstr "Đến từ tên"
 
 msgid "Instruction"
 msgstr "Chỉ dẫn"
 
 msgid "Incident date label"
-msgstr ""
+msgstr "Nhãn ngày xảy ra"
 
 msgid "Enrollment date label"
-msgstr ""
+msgstr "Nhãn ngày đăng ký vào chương trình"
 
 msgid "Execution date label"
-msgstr ""
+msgstr "Nhãn ngày thực hiện"
 
 msgid "Due date label"
-msgstr ""
+msgstr "Nhãn ngày đến hạn"
 
 msgid "Content"
-msgstr ""
+msgstr "Nội dung"
 
 msgid "Save"
 msgstr "Lưu"
 
 msgid "Changes on object will be lost if you do not save them first."
 msgstr ""
+"Những thay đổi trên đối tượng sẽ bị mất nếu bạn không lưu chúng trước."
 
 msgid "Unexpected Error"
-msgstr ""
+msgstr "Lỗi không mong muốn"
 
 msgid "Translations were saved"
-msgstr ""
+msgstr "Bản dịch đã được lưu"
 
 msgid "A locale and object must be selected"
-msgstr ""
+msgstr "Phải chọn một ngôn ngữ và đối tượng"
 
 msgid "Keep editing"
 msgstr "Tiếp tục chỉnh sửa"
