@@ -5,7 +5,7 @@ import React from 'react'
 import '@dhis2/d2-ui-core/build/css/Pagination.css'
 import styles from '../../styles.js'
 import * as PAGINATION_HELPER from '../../utils/pagination.js'
-import TranslationCard from './TranslationCard.js'
+import TranslationCard from './TranslationCard.jsx'
 import { DEFAULT_TRANSLATABLE_PROPERTIES } from './translations.conf.js'
 import translationsListStyles from './TranslationsList.style.js'
 

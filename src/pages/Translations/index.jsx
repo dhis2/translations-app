@@ -7,10 +7,10 @@ import i18n from '../../locales/index.js'
 import styles from '../../styles.js'
 import * as FEEDBACK_SNACKBAR_TYPES from '../../utils/feedbackSnackBarTypes.js'
 import { filterElementsToPager } from '../../utils/pagination.js'
-import ConfirmationDialog from './ConfirmationDialog.js'
+import ConfirmationDialog from './ConfirmationDialog.jsx'
 import * as PAGE_CONFIGS from './translations.conf.js'
-import TranslationsList from './TranslationsList.js'
-import TranslationsSearch from './TranslationsSearch.js'
+import TranslationsList from './TranslationsList.jsx'
+import TranslationsSearch from './TranslationsSearch.jsx'
 
 const DEFAULT_SNACKBAR_CONF = {
     type: FEEDBACK_SNACKBAR_TYPES.NONE,
