@@ -1,3 +1,10 @@
+## [100.0.11](https://github.com/dhis2/translations-app/compare/v100.0.10...v100.0.11) (2025-04-01)
+
+
+### Bug Fixes
+
+* **app-platform:** upgrade platform tools to use vite and react 18 ([9128614](https://github.com/dhis2/translations-app/commit/91286147422ab4af26d3c4a27e70fb8f6e52750a))
+
 ## [100.0.10](https://github.com/dhis2/translations-app/compare/v100.0.9...v100.0.10) (2025-03-30)
 
 
