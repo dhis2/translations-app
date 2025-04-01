@@ -24,12 +24,23 @@ const translationValueOfObjectForLocaleAndTranslationKey = (
     return selectedTranslation ? selectedTranslation.value : ''
 }
 
-const TranslationCard = (props) => {
-    const { onChangeTranslationForObjectAndLocale, hasUnsavedChanges } = props
+const TranslationCard = ({
+    open = false,
+    hasUnsavedChanges = () => false,
+    object,
+    localeId,
+    translatableProperties,
+    onChangeTranslationForObjectAndLocale,
+    saveTranslations,
+    clearFeedback,
+    openCard,
+    openCardOnClick,
+    cardTitleProperty,
+}) => {
     const onChange = (translationKey) => (event) => {
         onChangeTranslationForObjectAndLocale({
-            objectId: props.object.id,
-            localeId: props.localeId,
+            objectId: object.id,
+            localeId,
             translationKey,
             value: event.target.value,
         })
@@ -40,7 +51,7 @@ const TranslationCard = (props) => {
     const getState = () =>
         hasUnsavedChanges()
             ? hasUnsavedChanges().originalState
-            : props.object.translationState
+            : object.translationState
 
     const headerStyle = () => {
         return {
@@ -51,25 +62,21 @@ const TranslationCard = (props) => {
 
     const saveTranslationsOnKeyPress = (event) => {
         if (event.key === 'Enter' && event.ctrlKey && !checkSave()) {
-            props.saveTranslations()
+            saveTranslations()
         }
     }
 
     return (
         <div data-test="dhis2-translations-item">
-            <Paper
-                tabIndex={0}
-                onFocus={props.openCard}
-                style={styles.cardContainer}
-            >
+            <Paper tabIndex={0} onFocus={openCard} style={styles.cardContainer}>
                 <Grid
                     style={headerStyle()}
-                    onClick={props.openCardOnClick}
+                    onClick={openCardOnClick}
                     container
                     alignItems="center"
                 >
                     <Grid item xs={6}>
-                        <h3>{props.object[props.cardTitleProperty]}</h3>
+                        <h3>{object[cardTitleProperty]}</h3>
                     </Grid>
                     <Grid style={translationCardStyles.icon} item xs={6}>
                         {getState() === TRANSLATED_ID && (
@@ -77,50 +84,45 @@ const TranslationCard = (props) => {
                         )}
                     </Grid>
                 </Grid>
-                {props.open && (
+                {open && (
                     <Fragment>
                         <Grid container>
-                            {props.translatableProperties.map(
-                                (property, index) => (
-                                    <Grid
-                                        key={property.name}
-                                        id={property.name}
-                                        item
-                                        xs={12}
-                                        md={
-                                            props.translatableProperties
-                                                .length === 1
-                                                ? 12
-                                                : 6
-                                        }
-                                        style={styles.formControl}
-                                    >
-                                        <TextField
-                                            autoFocus={index === 0}
-                                            fullWidth
-                                            value={translationValueOfObjectForLocaleAndTranslationKey(
-                                                props.object,
-                                                props.localeId,
-                                                property.translationKey
-                                            )}
-                                            type="text"
-                                            label={i18n.t(
-                                                i18nKeys.translationForm[
-                                                    property.name
-                                                ] ?? property.name
-                                            )}
-                                            onChange={onChange(
-                                                property.translationKey
-                                            )}
-                                            onKeyDown={
-                                                saveTranslationsOnKeyPress
-                                            }
-                                            onClick={props.clearFeedback}
-                                            onBlur={props.clearFeedback}
-                                        />
-                                    </Grid>
-                                )
-                            )}
+                            {translatableProperties.map((property, index) => (
+                                <Grid
+                                    key={property.name}
+                                    id={property.name}
+                                    item
+                                    xs={12}
+                                    md={
+                                        translatableProperties.length === 1
+                                            ? 12
+                                            : 6
+                                    }
+                                    style={styles.formControl}
+                                >
+                                    <TextField
+                                        autoFocus={index === 0}
+                                        fullWidth
+                                        value={translationValueOfObjectForLocaleAndTranslationKey(
+                                            object,
+                                            localeId,
+                                            property.translationKey
+                                        )}
+                                        type="text"
+                                        label={i18n.t(
+                                            i18nKeys.translationForm[
+                                                property.name
+                                            ] ?? property.name
+                                        )}
+                                        onChange={onChange(
+                                            property.translationKey
+                                        )}
+                                        onKeyDown={saveTranslationsOnKeyPress}
+                                        onClick={clearFeedback}
+                                        onBlur={clearFeedback}
+                                    />
+                                </Grid>
+                            ))}
                         </Grid>
                         <div
                             data-test="dhis2-translations-save-btn"
@@ -129,7 +131,7 @@ const TranslationCard = (props) => {
                             <Button
                                 raised
                                 color="primary"
-                                onClick={props.saveTranslations}
+                                onClick={saveTranslations}
                                 disabled={checkSave()}
                             >
                                 {i18n.t(
@@ -173,11 +175,6 @@ TranslationCard.propTypes = {
     ).isRequired,
     onChangeTranslationForObjectAndLocale: PropTypes.func.isRequired,
     open: PropTypes.bool,
-}
-
-TranslationCard.defaultProps = {
-    open: false,
-    hasUnsavedChanges: () => false,
 }
 
 export default TranslationCard

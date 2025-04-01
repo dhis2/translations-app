@@ -8,7 +8,12 @@ import React from 'react'
 import styles from '../../styles.js'
 import translationsSearchStyles from './TranslationsSearch.style.js'
 
-export const SelectControl = ({ items, label, onChange, value }) => {
+export const SelectControl = ({
+    items,
+    label,
+    onChange = () => null,
+    value = '',
+}) => {
     /* passes the whole object and not only id */
     const onChangeEnhanced = (event) => {
         onChange(items.find((item) => item.id === event.target.value))
@@ -43,17 +48,29 @@ SelectControl.propTypes = {
     onChange: PropTypes.func,
 }
 
-SelectControl.defaultProps = {
-    value: '',
-    onChange: () => null,
-}
-
 /* to avoid null exceptions */
 const nonHandler = () => null
 
-const TranslationsSearch = (props) => {
+const TranslationsSearch = ({
+    filterByItems = [],
+    filterBySelectLabel,
+    localeSelectItems = [],
+    localeSelectLabel,
+    objectSelectItems = [],
+    objectSelectLabel,
+    searchFieldLabel,
+    searchTerm = '',
+    selectedFilterId = null,
+    selectedLocaleId = null,
+    selectedObjectName = null,
+    onFilterChange = nonHandler,
+    onLocaleChange = nonHandler,
+    onObjectChange = nonHandler,
+    onSearchKeyPress = nonHandler,
+    onSearchTermChange = nonHandler,
+}) => {
     const onChangeForSearchFieldEnhanced = (event) => {
-        props.onSearchTermChange(event.target.value)
+        onSearchTermChange(event.target.value)
     }
 
     return (
@@ -67,10 +84,10 @@ const TranslationsSearch = (props) => {
                     style={styles.formControl}
                 >
                     <SelectControl
-                        value={props.selectedObjectName}
-                        onChange={props.onObjectChange}
-                        items={props.objectSelectItems}
-                        label={props.objectSelectLabel}
+                        value={selectedObjectName}
+                        onChange={onObjectChange}
+                        items={objectSelectItems}
+                        label={objectSelectLabel}
                     />
                 </Grid>
                 <Grid
@@ -81,10 +98,10 @@ const TranslationsSearch = (props) => {
                     style={styles.formControl}
                 >
                     <SelectControl
-                        value={props.selectedFilterId}
-                        onChange={props.onFilterChange}
-                        items={props.filterByItems}
-                        label={props.filterBySelectLabel}
+                        value={selectedFilterId}
+                        onChange={onFilterChange}
+                        items={filterByItems}
+                        label={filterBySelectLabel}
                     />
                 </Grid>
                 <Grid
@@ -95,10 +112,10 @@ const TranslationsSearch = (props) => {
                     style={styles.formControl}
                 >
                     <SelectControl
-                        value={props.selectedLocaleId}
-                        onChange={props.onLocaleChange}
-                        items={props.localeSelectItems}
-                        label={props.localeSelectLabel}
+                        value={selectedLocaleId}
+                        onChange={onLocaleChange}
+                        items={localeSelectItems}
+                        label={localeSelectLabel}
                     />
                 </Grid>
                 <Grid
@@ -109,9 +126,9 @@ const TranslationsSearch = (props) => {
                     style={styles.formControl}
                 >
                     <TextField
-                        label={props.searchFieldLabel}
+                        label={searchFieldLabel}
                         type="search"
-                        value={props.searchTerm}
+                        value={searchTerm}
                         onChange={onChangeForSearchFieldEnhanced}
                         fullWidth
                         InputProps={{
@@ -121,7 +138,7 @@ const TranslationsSearch = (props) => {
                                 </InputAdornment>
                             ),
                         }}
-                        onKeyPress={props.onSearchKeyPress}
+                        onKeyPress={onSearchKeyPress}
                     />
                 </Grid>
             </Grid>
@@ -161,18 +178,6 @@ TranslationsSearch.propTypes = {
     onObjectChange: PropTypes.func,
     onSearchKeyPress: PropTypes.func,
     onSearchTermChange: PropTypes.func,
-}
-
-TranslationsSearch.defaultProps = {
-    selectedLocaleId: null,
-    onLocaleChange: nonHandler,
-    selectedFilterId: null,
-    onFilterChange: nonHandler,
-    selectedObjectName: null,
-    onObjectChange: nonHandler,
-    searchTerm: '',
-    onSearchTermChange: nonHandler,
-    onSearchKeyPress: nonHandler,
 }
 
 export default TranslationsSearch

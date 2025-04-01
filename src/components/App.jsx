@@ -1,7 +1,7 @@
 import D2UIApp from '@dhis2/d2-ui-app'
 import PropTypes from 'prop-types'
 import React from 'react'
-import TranslationsPage from '../pages/Translations/index.js'
+import TranslationsPage from '../pages/Translations/index.jsx'
 import styles from '../styles.js'
 
 const App = ({ d2 }) => (
