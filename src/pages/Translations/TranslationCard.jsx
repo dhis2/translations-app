@@ -25,7 +25,7 @@ const translationValueOfObjectForLocaleAndTranslationKey = (
 }
 
 const TranslationCard = ({
-    open = false, 
+    open = false,
     hasUnsavedChanges = () => false,
     object,
     localeId,
@@ -68,11 +68,7 @@ const TranslationCard = ({
 
     return (
         <div data-test="dhis2-translations-item">
-            <Paper
-                tabIndex={0}
-                onFocus={openCard}
-                style={styles.cardContainer}
-            >
+            <Paper tabIndex={0} onFocus={openCard} style={styles.cardContainer}>
                 <Grid
                     style={headerStyle()}
                     onClick={openCardOnClick}
@@ -118,7 +114,9 @@ const TranslationCard = ({
                                                 property.name
                                             ] ?? property.name
                                         )}
-                                        onChange={onChange(property.translationKey)}
+                                        onChange={onChange(
+                                            property.translationKey
+                                        )}
                                         onKeyDown={saveTranslationsOnKeyPress}
                                         onClick={clearFeedback}
                                         onBlur={clearFeedback}
@@ -136,7 +134,9 @@ const TranslationCard = ({
                                 onClick={saveTranslations}
                                 disabled={checkSave()}
                             >
-                                {i18n.t(i18nKeys.translationForm.actionButton.label)}
+                                {i18n.t(
+                                    i18nKeys.translationForm.actionButton.label
+                                )}
                             </Button>
                         </div>
                     </Fragment>

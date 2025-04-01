@@ -48,11 +48,7 @@ const TranslationsList = ({
             id={'translation-list-container'}
             style={translationsListStyles.container}
         >
-            {PaginationBuilder(
-                pager,
-                goToNextPage,
-                goToPreviousPage
-            )}
+            {PaginationBuilder(pager, goToNextPage, goToPreviousPage)}
             {objects.map((object) => (
                 <TranslationCard
                     key={object.id}
@@ -71,11 +67,7 @@ const TranslationsList = ({
                     cardTitleProperty={cardTitleProperty}
                 />
             ))}
-            {PaginationBuilder(
-                pager,
-                goToNextPage,
-                goToPreviousPage
-            )}
+            {PaginationBuilder(pager, goToNextPage, goToPreviousPage)}
         </div>
     ) : (
         <NoResults />

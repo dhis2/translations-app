@@ -8,7 +8,12 @@ import React from 'react'
 import styles from '../../styles.js'
 import translationsSearchStyles from './TranslationsSearch.style.js'
 
-export const SelectControl = ({ items, label, onChange=() => null, value='' }) => {
+export const SelectControl = ({
+    items,
+    label,
+    onChange = () => null,
+    value = '',
+}) => {
     /* passes the whole object and not only id */
     const onChangeEnhanced = (event) => {
         onChange(items.find((item) => item.id === event.target.value))
