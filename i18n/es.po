@@ -83,7 +83,7 @@ msgid "Execution date label"
 msgstr "Etiqueta de fecha de ejecución"
 
 msgid "Due date label"
-msgstr "Etiqueta de vencimiento"
+msgstr "Etiqueta de fecha prevista"
 
 msgid "Content"
 msgstr "Contenido"
