@@ -7,13 +7,15 @@
 # Milagros Rodríguez, 2022
 # Janeth Cruz, 2023
 # Enzo Nicolas Rossi <enzo@dhis2.org>, 2024
+# Carlos Tejo Alonso, 2025
+# Pablo Del Médico, 2025
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2021-01-07T10:01:44.426Z\n"
 "PO-Revision-Date: 2019-08-05 12:15+0000\n"
-"Last-Translator: Enzo Nicolas Rossi <enzo@dhis2.org>, 2024\n"
+"Last-Translator: Pablo Del Médico, 2025\n"
 "Language-Team: Spanish (https://app.transifex.com/hisp-uio/teams/100509/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,7 +27,7 @@ msgid "Object"
 msgstr "Objeto"
 
 msgid "Target locale"
-msgstr "Localidad de destino"
+msgstr "Configuración regional de destino"
 
 msgid "Filter by"
 msgstr "Filtrar por"
@@ -73,16 +75,16 @@ msgid "Instruction"
 msgstr "Instrucción"
 
 msgid "Incident date label"
-msgstr "Etiqueta con la fecha del incidente"
+msgstr "Etiqueta de fecha del incidente"
 
 msgid "Enrollment date label"
-msgstr "Etiqueta con la fecha de inscripción"
+msgstr "Etiqueta de fecha de inscripción"
 
 msgid "Execution date label"
 msgstr "Etiqueta de fecha de ejecución"
 
 msgid "Due date label"
-msgstr "Etiqueta de vencimiento"
+msgstr "Etiqueta de fecha prevista"
 
 msgid "Content"
 msgstr "Contenido"
@@ -133,10 +135,10 @@ msgid "About DHIS 2"
 msgstr "Sobre DHIS 2"
 
 msgid "Manage my apps"
-msgstr "Manage my apps"
+msgstr "Gestionar mis aplicaciones"
 
 msgid "No results found"
-msgstr "No results found"
+msgstr "No se encontraron resultados"
 
 msgid "Interpretations"
 msgstr "Interpretaciones"
