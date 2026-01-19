@@ -21,6 +21,7 @@ const DEFAULT_SNACKBAR_CONF = {
 
 const OVERRIDE_TITLE_AND_SEARCH_PROPS = {
     programRuleAction: 'content',
+    dashboardItem: 'displayText',
 }
 
 /* auxiliar methods */
@@ -81,6 +82,7 @@ const flatElementForPropertiesAndLocale = (
 class TranslationsPage extends PureComponent {
     static propTypes = {
         d2: PropTypes.object.isRequired,
+        featureToggles: PropTypes.object.isRequired,
     }
 
     /* configuring initial state */
@@ -542,7 +544,7 @@ class TranslationsPage extends PureComponent {
             model
                 .list({
                     paging: false,
-                    fields: 'id,displayName,name,content,translations',
+                    fields: 'id,displayName,name,content,displayText,translations',
                 })
                 .then((objects) => {
                     const objectInstances = objects ? objects.toArray() : []
@@ -588,7 +590,10 @@ class TranslationsPage extends PureComponent {
             if (
                 !modelNames.has(modelName) &&
                 model.isTranslatable() &&
-                this.props.d2.currentUser.canUpdate(model)
+                this.props.d2.currentUser.canUpdate(model) &&
+                !(this.props?.featureToggles?.excludedObjects ?? []).includes(
+                    modelName
+                )
             ) {
                 modelNames.add(model.name)
                 schemas.push(modelToSchemaEntry(model))
@@ -630,7 +635,6 @@ class TranslationsPage extends PureComponent {
             currentObjectInstances,
             searchFilter
         )
-
         /* update pagination */
         searchFilter.pager.total = searchResults.length
         searchFilter.pager.pageCount = Math.ceil(
