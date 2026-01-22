@@ -1,3 +1,10 @@
+## [100.0.12](https://github.com/dhis2/translations-app/compare/v100.0.11...v100.0.12) (2026-01-22)
+
+
+### Bug Fixes
+
+* add dashboardItem [DHIS2-20385] ([#947](https://github.com/dhis2/translations-app/issues/947)) ([f5fef7b](https://github.com/dhis2/translations-app/commit/f5fef7bb46e7401946181cd86dcc676ac23f8c42))
+
 ## [100.0.11](https://github.com/dhis2/translations-app/compare/v100.0.10...v100.0.11) (2025-04-01)
 
 
