@@ -8,7 +8,8 @@ import styles from '../styles.js'
 const App = ({ d2 }) => {
     const { apiVersion } = useConfig()
     const featureToggles = {
-        excludedObjects: parseInt(apiVersion) >= 43 ? [] : ['dashboardItem'],
+        excludedObjects:
+            Number.parseInt(apiVersion) >= 43 ? [] : ['dashboardItem'],
     }
     return (
         <D2UIApp>
