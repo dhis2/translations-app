@@ -1,0 +1,17 @@
+diff --git a/node_modules/d2/d2.js b/node_modules/d2/d2.js
+index 410338e..8258891 100644
+--- a/node_modules/d2/d2.js
++++ b/node_modules/d2/d2.js
+@@ -322,9 +322,9 @@ function init(initConfig) {
+       apps: res[6]
+     };
+     responses.schemas // We only deal with metadata schemas
+-    .filter(function (schema) {
+-      return schema.metadata;
+-    }) // TODO: Remove this when the schemas endpoint is versioned or shows the correct urls for the requested version
++    // .filter(function (schema) {
++    //   return schema.metadata;
++    // }) // TODO: Remove this when the schemas endpoint is versioned or shows the correct urls for the requested version
+     // The schemas endpoint is not versioned which will result into the modelDefinitions always using the
+     // "default" endpoint, we therefore modify the endpoint url based on the given baseUrl.
+     .map(function (schema) {
