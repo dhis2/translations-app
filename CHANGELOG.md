@@ -1,3 +1,10 @@
+## [100.0.13](https://github.com/dhis2/translations-app/compare/v100.0.12...v100.0.13) (2026-01-23)
+
+
+### Bug Fixes
+
+* type of minDHIS2Version ([#948](https://github.com/dhis2/translations-app/issues/948)) ([3217ab8](https://github.com/dhis2/translations-app/commit/3217ab8f91ede38d802962a29c80ba449887f1fb))
+
 ## [100.0.12](https://github.com/dhis2/translations-app/compare/v100.0.11...v100.0.12) (2026-01-22)
 
 
