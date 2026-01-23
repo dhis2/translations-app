@@ -8,7 +8,7 @@ const config = {
     entryPoints: {
         app: './src/App.jsx',
     },
-    minDHIS2Version: 2.41,
+    minDHIS2Version: '2.41',
 }
 
 module.exports = config
