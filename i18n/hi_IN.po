@@ -26,7 +26,7 @@ msgid "Filter by"
 msgstr ""
 
 msgid "All"
-msgstr ""
+msgstr "सभी"
 
 msgid "Translated"
 msgstr ""
@@ -101,7 +101,7 @@ msgid "Keep editing"
 msgstr "संपादन करते रहें"
 
 msgid "Discard changes"
-msgstr ""
+msgstr "बदलावों को छोड़ना है"
 
 msgid "Unsaved changes"
 msgstr "नहीं सहेजे गए बदलाव"
@@ -137,4 +137,4 @@ msgid "Interpretations"
 msgstr ""
 
 msgid "Messages"
-msgstr ""
+msgstr "मैसेजेस"
